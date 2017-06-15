@@ -1,0 +1,24 @@
+添加课程分类
+0 给添加分类的按钮设置了一个类名，在list.js中，先给添加分类按钮绑定事件，需要在事件回调函数中加载addCourseCategory模块
+
+	1 在tpls文件夹下新建一个addCourseCategory.html文件  将HTML结构写好
+
+	2 将addCourseCategory.html文件引入到js中  利用text!tpls/addCourseCategory.html   后面添加相应的变量
+
+	3 用get发送请求到/api/category/top地址中。获取返回来的数据  通过art.render函数将数据添加到模板中去
+
+	4 将art.render函数得到的数据通过$转化为jQuery对象
+
+	5. 给jquery对象($addCategory)，通过on事件代理 给form绑定sumbit事件，在该事件回调函数中
+		5.1、将form表单里面的数据用serialize方法序列化
+		5.2、通过post请求发送到/api/category/add地址中
+		5.3、如果返回的res.code==200 说明请求成功
+			5.3.1、再讲模态框隐藏
+			5.3.2、调用trigger方法点击一次课程管理按钮 重新加载数据
+			5.3.3、最后添加 return false 阻止表单默认提交事件
+		     返回的res.code!=200，打印异常信息
+
+	6、添加到body之前要将自身remove一下,将$addCategory通过appendto 放到body中
+
+	7 通过bootstrap的modal函数将模板显示在页面
+完成课程分类的添加

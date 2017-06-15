@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮1" class="btn" id="btn1">
+
+</body>
+<script src="js/lib/jquery-2.1.4.js"></script>
+<script>
+    $("#btn1").on("click",function(){
+        alert("按钮1");
+    });
+
+    var tpl='<input type="button" value="按钮2" class="btn">';
+
+    //将字符串转换为DOM1，给DOM1绑定了单击事件
+    $(tpl).on("click",function(){
+        alert("按钮2")
+    });
+
+
+    //将字符串转换为DOM2，将DOM2放到了页面中
+    $(tpl).appendTo("body");
+</script>
+</html>

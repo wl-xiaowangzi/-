@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var objs=[
+        {id:1,pid:0,name:"1"},
+        {id:2,pid:0,name:"2"},
+        {id:3,pid:0,name:"3"},
+        {id:4,pid:1,name:"1.1"},
+        {id:5,pid:2,name:"2.1"},
+        {id:6,pid:3,name:"3.1"}
+    ]
+
+
+    objs.forEach(function(v){
+        //打印出一级分类
+        if(v.pid==0){
+            console.log(v.name);
+
+            //打印出对应的二级分类
+            objs.forEach(function(v2){
+                if(v2.pid==v.id){
+                    console.log(v2.name);
+                }
+            })
+
+
+        }
+
+    })
+</script>
+</html>

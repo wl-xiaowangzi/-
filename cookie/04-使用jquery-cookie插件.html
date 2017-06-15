@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/jquery.cookie.js"></script>
+<script>
+    //1、设置cookie
+    $.cookie("uId",888);
+    //2、获取cookie
+    console.log($.cookie("uId"));
+    //3、删除cookie
+    $.removeCookie("uId");
+</script>
+</html>

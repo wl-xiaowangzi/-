@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/jquery.cookie.js"></script>
+<script>
+    //错误写法：
+//    var obj1={name:"ccc"};
+//    $.cookie("obj1",obj1);
+//    console.log($.cookie("obj1"));//"[object Object]"
+
+    //正确的写法：
+    var obj2={name:"abc",age:18};
+    //a、序列化
+    var obj2String=JSON.stringify(obj2);//会将obj2序列化为JSON字符串格式
+    //b、把序列化的结果保存在cookie中
+    $.cookie("obj2",obj2String);
+    //c、获取cookie值
+    var obj2Cookie=$.cookie("obj2");//结果是一个字符串
+    //d、把字符串反序列化为对象
+    var obj2Result=JSON.parse(obj2Cookie);//obj2Result:{name:"abc",age:18}
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="js/lib/jquery-2.1.4.js"></script>
+<script>
+    var tpl="<div>" +
+                "<input type='button' value='点击' class='btn'>" +
+            "</div>";
+
+
+    var $tpl=$(tpl);//将一个字符串转为dom元素(DOM1)
+    $tpl.on("click",".btn",function(){//给DOM1绑定了单击事件
+        alert("1");
+    })
+
+    $(tpl).appendTo("body");
+    //1、首先将字符串转换为一个dom元素(DOM2)，把这个dom元素放到一个jquery对象中
+    //2、调用appendTo的时候，会获取jquery对象中保存的dom元素((DOM2))，将该dom元素放到body中
+</script>
+</html>

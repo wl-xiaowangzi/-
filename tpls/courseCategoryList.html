@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <ol class="breadcrumb">
+            <li><a href="#">课程分类</a></li>
+            <li class="active">分类列表</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-1 col-md-offset-10">
+                <button class="btn btn-success btn-add-course-category">添加分类</button>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <th>分类名称</th>
+                <th>课程数量</th>
+                <th>是否显示</th>
+                <th>排序</th>
+                <th>操作</th>
+            </thead>
+            <tbody>
+                {{each result category}}
+                    {{if(category.cg_pid==0)}}
+                        <tr class="active">
+                            <td>{{category.cg_name}}</td>
+                            <td>{{category.total}}</td>
+                            <td>{{category.cg_is_hide}}</td>
+                            <td>{{category.cg_order}}</td>
+                            <td cg_id="{{category.cg_id}}">
+                                <button class="btn btn-primary btn-edit-course-category">编辑</button>
+                            </td>
+                        </tr>
+
+                            {{each result categoryAgain}}
+                                {{if(categoryAgain.cg_pid==category.cg_id)}}
+                                    <tr>
+                                        <td>|-{{categoryAgain.cg_name}}</td>
+                                        <td>{{categoryAgain.total}}</td>
+                                        <td>{{categoryAgain.cg_is_hide}}</td>
+                                        <td>{{categoryAgain.cg_order}}</td>
+                                        <td cg_id="{{categoryAgain.cg_id}}">
+                                            <button class="btn btn-primary btn-edit-course-category">编辑</button>
+                                        </td>
+                                    </tr>
+                                {{/if}}
+                            {{/each}}
+                    {{/if}}
+
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

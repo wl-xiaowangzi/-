@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //面试题
+    //  类似的还有："bxg.com/1.html?id=666&name=ccc&pwd=123456"
+    //              -->获取该地址中所有的get请求的数据，把数据保存在一个对象中
+    //                  -->{ id:'666',name:'ccc',pwd:'123456' }
+
+    document.cookie="id=888;expires="+new Date("2017-06-11");
+
+    function getCookieByName(name){
+        var val;
+
+        //1、将cookie分组-->成为字符串数组，每一个元素就是一个cookie
+        var cookies=document.cookie.split("; ");//["userName=ccc","userPwd=888"]
+        //2、需要根据name找到指定的cookie值
+        cookies.forEach(function(value,index){
+            //value:"userName=ccc"
+            //为了判断当前值是不是name对应的，发现value是用=分割了cookie的名称和cookie的值
+
+            var nameValues=value.split("=");
+            if(nameValues[0]==name){
+                val=nameValues[1];
+            }
+        });
+
+        return val;
+    }
+
+    console.log(getCookieByName("id"));
+</script>
+</html>

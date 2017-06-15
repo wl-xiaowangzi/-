@@ -1,0 +1,79 @@
+<div class="modal fade" id="modalEditCourseTime" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">编辑课时</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">课时名称</label>
+                        <div class="col-sm-9">
+                            <input type="hidden" name="ct_id" value="{{result.ct_id}}">
+                            <input type="hidden" name="ct_cs_id" value="{{result.ct_cs_id}}">
+                            <input type="text" class="form-control" name="ct_name" value="{{result.ct_name}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">课时介绍</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" name="ct_brief" id="" cols="30" rows="10">{{result.ct_brief}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">是否免费</label>
+                        <div class="col-sm-9">
+                            {{if(result.ct_is_free==1)}}
+                                <label class="radio-inline">
+                                    <input type="radio" name="ct_is_free" value="1" checked="checked"> 是
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="ct_is_free" value="0"> 否
+                                </label>
+                            {{else}}
+                                <label class="radio-inline">
+                                    <input type="radio" name="ct_is_free" value="1"> 是
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="ct_is_free" value="0" checked="checked"> 否
+                                </label>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">视频地址</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="ct_video" value="{{result.ct_video}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">视频分钟</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="ct_minutes" value="{{result.ct_minutes}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">视频秒数</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="ct_seconds" value="{{result.ct_seconds}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">推荐学习时长</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="ct_recommend_duration" value="{{result.ct_recommend_duration}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 col-sm-offset-10">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

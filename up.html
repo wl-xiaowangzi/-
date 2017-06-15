@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/uploadify/uploadify.css">
+</head>
+<body>
+<input  id="uploadify" type="file" />
+</body>
+<script src="js/lib/jquery-2.1.4.js"></script>
+<script src="assets/uploadify/jquery.uploadify.js"></script>
+<script>
+    $('#uploadify').uploadify({
+        itemTemplate:"<span></span>",       //指定进度条的模板
+        formData:{cs_id:3},                     //需要额外提交的表单数据
+        fileObjName:"cs_cover_original",        //指定上传文件的时候，表单的name
+        swf: 'assets/uploadify/uploadify.swf',  //指向本地的flash文件(.swf)
+        uploader: '/api/uploader/cover',    //指向服务器的地址
+        fileTypeExts: '*.gif; *.jpg; *.png' //限制上传文件类型
+    });
+</script>
+</html>

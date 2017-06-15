@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="安妮" id="btn">
+</body>
+<script>
+    var btn=document.getElementById("btn");
+
+    //通过attachEvent给相同的元素绑定多次同类型的事件，按照绑定顺序倒序触发
+    btn.attachEvent("onclick",function(){
+        alert("第一次");
+    });
+    btn.attachEvent("onclick",function(){
+        alert("第二次");
+    });
+    btn.attachEvent("onclick",function(){
+        alert("第三次");
+    });
+</script>
+</html>

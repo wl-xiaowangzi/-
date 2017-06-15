@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="安妮" id="btn">
+</body>
+<script>
+    //通过addEventListener给相同的元素绑定多次同类型的事件，按照绑定顺序依次触发
+    var btn=document.getElementById("btn");
+
+    btn.addEventListener("click",function(){
+        alert("第一次");
+    });
+    btn.addEventListener("click",function(){
+        alert("第二次");
+    });
+    btn.addEventListener("click",function(){
+        alert("第三次");
+    });
+</script>
+</html>

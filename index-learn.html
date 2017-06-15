@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="left">
+    <!--个人简介-->
+    <div class="profile">
+        <div class="image-container">
+            <img src="imgs/pic.jpg" id="userImage" class="img-circle img-responsive">
+        </div>
+        <h3 class="text-center" id="userName">前端学院大发</h3>
+    </div>
+    <div class="list-group menu">
+        <button type="button" class="list-group-item" id="btnTeacherManager">讲师管理</button>
+        <button type="button" class="list-group-item" id="btnCourseManager">课程管理</button>
+        <button type="button" class="list-group-item" id="btnCourseCategoryManager">课程分类</button>
+        <button type="button" class="list-group-item" id="btnChartManager">图表统计</button>
+    </div>
+</div>
+<div class="right">
+    <!--顶部-->
+    <div class="panel right-top">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-1">
+                    <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-apple" style="font-size: 16px;" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="col-md-1 col-md-offset-9">
+                    <a href="javascript:void(0)">个人中心</a>
+                </div>
+                <div class="col-md-1">
+                    <a href="javascript:void(0)" id="btnLogout">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--指定模块的内容-->
+    <div class="module-container">
+
+    </div>
+</div>
+</body>
+<script type="text/template" id="t1">
+    {{each numbers value index}}
+        {{if(value%2==0)}}
+            <div>偶数：{{value}}</div>
+        {{else}}
+            <div>奇数：{{value}}</div>
+        {{/if}}
+
+    {{/each}}
+</script>
+<script src="js/lib/require.js" data-main="main-learn"></script>
+
+</html>

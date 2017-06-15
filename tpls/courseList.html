@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <ol class="breadcrumb">
+            <li><a href="#">课程管理</a></li>
+            <li class="active">课程列表</li>
+        </ol>
+        <!--<div class="row">-->
+            <!--<div class="col-md-1 col-md-offset-10">-->
+                <!--<button class="btn btn-success btn-add-course-category">添加分类</button>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <ul class="list-group">
+            {{each result}}
+                <li class="list-group-item">
+                    <div class="media" cs_id="{{$value.cs_id}}">
+                        <div class="media-left">
+                            <a href="javascript:void(0)" class="link-course-pic">
+                                <img class="media-object" src="{{$value.cs_cover}}" width="240" height="120" >
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h3 cs_id="{{$value.cs_id}}"  class="media-heading">{{$value.cs_name}}&nbsp;<button class="btn btn-success btn-edit-course-time">编辑课时</button>&nbsp;<button class="btn btn-primary btn-edit-course-baseinfo">编辑基本信息</button></h3>
+                            <div>————讲师：{{$value.tc_name}}</div>
+                            <div>————分类：{{$value.cg_name}}</div>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+
+    </div>
+</div>

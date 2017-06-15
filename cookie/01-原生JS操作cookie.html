@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="02-访问cookie.html">去另一个页面访问</a>
+</body>
+<script>
+    //小结：cookie
+    //1、cookie的作用：实现跨页面访问数据(状态保持-->服务器session)
+    //      比如：a.html
+    //              document.cookie="userName=ccc";
+    //              document.cookie="userPwd=123456";
+    //          就可以在同一个域名下面的另一个文件中:b.html
+    //              console.log(document.cookie);       //"userName=ccc; userPwd=123456"
+    //2、语法(设置值)：
+    //      通过document.cookie="名称=值";       设置了一个cookie
+    //      切记一行代码只能设置一个cookie
+    //3、获取cookie值：
+    //      document.cookie -->打印出当前域名下面的所有的cookie的集合：
+    //                         -->"userName=ccc; userPwd=123456"
+
+    //4、默认情况下设置的cookie都是关闭浏览器就会消失
+    //      如果希望某个cookie存储很久：document.cookie="id=888;expires="+new Date("2017-06-11 8:00:00")
+
+    //1、设置cookie
+    document.cookie="userName=ccc";
+    document.cookie="userPwd=123456";
+    //2、读取cookie
+    console.log(document.cookie);
+</script>
+</html>

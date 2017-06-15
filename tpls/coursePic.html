@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <ol class="breadcrumb">
+            <li><a href="#">课程管理</a></li>
+            <li class="active">课程图片</li>
+        </ol>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 class="text-center">课程图片</h3>
+                <div class="row">
+                    <div class="col-md-3">课程名称</div>
+                    <div class="col-md-9">{{cs_name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">讲师</div>
+                    <div class="col-md-9">{{tc_name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">图片</div>
+                    <div class="col-md-9">
+                        <img src="{{cs_cover_original}}" width="240" height="120">
+                    </div>
+                </div>
+                <input type="file" id="coursePicUpload">
+            </div>
+        </div>
+
+    </div>
+</div>

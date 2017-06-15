@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮1" class="btn" id="btn1">
+
+</body>
+<script src="js/lib/jquery-2.1.4.js"></script>
+<script>
+    $("#btn1").on("click",function(){
+        alert("按钮1");
+    });
+
+    var tpl='<input type="button" value="按钮2" class="btn">';
+
+    $(tpl).appendTo("body");
+
+    //重新获取了页面中类名为btn的元素——>2个元素
+    $(".btn").on("click",function(){
+        alert("按钮2");
+    })
+</script>
+</html>
