@@ -1,6 +1,6 @@
 /**
  *
- * Created by WilbertCheng on 2017/6/8.
+ * Created by 
  */
 
 require.config({
