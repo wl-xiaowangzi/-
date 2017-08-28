@@ -13,17 +13,27 @@ require.config({
         bootstrap:"../assets/bootstrap/js/bootstrap",
         //配置模板文件夹的路径
         tpls:"../tpls",
-        upload:"../assets/uploadify/jquery.uploadify"
+        upload:"../assets/uploadify/jquery.uploadify",
+        datetimepicker:"../assets/datetimepicker/js/bootstrap-datetimepicker",
+        datetimepickerLang:"../assets/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
+        //UE主文件
+        UEditor:"../assets/UEditor/ueditor.all",
+        //UE配置文件
+        UEditorConf:"../assets/UEditor/ueditor.config",
+        eCharts:"lib/echarts.min"
     },
     shim:{
         bootstrap:{
             deps:["jquery"]
+        },
+        datetimepickerLang:{
+            deps:["datetimepicker"]
         }
     }
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/list","text!tpls/courseCreate.html","course/baseInfo","course/pic","teacher/list","common/loading","common/checkLogin"],function($,art,courseCategoryList,courseList,courseTimeList,courseCreateTpl,courseBaseInfo,coursePic,teacherList){
+require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/list","text!tpls/courseCreate.html","course/baseInfo","course/pic","teacher/list","common/personalCenter","chart/index","common/loading","common/checkLogin"],function($,art,courseCategoryList,courseList,courseTimeList,courseCreateTpl,courseBaseInfo,coursePic,teacherList,personalCenter,chartIndex){
 
 
     //处理用户名和头像
@@ -55,6 +65,11 @@ require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/
 
 
     });
+
+    //个人中心
+    $("#btnPersonalCenter").on("click",function(){
+        personalCenter();
+    })
 
 
     //实现点击不同功能菜单，出现不同功能的页面
@@ -144,7 +159,8 @@ require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/
         //图表统计
         $(".module-container").empty();
 
-        $(".module-container").append("图表统计");
+        chartIndex();
+        
     });
 
     //希望一开始就渲染出讲师管理的功能？

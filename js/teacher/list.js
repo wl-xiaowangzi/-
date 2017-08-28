@@ -3,15 +3,18 @@
  * Author:Wilbert
  *   Date:2017/6/14
  */
-define(["jquery","artTemplate","text!tpls/teacherList.html","common/api"],function ($,art,teacherListTpl,API) {
+define(["jquery","artTemplate","text!tpls/teacherList.html","common/api","./show","./add","./edit"],function ($,art,teacherListTpl,API,teacherShow,teacherAdd,teacherEdit) {
     return function () {
 
         API.getTeacherList(function(res){
+
             var teacherList=art.render(teacherListTpl,res);
 
             var $teacherList=$(teacherList);
 
-            $teacherList.on("click",".btn-status",function(){
+            //修改用户状态
+            $teacherList
+                .on("click",".btn-status",function(){
 
                 var tc_id=$(this).parent().attr("tc_id");
                 var tc_status=$(this).parent().attr("tc_status");
@@ -33,6 +36,23 @@ define(["jquery","artTemplate","text!tpls/teacherList.html","common/api"],functi
 
                 })
             })
+                //查看讲师
+                .on("click",".btn-show",function(){
+                    var tc_id=$(this).parent().attr("tc_id");
+                    
+                    teacherShow(tc_id);
+                })
+                //添加讲师
+                .on("click",".btn-add-teacher",function(){
+
+                    teacherAdd();
+                })
+                //编辑讲师
+                .on("click",".btn-edit",function(){
+                    var tc_id=$(this).parent().attr("tc_id");
+
+                    teacherEdit(tc_id);
+                })
 
             $(".module-container").append($teacherList);
         })

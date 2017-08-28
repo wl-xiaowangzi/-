@@ -1,0 +1,44 @@
+<div class="modal fade" id="modalShowTeacher" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">查看讲师</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>姓名：</td>
+                        <td>{{tc_name}}</td>
+                        <td>职位：</td>
+                        <td>讲师</td>
+                        <td rowspan="4">
+                            <img src="imgs/pic.jpg" width="80" height="80">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>花名：</td>
+                        <td>{{tc_roster}}</td>
+                        <td>入职日期：</td>
+                        <td>{{tc_join_date}}</td>
+                    </tr>
+                    <tr>
+                        <td>性别：</td>
+                        <td>{{tc_gender==0?"男":"女"}}</td>
+                        <td>出生日期：</td>
+                        <td>{{tc_birthday}}</td>
+                    </tr>
+                    <tr>
+                        <td>手机号码：</td>
+                        <td>{{tc_cellphone}}</td>
+                        <td>邮箱：</td>
+                        <td>{{tc_email}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">{{#tc_introduce}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

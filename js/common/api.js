@@ -159,6 +159,49 @@ define(["jquery"],function($){
          */
         changeTeacherStatus:function(tc_id,tc_status,callback){
             this.ajax("post","teacher/handle",{tc_id:tc_id,tc_status:tc_status},callback);
+        },
+
+        /**
+         * 实现查看讲师
+         * @param tc_id
+         * @param callback
+         */
+        showTeacher:function(tc_id,callback){
+            this.ajax("get","teacher/view",{tc_id:tc_id},callback);
+        },
+        /**
+         * 实现添加讲师
+         * @param formData
+         * @param callback
+         */
+        addTeacher:function(formData,callback){
+            this.ajax("post","teacher/add",formData,callback);
+        },
+        /**
+         * 根据讲师id获取讲师原来的基本信息
+         */
+        editTeacher:function(tc_id,callback){
+            this.ajax("get","teacher/edit",{tc_id:tc_id},callback);
+        },
+        /**
+         * 编辑保存
+         */
+        editSaveTeacher:function(formData,callback){
+            this.ajax("post","teacher/update",formData,callback);
+        },
+        /**
+         * 个人中心——>获取讲师原来的详细信息
+         * @param callback
+         */
+        editPersonalCenter:function(callback){
+            this.ajax("get","teacher/profile",{},callback);
+        },
+        /**
+         * 个人中心——>保存讲师原来的信息
+         * @param callback
+         */
+        editSavePersonalCenter:function(formData,callback){
+            this.ajax("post","teacher/modify",formData,callback);
         }
     }
 })

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" id="btn1" value="写入">
+<!-- 加载编辑器的容器 -->
+<script id="container" name="content" type="text/plain">
+        这里写你的初始化内容
+</script>
+<!-- 配置文件 -->
+<script type="text/javascript" src="../assets/UEditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="../assets/UEditor/ueditor.all.js"></script>
+</body>
+<script>
+    //ue编辑器初始化
+    var ue = UE.getEditor('container');
+
+    var btn1=document.getElementById("btn1");
+    btn1.onclick=function(){
+        var old=ue.getContent();
+
+        //alert(old);
+
+        ue.setContent(old+"<img  src='../imgs/pic.jpg'/>");
+    }
+
+</script>
+</html>
