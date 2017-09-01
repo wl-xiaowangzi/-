@@ -1,0 +1,110 @@
+<div class="modal fade" id="modalEditUsers" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">编辑信息</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal">
+                    <div class="form-group" style="display:flex;justify-content:center;">
+                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="tc_name" value="" />
+                            <input type="hidden" name="tc_id" value="{{tc_id}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">性别</label>
+                        <div class="col-sm-10">
+                            <!--{{if(tc_gender==0)}}-->
+                            <label class="radio-inline">
+                                <input type="radio" name="tc_gender" value="0" checked="checked"> 男
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="tc_gender" value="1"> 女
+                            </label>
+                            <!--{{else}}-->
+                            <!--<label class="radio-inline">
+                                <input type="radio" name="tc_gender" value="0"> 男
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="tc_gender" value="1" checked="checked"> 女
+                            </label>-->
+                            <!--{{/if}}-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">账号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="tc_name" value="" />
+                            <input type="hidden" name="tc_id" value="{{tc_id}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="tc_name" value="" />
+                            <input type="hidden" name="tc_id" value="{{tc_id}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">类型</label>
+                        <div class="col-sm-10">
+                            <select name="tc_type" class="form-control">
+                                <!--{{if(tc_type==0)}}-->
+                                    <option value="0" selected="selected">管理账号</option>
+                                    <option value="1">操作账号</option>
+                                <!--{{else}}-->
+                                    <!--<option value="0">访客</option>
+                                    <option value="1" selected="selected">员工</option>-->
+                                <!--{{/if}}-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">组织</label>
+                        <div class="col-sm-10">
+                            <select name="tc_type" class="form-control">
+                                <!--{{if(tc_type==0)}}-->
+                                    <option value="0" selected="selected">珠海</option>
+                                    <option value="1">上海</option>
+                                    <option value="1">内蒙古</option>
+                                <!--{{else}}-->
+                                    <!--<option value="0">访客</option>
+                                    <option value="1" selected="selected">员工</option>-->
+                                <!--{{/if}}-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">授权点</label>
+                        <div class="col-sm-10">
+                            <select name="tc_type" class="form-control">
+                                <!--{{if(tc_type==0)}}-->
+                                    <option value="0" selected="selected">科技园大门</option>
+                                    <option value="1">科技园二门</option>
+                                    <option value="1">科技园三门</option>
+                                <!--{{else}}-->
+                                    <!--<option value="0">访客</option>
+                                    <option value="1" selected="selected">员工</option>-->
+                                <!--{{/if}}-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 col-sm-offset-10">
+                            <button type="submit" class="btn btn-success">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

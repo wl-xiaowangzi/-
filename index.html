@@ -1,57 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>管理系统</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="assets/datetimepicker/css/bootstrap-datetimepicker.css">
     <link rel="stylesheet" href="assets/uploadify/uploadify.css">
+    <link rel="stylesheet" href="assets/daterangepicker/css/daterangepicker.css">
+    <link rel="stylesheet" href="css/custom.min.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
-<div class="left">
-    <!--个人简介-->
-    <div class="profile">
-        <div class="image-container">
-            <img src="imgs/pic.jpg" id="userImage" class="img-circle img-responsive">
-        </div>
-        <h4 class="text-center" id="userName">前端学院</h4>
-    </div>
-    <div class="list-group menu">
-        <button type="button" class="list-group-item" id="btnTeacherManager">讲师管理</button>
-        <button type="button" class="list-group-item" id="btnCourseManager">课程管理</button>
-        <button type="button" class="list-group-item" id="btnCreateCourse">&gt;&gt;创建课程</button>
-        <button type="button" class="list-group-item" id="btnCourseBaseInfo">&gt;&gt;课程基本信息</button>
-        <button type="button" class="list-group-item" id="btnCoursePic">&gt;&gt;课程图片</button>
-        <button type="button" class="list-group-item" id="btnCourseTimeManager">&gt;&gt;课时管理</button>
-        <button type="button" class="list-group-item" id="btnCourseCategoryManager">课程分类</button>
-        <button type="button" class="list-group-item" id="btnChartManager">图表统计</button>
-    </div>
-</div>
-<div class="right">
-    <!--顶部-->
-    <div class="panel right-top">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-md-1">
-                    <button class="btn btn-success">
-                        <span class="glyphicon glyphicon-apple" style="font-size: 16px;" aria-hidden="true"></span>
-                    </button>
-                </div>
-                <div class="col-md-1 col-md-offset-9">
-                    <a href="javascript:void(0)" id="btnPersonalCenter">个人中心</a>
-                </div>
-                <div class="col-md-1">
-                    <a href="javascript:void(0)" id="btnLogout">退出</a>
+    <div class="content">
+        <div class="left">
+            <div class="logo">
+                <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
+                <p>后台管理系统</p>
+            </div>
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                    <ul class="nav side-menu">
+                        <li class="activate" id="btnTeacherManager"><img src="imgs/pic.jpg" alt=""><a>识别记录</a></li>
+                        <li id="btnCourseTimeManager"><img src="imgs/pic.jpg" alt=""><a>入户审批</a></li>
+                        <li id="btnCourseManager"><a>人员管理</a></li>
+                        <li id="btnCourseCategoryManager"><img src="imgs/pic.jpg" alt=""><a>用户管理</a></li>
+                    </ul>
                 </div>
             </div>
+            <!-- /sidebar menu -->
+        </div>
+
+        <div class="right" style="padding-left:200px;">
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="请输入您要找的人">
+                                <button class="glyphicon glyphicon-search" type="submit"></button>
+                            </div>
+                            <!-- /input-group -->
+                        </div>
+                        <!-- /.col-lg-6 -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:void(0);" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="imgs/pic.jpg" alt=""><span id="userName"></span><span class=" fa fa-angle-down"></span></a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li id="btnPersonalCenter"><a href="javascript:;">用户信息</a></li>
+                                    <li><a href="javascript:;"><span class="badge bg-red pull-right">50%</span><span>设置</span></a></li>
+                                    <li><a href="javascript:void(0)" id="btnLogout">退出</a></li>
+                                </ul>
+                            </li>
+
+                            <li role="presentation" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                    <li>
+                                        <a>
+                        <span class="image"><img src="imgs/pic.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                        <span class="image"><img src="imgs/pic.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                        <span class="image"><img src="imgs/pic.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                        <span class="image"><img src="imgs/pic.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                                    </li>
+                                    <li>
+                                        <div class="text-center">
+                                            <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <div class="module-container" style="background-color:#eee;margin-top:100px;"></div>
         </div>
     </div>
-    <!--指定模块的内容-->
-    <div class="module-container">
-
-    </div>
-</div>
 </body>
 
 <script src="js/lib/require.js" data-main="main"></script>

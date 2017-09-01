@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <video id="video" autoplay=""></video>
+    <script>
+        var video_element = document.getElementById('video');
+        if (navigator.getUserMedia) { // opera should use opera.getUserMedia now, chrome use webkitGetUserMedia
+            navigator.getUserMedia('video', success, error);
+        }else{
+             navigator.webkitGetUserMedia('video', success, error);
+        }
+
+        function success(stream) {
+            video_element.src = stream;
+        }
+    </script>
+    <script>
+        var canvas = document.createElement('canvas');
+
+        var ctx = canvas.getContext('2d');
+        var cw = vw;
+        var ch = vh;
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, cw, ch);
+        ctx.drawImage(video_element, 0, 0, vvw, vvh, 0, 0, vw, vh);
+        document.body.append(canvas);
+
+        var imgData =canvas.toDataURL("image/png");
+        var data = imgData.substr(22); 
+    </script>
+
+</body>
+
+</html>

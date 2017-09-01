@@ -6,26 +6,26 @@
 define(["jquery","artTemplate","common/api","text!tpls/personalCenter.html","UEditor","UEditorConf"],function($,art,API,personalCenterTpl){
 
     return function(){
-        API.editPersonalCenter(function(res){
+        // API.editPersonalCenter(function(res){
 
 
             $("#modalPersonalCenter").remove();
 
-            var personalCenter=art.render(personalCenterTpl,res.result);
+            // var personalCenter=art.render(personalCenterTpl,res.result);
 
-            var $personalCenter=$(personalCenter);
+            var $personalCenter=$(personalCenterTpl);
             
             $personalCenter
-                .on("submit","form",function(){
+                // .on("submit","form",function(){
                 
-                    var formData=$(this).serialize();
+                //     var formData=$(this).serialize();
 
-                    API.editSavePersonalCenter(formData,function(){
-                        location.href="/";//刷新页面
-                    })
+                //     API.editSavePersonalCenter(formData,function(){
+                //         location.href="/";//刷新页面
+                //     })
 
-                    return false;
-                })
+                //     return false;
+                // })
                 .on("scroll",".modal-body",function(e){
                     console.log(1);
                 })
@@ -50,7 +50,7 @@ define(["jquery","artTemplate","common/api","text!tpls/personalCenter.html","UEd
 
 
 
-        })
+        // })
 
 
     }

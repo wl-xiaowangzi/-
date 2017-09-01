@@ -15,6 +15,8 @@ require.config({
         tpls:"../tpls",
         upload:"../assets/uploadify/jquery.uploadify",
         datetimepicker:"../assets/datetimepicker/js/bootstrap-datetimepicker",
+        daterangepicker:"../assets/daterangepicker/js/daterangepicker",
+        moment:"../assets/daterangepicker/js/moment.min",
         datetimepickerLang:"../assets/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
         //UE主文件
         UEditor:"../assets/UEditor/ueditor.all",
@@ -26,14 +28,20 @@ require.config({
         bootstrap:{
             deps:["jquery"]
         },
+        custom:{
+            deps:["jquery"]
+        },
         datetimepickerLang:{
             deps:["datetimepicker"]
+        },
+        daterangepicker:{
+            deps:["moment"]
         }
     }
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/list","text!tpls/courseCreate.html","course/baseInfo","course/pic","teacher/list","common/personalCenter","chart/index","common/loading","common/checkLogin"],function($,art,courseCategoryList,courseList,courseTimeList,courseCreateTpl,courseBaseInfo,coursePic,teacherList,personalCenter,chartIndex){
+require(["jquery","artTemplate","users/list","people/list","approval/list","text!tpls/courseCreate.html","people/baseInfo","people/pic","record/list","common/personalCenter","chart/index","common/loading","common/checkLogin"],function($,art,usersList,peopleList,approvalList,courseCreateTpl,peopleBaseInfo,peoplePic,recordList,personalCenter,chartIndex){
 
 
     //处理用户名和头像
@@ -48,8 +56,8 @@ require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/
     //给退出这个按钮绑定事件实现退出登录的功能
     $("#btnLogout").on("click",function(){
 
-        $.post("/api/logout",function(res){
-            if(res.code==200){
+        // $.post("/api/logout",function(res){
+        //     if(res.code==200){
 
                 //清除cookie值
                 $.removeCookie("tc_name");
@@ -57,13 +65,8 @@ require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/
 
                 //跳转到登录页
                 location.href="login.html";
-
-
-            }
-        })
-
-
-
+        //     }
+        // })
     });
 
     //个人中心
@@ -76,18 +79,18 @@ require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/
 
 
     $("#btnTeacherManager").on("click",function(){
-        //讲师管理
+        //识别记录
         $(".module-container").empty();
 
-        teacherList();
+        recordList();
         
     })
 
     $("#btnCourseManager").on("click",function(){
-        //课程管理
+        //人员管理
         $(".module-container").empty();
 
-        courseList();
+        peopleList();
     });
 
     //课程图片编辑
@@ -99,10 +102,10 @@ require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/
     })
 
     $("#btnCourseTimeManager").on("click",function(){
-        //课时管理
+        //入库审批
         $(".module-container").empty();
 
-        courseTimeList();
+        approvalList();
     });
 
     $("#btnCreateCourse").on("click",function(){
@@ -147,12 +150,12 @@ require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/
 
 
     $("#btnCourseCategoryManager").on("click",function(){
-        //课程分类管理
+        //用户管理
         $(".module-container").empty();
 
 
-        //加载分类管理模块
-        courseCategoryList();
+        //加载用户管理模块
+        usersList();
     });
 
     $("#btnChartManager").on("click",function(){
@@ -167,7 +170,10 @@ require(["jquery","artTemplate","courseCategory/list","course/list","courseTime/
     //  -->触发讲师管理的点击事件
     $("#btnTeacherManager").trigger("click");
     
-    
+    $("#sidebar-menu .side-menu li").on("click",function(){
+        $("#sidebar-menu .side-menu li").removeClass("activate");
+        $(this).addClass("activate")
+    })
 
     // //artTemplate基本使用
     // var tpl=$("#t1").html();
