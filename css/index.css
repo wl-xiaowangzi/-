@@ -1,28 +1,28 @@
 body{
     background-color: #eee;
 }
-.content .left{
+.content .content-left{
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     width: 200px;
-    z-index: 9999;
+    z-index: 1;
     background: linear-gradient(#334556,#2C4257),#2A3F54;
 }
-.content .left .logo{
+.content .content-left .logo{
     height: 17vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.content .left .logo .img-box{
+.content .content-left .logo .img-box{
     height: 100%;
     width: 100%;
 }
-.left .logo .img-box img{
-    width: 200px;
+.content-left .logo .img-box img{
+    width: 100%;
     height: 10vh;
 }
 #sidebar-menu{
@@ -39,8 +39,8 @@ body{
 }
 
 #sidebar-menu .side-menu li img{
-    height: 5vh;
-    width: 5vh;
+    height: 40px;
+    width: 40px;
 }
 #sidebar-menu .side-menu li.activate{
     text-shadow: rgba(0,0,0,.25) 0 -1px 0;
@@ -49,10 +49,11 @@ body{
     border-right: 5px solid #2767d8;
 }
 
-.right{
+.content-right{
     min-width: 800px;
+    padding-left:200px;
 }
-.right .nav_menu{
+.content-right .nav_menu{
     height: 100px;
     position: fixed;
     top: 0;
@@ -95,6 +96,15 @@ nav .search button{
     width: 40px;
     z-index: 999;
 }
+.module-container{
+    position: relative;
+}
+@media screen and (max-width:1001px){
+    .content .content-left{width: 80px;}
+    .content .content-left a{display: none;}
+    .content .content-left #sidebar-menu li img{height:40px;width:40px;margin-top: 10px;}
+    .content .content-right{padding-left: 80px;}
+}
 /*识别记录样式 begin*/
 .record{
     background: #eee;
@@ -103,7 +113,7 @@ nav .search button{
     padding: 0 4%;
     background-color: #f1f1f1;
 }
-.record .top-nav .dropdown .btn{
+.record .top-nav .btn{
     border: none;
     margin: 0;
     margin-left: 1vw;
@@ -148,6 +158,7 @@ nav .search button{
 }
 .table ul li:nth-child(1){
     width: 12vw;
+    min-width: 120px;
 }
 .record .table ul li:nth-child(1) span{
     margin-left: 1vw;

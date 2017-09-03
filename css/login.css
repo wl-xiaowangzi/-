@@ -1,8 +1,12 @@
 .form-bg{
+    height: 100vh;
     background: #00b4ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .container{
-  margin-top: 250px;
+  /*margin-top: 30vh;*/
 }
 .form-horizontal{
     background: #fff;
