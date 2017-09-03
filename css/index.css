@@ -96,6 +96,9 @@ nav .search button{
     width: 40px;
     z-index: 999;
 }
+.navbar-nav .open .dropdown-menu{
+    width: 60px;
+}
 .module-container{
     position: relative;
 }
