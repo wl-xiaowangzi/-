@@ -28,9 +28,6 @@ require.config({
         bootstrap:{
             deps:["jquery"]
         },
-        custom:{
-            deps:["jquery"]
-        },
         datetimepickerLang:{
             deps:["datetimepicker"]
         },
@@ -41,7 +38,7 @@ require.config({
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery","artTemplate","users/list","people/list","approval/list","text!tpls/courseCreate.html","people/baseInfo","people/pic","record/list","common/personalCenter","chart/index","common/loading","common/checkLogin"],function($,art,usersList,peopleList,approvalList,courseCreateTpl,peopleBaseInfo,peoplePic,recordList,personalCenter,chartIndex){
+require(["jquery","artTemplate","users/list","people/list","approval/list","text!tpls/courseCreate.html","people/baseInfo","people/pic","record/list","common/personalCenter","common/changePWD","common/changePic","config/viewLog","config/deviceManagement","chart/index","common/loading","common/checkLogin"],function($,art,usersList,peopleList,approvalList,courseCreateTpl,peopleBaseInfo,peoplePic,recordList,personalCenter,changePWD,changePic,configViewLog,configDeviceManagement,chartIndex){
 
 
     //处理用户名和头像
@@ -69,11 +66,24 @@ require(["jquery","artTemplate","users/list","people/list","approval/list","text
         // })
     });
 
+
+    //系统设置
+    $("#btnLog").on("click",function(){
+         $(".module-container").empty();
+        configViewLog();
+    })
+      $("#btnDeviceManagement").on("click",function(){
+         $(".module-container").empty();
+        configDeviceManagement();
+    })
     //个人中心
     $("#btnPersonalCenter").on("click",function(){
         personalCenter();
     })
-
+    // 修改密码
+    $("#btnChangePWD").on("click",function(){
+        changePWD();
+    })
 
     //实现点击不同功能菜单，出现不同功能的页面
 

@@ -1,6 +1,6 @@
 /**
- * 课程列表
- * Created by WilbertCheng on 2017/6/11.
+ * 人员列表
+ * Created by landon 2017/9/4.
  */
 define(["jquery","artTemplate","text!tpls/peopleList.html","./baseinfo","./visitant"],function($,art,peopleListTpl,baseinfo,visitant){
 

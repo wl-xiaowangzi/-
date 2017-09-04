@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./edit","./visitant"],function ($,art,API,approvalListTpl,editApproval,visitant) {
+define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./edit","./visitant","./refuse"],function ($,art,API,approvalListTpl,editApproval,visitant,refuse) {
     return function(){
         //实现点击指定课程，跳转到指定课程对应的课时管理页面？
         //-->1、在课程列表(list.js)中，给编辑课时按钮绑定了单击事件，在事件回调函数中：
@@ -40,6 +40,9 @@ define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./edi
             })
             .on("click","#btn-visiter",function(){
                 visitant();
+            })
+            .on("click",".btn-refuse",function(){
+                refuse();
             })
 
             //把渲染好的元素放到页面中

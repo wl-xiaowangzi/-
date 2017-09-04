@@ -25,8 +25,10 @@ define(["jquery","artTemplate","common/api","text!tpls/recordEdit.html"],functio
             //         //成功的编辑讲师-->刷新讲师管理页面
             //         $("#btnTeacherManager").trigger("click");
             //     })
-
-
+            $recordEdit
+            .on("scroll",".modal-body",function(e){
+                    console.log(1);
+                })
             //     return false;
             // })
 
