@@ -131,13 +131,13 @@ nav .search button{
      position: relative;
      background-color: white;
 }
-.personal-info .img-box{
+.table .personal-info .img-box{
     position: absolute;
     width: 20px;
     height: 20px;
     top: -5px;
 }
-.personal-info .img-box img{
+.table .personal-info .img-box img{
     width: 20px;
     height: 20px;
 }

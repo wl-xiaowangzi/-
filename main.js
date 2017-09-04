@@ -38,7 +38,7 @@ require.config({
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery","artTemplate","users/list","people/list","approval/list","text!tpls/courseCreate.html","people/baseInfo","people/pic","record/list","common/personalCenter","common/changePWD","common/changePic","config/viewLog","config/deviceManagement","chart/index","common/loading","common/checkLogin"],function($,art,usersList,peopleList,approvalList,courseCreateTpl,peopleBaseInfo,peoplePic,recordList,personalCenter,changePWD,changePic,configViewLog,configDeviceManagement,chartIndex){
+require(["jquery","artTemplate","users/list","people/list","approval/list","text!tpls/courseCreate.html","people/baseInfo","people/pic","record/list","common/personalCenter","common/changePWD","common/changePic","config/postManagement","config/causeManagement","config/viewLog","config/deviceManagement","config/organizationalManagement","chart/index","common/loading","common/checkLogin"],function($,art,usersList,peopleList,approvalList,courseCreateTpl,peopleBaseInfo,peoplePic,recordList,personalCenter,changePWD,changePic,configPostManagement,configCauseManagement,configViewLog,configDeviceManagement,configOrganizationalManagement,chartIndex){
 
 
     //处理用户名和头像
@@ -68,14 +68,27 @@ require(["jquery","artTemplate","users/list","people/list","approval/list","text
 
 
     //系统设置
+    $("#btnPostManagement").on("click",function(){
+         $(".module-container").empty();
+        configPostManagement();
+    })
+    $("#btnCauseManagement").on("click",function(){
+         $(".module-container").empty();
+        configCauseManagement();
+    })
     $("#btnLog").on("click",function(){
          $(".module-container").empty();
         configViewLog();
     })
-      $("#btnDeviceManagement").on("click",function(){
+    $("#btnDeviceManagement").on("click",function(){
          $(".module-container").empty();
         configDeviceManagement();
     })
+    $("#BtnOrganizationalManagement").on("click",function(){
+         $(".module-container").empty();
+        configOrganizationalManagement();
+    })
+    
     //个人中心
     $("#btnPersonalCenter").on("click",function(){
         personalCenter();
