@@ -1,0 +1,77 @@
+<div class="modal fade" id="modalcamera" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content pull-left">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">拍照入库</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal">
+                    <video id="video" autoplay="" style='width:640px;height:480px;'></video>
+                    <div id="picture" style="margin:20px auto;font-size:40px;border:2px solid #2767d8;width:60px;height:60px;border-radius:50%;line-height:60px;display:flex;justify-content:center;align-items:center;"><span class="glyphicon glyphicon-camera"></span></div>
+                    
+                    <canvas id="canvas" width="640" height="480" style="position:absolute;top:15px;background:url(imgs/cover.png) no-repeat center center">
+                        <script>
+                            var video = document.getElementById("video");
+
+                            var canvas = document.getElementById("canvas");
+                            var context = canvas.getContext("2d")
+                            if (navigator.mediaDevices.getUserMedia) { // 标准的API
+                                var p = navigator.mediaDevices.getUserMedia({
+                                    video: true
+                                });
+                                p.then(function (mediaStream) {
+                                    var video = document.querySelector('video');
+                                    video.src = window.URL.createObjectURL(mediaStream);
+                                    video.onloadedmetadata = function (e) {
+                                        // Do something with the video here.
+                                        video.play();
+                                    };
+                                });
+                                p.catch(function (err) {
+                                    console.log(err.name);
+                                });
+                            } else if (navigator.mediaDevices.webkitGetUserMedia) { // WebKit 核心的API
+                                var p = navigator.mediaDevices.webkitGetUserMedia({
+                                    video: true
+                                });
+                                p.then(function (mediaStream) {
+                                    var video = document.querySelector('video');
+                                    video.src = window.URL.createObjectURL(mediaStream);
+                                    video.onloadedmetadata = function (e) {
+                                        // Do something with the video here.
+                                        video.play();
+                                    };
+                                });
+                                p.catch(function (err) {
+                                    console.log(err.name);
+                                });
+                            }
+                            document.getElementById("picture").addEventListener("click", function () {
+                                
+                                context.drawImage(video, 0, 0, 640, 480);
+                                //从画布上获取照片数据  
+                                var imgData = canvas.toDataURL();
+                                //将图片转换为Base64  
+                                var base64Data = imgData.substr(22);
+                            });
+                            document.getElementById("re-photographed").addEventListener("click", function () {
+                                context.clearRect(0,0,640,480);
+                            });
+                        </script>
+                    </canvas>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-6">
+                            <div id="re-photographed" class="glyphicon glyphicon-repeat btn btn-info" >重拍</div>
+                            <button type="submit" class="btn btn-primary">取消</button>
+                            <button type="submit" class="btn btn-danger">确认</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

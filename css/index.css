@@ -108,6 +108,11 @@ nav .search button{
     .content .content-left #sidebar-menu li img{height:40px;width:40px;margin-top: 10px;}
     .content .content-right{padding-left: 80px;}
 }
+/*@media screen and (max-width:1280px){
+    #canvas{
+        width: 
+    }
+}*/
 /*识别记录样式 begin*/
 .record{
     background: #eee;
@@ -234,3 +239,6 @@ nav .search button{
     border-radius: 50%;
 }
 /*人员管理样式 end*/
+.hidden{
+    display: none;
+}

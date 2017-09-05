@@ -27,7 +27,7 @@ define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./edi
             
             var $approvalList=$(approvalListTpl);
 
-            //给编辑课时按钮绑定事件，实现编辑课时的功能
+            //入库审批点击事件
             $approvalList
             .on("click",".btn-edit-approval",function(){
                 
@@ -44,6 +44,7 @@ define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./edi
             .on("click",".btn-refuse",function(){
                 refuse();
             })
+           
 
             //把渲染好的元素放到页面中
             $(".module-container").append($approvalList);

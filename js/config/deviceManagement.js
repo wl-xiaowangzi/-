@@ -2,7 +2,7 @@
  * 设备管理
  * Created by land 2017/9/4.
  */
-define(["jquery","artTemplate","text!tpls/configDeviceManagement.html","./deviceEdit","./deviceDel"],function($,art,configDeviceManagementTpl,deviceEdit,deviceDel){
+define(["jquery","artTemplate","text!tpls/configDeviceManagement.html","./deviceAdd","./deviceEdit","./deviceDel"],function($,art,configDeviceManagementTpl,deviceAdd,deviceEdit,deviceDel){
 
     return function(){
 
@@ -19,6 +19,9 @@ define(["jquery","artTemplate","text!tpls/configDeviceManagement.html","./device
 
             //实现编辑设备
             $configDeviceManagement
+            .on("click",".btn-device-add",function(){
+               deviceAdd();
+            })
             .on("click",".btn-device-edit",function(){
                deviceEdit();
             })

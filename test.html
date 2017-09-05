@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <video id="video" autoplay="" style='width:640px;height:480px'></video>
+    <button id="start">开启摄像头</button>
+    <button id='picture'>拍照</button>
+    <canvas id="canvas" width="640" height="480"></canvas>
+</body>
+<script type="text/javascript">
+    var video = document.getElementById("video");
+    var context = canvas.getContext("2d")
+    var start = document.getElementById("start");
+    var errocb = function () {
+        console.log('sth wrong!');
+    }
+    start.onclick = function () {
+        if (navigator.mediaDevices.getUserMedia) { // 标准的API
+            var p = navigator.mediaDevices.getUserMedia({
+                video: true
+            });
+            p.then(function (mediaStream) {
+                var video = document.querySelector('video');
+                video.src = window.URL.createObjectURL(mediaStream);
+                video.onloadedmetadata = function (e) {
+                    // Do something with the video here.
+                    video.play();
+                };
+            });
+            p.catch(function(err) { console.log(err.name); });
+        } else if (navigator.mediaDevices.webkitGetUserMedia) { // WebKit 核心的API
+            var p = navigator.mediaDevices.webkitGetUserMedia({
+                video: true
+            });
+            p.then(function (mediaStream) {
+                var video = document.querySelector('video');
+                video.src = window.URL.createObjectURL(mediaStream);
+                video.onloadedmetadata = function (e) {
+                    // Do something with the video here.
+                    video.play();
+                };
+            });
+            p.catch(function(err) { console.log(err.name); });
+        }
+        document.getElementById("picture").addEventListener("click", function () {
+            context.drawImage(video, 0, 0, 640, 480);
+        });
+    }
+</script>
+
+</html>

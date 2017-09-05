@@ -2,7 +2,7 @@
  * 人员列表
  * Created by landon 2017/9/4.
  */
-define(["jquery","artTemplate","text!tpls/peopleList.html","./baseinfo","./visitant"],function($,art,peopleListTpl,baseinfo,visitant){
+define(["jquery","artTemplate","text!tpls/peopleList.html","./baseinfo","./visitant","./add"],function($,art,peopleListTpl,baseinfo,visitant,peopleAdd){
 
     return function(){
 
@@ -17,8 +17,11 @@ define(["jquery","artTemplate","text!tpls/peopleList.html","./baseinfo","./visit
             // test
             var $peopleList=$(peopleListTpl);
 
-            //实现编辑课时
+            //实现人员管理事件
             $peopleList
+            .on("click","#peopleAdd",function(){
+                peopleAdd();
+            })
             .on("click","#peopleVisitantList",function(){
 
                visitant();
