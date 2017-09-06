@@ -101,7 +101,7 @@ require(["jquery","artTemplate","users/list","people/list","approval/list","text
     //实现点击不同功能菜单，出现不同功能的页面
 
 
-    $("#btnTeacherManager").on("click",function(){
+    $("#btnRecord").on("click",function(){
         //识别记录
         $(".module-container").empty();
 
@@ -109,7 +109,7 @@ require(["jquery","artTemplate","users/list","people/list","approval/list","text
         
     })
 
-    $("#btnCourseManager").on("click",function(){
+    $("#btnPeopleManager").on("click",function(){
         //人员管理
         $(".module-container").empty();
 
@@ -124,7 +124,7 @@ require(["jquery","artTemplate","users/list","people/list","approval/list","text
         coursePic($(this).attr("cs_id"));
     })
 
-    $("#btnCourseTimeManager").on("click",function(){
+    $("#btnApproval").on("click",function(){
         //入库审批
         $(".module-container").empty();
 
@@ -172,7 +172,7 @@ require(["jquery","artTemplate","users/list","people/list","approval/list","text
     })
 
 
-    $("#btnCourseCategoryManager").on("click",function(){
+    $("#btnUsersManager").on("click",function(){
         //用户管理
         $(".module-container").empty();
 
@@ -189,9 +189,9 @@ require(["jquery","artTemplate","users/list","people/list","approval/list","text
         
     });
 
-    //希望一开始就渲染出讲师管理的功能？
-    //  -->触发讲师管理的点击事件
-    $("#btnTeacherManager").trigger("click");
+    //希望一开始就渲染出识别记录
+    //  -->触发识别记录的点击事件
+    $("#btnRecord").trigger("click");
     
     $("#sidebar-menu .side-menu li").on("click",function(){
         $("#sidebar-menu .side-menu li").removeClass("activate");

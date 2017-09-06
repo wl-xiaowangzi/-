@@ -1,7 +1,7 @@
 /**
- * 添加讲师
- * Author:Wilbert
- *   Date:2017/6/15
+ * 识别记录添加
+ * Author:land
+ *   Date:2017/9/1
  */
 define(["jquery","artTemplate","text!tpls/teacherAdd.html","common/api","datetimepicker","datetimepickerLang"],function ($,art,teacherAddTpl,API) {
     return function () {

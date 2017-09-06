@@ -1,6 +1,6 @@
 /**
- * 编辑分类模块
- * Created by WilbertCheng on 2017/6/11.
+ * 用户管理编辑
+ * Created by land on 2017/9/1.
  */
 define(["jquery","artTemplate","text!tpls/usersEdit.html","bootstrap"],function($,art,usersEditTpl){
     

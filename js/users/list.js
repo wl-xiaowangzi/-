@@ -1,6 +1,6 @@
 /**
- * 课程分类列表
- * Created by WilbertCheng on 2017/9/1.
+ * 用户列表
+ * Created by land on 2017/9/1.
  */
 define(["jquery", "artTemplate", "text!tpls/usersList.html", "./add","./edit","./del"], function ($, art, usersListTpl, addCourseCategory,editUsers,delUsers) {
 

@@ -1,7 +1,7 @@
 /**
- * 讲师列表
- * Author:Wilbert
- *   Date:2017/6/14
+ * 识别记录列表
+ * Author:land
+ *   Date:2017/8/30
  */
 define(["jquery","artTemplate","text!tpls/recordList.html","common/api","./show","./add","./edit","moment","datetimepicker","datetimepickerLang","daterangepicker"],function ($,art,recordListTpl,API,recordShow,teacherAdd,recordEdit,moment) {
     return function () {

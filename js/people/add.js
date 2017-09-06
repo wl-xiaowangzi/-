@@ -1,7 +1,7 @@
 /**
  * 添加讲师
- * Author:Wilbert
- *   Date:2017/6/15
+ * Author:land
+ *   Date:2017/9/5
  */
 define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","common/camera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleAddTpl, API,camera) {
     return function () {

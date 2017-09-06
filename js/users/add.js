@@ -1,6 +1,6 @@
 /**
- * 添加课程分类
- * Created by WilbertCheng on 2017/6/11.
+ * 用户管理添加
+ * Created by land on 2017/9/1.
  */
 define(["jquery","artTemplate","text!tpls/courseCategoryAdd.html","bootstrap"],function($,art,courseCategoryAddTpl){
 

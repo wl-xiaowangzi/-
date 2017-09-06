@@ -5,22 +5,30 @@
     justify-content: center;
     align-items: center;
 }
-.container{
-  /*margin-top: 30vh;*/
-}
+
 .form-horizontal{
     background: #fff;
     padding-bottom: 40px;
-    border-radius: 15px;
+    border-radius: 5px;
     text-align: center;
 }
 .form-horizontal .heading{
     display: block;
-    font-size: 35px;
+    font-size: 24px;
     font-weight: 700;
     padding: 35px 0;
-    border-bottom: 1px solid #f0f0f0;
+    /*border-bottom: 1px solid #f0f0f0;*/
     margin-bottom: 30px;
+    color: #2768d8;
+}
+.form-horizontal .heading .line{
+    font-size: 20px;
+    font-weight: 100;
+    color: #ddd;
+    margin: 0 5px;
+}
+.form-horizontal .heading .login{
+    color: #000;
 }
 .form-horizontal .form-group{
     padding: 0 40px;

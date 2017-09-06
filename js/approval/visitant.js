@@ -1,5 +1,5 @@
 /**
- * 课时管理
+ * 访客列表
  * Author:land
  *   Date:2017/9/1
  */
@@ -41,7 +41,7 @@ define(["jquery","artTemplate","common/api","text!tpls/approvalVisitantList.html
                 editVisitantApproval();
             })
             .on("click",".btn-employee",function(){
-                $("#btnCourseTimeManager").trigger("click");
+                $("#btnApproval").trigger("click");
             })
             .on("click",".btn-refuse",function(){
                 approvalRefuse();

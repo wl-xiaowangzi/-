@@ -1,6 +1,6 @@
 /**
  * 课程列表
- * Created by WilbertCheng on 2017/6/11.
+ * Created by land on 2017/9/2.
  */
 define(["jquery","artTemplate","text!tpls/peopleVisitantList.html","./visitantinfo"],function($,art,peopleVisitantListTpl,visitantinfo){
 
@@ -20,7 +20,7 @@ define(["jquery","artTemplate","text!tpls/peopleVisitantList.html","./visitantin
             //编辑入库信息
             $peopleVisitantList
             .on("click",".btn-peopleList",function(){
-                $("#btnCourseManager").trigger("click");
+                $("#btnPeopleManager").trigger("click");
             })
             .on("click",".btn-edit-course-baseinfo",function(){
                 

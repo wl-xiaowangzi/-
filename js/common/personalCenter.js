@@ -27,9 +27,6 @@ define(["jquery","artTemplate","common/api","text!tpls/personalCenter.html","upl
 
                 //     return false;
                 // })
-                .on("scroll",".modal-body",function(e){
-                    console.log(1);
-                })
                 
 
 
