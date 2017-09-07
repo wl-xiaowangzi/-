@@ -3,7 +3,7 @@
         <div class="top-nav">
             <!--下拉搜索条件-->
             <div class="dropdown pull-left">
-                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">所有人员<span class="caret"></span></button>
+                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">员工<span class="caret"></span></button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li class="btn-all"><a href="#">所有人员</a></li>
                     <li id="btn-employee"><a href="#">员工</a></li>
@@ -30,19 +30,6 @@
             </ul>
         </div>
         <!--{{/each}}-->
-        <div class="personal-info">
-            <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
-            <ul>
-                <li><img src="imgs/pic.jpg" alt="" width="40"><span>李达康</span></li>
-                <li>|</li>
-                <li>产品</li>
-                <li>|</li>
-                <li tc_id="{{$value.tc_id}}" tc_status="{{$value.tc_status}}">
-                    <button class="btn btn-primary btn-edit-approval">查看</button>
-                    <button class="btn btn-success btn-pass">通过</button>
-                    <button class="btn btn-danger btn-refuse">驳回</button>
-                </li>
-            </ul>
-        </div>
+
     </div>
 </div>

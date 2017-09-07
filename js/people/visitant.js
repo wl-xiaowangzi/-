@@ -2,7 +2,7 @@
  * 课程列表
  * Created by land on 2017/9/2.
  */
-define(["jquery","artTemplate","text!tpls/peopleVisitantList.html","./visitantinfo"],function($,art,peopleVisitantListTpl,visitantinfo){
+define(["jquery","artTemplate","text!tpls/peopleVisitantList.html","./visitantinfo","./visitantAdd"],function($,art,peopleVisitantListTpl,visitantinfo,visitantAdd){
 
     return function(){
 
@@ -22,9 +22,12 @@ define(["jquery","artTemplate","text!tpls/peopleVisitantList.html","./visitantin
             .on("click",".btn-peopleList",function(){
                 $("#btnPeopleManager").trigger("click");
             })
-            .on("click",".btn-edit-course-baseinfo",function(){
+            .on("click",".btn-edit-visitant-baseinfo",function(){
                 
-                visitantinfo()
+                visitantinfo();
+            })
+            .on("click","#visitantAdd",function(){
+                visitantAdd();
             })
             //把渲染好的元素放到页面中
             $(".module-container").append($peopleVisitantList);

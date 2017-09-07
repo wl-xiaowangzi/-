@@ -1,9 +1,9 @@
 /**
- * 入库审批列表
+ * 员工列表
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./edit","./visitant","./employee","./refuse"],function ($,art,API,approvalListTpl,editApproval,visitant,employee,refuse) {
+define(["jquery","artTemplate","common/api","text!tpls/approvalEmployeeList.html","./employeeEdit","./refuse","./visitant"],function ($,art,API,approvalEmployeeListTpl,editEmployeeApproval,approvalRefuse,visitant) {
     return function(){
         //实现点击指定课程，跳转到指定课程对应的课时管理页面？
         //-->1、在课程列表(list.js)中，给编辑课时按钮绑定了单击事件，在事件回调函数中：
@@ -25,10 +25,11 @@ define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./edi
 
             // var courseTimeList=art.render(courseTimeListTpl,res);
             
-            var $approvalList=$(approvalListTpl);
+            var $approvalEmployeeList=$(approvalEmployeeListTpl);
+            $(".module-container").empty();
 
-            //入库审批点击事件
-            $approvalList
+            //给编辑课时按钮绑定事件，实现编辑课时的功能
+            $approvalEmployeeList
             .on("click",".btn-edit-approval",function(){
                 
                 //获取课时id
@@ -36,21 +37,21 @@ define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./edi
                 
                 //加载编辑课时的模块
                 // editCourseTime(ct_id);
-                editApproval();
+             
+                editEmployeeApproval();
+            })
+            .on("click",".btn-all",function(){
+                $("#btnApproval").trigger("click");
             })
             .on("click","#btn-visiter",function(){
-                visitant();
-            })
-            .on("click","#btn-employee",function(){
-                employee();
+                visitant()
             })
             .on("click",".btn-refuse",function(){
-                refuse();
+                approvalRefuse();
             })
-           
 
             //把渲染好的元素放到页面中
-            $(".module-container").append($approvalList);
+            $(".module-container").append($approvalEmployeeList);
         // })
         
     }

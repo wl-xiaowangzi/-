@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery","artTemplate","common/api","text!tpls/approvalVisitantEdit.html"],function($,art,API,approvalVisitantEditTpl){
+define(["jquery","artTemplate","common/api","text!tpls/approvalVisitantEdit.html","./refuse"],function($,art,API,approvalVisitantEditTpl,refuse){
     
     return function(){
 
@@ -20,6 +20,18 @@ define(["jquery","artTemplate","common/api","text!tpls/approvalVisitantEdit.html
             //将字符串转换为jq对象
             var $approvalVisitantEdit=$(approvalVisitantEditTpl);
 
+            $approvalVisitantEdit
+            .on("click", ".btn-refuse", function () {
+
+                $approvalVisitantEdit.on("submit", "form", function () {
+                    $approvalVisitantEdit.modal("hide");
+                    // $("#modalEditApproval").remove();
+                    refuse();
+                    return false; //阻止表单同步提交
+                })
+
+
+            })
             // $courseTimeEdit.on("submit","form",function(){
 
                 // var formData=$(this).serialize();

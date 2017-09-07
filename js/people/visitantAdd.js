@@ -1,19 +1,19 @@
 /**
- * 添加员工
+ * 添加访客
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","common/camera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleAddTpl, API,camera) {
+define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api", "common/camera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleVisitantAddTpl, API, camera) {
     return function () {
-        $("#modalPeopleAdd").remove();
+        $("#modalVisitantAdd").remove();
 
         // var teacherAdd=art.render(teacherAddTpl);
 
         // var $teacherAdd=$(teacherAdd);
-        var $peopleAdd = $(peopleAddTpl);
+        var $peopleVisitantAdd = $(peopleVisitantAddTpl);
 
-        $peopleAdd.on("click", "#start", function () {
-           camera();
+        $peopleVisitantAdd.on("click", "#start", function () {
+            camera();
         })
         // $teacherAdd.on("submit","form",function(){
 
@@ -31,18 +31,25 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","commo
         //     return false;//阻止同步提交表单
         // });
 
-        $peopleAdd.appendTo("body").modal();
+        $peopleVisitantAdd.appendTo("body").modal();
 
         //渲染入职日期-->日期控件
-        $peopleAdd.find(".date-join").datetimepicker({
+        $peopleVisitantAdd.find(".date-join").datetimepicker({
             weekStart: 1, //一周从哪一天开始。0（星期日）到6（星期六）
-            format: 'yyyy-mm-dd',
-            //daysOfWeekDisabled:[0,1,2]  //指定周几不能使用
+            format: 'yyyy/mm/dd h:mm',
             autoclose: true,
-            minView: "month",
             todayBtn: true,
             todayHighlight: true,
             language: "zh-CN"
+        });
+        $peopleVisitantAdd.find(".birthday-join").datetimepicker({
+            format: 'yyyy/mm/dd',
+            weekStart: 1,
+            autoclose: true,
+            startView: 4,
+            minView: 2,
+            forceParse: false,
+            language: 'zh-CN'
         });
     };
 });

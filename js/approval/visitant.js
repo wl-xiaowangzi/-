@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery","artTemplate","common/api","text!tpls/approvalVisitantList.html","./visitantedit","./refuse"],function ($,art,API,approvalVisitantListTpl,editVisitantApproval,approvalRefuse) {
+define(["jquery","artTemplate","common/api","text!tpls/approvalVisitantList.html","./visitantedit","./employee","./refuse"],function ($,art,API,approvalVisitantListTpl,editVisitantApproval,employee,approvalRefuse) {
     return function(){
         //实现点击指定课程，跳转到指定课程对应的课时管理页面？
         //-->1、在课程列表(list.js)中，给编辑课时按钮绑定了单击事件，在事件回调函数中：
@@ -37,11 +37,13 @@ define(["jquery","artTemplate","common/api","text!tpls/approvalVisitantList.html
                 
                 //加载编辑课时的模块
                 // editCourseTime(ct_id);
-                console.log(1)
                 editVisitantApproval();
             })
-            .on("click",".btn-employee",function(){
+            .on("click",".btn-all",function(){
                 $("#btnApproval").trigger("click");
+            })
+            .on("click","#btn-employee",function(){
+                employee();
             })
             .on("click",".btn-refuse",function(){
                 approvalRefuse();
