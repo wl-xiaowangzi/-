@@ -2,7 +2,7 @@
  * 用户列表
  * Created by land on 2017/9/1.
  */
-define(["jquery", "artTemplate", "text!tpls/usersList.html", "./add","./edit","./del"], function ($, art, usersListTpl, addCourseCategory,editUsers,delUsers) {
+define(["jquery", "artTemplate", "text!tpls/usersList.html","./edit","./del"], function ($, art, usersListTpl,editUsers,delUsers) {
 
     return function () {
         //需要动态的将课程分类里面的内容渲染到页面中-->动态的加载dom元素

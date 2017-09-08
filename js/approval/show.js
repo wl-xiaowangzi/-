@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/approvalEdit.html", "./refuse"], function ($, art, API, approvalEditTpl, refuse) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", "./refuse"], function ($, art, API, approvalShowTpl, refuse) {
 
     return function () {
 
@@ -12,23 +12,23 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalEdit.html", ".
 
 
         //删除原来的模态框
-        $("#modalEditApproval").remove();
+        $("#modalShowApproval").remove();
 
         //编译模板文件，获取含有真正数据的字符串
         // var courseTimeEdit=art.render(courseTimeEditTpl,res);
 
         //将字符串转换为jq对象
-        var $approvalEdit = $(approvalEditTpl);
+        var $approvalShow = $(approvalShowTpl);
 
 
 
         // var formData=$(this).serialize();
 
-        $approvalEdit.
+        $approvalShow.
         on("click", ".btn-refuse", function () {
 
-            $approvalEdit.on("submit", "form", function () {
-                $approvalEdit.modal("hide");
+            $approvalShow.on("submit", "form", function () {
+                $approvalShow.modal("hide");
                 // $("#modalEditApproval").remove();
                  refuse();
                 return false; //阻止表单同步提交
@@ -48,7 +48,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalEdit.html", ".
 
 
         //把jq对象中包含的dom元素放到页面中，并以模态框的形式展现出来
-        $approvalEdit.appendTo("body").modal();
+        $approvalShow.appendTo("body").modal();
 
 
 

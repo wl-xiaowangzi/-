@@ -134,7 +134,7 @@ nav .search button{
 }
 .top-nav{
     padding: 0 4%;
-    background-color: #f1f1f1;
+    background-color: #f8fafb;
 }
 .top-nav .btn{
     border: none;
@@ -225,16 +225,14 @@ nav .search button{
 /*入户审批样式 end*/
 
 /*人员管理样式 begin*/
-.people-management .personal-info{
-    /*display: flex;
-    justify-content: space-around;*/
-}
+
 .people-management .personal-info .info{
     /*width: 300px;*/
     /*height: 400px;*/
     padding: 20px 0;
     border: 1px solid gray;
     margin-left:2vw; 
+    background-color: white;
 }
 .people-management .personal-info .info .info-box{
     display: flex;

@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/8/30
  */
-define(["jquery","artTemplate","text!tpls/recordList.html","common/api","./show","./add","./edit","moment","datetimepicker","datetimepickerLang","daterangepicker"],function ($,art,recordListTpl,API,recordShow,teacherAdd,recordEdit,moment) {
+define(["jquery","artTemplate","text!tpls/recordList.html","common/api","./show","./edit","moment","datetimepicker","datetimepickerLang","daterangepicker"],function ($,art,recordListTpl,API,recordShow,recordEdit,moment) {
     return function () {
 
         // API.getTeacherList(function(res){

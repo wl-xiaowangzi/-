@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./edit","./visitant","./employee","./refuse"],function ($,art,API,approvalListTpl,editApproval,visitant,employee,refuse) {
+define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./show","./refuse"],function ($,art,API,approvalListTpl,showApproval,refuse) {
     return function(){
         //实现点击指定课程，跳转到指定课程对应的课时管理页面？
         //-->1、在课程列表(list.js)中，给编辑课时按钮绑定了单击事件，在事件回调函数中：
@@ -29,21 +29,16 @@ define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./edi
 
             //入库审批点击事件
             $approvalList
-            .on("click",".btn-edit-approval",function(){
+            .on("click",".btn-show-approval",function(){
                 
                 //获取课时id
                 // var ct_id=$(this).parent().attr("ct_id");
                 
                 //加载编辑课时的模块
                 // editCourseTime(ct_id);
-                editApproval();
+                showApproval();
             })
-            .on("click","#btn-visiter",function(){
-                visitant();
-            })
-            .on("click","#btn-employee",function(){
-                employee();
-            })
+           
             .on("click",".btn-refuse",function(){
                 refuse();
             })
