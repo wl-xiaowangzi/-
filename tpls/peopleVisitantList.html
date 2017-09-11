@@ -1,9 +1,9 @@
 <div class="people-management">
-    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;">
+    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:50px;padding:9px 0 0 0;">
         <div class="top-nav">
             <!--下拉搜索条件-->
-            <div class="dropdown pull-left">
-                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">访客<span class="caret"></span></button>
+            <div class="dropdown pull-left" style="margin-left:-20px;">
+                <div class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">访客<span class="caret"></span></div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li class="btn-peopleList"><a href="#">员工</a></li>
                     <li id="peopleVisitantList"><a href="#">访客</a></li>
@@ -15,9 +15,10 @@
 
     </div>
 
-    <div class="personal-info">
+    <div class="info-content">
         <!--{{each result}}-->
         <div class="info col-sm-2" style="background-image:url(imgs/pic.jpg)">
+            <div class="btn-people-del">×</div>
             <div cs_id="{{$value.cs_id}}" class="info-box">
                 <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
                 <p>李达康</p>

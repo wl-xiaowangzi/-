@@ -14,6 +14,8 @@
 }
 button{
     width: 80px;
+    height: 32px;
+    font-size: 13px;
 }
 .btn{
     border-radius: 20px;
@@ -24,6 +26,7 @@ button{
 }
 .btn-default:hover{
     background-color: #357aed;
+    color: white;
 }
 .dropdown-menu li a{
     display: flex;
@@ -32,61 +35,89 @@ button{
 .dropdown-menu>li>a:hover{
     color: #357aed;
 }
+#messages{
+    display: block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: white;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: #357aed;
+    position: absolute;
+    top: 20px;
+    left: 90px;
+}
+.caret{margin-left: 8px!important;}
+p{margin: 0;}
+/*.panel-body{
+    padding-left: 64px!important;
+    padding-right: 64px!important;
+}*/
 /*公共样式 end*/
 body{
     background-color: #edf2f6;
+    font-size: 14px;
 }
 .content .content-left{
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    width: 200px;
+    width: 150px;
     z-index: 1;
     background: linear-gradient(#334556,#2C4257),#2A3F54;
 }
 .content .content-left .logo{
-    height: 17vh;
+    height: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #357aed;
+    color: white;
 }
 .content .content-left .logo .img-box{
-    height: 100%;
+    height: 50%;
     width: 100%;
 }
 .content-left .logo .img-box img{
     width: 100%;
-    height: 10vh;
+    height: 100%;
 }
 #sidebar-menu{
     position: relative;
     z-index: 9999;
 }
+.menu_section>ul{
+    margin-top: 0;
+}
 #sidebar-menu .side-menu li{
-    height: 17vh;
+    border-right: 5px solid transparent;
+    height: 114px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 4vh;
+    padding-top: 30px;;
     min-height: 80px;
 }
 
 #sidebar-menu .side-menu li img{
-    height: 40px;
-    width: 40px;
+    height: 28px;
+    width: 28px;
 }
 #sidebar-menu .side-menu li.activate{
     text-shadow: rgba(0,0,0,.25) 0 -1px 0;
     background: linear-gradient(#334556,#2C4257),#2A3F54;
     box-shadow: rgba(0,0,0,.25) 0 1px 0, inset rgba(255,255,255,.16) 0 1px 0;
-    border-right: 5px solid #2767d8;
+    border-right: 5px solid #357aed;
 }
-
+.nav>li>a{
+    padding-top: 12px;
+}
 .content-right{
     min-width: 800px;
-    padding-left:200px;
+    padding-left:150px;
 }
 .content-right .nav_menu{
     height: 100px;
@@ -94,18 +125,21 @@ body{
     top: 0;
     z-index: 1;
 }
-.top_nav .navbar-right{
-    width: 55%;
-}
+
 nav{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     box-sizing: border-box;
     background-color: white;
     height: 100px;
+    padding-left: 64px;
+    padding-right:160px; 
 }
+ nav .navbar-nav{
+    
+ }
  nav .search{
-    margin-left: 4%;
     margin-top: 8px;
     width: 20vw;
     position: relative;
@@ -143,14 +177,16 @@ nav .search button{
     .content .content-left a{display: none;}
     .content .content-left #sidebar-menu li img{height:40px;width:40px;margin-top: 10px;}
     .content .content-right{padding-left: 80px;}
+    nav{padding-right: 80px;}
 }
-@media screen and (max-width:750px){
+@media screen and (max-width:776px){
     .content .content-left{
         display: none;
     }
     .content .content-right{
         padding-left: 0;
     }
+    nav{display: none}
 }
 @media screen and (max-width:500px){
     .content{
@@ -170,18 +206,20 @@ nav .search button{
     padding: 0 4%;
     background-color: #f8fafb;
 }
-.top-nav .btn{
-    border: none;
-    margin: 0;
-    margin-left: 1vw;
+.ml24{
+    margin-left: 24px;
+}
+.top-nav .ml{
+    margin-left: 40px;
 }
 .table{
-    width: 90%;
-    margin-left: 5%;
+    padding-left: 64px;
+    padding-right: 64px;
 }
 .table .personal-info{
-     height: 80px;
+     height: 90px;
      width: 100%;
+     padding-right: 40px;
      position: relative;
      background-color: white;
 }
@@ -189,36 +227,35 @@ nav .search button{
     position: absolute;
     width: 20px;
     height: 20px;
-    top: -5px;
+    top: -4px;
 }
 .table .personal-info .img-box img{
     width: 20px;
     height: 20px;
 }
 .personal-info ul{
-    height: 80px;
+    height: 90px;
     width: 100%;
     display: flex;
     justify-content: space-around;
     padding: 0;
-    margin-top: 10px;
+    margin-top: 12px;
 }
 .personal-info ul li img{
     border-radius: 50%;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 .personal-info ul li{
     float: left;
-    line-height: 80px;
+    line-height: 90px;
     list-style: none; 
 }
 .personal-info ul li:nth-child(1){
-    width: 12vw;
-    min-width: 120px;
+    min-width: 200px;
 }
 .personal-info ul li:nth-child(1) span{
-    margin-left: 1vw;
+    margin-left: 24px;
 }
 .personal-info ul li:nth-child(3){
     width: 12vw;
@@ -230,11 +267,7 @@ nav .search button{
     display: flex;
     justify-content: center;
 }
-/*.personal-info ul li:nth-child(7){
-    width: 12vw;
-    display: flex;
-    justify-content: center;
-}*/
+
 .personal-info ul li{
     width: 20vw;
     display: flex;
@@ -243,10 +276,9 @@ nav .search button{
 }
 .personal-info ul li button{
     width: 4vw;
-    height: 30px;
-    border-radius: 30px;
+    height: 32px;
+    border-radius: 32px;
     min-width: 60px;
-    margin-right: 1vw;
 }
 
 
@@ -259,40 +291,61 @@ nav .search button{
 /*入户审批样式 end*/
 
 /*人员管理样式 begin*/
-
-.people-management .personal-info .info{
-    /*width: 300px;*/
-    /*height: 400px;*/
+.people-management .info-content{
+    padding-left: 64px;
+    padding-right: 64px;
+}
+.people-management .info-content .info{
+    width: 150px;
+    height: 200px;
     background-repeat: no-repeat;
     background-size: 60px 20px;
-    background-position-x: 5px;
-    background-position-y: 5px;
+    background-position-x: 2px;
+    background-position-y: 2px;
     padding: 20px 0;
-    border: 1px solid gray;
-    margin-left:2vw; 
+    border: 1px solid #e6ebee;
+    margin-top: 18px;
+    margin-right: 15px;
     background-color: white;
 }
 
-.people-management .personal-info .info .info-box{
+.people-management .info-content .info .info-box{
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
-.people-management .personal-info .info .info-box p{
-    font-size: 16px;
+.info .btn-people-del{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    background-color: #ed354b;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    cursor: pointer;
+}
+.info:hover .btn-people-del{
+    display: block;
 }
 .info .info-box p:nth-child(2){
     color: black;
+    margin-top: 12px;
+    margin-bottom: 6px;
 }
 .info .info-box p:nth-child(3){
-    font-size: 14px;
+    margin-bottom: 15px;
+    font-size: 12px;
     color: #bdc2ca;
 }
-.people-management .personal-info .info .img-box{
+.people-management .info-content .info .img-box{
     width: 30%;
 }
-.people-management .personal-info .info .img-box img{
+.people-management .info-content .info .img-box img{
     width: 100%;
     border-radius: 50%;
 }

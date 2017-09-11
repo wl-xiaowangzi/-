@@ -1,17 +1,17 @@
 <div class="record">
-    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;">
+    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:50px;padding:9px 0 0 0;">
         <div class="top-nav">
             <!--下拉搜索条件-->
-            <div class="dropdown pull-left">
-                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">所有人员<span class="caret"></span></button>
+            <div class="dropdown pull-left btn" style="margin-left:-20px;">
+                <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">所有人员<span class="caret"></span></div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li><a href="#">所有人员</a></li>
                     <li><a href="#">员工</a></li>
                     <li><a href="#">访客</a></li>
                 </ul>
             </div>
-            <div class="dropdown pull-left">
-                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">相似度<span class="caret"></span></button>
+            <div class="dropdown pull-left ml btn">
+                <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">相似度<span class="caret"></span></div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li><a href="#">75%以上</a></li>
                     <li><a href="#">80%以上</a></li>
@@ -23,8 +23,8 @@
             <!--/下拉搜索条件-->
 
             <!--日期控件 daterangepicker-->
-            <div class="col-md-8">
-                <div id="daterange-btn" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+            <div style="margin-right:-7px;">
+                <div id="daterange-btn" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #e6ebee">
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
                     <span>选择时间</span> <b class="caret"></b>
                 </div>
@@ -37,7 +37,7 @@
         <div class="personal-info">
             <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
             <ul>
-                <li><img src="imgs/pic.jpg" alt="" width="40"><span>李达康</span></li>
+                <li><img src="imgs/pic.jpg" alt="" width="50" height="50"><span>李达康</span></li>
                 <li>|</li>
                 <li>产品</li>
                 <li>|</li>
@@ -45,7 +45,7 @@
                 <li>|</li>
                 <li tc_id="{{$value.tc_id}}" tc_status="{{$value.tc_status}}">
                     <button class="btn btn-default btn-show">信息</button>
-                    <button class="btn btn-default btn-edit">记录</button>
+                    <button class="btn btn-default btn-edit ml24">记录</button>
                 </li>
             </ul>
         </div>

@@ -1,8 +1,8 @@
 /**
- *
- * Created by 
+ * 2017.9.11
+ * Created by land
  */
-
+// 配置文件路径
 require.config({
     baseUrl: "./js",
     paths: {
@@ -24,6 +24,7 @@ require.config({
         UEditorConf: "../assets/UEditor/ueditor.config",
         eCharts: "lib/echarts.min"
     },
+    // 设置依赖
     shim: {
         bootstrap: {
             deps: ["jquery"]
@@ -44,8 +45,6 @@ require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", 
     //处理用户名
     var username = $.cookie("username");
 
-
-
     //$("#userImage").attr("src",tc_avatar);
     $("#userName").html(username);
 
@@ -65,6 +64,10 @@ require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", 
         // })
     });
 
+    // 搜索
+    $("#search").on("click",function(){
+
+    })
 
     //系统设置
     $("#btnPostManagement").on("click", function () {
@@ -142,16 +145,12 @@ require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", 
     //  -->触发识别记录的点击事件
     $("#btnRecord").trigger("click");
 
+    // 给侧边栏添加点击效果
     $("#sidebar-menu .side-menu li").on("click", function () {
         $("#sidebar-menu .side-menu li").removeClass("activate");
         $(this).addClass("activate")
     })
 
-    // //artTemplate基本使用
-    // var tpl=$("#t1").html();
-    // var html=art.render(tpl,{
-    //     numbers:[1,2,3,4,5,6,7,8,9,10]
-    // });
-    // console.log(html);
 
+    
 })

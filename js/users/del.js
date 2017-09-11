@@ -6,7 +6,7 @@ define(["jquery","artTemplate","text!tpls/usersDel.html","bootstrap"],function($
     
     return function(){
      
-            $("#modalEditUsers").remove();
+            $("#modalDelUsers").remove();
 
             var $usersDel=$(usersDelTpl);
             
