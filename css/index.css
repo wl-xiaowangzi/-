@@ -12,9 +12,29 @@
     border: 1px solid #f1f1f1;
     box-shadow: none;
 }
+button{
+    width: 80px;
+}
+.btn{
+    border-radius: 20px;
+}
+.btn-blue{
+    background-color: #357aed;
+    color: white;
+}
+.btn-default:hover{
+    background-color: #357aed;
+}
+.dropdown-menu li a{
+    display: flex;
+    justify-content: center;
+}
+.dropdown-menu>li>a:hover{
+    color: #357aed;
+}
 /*公共样式 end*/
 body{
-    background-color: #eee;
+    background-color: #edf2f6;
 }
 .content .content-left{
     height: 100vh;
@@ -93,7 +113,8 @@ nav{
 }
 nav .search input{
     width: 20vw;
-    background: #f0f0f0;
+    background: #f8fafb;
+    color: #acbac5;
     /*border: none;*/
     border-radius: 20px;
     box-shadow: none;
@@ -117,11 +138,24 @@ nav .search button{
 .module-container{
     position: relative;
 }
-@media screen and (max-width:1001px){
+@media screen and (max-width:1050px){
     .content .content-left{width: 80px;}
     .content .content-left a{display: none;}
     .content .content-left #sidebar-menu li img{height:40px;width:40px;margin-top: 10px;}
     .content .content-right{padding-left: 80px;}
+}
+@media screen and (max-width:750px){
+    .content .content-left{
+        display: none;
+    }
+    .content .content-right{
+        padding-left: 0;
+    }
+}
+@media screen and (max-width:500px){
+    .content{
+        display: none;
+    }
 }
 /*@media screen and (max-width:1280px){
     #canvas{
@@ -130,7 +164,7 @@ nav .search button{
 }*/
 /*识别记录样式 begin*/
 .record{
-    background: #eee;
+    background: #edf2f6;
 }
 .top-nav{
     padding: 0 4%;
@@ -220,7 +254,7 @@ nav .search button{
 
 /*入户审批样式 begin*/
 .approval{
-    background: #eee;
+    background: #edf2f6;
 }
 /*入户审批样式 end*/
 
@@ -229,11 +263,16 @@ nav .search button{
 .people-management .personal-info .info{
     /*width: 300px;*/
     /*height: 400px;*/
+    background-repeat: no-repeat;
+    background-size: 60px 20px;
+    background-position-x: 5px;
+    background-position-y: 5px;
     padding: 20px 0;
     border: 1px solid gray;
     margin-left:2vw; 
     background-color: white;
 }
+
 .people-management .personal-info .info .info-box{
     display: flex;
     justify-content: center;
@@ -243,8 +282,15 @@ nav .search button{
 .people-management .personal-info .info .info-box p{
     font-size: 16px;
 }
+.info .info-box p:nth-child(2){
+    color: black;
+}
+.info .info-box p:nth-child(3){
+    font-size: 14px;
+    color: #bdc2ca;
+}
 .people-management .personal-info .info .img-box{
-    width: 50%;
+    width: 30%;
 }
 .people-management .personal-info .info .img-box img{
     width: 100%;

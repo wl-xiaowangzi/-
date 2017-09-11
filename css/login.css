@@ -15,17 +15,19 @@
     height: 300px;
     margin-right: 50px;
 }
-.row{
+.rows{
     width: 533px;
     height: 383px;
     margin: 0;
     background: url(../imgs/login/login-box.png) center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-horizontal{
     height: 380px;
     width: 430px;
-    margin-right: 60px;
     border-radius: 5px;
     background: #fff;
     padding-bottom: 40px;
@@ -167,15 +169,4 @@
 }
 .opacity1{
     opacity: 1;
-}
-@media only screen and (max-width: 479px){
-    .form-horizontal .form-group{
-        padding: 0 25px;
-    }
-    .form-horizontal .form-group i{
-        left: 45px;
-    }
-    .form-horizontal .btn{
-        padding: 10px 20px;
-    }
 }

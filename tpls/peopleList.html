@@ -1,5 +1,5 @@
 <div class="people-management">
-    <div class="panel-body">
+    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;">
         <div class="top-nav">
             <!--下拉搜索条件-->
             <div class="dropdown pull-left">
@@ -10,60 +10,23 @@
                 </ul>
             </div>
             <!--/下拉搜索条件-->
+             <button class="btn btn-primary pull-right" id="peopleAdd" style="margin-right:20px;">添加人员</button>
         </div>
     </div>
-    <div class="row">
-        <button class="btn btn-primary" id="peopleAdd">添加人员</button>
-    </div>
-
+   
     <div class="personal-info">
         <!--{{each result}}-->
-        <div class="info col-sm-2">
+        <div class="info col-sm-2" style="background-image:url(imgs/pic.jpg)">
             <div cs_id="{{$value.cs_id}}" class="info-box">
                 <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
                 <p>李达康</p>
                 <p>产品</p>
                 <!--<button class="btn btn-success btn-edit-course-time">编辑课时</button>&nbsp;-->
-                <h3 cs_id="{{$value.cs_id}}"><button class="btn btn-primary btn-edit-course-baseinfo">信息</button></h3>
+                <h3 cs_id="{{$value.cs_id}}"><button class="btn btn-default btn-edit-course-baseinfo">信息</button></h3>
             </div>
         </div>
         <!--{{/each}}-->
-        <div class="info col-sm-2">
-            <div cs_id="{{$value.cs_id}}" class="info-box">
-                <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
-                <p>李达康</p>
-                <p>产品</p>
-                <!--<button class="btn btn-success btn-edit-course-time">编辑课时</button>&nbsp;-->
-                <h3 cs_id="{{$value.cs_id}}"><button class="btn btn-primary btn-edit-course-baseinfo">信息</button></h3>
-            </div>
-        </div>
-        <div class="info col-sm-2">
-            <div cs_id="{{$value.cs_id}}" class="info-box">
-                <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
-                <p>李达康</p>
-                <p>产品</p>
-                <!--<button class="btn btn-success btn-edit-course-time">编辑课时</button>&nbsp;-->
-                <h3 cs_id="{{$value.cs_id}}"><button class="btn btn-primary btn-edit-course-baseinfo">信息</button></h3>
-            </div>
-        </div>
-        <div class="info col-sm-2">
-            <div cs_id="{{$value.cs_id}}" class="info-box">
-                <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
-                <p>李达康</p>
-                <p>产品</p>
-                <!--<button class="btn btn-success btn-edit-course-time">编辑课时</button>&nbsp;-->
-                <h3 cs_id="{{$value.cs_id}}"><button class="btn btn-primary btn-edit-course-baseinfo">信息</button></h3>
-            </div>
-        </div>
-        <div class="info col-sm-2">
-            <div cs_id="{{$value.cs_id}}" class="info-box">
-                <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
-                <p>李达康</p>
-                <p>产品</p>
-                <!--<button class="btn btn-success btn-edit-course-time">编辑课时</button>&nbsp;-->
-                <h3 cs_id="{{$value.cs_id}}"><button class="btn btn-primary btn-edit-course-baseinfo">信息</button></h3>
-            </div>
-        </div>
+        
     </div>
 
 
