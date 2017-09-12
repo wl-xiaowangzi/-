@@ -20,7 +20,7 @@ button{
     height: 32px;
     font-size: 13px;
 }
-mt10{margin-top: 10px;}
+.mt10{margin-top: 10px;}
 .btn{
     border-radius: 20px;
 }
