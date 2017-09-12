@@ -3,31 +3,58 @@
  * Author:land
  *   Date:2017/9/4
  */
-define(["jquery","artTemplate","common/api","text!tpls/changePWD.html",],function($,art,API,changePWDTpl){
+define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], function ($, art, API, changePWDTpl) {
 
-    return function(){
+    return function () {
         // API.changePWD(function(res){
 
 
-            $("#modalChangePWD").remove();
+        $("#modalChangePWD").remove();
 
-            // var personalCenter=art.render(personalCenterTpl,res.result);
+        // var personalCenter=art.render(personalCenterTpl,res.result);
 
-            var $changePWD=$(changePWDTpl);
-            
-            $changePWD
-                // .on("submit","form",function(){
-                
-                //     var formData=$(this).serialize();
+        var $changePWD = $(changePWDTpl);
 
-                //     API.editSavePersonalCenter(formData,function(){
-                //         location.href="/";//刷新页面
-                //     })
+        $changePWD
+            .on("click", ".oldPWD", function () {
+                if ($(".oldPassword").attr("type") == "password") {
+                    $(".oldPassword").attr("type", "text");
+                    $(".oldPWD").removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open")
+                } else {
+                    $(".oldPassword").attr("type", "password");
+                    $(".oldPWD").removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close")
+                }
+            })
+            .on("click", ".newPWD", function () {
+                if ($(".newPassword").attr("type") == "password") {
+                    $(".newPassword").attr("type", "text");
+                    $(".newPWD").removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open")
+                } else {
+                    $(".newPassword").attr("type", "password");
+                    $(".newPWD").removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close")
+                }
+            })
+            .on("click", ".confirmPWD", function () {
+                if ($(".confirmPassword").attr("type") == "password") {
+                    $(".confirmPassword").attr("type", "text");
+                    $(".confirmPWD").removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open")
+                } else {
+                    $(".confirmPassword").attr("type", "password");
+                    $(".confirmPWD").removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close")
+                }
+            })
+        // .on("submit","form",function(){
 
-                //     return false;
-                // })
+        //     var formData=$(this).serialize();
 
-            $changePWD.appendTo("body").modal();
+        //     API.editSavePersonalCenter(formData,function(){
+        //         location.href="/";//刷新页面
+        //     })
+
+        //     return false;
+        // })
+
+        $changePWD.appendTo("body").modal();
 
         // })
 

@@ -1,7 +1,7 @@
 /*公共样式 begin*/
 .modal-content{
     border-radius: 0;
-    width: 45vw;
+    width: 568px;
 }
 .modal-header{
     border:none;
@@ -22,6 +22,9 @@ button{
 }
 .btn-blue{
     background-color: #357aed;
+    color: white;
+}
+.btn-blue:hover{
     color: white;
 }
 .btn-default:hover{
@@ -50,10 +53,18 @@ button{
 }
 .caret{margin-left: 8px!important;}
 p{margin: 0;}
-/*.panel-body{
-    padding-left: 64px!important;
-    padding-right: 64px!important;
-}*/
+.asterisk{
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    color: #357aed;
+    line-height: 40px;
+    position: absolute;
+    top: 3px;
+    right: -24px;
+}
 /*公共样式 end*/
 body{
     background-color: #edf2f6;
@@ -299,7 +310,7 @@ nav .search button{
     width: 150px;
     height: 200px;
     background-repeat: no-repeat;
-    background-size: 60px 20px;
+    background-size: 46px 20px;
     background-position-x: 2px;
     background-position-y: 2px;
     padding: 20px 0;
@@ -353,3 +364,18 @@ nav .search button{
 .hidden{
     display: none;
 }
+/*修改密码样式 begin*/
+#changePWD{
+
+}
+#changePWD .eyes{
+    display: block;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}
+/*修改密码样式 end*/

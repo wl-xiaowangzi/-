@@ -1,6 +1,6 @@
 <div class="modal fade" id="changePWD" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="margin-top:30vh;">
+        <div class="modal-content" style="margin-top:120px;height:583px;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
@@ -9,29 +9,26 @@
             <div class="modal-body">
                 <form class="form form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">原密码</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="tc_name" value="" />
-                            <input type="hidden" name="tc_id" value="{{tc_id}}">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">原密码</label>
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control oldPassword" name="tc_name" value="" /><span class="eyes oldPWD glyphicon glyphicon-eye-close"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">新密码</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="tc_name" value="" />
-                            <input type="hidden" name="tc_id" value="{{tc_id}}">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">新密码</label>
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control newPassword" name="tc_name" value="" /><span class="eyes newPWD glyphicon glyphicon-eye-close"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">确认新密码</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="tc_name" value="" />
-                            <input type="hidden" name="tc_id" value="{{tc_id}}">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">确认密码</label>
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control confirmPassword" name="tc_name" value="" /><span class="eyes confirmPWD glyphicon glyphicon-eye-close"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-4 col-sm-offset-8">
-                            <button type="submit" class="btn btn-bluer btn-sure">确定</button>
+                        <div class="col-sm-6 col-sm-offset-5">
+                            <button type="submit" class="btn btn-blue btn-sure" style="margin-left:35px;">确定</button>
                             <button type="submit" class="btn btn-default btn-cancel">取消</button>
                         </div>
                     </div>
