@@ -5,7 +5,9 @@
  */
 define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","common/camera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleAddTpl, API,camera) {
     return function () {
+         $("#modalcamera").remove();
         $("#modalPeopleAdd").remove();
+        $("#modalVisitantAdd").remove();
 
         // var teacherAdd=art.render(teacherAddTpl);
 
@@ -34,15 +36,14 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","commo
         $peopleAdd.appendTo("body").modal();
 
         //渲染入职日期-->日期控件
-        $peopleAdd.find(".date-join").datetimepicker({
-            weekStart: 1, //一周从哪一天开始。0（星期日）到6（星期六）
-            format: 'yyyy-mm-dd',
-            //daysOfWeekDisabled:[0,1,2]  //指定周几不能使用
+         $peopleAdd.find(".birthday-join").datetimepicker({
+            format: 'yyyy/mm/dd',
+            weekStart: 1,
             autoclose: true,
-            minView: "month",
-            todayBtn: true,
-            todayHighlight: true,
-            language: "zh-CN"
+            startView: 4,
+            minView: 2,
+            forceParse: false,
+            language: 'zh-CN'
         });
     };
 });

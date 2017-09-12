@@ -5,6 +5,8 @@
  */
 define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api", "common/camera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleVisitantAddTpl, API, camera) {
     return function () {
+         $("#modalcamera").remove();
+        $("#modalPeopleAdd").remove();
         $("#modalVisitantAdd").remove();
 
         // var teacherAdd=art.render(teacherAddTpl);

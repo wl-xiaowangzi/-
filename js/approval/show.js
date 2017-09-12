@@ -12,7 +12,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", ".
 
 
         //删除原来的模态框
-        $("#modalShowApproval").remove();
+        $("#modalShowInfo").remove();
 
         //编译模板文件，获取含有真正数据的字符串
         // var courseTimeEdit=art.render(courseTimeEditTpl,res);

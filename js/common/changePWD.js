@@ -43,6 +43,14 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], fu
                     $(".confirmPWD").removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close")
                 }
             })
+           .on("input",".confirmPassword",function(){
+               if($(".newPassword").val()!=$(".confirmPassword").val()){
+                  $(".cfmPWD").addClass("opacity1");
+               }else{
+                   $(".cfmPWD").removeClass("opacity1");
+               }
+           })
+           
         // .on("submit","form",function(){
 
         //     var formData=$(this).serialize();
