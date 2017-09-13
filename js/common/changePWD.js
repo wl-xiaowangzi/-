@@ -19,28 +19,28 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], fu
             .on("click", ".oldPWD", function () {
                 if ($(".oldPassword").attr("type") == "password") {
                     $(".oldPassword").attr("type", "text");
-                    $(".oldPWD").removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open")
+                    $(".oldPWD").removeClass("eye-close").addClass("eye-open")
                 } else {
                     $(".oldPassword").attr("type", "password");
-                    $(".oldPWD").removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close")
+                    $(".oldPWD").removeClass("eye-open").addClass("eye-close")
                 }
             })
             .on("click", ".newPWD", function () {
                 if ($(".newPassword").attr("type") == "password") {
                     $(".newPassword").attr("type", "text");
-                    $(".newPWD").removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open")
+                    $(".newPWD").removeClass("eye-close").addClass("eye-open")
                 } else {
                     $(".newPassword").attr("type", "password");
-                    $(".newPWD").removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close")
+                    $(".newPWD").removeClass("eye-open").addClass("eye-close")
                 }
             })
             .on("click", ".confirmPWD", function () {
                 if ($(".confirmPassword").attr("type") == "password") {
                     $(".confirmPassword").attr("type", "text");
-                    $(".confirmPWD").removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open")
+                    $(".confirmPWD").removeClass("eye-close").addClass("eye-open")
                 } else {
                     $(".confirmPassword").attr("type", "password");
-                    $(".confirmPWD").removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close")
+                    $(".confirmPWD").removeClass("eye-open").addClass("eye-close")
                 }
             })
            .on("input",".confirmPassword",function(){

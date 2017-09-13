@@ -14,7 +14,7 @@
         <div class="rows">
             
                 <form class="form-horizontal">
-                    <span class="heading">人脸门禁管理系统<span class="line">|</span><span class="login">登录</span></span>
+                    <span class="heading">守护者管理系统<span class="line">|</span><span class="login">登录</span></span>
                     <div class="login_error_wrap opacity0"><span>用户名或密码错误</span></div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="inputEmail3" placeholder="用户名" col-sm-6 name="username">
@@ -50,6 +50,9 @@
         $.ajax({
             url:"http://39.108.171.172:8081/facerecognition/system/login",
             type:"post",
+            xhrFields:{
+                withCredentials:true
+            },
             data:formData,
             success:function(res){//response
                 console.log(res);

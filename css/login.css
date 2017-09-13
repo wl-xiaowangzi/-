@@ -2,7 +2,7 @@
     height: 100vh;
     background: url(../imgs/login/bg.png) no-repeat;
     background-size: cover;
-    
+    font-family: "微软雅黑";
 }
 .container{
     height: 100vh;

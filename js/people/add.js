@@ -17,21 +17,21 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","commo
         $peopleAdd.on("click", "#start", function () {
            camera();
         })
-        // $teacherAdd.on("submit","form",function(){
+        $peopleAdd.on("submit","form",function(){
 
-        //     var formData=$(this).serialize();
+            var formData=$(this).serialize();
 
-        //     API.addTeacher(formData,function(){
+            API.addEmployee(formData,function(){
 
-        //         $teacherAdd.modal("hide");
+                $peopleAdd.modal("hide");
 
-        //         //成功的添加讲师-->刷新讲师管理页面
-        //         $("#btnTeacherManager").trigger("click");
+        //         //成功的添加员工->刷新员工管理页面
+                $("#btnPeopleManager").trigger("click");
 
-        //     })
+            })
 
-        //     return false;//阻止同步提交表单
-        // });
+            return false;//阻止同步提交表单
+        });
 
         $peopleAdd.appendTo("body").modal();
 
