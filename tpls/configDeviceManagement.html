@@ -1,84 +1,29 @@
 <div class="panel panel-default">
-    <div class="panel-body">
-        <table class="panel panel-default" style="background-color:#eee;">
+    <div class="panel-body" style="padding-left:64px;padding-right:64px;">
+        <table class="panel panel-default">
             <div class="panel-heading">
-                设备管理
+                系统设置/设备管理
+                <button class="btn btn-device-add pull-right">添加设备</button>
             </div>
             <!--<div class="panel-body"></div>-->
-            <table class="table table-bordered table-hover" style="background-color:white;">
-                
+            <table class="table table-bordered table-hover text-center">
                 <thead>
-                    <th>设备编码</th>
-                    <th>
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="true">所有组织<span class="caret"></span></button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">组织1</a></li>
-                                <li><a href="#">组织2</a></li>
-                                <li><a href="#">组织3</a></li>
-                                <li><a href="#">组织4</a></li>
-                            </ul>
-                        </div>
-                    </th>
-                    <th>设备名称</th>
-                    <th></th>
+                    <th class="text-center">设备编码</th>
+                    <th class="text-center">设备名称</th>
+                    <th class="text-center">操作</th>
                 </thead>
                 <tbody>
-                    <!--{{each result.lessons}}-->
+                    {{each data}}
                     <tr>
-                        <td>CX001</td>
-                        <td>高新园</td>
-                        <td>高新园1号大门</td>
-                        <td>
-                            <button class="btn btn-success btn-device-add">增加</button>
-                            <button class="btn btn-info btn-device-edit">编辑</button>
-                            <button class="btn btn-danger btn-device-del">删除</button>
+                        <td class="">{{$value.deviceid}}</td>
+                        <td class="l">{{$value.name}}</td>
+                        <td class=" disCenter" dv_id={{$value.deviceid}}>
+                            <div class="btn-device-edit"></div>
+                            <div class="btn-device-del"></div>
                         </td>
                     </tr>
-                     <!--{{/each}}-->
-                     <tr>
-                        <td>CX001</td>
-                        <td>高新园</td>
-                        <td>高新园1号大门</td>
-                        <td>
-                            <button class="btn btn-success btn-device-add">增加</button>
-                            <button class="btn btn-info btn-device-edit">编辑</button>
-                            <button class="btn btn-danger btn-device-del">删除</button>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td>CX001</td>
-                        <td>高新园</td>
-                        <td>高新园1号大门</td>
-                        <td>
-                            <button class="btn btn-success btn-device-add">增加</button>
-                            <button class="btn btn-info btn-device-edit">编辑</button>
-                            <button class="btn btn-danger btn-device-del">删除</button>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td>CX001</td>
-                        <td>高新园</td>
-                        <td>高新园1号大门</td>
-                        <td>
-                            <button class="btn btn-success btn-device-add">增加</button>
-                            <button class="btn btn-info btn-device-edit">编辑</button>
-                            <button class="btn btn-danger btn-device-del">删除</button>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td>CX001</td>
-                        <td>高新园</td>
-                        <td>高新园1号大门</td>
-                        <td>
-                            <button class="btn btn-success btn-device-add">增加</button>
-                            <button class="btn btn-info btn-device-edit">编辑</button>
-                            <button class="btn btn-danger btn-device-del">删除</button>
-                        </td>
-                    </tr>
+                    {{/each}}
                 </tbody>
-               
             </table>
     </div>
 </div>

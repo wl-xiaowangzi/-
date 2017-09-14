@@ -6,7 +6,7 @@ define(["jquery","artTemplate","text!tpls/peopleList.html","./baseInfo","./visit
 
     return function(){
 
-        $.get("http://39.108.171.172:8081/facerecognition/system/employee/query",function(res){
+        $.get("http://39.108.171.172:8081/facerecognition/system/employee/query",{limit:12,start:0},function(res){
             
             console.log(res)
             //编译模板

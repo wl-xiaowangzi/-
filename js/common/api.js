@@ -48,17 +48,17 @@ define(["jquery"],function($){
         //  * @param formData
         //  * @param callback
         //  */
-        // modifyCourseTime:function(formData,callback){
-        //     $.post("/api/course/chapter/modify",formData,function(res){
-        //         if(res.code!=200){
-        //             console.log(res.msg);
-        //             return;
-        //         }
+        delDevice:function(dv_id,callback){
+            $.get("http://39.108.171.172:8081/facerecognition/system/device/delete",{deviceids:dv_id},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
 
-        //         callback && callback();
+                callback && callback();
 
-        //     })
-        // },
+            },"jsonp")
+        },
         /**
          * 根据员工id获取员工基本信息
          * @param ep_id 员工id
@@ -66,6 +66,15 @@ define(["jquery"],function($){
          */
         getEmployeeBaseInfo:function(ep_id,callback){
             $.get("http://39.108.171.172:8081/facerecognition/system/employee/query",{employeeid:ep_id},function(res){
+                if(res.code!=0){
+                    console.log(res.msg);
+                    return;
+                }
+                callback && callback(res);
+            },"jsonp")
+        },
+        getVisitorBaseInfo:function(vs_id,callback){
+            $.get("http://39.108.171.172:8081/facerecognition/system/visitor/query",{visitorid:vs_id},function(res){
                 if(res.code!=0){
                     console.log(res.msg);
                     return;

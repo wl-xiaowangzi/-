@@ -2,38 +2,39 @@
  * 设备管理
  * Created by land 2017/9/4.
  */
-define(["jquery","artTemplate","text!tpls/configDeviceManagement.html","./deviceAdd","./deviceEdit","./deviceDel"],function($,art,configDeviceManagementTpl,deviceAdd,deviceEdit,deviceDel){
+define(["jquery", "artTemplate", "text!tpls/configDeviceManagement.html", "./deviceAdd", "./deviceEdit", "./deviceDel"], function ($, art, configDeviceManagementTpl, deviceAdd, deviceEdit, deviceDel) {
 
-    return function(){
+    return function () {
 
-        // $.get("/api/course",function(res){
+        $.get("http://39.108.171.172:8081/facerecognition/system/device/query", function (res) {
 
             //编译模板
-            // var courseList=art.render(courseListTpl,res);
+            var configDeviceManagement = art.render(configDeviceManagementTpl, res);
 
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
-            // var $courseList=$(courseList);
-
-            // test
-            var $configDeviceManagement=$(configDeviceManagementTpl);
+            var $configDeviceManagement = $(configDeviceManagement);
 
             //实现编辑设备
             $configDeviceManagement
-            .on("click",".btn-device-add",function(){
-               deviceAdd();
-            })
-            .on("click",".btn-device-edit",function(){
-               deviceEdit();
-            })
-            .on("click",".btn-device-del",function(){
-               deviceDel();
-            })
-            
+                .on("click", ".btn-device-add", function () {
+                    var dv_id = $(this).parent().attr("dv_id");
+                    deviceAdd();
+                })
+                .on("click", ".btn-device-edit", function () {
+                    var dv_id = $(this).parent().attr("dv_id");
+                    deviceEdit(dv_id);
+                })
+                .on("click", ".btn-device-del", function () {
+                    var dv_id = $(this).parent().attr("dv_id");
+                    console.log(dv_id)
+                    deviceDel(dv_id);
+                })
+
             //把渲染好的元素放到页面中
             $(".module-container").append($configDeviceManagement);
-        // })
+        }, "jsonp")
 
-        
+
 
     }
 })

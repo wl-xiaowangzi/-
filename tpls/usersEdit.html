@@ -9,54 +9,45 @@
             <div class="modal-body">
                 <form class="form form-horizontal">
                     <div class="form-group" style="display:flex;justify-content:center;">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"></div>
+                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="100" height="100" style="border-radius:50%;"></div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">姓名</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="tc_name" value="" />
-                            <input type="hidden" name="tc_id" value="{{tc_id}}">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="name" value="{{name}}" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">性别</label>
-                        <div class="col-sm-10">
-                            <!--{{if(tc_gender==0)}}-->
-                            <label class="radio-inline">
-                                <input type="radio" name="tc_gender" value="0" checked="checked"> 男
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="tc_gender" value="1"> 女
-                            </label>
-                            <!--{{else}}-->
-                            <!--<label class="radio-inline">
-                                <input type="radio" name="tc_gender" value="0"> 男
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="tc_gender" value="1" checked="checked"> 女
-                            </label>-->
-                            <!--{{/if}}-->
+                        <label class="col-sm-2 col-sm-offset-1 control-label">性别</label>
+                        <div class="col-sm-7">
+                            <select name="sex" class="form-control">
+                                <!--{{if(sex==1)}}-->
+                                    <option value="1" selected="selected">男</option>
+                                    <option value="2">女</option>
+                                <!--{{else}}-->
+                                    <option value="1">男</option>
+                                    <option value="2" selected="selected">女</option>
+                                <!--{{/if}}-->
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">账号</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="tc_name" value="" />
-                            <input type="hidden" name="tc_id" value="{{tc_id}}">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">账号</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="username" value="" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">密码</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="tc_name" value="" />
-                            <input type="hidden" name="tc_id" value="{{tc_id}}">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">密码</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="password" value="" />
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
-                        <div class="col-sm-4 col-sm-offset-8">
-                             <button type="submit" class="btn btn-blue">确认</button>
-                            <button type="submit" class="btn btn-default">取消</button>
+                        <div class="col-sm-6 col-sm-offset-5">
+                            <button type="submit" class="btn btn-blue" style="margin-left:35px;">确认</button>
+                            <button type="submit" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
                         </div>
                     </div>
                 </form>

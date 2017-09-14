@@ -5,20 +5,19 @@
  */
 define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html"],function ($,art,API,peopleVisitantInfoTpl) {
 
-    return function(){
+    return function(vs_id){
         //把渲染好的元素放到页面中
-        //根据课程id获取课程基本信息
-        // API.getCourseBaseInfo(cs_id,function(res){
+        //根据访客id获取访客基本信息
+        API.getVisitorBaseInfo(vs_id,function(res){
 
-            // var courseBaseInfo=art.render(courseBaseInfoTpl,res.result);
+            var peopleVisitantInfo=art.render(peopleVisitantInfoTpl,res.data[0]);
 
-            // var $courseBaseInfo=$(courseBaseInfo);
+            var $peopleVisitantInfo=$(peopleVisitantInfo);
 
-            var $peopleVisitantInfo=$(peopleVisitantInfoTpl);
             $("#modalVisitantEditInfo").remove();
             $peopleVisitantInfo.appendTo("body").modal();
 
-
+        
             //渲染入库日期-->日期控件
             $peopleVisitantInfo.find(".date-join").datetimepicker({
                 weekStart:1,//一周从哪一天开始。0（星期日）到6（星期六）
@@ -30,6 +29,6 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html"]
                 todayHighlight:true,
                 language:"zh-CN"
             });
-       
+       })
     }
 })

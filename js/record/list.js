@@ -5,50 +5,27 @@
  */
 define(["jquery","artTemplate","text!tpls/recordList.html","common/api","./show","./edit","moment","datetimepicker","datetimepickerLang","daterangepicker"],function ($,art,recordListTpl,API,recordShow,recordEdit,moment) {
     return function () {
-
-        // API.getTeacherList(function(res){
-
-            // var teacherList=art.render(teacherListTpl,res);
-            // var $teacherList=$(teacherList);
-
-            var $recordList=$(recordListTpl);
+        var organizationid = $.cookie("organizationid");
+        var time = new Date();
+        var endtime = time.getFullYear()+'-'+ (time.getMonth()+1)+'-'+time.getDate();
+        
+        $.get("http://39.108.171.172:8081/facerecognition/system/record/query",{organizationid:organizationid,starttime:2000-01-01,endtime:endtime},function(res){
+            console.log(res)
+            //编译模板
+            var recordList=art.render(recordListTpl,res);
+            var $recordList=$(recordList);
 
             // //修改用户状态
             $recordList
-            //     .on("click",".btn-status",function(){
-
-            //     var tc_id=$(this).parent().attr("tc_id");
-            //     var tc_status=$(this).parent().attr("tc_status");
-
-            //     var btnStatus=this;
-
-
-            //     API.changeTeacherStatus(tc_id,tc_status,function(res){
-
-            //         //把新的状态值渲染到页面中
-            //         var new_tc_status=res.result.tc_status;//1:"启用"  0:"注销"
-            //         $(btnStatus).parent().attr("tc_status",new_tc_status);
-
-            //         //修改按钮的文本
-            //         $(btnStatus).text(new_tc_status==1?"注销":"启用");
-
-            //         //修改账户状态列的文本
-            //         $(btnStatus).parent().siblings(".col-status").text(new_tc_status==1?"启用":"注销");
-
-            //     })
-            // })
-            //     //查看讲师
+            
+            //     //查看详细信息
                 .on("click",".btn-show",function(){
                     // var tc_id=$(this).parent().attr("tc_id");
                     
                     recordShow();
                 })
-            //     //添加讲师
-            //     .on("click",".btn-add-teacher",function(){
-
-            //         teacherAdd();
-            //     })
-            //     //编辑讲师
+            
+            //     //查看最近信息
                 .on("click",".btn-edit",function(){
                     // var tc_id=$(this).parent().attr("tc_id");
 
@@ -106,7 +83,7 @@ define(["jquery","artTemplate","text!tpls/recordList.html","common/api","./show"
         init();
         
     });
-        // })
+          },"jsonp")
 
 
     };

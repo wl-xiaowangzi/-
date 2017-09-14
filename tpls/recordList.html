@@ -33,23 +33,29 @@
         </div>
     </div>
     <div class="table">
-        <!--{{each result}}-->
+        {{each data}}
         <div class="personal-info">
-            <div class="img-box"><img src="imgs/employee-tip.png" alt=""></div>
+            <div class="img-box">
+                {{if $value.persontype==1}}
+                <img src="imgs/employee-tip.png" alt="">
+                {{else}}
+                <img src="imgs/visitor-tip.png" alt="">
+                {{/if}}
+                </div>
             <ul>
-                <li><img src="imgs/pic.jpg" alt="" width="50" height="50"><span>李达康</span></li>
+                <li><img src="{{$value.faceimage}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
                 <li>|</li>
-                <li>产品</li>
+                <li>{{$value.similarity}}</li>
                 <li>|</li>
-                <li>12:00</li>
+                <li>{{$value.identificationtime}}</li>
                 <li>|</li>
-                <li>
+                <li ps_id={{$value.personid}}>
                     <button class="btn btn-default btn-show">信息</button>
                     <button class="btn btn-default btn-edit ml24">记录</button>
                 </li>
             </ul>
         </div>
-        <!--{{/each}}-->
+        {{/each}}
 
     </div>
 </div>

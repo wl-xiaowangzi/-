@@ -88,11 +88,23 @@
 }
 .form-horizontal .form-group i{
     position: absolute;
-    top: 12px;
+    top: 10px;
     left: 84px;
     font-size: 17px;
     color: #c8c8c8;
     transition : all 0.5s ease 0s;
+}
+.password-icon{
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-image: url(../imgs/password_icon.png)
+}
+.username-icon{
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-image: url(../imgs/username_icon.png)
 }
 .form-horizontal .form-control:focus + i{
     color: #00b4ef;

@@ -4,31 +4,30 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">编辑信息</h4>
+                <h4 class="modal-title">编辑访客信息</h4>
             </div>
             <div class="modal-body">
                 <form class="form form-horizontal">
                     <div class="form-group" style="display:flex;justify-content:center;">
                         <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"></div>
                     </div>
-                    <div class="form-group">
+                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="tc_name" placeholder="请输入姓名" value="" /><span class="asterisk">*</span>
-                            <input type="hidden" name="tc_id" value="{{tc_id}}">
+                            <input type="text" class="form-control" name="name" value="{{name}}" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">性别</label>
                         <div class="col-sm-7">
-                            <select name="tc_type" class="form-control">
-                                <!--{{if(tc_type==0)}}-->
-                                    <option value="0">男</option>
-                                    <option value="1">女</option>
-                                <!--{{else}}-->
-                                    <!--<option value="0">女</option>
-                                    <option value="1" selected="selected">男</option>-->
-                                <!--{{/if}}-->
+                            <select name="sex" class="form-control">
+                                {{if(sex==1)}}
+                                    <option value="1" selected="selected">男</option>
+                                    <option value="2">女</option>
+                                {{else}}
+                                    <option value="1">男</option>
+                                    <option value="2" selected="selected">女</option>
+                                {{/if}}
                             </select>
                         </div>
                     </div>
@@ -48,16 +47,14 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">拜访事由</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="tc_name" value="" placeholder="请输入拜访事由" />
-                            <span
-                                class="asterisk">*</span>
-                                <input type="hidden" name="tc_id" value="{{tc_id}}">
+                            <input type="text" class="form-control" name="remark" value="{{remark}}" placeholder="请输入拜访事由" />
+                            <span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">开始时间</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control date-join" data-date-format="yyyy-mm-dd" name="tc_join_date" value="">
+                            <input type="text" class="form-control date-join" data-date-format="yyyy-mm-dd" name="starttime" value="{{starttime}}">
                             <span
                                 class="asterisk">*</span>
                         </div>
@@ -65,14 +62,14 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">结束时间</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control date-join" data-date-format="yyyy-mm-dd" name="tc_join_date" value="">
+                            <input type="text" class="form-control date-join" data-date-format="yyyy-mm-dd" name="endtime" value="{{endtime}}">
                             <span
                                 class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-6 col-sm-offset-5">
-                            <button type="submit" class="btn btn-blue" style="margin-left:35px;">编辑</button>
+                            <!--<button type="submit" class="btn btn-blue" style="margin-left:35px;">编辑</button>-->
                             <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
                         </div>
                     </div>
