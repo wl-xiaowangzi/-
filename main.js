@@ -45,23 +45,21 @@ require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", 
     //处理用户名
     var username = $.cookie("username");
 
-    //$("#userImage").attr("src",tc_avatar);
     $("#userName").html(username);
 
 
     //给退出这个按钮绑定事件实现退出登录的功能
     $("#btnLogout").on("click", function () {
-
-        // $.post("/api/logout",function(res){
-        //     if(res.code==200){
-
-        //清除cookie值
+        var usid = $.cookie("USERID")
+        if(usid==undefined){
+            //清除cookie值
         $.removeCookie("username");
      
+        }
+        
         //跳转到登录页
         location.href = "login.html";
-        //     }
-        // })
+        
     });
 
     // 搜索

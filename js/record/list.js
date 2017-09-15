@@ -10,11 +10,11 @@ define(["jquery","artTemplate","text!tpls/recordList.html","common/api","./show"
         var endtime = time.getFullYear()+'-'+ (time.getMonth()+1)+'-'+time.getDate();
         
         $.get("http://39.108.171.172:8081/facerecognition/system/record/query",{organizationid:organizationid,starttime:2000-01-01,endtime:endtime},function(res){
-            console.log(res)
+           
             //编译模板
             var recordList=art.render(recordListTpl,res);
             var $recordList=$(recordList);
-
+            
             // //修改用户状态
             $recordList
             

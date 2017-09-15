@@ -1,6 +1,6 @@
 <div class="modal fade" id="modalcamera" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content pull-left" style='width:696px;height:633px;background:#1c232d;padding-left:28px;'>
+        <div class="modal-content pull-left" style='width:696px;height:633px;background:#1c232d;padding-left:12px;'>
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
@@ -49,9 +49,12 @@
                                 });
                             }
                             document.getElementById("picture").addEventListener("click", function () {
-                                document.getElementById("picture").classList.remove("displayB").add("displayN")
-                                document.getElementById("sure-photography").classList.remove("displayN").add("displayB")
-                                document.getElementById("sure-photography").classList.remove("displayN").add("displayB")
+                                // document.getElementById("picture").classList.remove("displayB")
+                                // document.getElementById("picture").classList.add("displayN")
+                                // document.getElementById("re-photographed").classList.remove("displayN")
+                                // document.getElementById("re-photographed").classList.add("displayB")
+                                // document.getElementById("sure-photography").classList.remove("displayN")
+                                // document.getElementById("sure-photography").classList.add("displayB")
                                 context.drawImage(video, 0, 0, 640, 480);
                                 //从画布上获取照片数据  
                                 var imgData = canvas.toDataURL();
@@ -60,20 +63,23 @@
                                 //将图片上传到服务器
                                 
                             });
-                            document.getElementById("re-photographed").addEventListener("click", function () {
-                                document.getElementById("picture").classList.remove("displayN").add("displayB")
-                                document.getElementById("sure-photography").classList.remove("displayB").add("displayN")
-                                document.getElementById("sure-photography").classList.remove("displayB").add("displayN")
-                                context.clearRect(0,0,640,480);
-                            });
+                            // document.getElementById("re-photographed").addEventListener("click", function () {
+                            //     document.getElementById("picture").classList.remove("displayN")
+                            //     document.getElementById("picture").classList.add("displayB")
+                            //     document.getElementById("re-photographed").classList.remove("displayB")
+                            //     document.getElementById("re-photographed").classList.add("displayN")
+                            //     document.getElementById("sure-photography").classList.remove("displayB")
+                            //     document.getElementById("sure-photography").classList.add("displayN")
+                            //     context.clearRect(0,0,640,480);
+                            // });
                         </script>
                     </canvas>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <div class="col-sm-6 col-sm-offset-4">
-                            <button type="submit" class="btn btn-blue displayN" id="sure-photography">确认</button>
-                            <div id="re-photographed" class="glyphicon glyphicon-repeat btn btn-info displayN">重拍</div>
+                            <button type="submit" class="btn btn-blue displayN" data-dismiss="modal" aria-label="Close" id="sure-photography">确认</button>
+                            <div id="re-photographed" class="btn btn-default displayN"><span class="glyphicon glyphicon-repeat"></span> 重拍</div>
                         </div>
-                    </div>
+                    </div>-->
                 </form>
             </div>
         </div>

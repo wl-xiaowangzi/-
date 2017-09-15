@@ -7,14 +7,14 @@
 define(["jquery", "artTemplate", "common/api", "text!tpls/personalCenter.html"], function ($, art, API, personalCenterTpl) {
 
     return function () {
-        // API.editPersonalCenter(function(res){
+      $.get("http://39.108.171.172:8081/facerecognition/system/user/query",{userid:2},function(res){
 
-
+        console.log(res)
         $("#modalPersonalCenter").remove();
 
-        // var personalCenter=art.render(personalCenterTpl,res.result);
+        var personalCenter=art.render(personalCenterTpl,res.data[0]);
 
-        var $personalCenter = $(personalCenterTpl);
+        var $personalCenter = $(personalCenter);
 
         $personalCenter
         // .on("submit","form",function(){
@@ -50,7 +50,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/personalCenter.html"],
 
 
 
-        // })
+        },"jsonp")
 
 
     }

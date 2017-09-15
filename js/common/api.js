@@ -5,46 +5,23 @@
  */
 define(["jquery"],function($){
     return {
-        /**
-        //  * 获取课程对应的课时信息
-        //  * @param cs_id 课程id
-        //  * @param callback 接口响应成功了，执行该回调函数
-        //  */
-        
-        // getCourseLesson:function(cs_id,callback){
-        //     $.get("/api/course/lesson",{cs_id:cs_id},function(res){
-        //         if(res.code!=200){
-        //             console.log(res.msg);
-        //             return;
-        //         }
-
-        //         //接口响应成功了
-        //         callback && callback(res);
-
-        //     })
-        // },
-
         // /**
-        //  * 根据指定的课时id获取相应的课时信息
-        //  * @param ct_id 课时id
-        //  * @param callback 接口响应成功了，执行该回调函数
+        //  * 修改密码
+        //  * @param formData
+        //  * @param callback
         //  */
-        // editCourseTime:function(ct_id,callback){
-        //     $.get("/api/course/chapter/edit",{ct_id:ct_id},function(res){
-        //         if(res.code!=200){
-        //             console.log(res.msg);
-        //             return;
-        //         }
+        changePWD:function(callback){
+            $.post("http://39.108.171.172:8081/facerecognition/system/user/editpwd",{formData},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
 
-        //         //接口响应成功了
-        //         callback && callback(res);
-
-        //         //editCourseTime(10,function(){})
-        //         //editCourseTime(10)
-        //     })
-        // },
+                callback && callback();
+            })
+        },
         // /**
-        //  * 编辑课时表单提交
+        //  * 删除设备
         //  * @param formData
         //  * @param callback
         //  */
@@ -73,6 +50,11 @@ define(["jquery"],function($){
                 callback && callback(res);
             },"jsonp")
         },
+        /**
+         * 根据访客id获取访客基本信息
+         * @param ep_id 访客id
+         * @param callback
+         */
         getVisitorBaseInfo:function(vs_id,callback){
             $.get("http://39.108.171.172:8081/facerecognition/system/visitor/query",{visitorid:vs_id},function(res){
                 if(res.code!=0){

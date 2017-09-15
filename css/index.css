@@ -141,7 +141,7 @@ p{margin: 0;}
     opacity: 1;
 }
 .displayN{display: none;}
-.displayB{display: block;}
+.displayB{display: inline-block;}
 .black{color: black;}
 /*公共样式 end*/
 body{
@@ -561,6 +561,13 @@ nav .search button{
 #picture{
     width: 40px;
     height: 40px;
+    margin-left: 300px;
+    margin-top: 14px;
     background: url(../imgs/photography-icon.png) no-repeat center center;
+}
+#re-photographed{
+    width: 80px;
+    height: 32px;
+    font-size: 13px;
 }
 /*拍照界面样式 end*/
