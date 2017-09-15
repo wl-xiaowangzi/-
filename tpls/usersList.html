@@ -2,27 +2,7 @@
     <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:50px;padding:9px 0 0 0;">
         <div class="top-nav">
             账号管理
-            <!--下拉搜索条件-->
-            <!--<div class="dropdown pull-left">
-                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="true">所有组织<span class="caret"></span></button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">组织1</a></li>
-                    <li><a href="#">组织2</a></li>
-                    <li><a href="#">组织3</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">。。。</a></li>
-                </ul>
-            </div>
-            <div class="dropdown pull-left">
-                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="true">所有类型<span class="caret"></span></button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">管理账号</a></li>
-                    <li><a href="#">操作账号</a></li>
-                </ul>
-            </div>-->
-
+            <div id="btnUserAdd" class="btnAdd"></div>
         </div>
     </div>
     <div class="table">
@@ -35,7 +15,7 @@
                 <li>{{$value.username}}</li>
                 <li>|</li>
                 <li user_id={{$value.userid}}>
-                    <button class="btn btn-default btn-edit">信息</button>
+                    <button class="btn btn-default btn-edit">编辑</button>
                     <button class="btn btn-refuse btn-default btn-del ml24">删除</button>
                 </li>
             </ul>

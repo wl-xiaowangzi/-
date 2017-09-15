@@ -491,7 +491,7 @@ nav .search button{
     width: 100%;
     border-radius: 50%;
 }
-#peopleAdd{
+.btnAdd{
     position: fixed;
     bottom: 62px;
     right: 86px;
@@ -500,17 +500,12 @@ nav .search button{
     z-index: 999;
     background: url(../imgs/btn-add_0.png) no-repeat center center;
 }
-#visitantAdd{
-    position: fixed;
-    bottom: 62px;
-    right: 86px;
-    width: 84px;
-    height: 84px;
-    z-index: 999;
-    background: url(../imgs/btn-add_0.png) no-repeat center center;
-}
-#peopleAdd:hover{
+
+.btnAdd:hover{
     background: url(../imgs/btn-add_1.png) no-repeat center center;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    transition: all 1s;
 }
 /*人员管理样式 end*/
 .hidden{

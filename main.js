@@ -41,7 +41,7 @@ require.config({
 //因为checkLogin依赖了cookie，所以cookie已经被加载
 require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", "people/baseInfo", "record/list", "common/personalCenter", "common/changePWD", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement","common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, approvalList, peopleBaseInfo,recordList, personalCenter, changePWD, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
 
-
+    
     //处理用户名
     var username = $.cookie("username");
 

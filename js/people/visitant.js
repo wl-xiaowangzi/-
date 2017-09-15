@@ -2,12 +2,12 @@
  * 访客列表
  * Created by land on 2017/9/2.
  */
-define(["jquery","artTemplate","text!tpls/peopleVisitantList.html","./visitantinfo","./visitantAdd"],function($,art,peopleVisitantListTpl,visitantinfo,visitantAdd){
+define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html","./visitantinfo","./visitantAdd"],function($,art,API,peopleVisitantListTpl,visitantinfo,visitantAdd){
 
     return function(){
 
-        $.get("http://39.108.171.172:8081/facerecognition/system/visitor/query",{limit:12,start:0},function(res){
-            console.log(res)
+        API.getVisitorList(0,12,function(res){
+
              $(".module-container").empty();
           
             //编译模板
@@ -29,7 +29,7 @@ define(["jquery","artTemplate","text!tpls/peopleVisitantList.html","./visitantin
             })
             //把渲染好的元素放到页面中
             $(".module-container").append($peopleVisitantList);
-        },"jsonp")
+        })
 
 
 

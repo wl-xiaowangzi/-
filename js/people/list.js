@@ -2,13 +2,11 @@
  * 人员列表
  * Created by landon 2017/9/4.
  */
-define(["jquery","artTemplate","text!tpls/peopleList.html","./baseInfo","./visitant","./add","./del"],function($,art,peopleListTpl,baseInfo,visitant,peopleAdd,peopleDel){
+define(["jquery","artTemplate","common/api","text!tpls/peopleList.html","./baseInfo","./visitant","./add","./del","common/camera"],function($,art,API,peopleListTpl,baseInfo,visitant,peopleAdd,peopleDel,camera){
 
     return function(){
-
-        $.get("http://39.108.171.172:8081/facerecognition/system/employee/query",{limit:12,start:0},function(res){
+            API.getPeopleList(0,12,function(res){
             
-            console.log(res)
             //编译模板
             var peopleList=art.render(peopleListTpl,res);
 
@@ -37,7 +35,7 @@ define(["jquery","artTemplate","text!tpls/peopleList.html","./baseInfo","./visit
             
             //把渲染好的元素放到页面中
             $(".module-container").append($peopleList);
-        },"jsonp")
+        })
 
         
 

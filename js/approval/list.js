@@ -20,7 +20,12 @@ define(["jquery","artTemplate","common/api","text!tpls/approvalList.html","./sho
                 // editCourseTime(ct_id);
                 showApproval();
             })
-           
+           .on("click","#btn-employee",function(){
+
+           })
+           .on("click","#btn-visiter",function(){
+               
+           })
             .on("click",".btn-refuse",function(){
                 refuse();
             })

@@ -1,47 +1,52 @@
-<div class="modal fade" id="modalEditUsers" tabindex="-1" role="dialog">
+<div class="modal fade" id="modalUsersAdd" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" style="margin-top:120px;height:739px;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">编辑信息</h4>
+                <h4 class="modal-title">添加用户信息</h4>
             </div>
             <div class="modal-body">
                 <form class="form form-horizontal">
                     <div class="form-group" style="display:flex;justify-content:center;">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="100" height="100" style="border-radius:50%;"></div>
+                        <div class="img-box" id="start"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"></div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="name" value="{{name}}" />
+                            <input type="text" required="required" class="form-control" name="name" value="" /><span class="asterisk">*</span>
+                            <input type="hidden" name="organizationid" value="">
                         </div>
                     </div>
-                   
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">账号</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="username" value="{{username}}" />
-                            <input type="hidden" name="userid" value="{{userid}}">
+                            <input type="text" required="required" class="form-control" name="username" value="" /><span class="asterisk">*</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">密码</label>
+                        <div class="col-sm-7">
+                            <input type="text" required="required" class="form-control" name="password" value="" /><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">邮箱</label>
                         <div class="col-sm-7">
-                            <input type="email" class="form-control" name="email" value="{{email}}" />
+                            <input type="email" class="form-control" name="email" value="" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">手机号码</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="phonenumber" value="{{phonenumber}}" />
+                            <input type="text" class="form-control" required="required" name="phonenumber" value="" placeholder="请输入您常用手机号"/><span class="asterisk">*</span>
                         </div>
                     </div>
-                   
+                
                     <div class="form-group">
                         <div class="col-sm-6 col-sm-offset-5">
-                            <button type="submit" class="btn btn-blue btn-edit-user" style="margin-left:35px;">确认</button>
-                            <button type="submit" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                            <button type="submit" class="btn btn-blue" style="margin-left:35px;">确认</button>
+                            <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
                         </div>
                     </div>
                 </form>
