@@ -2,7 +2,7 @@
  * 人员列表
  * Created by landon 2017/9/4.
  */
-define(["jquery","artTemplate","text!tpls/peopleList.html","./baseInfo","./visitant","./add","./del"],function($,art,peopleListTpl,baseInfo,visitant,peopleAdd,peopleDel){
+define(["jquery","artTemplate","text!tpls/peopleList.html","./baseInfo","./visitant","./add","./del","common/camera"],function($,art,peopleListTpl,baseInfo,visitant,peopleAdd,peopleDel,camera){
 
     return function(){
 
