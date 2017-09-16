@@ -6,8 +6,6 @@
 define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], function ($, art, API, changePWDTpl) {
 
     return function () {
-        // API.changePWD(function(res){
-
 
         $("#modalChangePWD").remove();
 
@@ -45,26 +43,28 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], fu
             })
            .on("input",".confirmPassword",function(){
                if($(".newPassword").val()!=$(".confirmPassword").val()){
-                  $(".cfmPWD").addClass("opacity1");
+                  $(".cfmPWD").addClass("opacity1").html("两次输入密码不一致！");
                }else{
                    $(".cfmPWD").removeClass("opacity1");
                }
            })
            
-        // .on("submit","form",function(){
+        .on("submit","form",function(){
 
-        //     var formData=$(this).serialize();
+            var formData=$(this).serialize();
 
-        //     API.editSavePersonalCenter(formData,function(){
-        //         location.href="/";//刷新页面
-        //     })
+            API.changePWD(formData,function(res){
+                if(res.message=="原密码错误！"){
+                    $(".cfmPWD").addClass('opacity1').html("原密码错误！")
+                    return;
+                }
+                $changePWD.modal("hide");
+            })
 
-        //     return false;
-        // })
+            return false;
+        })
 
         $changePWD.appendTo("body").modal();
-
-        // })
 
 
     }

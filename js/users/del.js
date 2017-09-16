@@ -2,15 +2,24 @@
  * 删除提示
  * Created by land on 2017/9/3.
  */
-define(["jquery","artTemplate","text!tpls/usersDel.html","bootstrap"],function($,art,usersDelTpl){
-    
-    return function(){
-     
-            $("#modalDelUsers").remove();
+define(["jquery", "artTemplate", "common/api", "text!tpls/usersDel.html", "bootstrap"], function ($, art, API, usersDelTpl) {
 
-            var $usersDel=$(usersDelTpl);
-            
-            $usersDel.appendTo("body").modal();
+    return function (user_id) {
+        $("#modalDelUsers").remove();
+      
+        var $usersDel = $(usersDelTpl);
+        var user_id = user_id;
+        
+        $usersDel.on("submit", "form", function () {
+            console.log(user_id)
+            API.delDevice(user_id, function (res) {
+                $usersDel.modal("hide");
+                $("#btnUsersManager").trigger("click");
+            })
+
+            return false;
+        })
+        $usersDel.appendTo("body").modal();
 
     }
 })

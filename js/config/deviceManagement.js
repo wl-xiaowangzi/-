@@ -2,12 +2,12 @@
  * 设备管理
  * Created by land 2017/9/4.
  */
-define(["jquery", "artTemplate", "text!tpls/configDeviceManagement.html", "./deviceAdd", "./deviceEdit", "./deviceDel"], function ($, art, configDeviceManagementTpl, deviceAdd, deviceEdit, deviceDel) {
+define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.html", "./deviceAdd", "./deviceEdit", "./deviceDel"], function ($, art,API, configDeviceManagementTpl, deviceAdd, deviceEdit, deviceDel) {
 
     return function () {
 
-        $.get("http://39.108.171.172:8081/facerecognition/system/device/query", function (res) {
-
+        API.getDeviceList(0,12,function(res){
+        
             //编译模板
             var configDeviceManagement = art.render(configDeviceManagementTpl, res);
 
@@ -32,7 +32,7 @@ define(["jquery", "artTemplate", "text!tpls/configDeviceManagement.html", "./dev
 
             //把渲染好的元素放到页面中
             $(".module-container").append($configDeviceManagement);
-        }, "jsonp")
+        })
 
 
 

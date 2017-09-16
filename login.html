@@ -50,9 +50,6 @@
         $.ajax({
             url:api+"/system/login",
             type:"post",
-            xhrFields:{
-                withCredentials:true
-            },
             data:formData,
             success:function(res){//response
                 console.log(res);
@@ -62,7 +59,7 @@
                     //保存用户名,组织名,以及是否选择自动登录
                     $.cookie("username",res.data.username,{expires:7});
                     $.cookie("organizationid",res.data.organizationid,{expires:7});
-                    // $.cookie()
+                    $.cookie("userid",res.data.userid,{expires:7});
 
                     location.href="index.html";
                 }

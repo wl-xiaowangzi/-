@@ -5,6 +5,7 @@
 define(["jquery","artTemplate","common/api","text!tpls/usersEdit.html","bootstrap"],function($,art,API,usersEditTpl){
     
     return function(user_id){
+        // var organizationid = $.cookie("organizationid");
         API.queryUser(user_id,function(res){
              console.log(res)
             $("#modalEditUsers").remove();

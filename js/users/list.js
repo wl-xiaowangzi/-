@@ -20,14 +20,15 @@ define(["jquery", "artTemplate","common/api", "text!tpls/usersList.html","./edit
                     addUsers(organizationid)
                 })
                 .on("click", ".btn-del", function () {
+                    //获取该行数据对应的分类id
+                    var user_id=$(this).parent().attr("user_id");
                     //加载删除账号的模块
-                    delUsers();
+                    delUsers(user_id);
 
                 })
                 .on("click", ".btn-edit", function () {
                     //获取该行数据对应的分类id
                     var user_id=$(this).parent().attr("user_id");
-
                     //加载编辑账号的模块
                     editUsers(user_id);
                 })

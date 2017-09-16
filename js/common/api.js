@@ -71,6 +71,41 @@ define(["jquery"],function($){
         // 用户管理
         
         // 系统设置
+        // 设备列表
+        getDeviceList:function(start,limit,callback){
+            $.get(api+"/system/device/query",{start,limit},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+         // 查看设备信息
+        queryDevice:function(dv_id,organizationid,callback){
+            $.get(api+"/system/device/query",{deviceids:dv_id,organizationid:organizationid},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 设备编辑
+        editDevice:function(formData,callback){
+            $.ajax({
+                url:api+"/system/device/update",
+                type:"post",
+                data:formData,
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
         //删除设备
         delDevice:function(dv_id,callback){
             $.post(api+"/system/device/delete",{deviceids:dv_id},function(res){
@@ -112,7 +147,7 @@ define(["jquery"],function($){
         },
         // 查看用户信息
         queryUser:function(user_id,callback){
-            $.get(api+"/system/user/query",{suserid:user_id},function(res){
+            $.get(api+"/system/user/query",{suserids:user_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -135,15 +170,31 @@ define(["jquery"],function($){
                 }
             })
         },
-        // 修改密码
-        changePWD:function(formData,callback){
-            $.post(api+"/system/user/editpwd",{formData},function(res){
-                if(res.code!=0){
+        // 用户删除
+        delUser:function(user_id,callback){
+            $.ajax({
+                url:api+"/system/user/delete",
+                type:"post",
+                data:{userids:user_id},
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     return;
                 }
-
-                callback && callback();
+                callback && callback(res);
+                }
+            })
+        },
+        // 修改密码
+        changePWD:function(formData,callback){
+             $.ajax({
+                url:api+"/system/user/editpwd",
+                type:"post",
+                data:formData,
+                success:function(res){
+                    
+                callback && callback(res);
+                }
             })
         },
     }

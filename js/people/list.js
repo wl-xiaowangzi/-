@@ -2,11 +2,8 @@
  * 人员列表
  * Created by landon 2017/9/4.
  */
-<<<<<<< HEAD
+
 define(["jquery","artTemplate","common/api","text!tpls/peopleList.html","./baseInfo","./visitant","./add","./del","common/camera"],function($,art,API,peopleListTpl,baseInfo,visitant,peopleAdd,peopleDel,camera){
-=======
-define(["jquery","artTemplate","text!tpls/peopleList.html","./baseInfo","./visitant","./add","./del","common/camera"],function($,art,peopleListTpl,baseInfo,visitant,peopleAdd,peopleDel,camera){
->>>>>>> 0c6c630466489dc5592e2c6f03c741380f6b6021
 
     return function(){
             API.getPeopleList(0,12,function(res){
