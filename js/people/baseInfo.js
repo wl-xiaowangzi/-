@@ -6,32 +6,28 @@
 define(["jquery","artTemplate","common/api","text!tpls/peopleBaseInfo.html"],function ($,art,API,peopleBaseInfoTpl) {
 
     return function(ep_id){
-        //把渲染好的元素放到页面中
-
-
         //根据员工id获取员工基本信息
         API.getEmployeeBaseInfo(ep_id,function(res){
-            
+            console.log(res)
             var peopleBaseInfo=art.render(peopleBaseInfoTpl,res.data[0]);
 
             var $peopleBaseInfo=$(peopleBaseInfo);
 
             $("#modalEditInfo").remove();
 
-            // $courseBaseInfo.on("submit","form",function(){
-                // var formData=$(this).serialize();
+            $peopleBaseInfo.on("submit","form",function(){
+                var formData=$(this).serialize();
+                console.log(formData)
+                API.editEmployee(formData,function(res){
+                    console.log(res)
+                    //数据更新成功-->跳转到员工列表
+                    $("#btnPeopleManager").trigger("click");
 
-                // API.saveCourseBaseInfo(formData,function(){
-                //     //数据更新成功-->跳转到课程列表
+                })
 
-                //     $("#btnCourseManager").trigger("click");
+                return false;
+            })
 
-                // })
-
-                // return false;
-            // })
-
-            // $(".module-container").append($courseBaseInfo);
             $peopleBaseInfo.appendTo("body").modal();
 
 

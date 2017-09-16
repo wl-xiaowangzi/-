@@ -44,7 +44,22 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
-        // 员工列表
+        // 员工编辑
+        editEmployee:function(formData,callback){
+            $.ajax({
+                url:api+"/system/employee/update",
+                type:"post",
+                data:formData,
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 访客列表
         getVisitorList:function(start,limit,callback){
             $.get(api+"/system/visitor/query",{start,limit},function(res){
                 if(res.code!=0){
@@ -147,7 +162,7 @@ define(["jquery"],function($){
         },
         // 查看用户信息
         queryUser:function(user_id,callback){
-            $.get(api+"/system/user/query",{suserids:user_id},function(res){
+            $.get(api+"/system/user/query",{userid:user_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;

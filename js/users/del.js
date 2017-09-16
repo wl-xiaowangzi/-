@@ -9,10 +9,11 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersDel.html", "boots
       
         var $usersDel = $(usersDelTpl);
         var user_id = user_id;
-        
+
         $usersDel.on("submit", "form", function () {
             console.log(user_id)
-            API.delDevice(user_id, function (res) {
+            API.delUser(user_id, function (res) {
+                console.log(res)
                 $usersDel.modal("hide");
                 $("#btnUsersManager").trigger("click");
             })

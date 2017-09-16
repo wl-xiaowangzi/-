@@ -6,7 +6,7 @@ define(["jquery", "artTemplate","common/api", "text!tpls/usersList.html","./edit
 
     return function () {
         API.getUsersList(0,12,function(res){
-        
+        console.log(res)
               //编译模板
              var usersList=art.render(usersListTpl,res);
             var $usersList = $(usersList);
