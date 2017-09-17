@@ -47,6 +47,31 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
+        // 员工审核详细信息
+         getPeopleCheckInfo:function(ep_id,callback){
+            $.get(api+"/system/employee/getCheckinfos",{employeeid:ep_id},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 员工审核
+        checkEmployee:function(isagree,checksuggestion,callback){
+            $.ajax({
+                url:api+"/system/employee/check",
+                type:"post",
+                data:{isagree:isagree,checksuggestion:checksuggestion},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
         // 访客审批列表
         getVisitorApprovalList:function(start,limit,status,callback){
             $.get(api+"/system/visitor/query",{start,limit,status},function(res){
@@ -55,6 +80,31 @@ define(["jquery"],function($){
                     return;
                 }
                 callback && callback(res);
+            })
+        },
+        // 访客审核详细信息
+         getVisitorCheckInfo:function(vs_id,callback){
+            $.get(api+"/system/visitor/getCheckinfos",{visitorid:vs_id},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 访客审核
+        checkVisitor:function(isagree,checksuggestion,callback){
+            $.ajax({
+                url:api+"/system/visitor/check",
+                type:"post",
+                data:{isagree:isagree,checksuggestion:checksuggestion},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
             })
         },
         // 图片上传
@@ -72,6 +122,7 @@ define(["jquery"],function($){
                 }
             })
         },
+
         // 员工列表
         getPeopleList:function(start,limit,callback){
             $.get(api+"/system/employee/query",{start,limit},function(res){
@@ -111,6 +162,18 @@ define(["jquery"],function($){
                 }
             })
         },
+        // 员工注销
+        delEmployee:function(ep_id,callback){
+            $.post(api+"/system/employee/delete",{employeeids:ep_id},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+
+                callback && callback();
+
+            })
+        },
         // 访客列表
         getVisitorList:function(start,limit,callback){
             $.get(api+"/system/visitor/query",{start,limit},function(res){
@@ -135,9 +198,127 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
-        // 用户管理
+        // 访客编辑
+        editVisitor:function(formData,callback){
+            $.ajax({
+                url:api+"/system/visitor/update",
+                type:"post",
+                data:formData,
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 访客注销
+        delVisitor:function(vs_id,callback){
+            $.post(api+"/system/visitor/delete",{visitorids:vs_id},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+
+                callback && callback();
+
+            })
+        },
         
         // 系统设置
+        // 系统消息查询
+        getMessageList:function(start,limit,callback){
+            $.get(api+"/system/message/query",{start,limit},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 系统消息详情
+        getMessage:function(datanumber,callback){
+            $.get(api+"/system/message/getMessage",{datanumber:datanumber},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 系统消息读取
+        readMessage:function(datanumber,callback){
+            $.get(api+"/system/message/read",{datanumber:datanumber},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 系统参数列表
+         getParameterList:function(start,limit,callback){
+            $.get(api+"/system/parameter/query",{start,limit},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 系统参数增加
+         addParameter:function(formData,callback){
+            $.ajax({
+                url:api+"/system/parameter/add",
+                type:"post",
+                data:formData,
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 系统参数查询
+        queryParameter:function(para_key,callback){
+            $.get(api+"/system/parameter/query",{parameterkey:para_key},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 系统参数编辑
+        editParameter:function(formData,callback){
+            $.ajax({
+                url:api+"/system/parameter/update",
+                type:"post",
+                data:formData,
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        //系统参数删除
+        delParameter:function(para_key,callback){
+            $.post(api+"/system/parameter/delete",{parameterkeys:para_key},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+
+                callback && callback();
+
+            })
+        },
         // 设备列表
         getDeviceList:function(start,limit,callback){
             $.get(api+"/system/device/query",{start,limit},function(res){
