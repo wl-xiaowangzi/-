@@ -48,7 +48,6 @@ define(["jquery"],function($){
             })
         },
         // 访客审批列表
-        // 人员管理
         getVisitorApprovalList:function(start,limit,status,callback){
             $.get(api+"/system/visitor/query",{start,limit,status},function(res){
                 if(res.code!=0){
@@ -56,6 +55,21 @@ define(["jquery"],function($){
                     return;
                 }
                 callback && callback(res);
+            })
+        },
+        // 图片上传
+        uploadImage:function(imagefile,callback){
+            $.ajax({
+                url:api+"/system/uploadFile",
+                type:"post",
+                data:{imagefile:imagefile},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
             })
         },
         // 员工列表

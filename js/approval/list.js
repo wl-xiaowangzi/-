@@ -5,11 +5,11 @@
  */
 define(["jquery", "artTemplate", "common/api", "common/noResult", "text!tpls/approvalList.html", "./show", "./refuse"], function ($, art, API, noResult, approvalListTpl, showApproval, refuse) {
     return function () {
-        API.getApprovalList(0,12,function(res){
+        // API.getApprovalList(0,12,function(res){
 
         //编译模板
-        var approvalList=art.render(approvalListTpl);
-        var $approvalList = $(approvalList);
+        // var approvalList=art.render(approvalListTpl);
+        var $approvalList = $(approvalListTpl);
 
         //入库审批点击事件
         $approvalList
@@ -73,7 +73,7 @@ define(["jquery", "artTemplate", "common/api", "common/noResult", "text!tpls/app
 
         //把渲染好的元素放到页面中
         $(".module-container").append($approvalList);
-        })
+        // })
 
     }
 });
