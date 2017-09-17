@@ -4,7 +4,7 @@
  *   Date:2017/9/5
  */
 define(["jquery", "artTemplate", "text!tpls/usersAdd.html", "common/api"], function ($, art, usersAddTpl, API) {
-    return function (organizationid) {
+    return function () {
 
         $("#modalUsersAdd").remove();
 

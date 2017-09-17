@@ -21,17 +21,16 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
 
                 //     //查看详细信息
                 .on("click", ".btn-show", function () {
-                    // var tc_id=$(this).parent().attr("tc_id");
+                    var ps_id=$(this).parent().attr("ps_id");
 
-                    recordShow();
+                    recordShow(ps_id);
                 })
 
                 //     //查看最近信息
                 .on("click", ".btn-edit", function () {
-                    // var tc_id=$(this).parent().attr("tc_id");
+                    var ps_id=$(this).parent().attr("ps_id");
 
-                    // recordEdit(tc_id);
-                    recordEdit();
+                    recordEdit(ps_id);
                 })
 
             $(".module-container").append($recordList);

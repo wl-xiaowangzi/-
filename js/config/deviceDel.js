@@ -9,12 +9,13 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configDeviceDel.html",
 
         var $configDeviceDel = $(configDeviceDelTpl);
 
-        $configDeviceDel.on("click", ".btn-del-device", function () {
+        $configDeviceDel.on("submit", "form", function () {
             console.log(dv_id)
-            $configDeviceDel.modal("hide");
             API.delDevice(dv_id, function (res) {
+                 $configDeviceDel.modal("hide");
                 $("#btnDeviceManagement").trigger("click");
             })
+            return false;//阻止表单的自动提交
         })
 
         $configDeviceDel.appendTo("body").modal();

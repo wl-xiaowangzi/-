@@ -8,70 +8,13 @@
             </div>
             <div class="modal-body people-visitor-record" style="overflow-y: scroll">
                 <div class="info-box">
+                    {{each data}}
                     <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
+                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">{{$value.similarity}}</span></div>
+                        <p>{{$value.devicename}}</p>
+                        <p>{{$value.identificationtime}}</p>
                     </div>
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
-                </div>
-                <div class="info-box">
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
-                </div>
-                <div class="info-box">
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
-                    <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">88%</span></div>
-                        <p>科学馆1楼大厅</p>
-                        <p>12:22</p>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div><!-- /.modal-content -->

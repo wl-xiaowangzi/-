@@ -1,4 +1,11 @@
 /*公共样式 begin*/
+html,body{
+    height: 100%;
+}
+body{
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 .modal-content{
     border-radius: 0;
     width: 568px;

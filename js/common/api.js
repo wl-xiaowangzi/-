@@ -17,9 +17,47 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
-        // 入库审批
-
+        // 查看详细信息
+        showRecord:function(ps_id,organizationid,callback){
+            $.get(api+"/system/record/query",{personid:ps_id,organizationid:organizationid},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 入库审批列表
+        getApprovalList:function(start,limit,callback){
+            $.get(api+"/system/uploadFile",{start,limit},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 员工审批列表
+        getPeopleApprovalList:function(start,limit,status,callback){
+            $.get(api+"/system/employee/query",{start,limit,status},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
+        // 访客审批列表
         // 人员管理
+        getVisitorApprovalList:function(start,limit,status,callback){
+            $.get(api+"/system/visitor/query",{start,limit,status},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
         // 员工列表
         getPeopleList:function(start,limit,callback){
             $.get(api+"/system/employee/query",{start,limit},function(res){
@@ -96,9 +134,24 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
+        // 添加设备
+        addDevice:function(formData,callback){
+            $.ajax({
+                url:api+"/system/device/add",
+                type:"post",
+                data:formData,
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
          // 查看设备信息
-        queryDevice:function(dv_id,organizationid,callback){
-            $.get(api+"/system/device/query",{deviceids:dv_id,organizationid:organizationid},function(res){
+        queryDevice:function(dv_id,callback){
+            $.get(api+"/system/device/query",{deviceid:dv_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -124,7 +177,6 @@ define(["jquery"],function($){
         //删除设备
         delDevice:function(dv_id,callback){
             $.post(api+"/system/device/delete",{deviceids:dv_id},function(res){
-                console.log(res)
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -212,5 +264,16 @@ define(["jquery"],function($){
                 }
             })
         },
+        // 用户登出
+        logout:function(callback){
+            $.ajax({
+                url:api+"/system/logout",
+                type:"post",
+                success:function(res){
+                    
+                callback && callback(res);
+                }
+            })
+        }
     }
 })

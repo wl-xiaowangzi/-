@@ -6,8 +6,8 @@ define(["jquery","artTemplate","common/api","text!tpls/configDeviceEdit.html","b
     
     return function(dv_id){
         console.log(dv_id)
-        var organizationid = $.cookie("organizationid");
-        API.queryDevice(dv_id,organizationid,function(res){
+        // var organizationid = $.cookie("organizationid");
+        API.queryDevice(dv_id,function(res){
              console.log(res)
             $("#modalConfigDeviceEdit").remove();
 

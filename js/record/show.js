@@ -4,24 +4,18 @@
  *   Date:2017/8/31
  */
 define(["jquery","artTemplate","text!tpls/recordShow.html","common/api"],function ($,art,recordShowTpl,API) {
-    return function () {
-
-        //根据讲师id获取讲师信息
-        // API.showTeacher(tc_id,function(res){
+    return function (ps_id) {
+         var organizationid = $.cookie("organizationid");
+        //根据id获取人员信息
+        API.showRecord(ps_id,organizationid,function(res){
             $("#modalShowRecord").remove();
+            console.log(res)
+            var recordShow=art.render(recordShowTpl,res.data[0]);
 
-
-            // var teahcerShow=art.render(teahcerShowTpl,res.result);
-
-            // var $teahcerShow=$(teahcerShow);
-
-
-            var $recordShow=$(recordShowTpl);
+            var $recordShow=$(recordShow);
 
             $recordShow.appendTo("body").modal();
-        // })
-
-
+        })
 
     };
 });

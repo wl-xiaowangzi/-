@@ -3,7 +3,7 @@
         <div class="top-nav">
             <!--下拉搜索条件-->
             <div class="dropdown pull-left" style="margin-left:-20px;">
-                <div class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">所有人员<span class="caret"></span></div>
+                <div class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="peopleType">所有人员</span><span class="caret"></span></div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li class="btn-all"><a href="#">所有人员</a></li>
                     <li id="btn-employee"><a href="#">员工</a></li>
@@ -14,13 +14,19 @@
         </div>
     </div>
     <div class="table">
-        <!--{{each data}}-->
+        {{each data}}
         <div class="personal-info">
-            <div class="img-box"><img src="imgs/employee-tip.png" alt=""></div>
+            <div class="img-box">
+                {{if $value.persontype==1}}
+                <img src="imgs/employee-tip.png" alt="">
+                {{else}}
+                <img src="imgs/visitor-tip.png" alt="">
+                {{/if}}
+                </div>
             <ul>
-                <li><img src="imgs/pic.jpg" alt="" width="50" height="50"><span>李达康</span></li>
+                <li><img src="{{$value.faceimage}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
                 <li>|</li>
-                <li>产品</li>
+                <li>{{$value.remark}}</li>
                 <li>|</li>
                 <li>
                     <button class="btn btn-default btn-show-approval">查看</button>
@@ -29,20 +35,6 @@
                 </li>
             </ul>
         </div>
-        <!--{{/each}}-->
-        <div class="personal-info">
-            <div class="img-box"><img src="imgs/visitor-tip.png" alt=""></div>
-            <ul>
-                <li><img src="imgs/pic.jpg" alt="" width="40"><span>李达康</span></li>
-                <li>|</li>
-                <li>产品</li>
-                <li>|</li>
-                <li>
-                    <button class="btn btn-default btn-show-approval">查看</button>
-                    <button class="btn btn-default btn-pass ml24">通过</button>
-                    <button class="btn btn-default btn-refuse ml24">驳回</button>
-                </li>
-            </ul>
-        </div>
+        {{/each}}
     </div>
 </div>

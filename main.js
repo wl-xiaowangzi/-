@@ -39,9 +39,8 @@ require.config({
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", "people/baseInfo", "record/list", "common/personalCenter", "common/changePWD", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement","common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, approvalList, peopleBaseInfo,recordList, personalCenter, changePWD, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
+require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", "people/baseInfo", "record/list", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, approvalList, peopleBaseInfo, recordList, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
 
-    
     //处理用户名
     var username = $.cookie("username");
 
@@ -50,20 +49,22 @@ require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", 
 
     //给退出这个按钮绑定事件实现退出登录的功能
     $("#btnLogout").on("click", function () {
-        var usid = $.cookie("USERID")
-        if(usid==undefined){
-            //清除cookie值
-        $.removeCookie("username");
-     
-        }
-        
-        //跳转到登录页
-        location.href = "login.html";
-        
+        API.logout(function (res) {
+            if (res.code == 0) {
+                var usid = $.cookie("USERID")
+                if (usid == undefined) {
+                    //清除cookie值
+                    $.removeCookie("username");
+                }
+                //跳转到登录页
+                location.href = "login.html";
+            }
+
+        })
     });
 
     // 搜索
-    $("#search").on("click",function(){
+    $("#search").on("click", function () {
 
     })
 
@@ -148,9 +149,9 @@ require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", 
         $("#sidebar-menu .side-menu li").removeClass("activate");
         $(this).addClass("activate")
     })
-    
-    
 
 
-    
+
+
+
 })
