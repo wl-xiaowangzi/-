@@ -6,7 +6,7 @@
 define(["jquery","artTemplate","common/api","text!tpls/peopleList.html","./baseInfo","./visitant","./add","./del","common/camera"],function($,art,API,peopleListTpl,baseInfo,visitant,peopleAdd,peopleDel,camera){
 
     return function(){
-            API.getPeopleList(0,12,function(res){
+            API.getPeopleList(0,60,function(res){
             
             //编译模板
             var peopleList=art.render(peopleListTpl,res);
@@ -20,14 +20,16 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleList.html","./baseI
                 peopleAdd();
             })
             .on("click",".btn-people-del",function(){
-                peopleDel();
+                //1、获取员工id
+                var ep_id=$(this).attr("ep_id");
+                // 传参
+                peopleDel(ep_id);
             })
             .on("click","#peopleVisitantList",function(){
                visitant();
             })
             .on("click",".btn-edit-course-baseinfo",function(){
-                //编辑课程基本信息
-
+                //编辑员工基本信息
                 //1、获取员工id
                 var ep_id=$(this).parent().attr("ep_id");
                 //将员工id传入信息模块

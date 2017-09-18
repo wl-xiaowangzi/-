@@ -558,6 +558,14 @@ nav .search button{
     justify-content: center;
     align-items: center;
 }
+.deviceTable{
+    background-color: white;
+    border: 1px solid #e6ebee;
+    color: #576780;
+}
+.deviceTable thead{
+    background-color: 
+}
 /*设备管理样式 end*/
 /*拍照界面样式 begin*/
 #picture{

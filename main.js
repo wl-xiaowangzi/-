@@ -39,7 +39,7 @@ require.config({
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", "people/baseInfo", "record/list", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, approvalList, peopleBaseInfo, recordList, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
+require(["jquery", "artTemplate", "users/list", "people/list","people/visitant", "approval/list", "approval/employeeList","approval/visitorList","people/baseInfo", "record/list", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList,visitant ,approvalList,approvalEmployeeList,approvalVisitorList, peopleBaseInfo, recordList, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
 
     //处理用户名
     var username = $.cookie("username");
@@ -116,16 +116,34 @@ require(["jquery", "artTemplate", "users/list", "people/list", "approval/list", 
 
         peopleList();
     });
+    $(".btnVisitantList").on("click", function () {
+        //人员管理
+        $(".module-container").empty();
+
+        visitant();
+    });
+    
 
 
     $("#btnApproval").on("click", function () {
-        //入库审批
+        //全部入库审批
         $(".module-container").empty();
 
         approvalList();
     });
+    $("#btnEmployeeApproval").on("click", function () {
+        //员工入库审批
+        $(".module-container").empty();
 
+        approvalEmployeeList();
+    });
+    $("#btnVisitorApproval").on("click", function () {
+        //访客入库审批
+        $(".module-container").empty();
 
+        approvalVisitorList();
+    });
+    
 
 
 

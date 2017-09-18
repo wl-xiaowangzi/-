@@ -29,7 +29,7 @@ define(["jquery"],function($){
         },
         // 入库审批列表
         getApprovalList:function(start,limit,callback){
-            $.get(api+"/system/uploadFile",{start,limit},function(res){
+            $.get(api+"/system/person/query",{start,limit},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -58,11 +58,11 @@ define(["jquery"],function($){
             })
         },
         // 员工审核
-        checkEmployee:function(isagree,checksuggestion,callback){
+        checkEmployee:function(ps_id,isagree,checksuggestion,callback){
             $.ajax({
                 url:api+"/system/employee/check",
                 type:"post",
-                data:{isagree:isagree,checksuggestion:checksuggestion},
+                data:{employeeid:ps_id,isagree:isagree,checksuggestion:checksuggestion},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -93,11 +93,11 @@ define(["jquery"],function($){
             })
         },
         // 访客审核
-        checkVisitor:function(isagree,checksuggestion,callback){
+        checkVisitor:function(ps_id,isagree,checksuggestion,callback){
             $.ajax({
                 url:api+"/system/visitor/check",
                 type:"post",
-                data:{isagree:isagree,checksuggestion:checksuggestion},
+                data:{visitorid:ps_id,isagree:isagree,checksuggestion:checksuggestion},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -110,7 +110,8 @@ define(["jquery"],function($){
         // 图片上传
         uploadImage:function(imagefile,callback){
             $.ajax({
-                url:api+"/system/uploadFile",
+                url:api+"/system/uploadFileBase64",
+                timeout:1000000,
                 type:"post",
                 data:{imagefile:imagefile},
                 success:function(res){
@@ -139,7 +140,7 @@ define(["jquery"],function($){
          * @param callback
          */
         getEmployeeBaseInfo:function(ep_id,callback){
-            $.get(api+"/system/employee/query",{employeeid:ep_id},function(res){
+            $.get(api+"/system/employee/queryDateil",{employeeid:ep_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;

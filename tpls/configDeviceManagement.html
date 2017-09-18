@@ -5,22 +5,22 @@
             <div class="btn-device-add btnAdd"></div>
         </div>
     </div>
-    <table class="table table-bordered table-hover text-center">
+    <table class="table table-hover text-center deviceTable">
         <thead>
             <th class="text-center">设备编码</th>
             <th class="text-center">设备名称</th>
-            <th class="text-center">状态</th>
+            <th class="text-center">设备状态</th>
             <th class="text-center">操作</th>
         </thead>
         <tbody>
             {{each data}}
             <tr>
                 <td class="">{{$value.deviceid}}</td>
-                <td class="">{{$value.name}}</td>
+                <td style="color:black;">{{$value.name}}</td>
                 {{if $value.status==1}}
                 <td class="">正常</td>
                 {{else}}
-                <td class="">故障</td>
+                <td style="color:red;">故障</td>
                 {{/if}}
                 <td class="disCenter" dv_id={{$value.deviceid}}>
                     <div class="btn-device-edit"></div>

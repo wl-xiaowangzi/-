@@ -19,19 +19,31 @@
             <div class="img-box">
                 {{if $value.persontype==1}}
                 <img src="imgs/employee-tip.png" alt="">
-                {{else}}
+                {{else if $value.persontype==2}}
                 <img src="imgs/visitor-tip.png" alt="">
+                {{else if $value.visitorid!=undefind}}
+                <img src="imgs/visitor-tip.png" alt="">
+                {{else}}
+                <img src="imgs/employee-tip.png" alt="">
                 {{/if}}
                 </div>
             <ul>
                 <li><img src="{{$value.faceimage}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
                 <li>|</li>
+                {{if $value.persontype==1}}
+                <li>{{$value.job}}</li>
+                {{else if $value.persontype==2}}
                 <li>{{$value.remark}}</li>
+                {{else if $value.visitorid!=undefind}}
+                <li>{{$value.remark}}</li>
+                {{else}}
+                <li>{{$value.job}}</li>
+                {{/if}}
                 <li>|</li>
-                <li>
+                <li ps_id={{$value.personid}}>
                     <button class="btn btn-default btn-show-approval">查看</button>
-                    <button class="btn btn-default btn-pass ml24">通过</button>
-                    <button class="btn btn-default btn-refuse ml24">驳回</button>
+                    <button class="btn btn-default btn-pass ml24 psss{{$value.persontype}}">通过</button>
+                    <button class="btn btn-default btn-refuse ml24 refuse{{$value.persontype}}">驳回</button>
                 </li>
             </ul>
         </div>

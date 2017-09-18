@@ -2,12 +2,12 @@
  * 访客列表
  * Created by land on 2017/9/2.
  */
-define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html","./visitantinfo","./visitantAdd"],function($,art,API,peopleVisitantListTpl,visitantinfo,visitantAdd){
+define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html","./visitantinfo","./visitantAdd","./visitantDel"],function($,art,API,peopleVisitantListTpl,visitantinfo,visitantAdd,visitantDel){
 
     return function(){
 
-        API.getVisitorList(0,12,function(res){
-
+        API.getVisitorList(0,60,function(res){
+            console.log(res)
              $(".module-container").empty();
           
             //编译模板
@@ -26,6 +26,10 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html",
             })
             .on("click","#visitantAdd",function(){
                 visitantAdd();
+            })
+            .on("click",".btn-visitant-del",function(){
+                var vs_id=$(this).attr("vs_id");
+                visitantDel(vs_id);
             })
             //把渲染好的元素放到页面中
             $(".module-container").append($peopleVisitantList);

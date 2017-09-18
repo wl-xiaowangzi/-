@@ -14,7 +14,11 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="name" value="{{name}}" />
+                            <input type="text" class="form-control" name="name" value="{{name}}" /><span class="asterisk">*</span>
+                            <input type="hidden" name="employeeid" value="{{employeeid}}">
+                            <input type="hidden" name="deviceids" value="{{deviceids}}">
+                            <input type="hidden" name="facedatas" value="{{facedatas}}">
+                            <input type="hidden" name="faceimages" value="{{faceimages}}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -32,21 +36,27 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">生日</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control birthday-join" name="birthday" value="{{birthday}}" placeholder="请选择">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">电话</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="phonenumber" value="{{phonenumber}}" placeholder="请输入..."/><span class="asterisk">*</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">职位</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="job" value="{{job}}" placeholder="请输入..."/>
+                            <input type="text" class="form-control" name="job" value="{{job}}" placeholder="请输入..."/><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">工号</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="employeenumber" value="{{employeenumber}}" placeholder="请输入..."/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">入库日期</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control date-join" data-date-format="yyyy-mm-dd" name="createtime" value="{{createtime}}">
+                            <input type="text" class="form-control" name="employeenumber" value="{{employeenumber}}" placeholder="请输入..."/><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">

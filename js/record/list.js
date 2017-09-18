@@ -10,7 +10,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate();
         var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate();
 
-            API.getRecordList(organizationid, starttime, endtime, function (res) {
+        API.getRecordList(organizationid, starttime, endtime, function (res) {
             console.log(res)
             //编译模板
             var recordList = art.render(recordListTpl, res);
@@ -21,14 +21,14 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
 
                 //     //查看详细信息
                 .on("click", ".btn-show", function () {
-                    var ps_id=$(this).parent().attr("ps_id");
+                    var ps_id = $(this).parent().attr("ps_id");
 
                     recordShow(ps_id);
                 })
 
                 //     //查看最近信息
                 .on("click", ".btn-edit", function () {
-                    var ps_id=$(this).parent().attr("ps_id");
+                    var ps_id = $(this).parent().attr("ps_id");
 
                     recordEdit(ps_id);
                 })
@@ -53,7 +53,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                     "firstDay": 1
                 };
                 //初始化显示当前时间
-                $('#daterange-btn span').html(moment().subtract(1, 'hours').format('YYYY-MM-DD H:mm') + ' - ' + moment().format('YYYY-MM-DD H:mm'));
+                $('#daterange-btn span').html(moment().subtract(1, 'months').format('YYYY-MM-DD H:mm') + ' - ' + moment().format('YYYY-MM-DD H:mm'));
                 //日期控件初始化
                 $('#daterange-btn').daterangepicker({
                         'locale': locale,
@@ -83,6 +83,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
 
             });
         })
+
 
 
     };

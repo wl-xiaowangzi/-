@@ -15,8 +15,9 @@
     </div>
     <div class="info-content">
         {{each data}}
-        <div class="info col-sm-2" style="background-image:url(imgs/visiting-tip.png)">
-            <div class="btn-people-del">×</div>
+        {{if $value.status==1}}
+        <div class="info col-sm-2" >
+            <div class="btn-people-del" ep_id={{$value.employeeid}}>×</div>
             <div class="info-box">
                 <div class="img-box"><img src="{{$value.faceimages[0]}}" alt=""></div>
                 <p>{{$value.name}}</p>
@@ -24,6 +25,8 @@
                 <h3 ep_id={{$value.employeeid}}><button class="btn btn-default btn-edit-course-baseinfo">编辑</button></h3>
             </div>
         </div>
+         {{else}}
+        {{/if}}
         {{/each}}
     </div>
 </div>

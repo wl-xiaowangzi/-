@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "datetimepicker", "datetimepickerLang"], function ($, art,cameraTpl, API) {
+define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "datetimepicker", "datetimepickerLang"], function ($, art, cameraTpl, API) {
     return function () {
         $("#modalcamera").remove();
 
@@ -17,11 +17,10 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "datetim
                 //将图片转换为Base64  
                 var base64Data = imgData.substr(22);
                 //将图片上传到服务器
-                console.log(imgData)
                 API.uploadImage(base64Data,function(res){
-                    
+
                     console.log(res)
-                    
+
                 })
             })
 
