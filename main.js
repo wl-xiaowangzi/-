@@ -113,13 +113,18 @@ require(["jquery", "artTemplate", "users/list", "people/list","people/visitant",
     $("#btnPeopleManager").on("click", function () {
         //人员管理
         $(".module-container").empty();
-
         peopleList();
     });
+    
+     $("#btnVisitorManager").on("click", function () {
+        //人员管理
+        $(".module-container").empty();
+        visitant();
+    });
+    
     $(".btnVisitantList").on("click", function () {
         //人员管理
         $(".module-container").empty();
-
         visitant();
     });
     

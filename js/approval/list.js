@@ -16,8 +16,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
             .on("click", ".btn-show-approval", function () {
                 //获取人员id
                 var ps_id=$(this).parent().attr("ps_id");
+                var ps_type=$(this).parent().attr("ps_type");
                 //加载审批信息的模块
-                showApproval(ps_id);
+                showApproval(ps_id,ps_type);
             })
              .on("click", ".pass1", function () {
                 //获取人员id

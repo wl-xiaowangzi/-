@@ -38,7 +38,15 @@ define(["jquery"],function($){
             })
         },
         // 查看审核详细信息
-        
+        gqueryApproval:function(ps_id,ps_type,callback){
+            $.get(api+"/system/person/query",{personid:ps_id,persontype:ps_type},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
         // 员工审批列表
         getPeopleApprovalList:function(start,limit,status,callback){
             $.get(api+"/system/employee/query",{start,limit,status},function(res){
@@ -200,6 +208,21 @@ define(["jquery"],function($){
                     return;
                 }
                 callback && callback(res);
+            })
+        },
+        // 访客添加
+        addVisitor:function(deviceids,name, sex, birthday, phonenumber,starttime,endtime, remark, faceimages, facedatas,callback){
+            $.ajax({
+                url:api+"/system/visitor/add",
+                type:"post",
+                data:{deviceids:deviceids,name:name,sex:sex,birthday:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,faceimages:faceimages,facedatas:facedatas},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
             })
         },
         /**

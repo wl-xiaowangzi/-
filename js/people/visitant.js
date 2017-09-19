@@ -2,7 +2,7 @@
  * 访客列表
  * Created by land on 2017/9/2.
  */
-define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html","./visitantinfo","./visitantAdd","./visitantDel"],function($,art,API,peopleVisitantListTpl,visitantinfo,visitantAdd,visitantDel){
+define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html","./visitantinfo","./visitantAdd","./visitantDel","common/visitorCamera"],function($,art,API,peopleVisitantListTpl,visitantinfo,visitantAdd,visitantDel,visitorCamera){
 
     return function(){
 
@@ -25,7 +25,7 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html",
                 visitantinfo(vs_id);
             })
             .on("click","#visitantAdd",function(){
-                visitantAdd();
+                visitorCamera();
             })
             .on("click",".btn-visitant-del",function(){
                 var vs_id=$(this).attr("vs_id");

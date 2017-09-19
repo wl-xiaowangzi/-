@@ -8,7 +8,6 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
         $("#modalPeopleAdd").remove();
 
         var $peopleAdd = $(peopleAddTpl);
-        console.log(faceimages,facedatas);
         var firstFaceimages=faceimages;
         var firstFacedatas=facedatas;
        
@@ -22,13 +21,11 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 var facedatas = "["+firstFacedatas+"]|"+"["+secondFacedatas+"]";
                 var birthday = $(".birthday-join").val();
                 var phonenumber = $(".phonenumber").val();
-                console.log(faceimages,facedatas);
                 var name = $(".name").val();
                 var job = $(".job").val();
                 var employeenumber = $(".employeenumber").val();
                 var sex = $(".sex").val();
                 API.addEmployee(deviceids,name, sex, birthday, phonenumber,employeenumber, job, faceimages, facedatas, function (res) {
-                    console.log(res)
                     $peopleAdd.modal("hide");
                     //成功的添加员工->刷新员工管理页面
                     $("#btnPeopleManager").trigger("click");

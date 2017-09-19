@@ -1,9 +1,9 @@
 /**
- * 员工添加首次相机
+ * 访客添加首次相机
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","people/add"], function ($, art, cameraTpl, API,addEmployee) {
+define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","people/visitantAdd"], function ($, art, cameraTpl, API,addVisitor) {
     return function () {
         $("#modalcamera").remove();
 
@@ -22,7 +22,7 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","people/a
                     var faceimages=res.data.faceimage;
                     var facedatas=res.data.facedata;
                     $camera.modal("hide")
-                    addEmployee(faceimages,facedatas)
+                    addVisitor(faceimages,facedatas)
                 })
             })
 
