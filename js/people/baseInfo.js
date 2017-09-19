@@ -12,13 +12,21 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleBaseInfo.html"],fun
             var peopleBaseInfo=art.render(peopleBaseInfoTpl,res.data);
            
             var $peopleBaseInfo=$(peopleBaseInfo);
-
+            
             $("#modalEditInfo").remove();
-
             $peopleBaseInfo.on("submit","form",function(){
-                var formData=$(this).serialize();
-                console.log(formData)
-                API.editEmployee(formData,function(res){
+                var deviceids=$(".btn-blue").parent().attr("deviceids").replace(/\[|]/g,'');
+                var employeeid=$(".btn-blue").parent().attr("employeeid");
+                var facedatas=$(".btn-blue").parent().attr("facedatas");
+                var faceimages=$(".btn-blue").parent().attr("faceimages");
+                var birthday=$(".birthday-join").val();
+                var phonenumber=$(".phonenumber").val();
+                var name=$(".name").val();
+                var job=$(".job").val();
+                var employeenumber=$(".employeenumber").val();
+                var sex=$(".sex").val();
+                console.log(deviceids)
+                API.editEmployee(ep_id,deviceids,name,sex,birthday,phonenumber,job,employeenumber,facedatas,faceimages,function(res){
                     console.log(res)
                     $peopleBaseInfo.modal("hide");
                     //数据更新成功-->跳转到员工列表

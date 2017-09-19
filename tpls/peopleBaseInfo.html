@@ -9,22 +9,21 @@
             <div class="modal-body">
                 <form class="form form-horizontal">
                     <div class="form-group" style="display:flex;justify-content:center;">
-                        <div class="img-box"><img src="{{faceimages[1]}}" alt="" width="80" height="80" style="border-radius:50%;"></div>
+                        <div class="img-box"><img src="{{faceimages[0]}}" alt="" width="80" height="80"></div>
+                        {{if faceimages[1]!=undefind}}
+                        <div class="img-box"><img src="{{faceimages[1]}}" alt="" width="80" height="80"></div>
+                        {{/if}}
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="name" value="{{name}}" /><span class="asterisk">*</span>
-                            <input type="hidden" name="employeeid" value="{{employeeid}}">
-                            <input type="hidden" name="deviceids" value="{{deviceids}}">
-                            <input type="hidden" name="facedatas" value="{{facedatas}}">
-                            <input type="hidden" name="faceimages" value="{{faceimages}}">
+                            <input type="text" class="form-control name" name="name" value="{{name}}" /><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">性别</label>
                         <div class="col-sm-7">
-                            <select name="sex" class="form-control">
+                            <select name="sex" class="form-control sex">
                                 {{if(sex==1)}}
                                     <option value="1" selected="selected">男</option>
                                     <option value="2">女</option>
@@ -44,23 +43,23 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">电话</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="phonenumber" value="{{phonenumber}}" placeholder="请输入..."/><span class="asterisk">*</span>
+                            <input type="text" class="form-control phonenumber" name="phonenumber" value="{{phonenumber}}" placeholder="请输入..."/><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">职位</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="job" value="{{job}}" placeholder="请输入..."/><span class="asterisk">*</span>
+                            <input type="text" class="form-control job" name="job" value="{{job}}" placeholder="请输入..."/><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">工号</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="employeenumber" value="{{employeenumber}}" placeholder="请输入..."/><span class="asterisk">*</span>
+                            <input type="text" class="form-control employeenumber" name="employeenumber" value="{{employeenumber}}" placeholder="请输入..."/><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-6 col-sm-offset-5">
+                        <div class="col-sm-6 col-sm-offset-5" deviceids={{deviceids}} facedatas={{facedatas}} faceimages={{faceimages}} employeeid={{employeeid}}>
                             <button type="submit" class="btn btn-blue" style="margin-left:35px;">保存</button>
                             <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
                         </div>

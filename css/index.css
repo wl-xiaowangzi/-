@@ -5,6 +5,7 @@ html,body{
 body{
     background-repeat: no-repeat;
     background-position: center center;
+    padding: 0!important;
 }
 .modal-content{
     border-radius: 0;
@@ -483,7 +484,7 @@ nav .search button{
 }
 .info .info-box p:nth-child(2){
     color: black;
-    margin-top: 12px;
+    margin-top: 8px;
     margin-bottom: 6px;
 }
 .info .info-box p:nth-child(3){
@@ -492,11 +493,12 @@ nav .search button{
     color: #bdc2ca;
 }
 .people-management .info-content .info .img-box{
-    width: 30%;
+    width: 50px;
+    height: 50px;
 }
 .people-management .info-content .info .img-box img{
     width: 100%;
-    border-radius: 50%;
+    height: 100%;
 }
 .btnAdd{
     position: fixed;

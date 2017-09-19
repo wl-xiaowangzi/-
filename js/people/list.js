@@ -3,21 +3,21 @@
  * Created by landon 2017/9/4.
  */
 
-define(["jquery","artTemplate","common/api","text!tpls/peopleList.html","./baseInfo","./visitant","./add","./del","common/camera"],function($,art,API,peopleListTpl,baseInfo,visitant,peopleAdd,peopleDel,camera){
+define(["jquery","artTemplate","common/api","text!tpls/peopleList.html","./baseInfo","./visitant","./add","./del","common/employeeCamera"],function($,art,API,peopleListTpl,baseInfo,visitant,peopleAdd,peopleDel,employeeCamera){
 
     return function(){
             API.getPeopleList(0,60,function(res){
             
             //编译模板
             var peopleList=art.render(peopleListTpl,res);
-
+            console.log(res)
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
             var $peopleList=$(peopleList);
 
             //实现人员管理事件
             $peopleList
             .on("click","#peopleAdd",function(){
-                peopleAdd();
+                employeeCamera();
             })
             .on("click",".btn-people-del",function(){
                 //1、获取员工id

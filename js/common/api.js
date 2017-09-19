@@ -18,8 +18,8 @@ define(["jquery"],function($){
             })
         },
         // 查看详细信息
-        showRecord:function(ps_id,organizationid,callback){
-            $.get(api+"/system/record/query",{personid:ps_id,organizationid:organizationid},function(res){
+        showRecord:function(ps_id,ps_type,organizationid,starttime,endtime,callback){
+            $.get(api+"/system/record/query",{personid:ps_id,persontype:ps_type,organizationid:organizationid,starttime:starttime,endtime:endtime},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -37,6 +37,8 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
+        // 查看审核详细信息
+        
         // 员工审批列表
         getPeopleApprovalList:function(start,limit,status,callback){
             $.get(api+"/system/employee/query",{start,limit,status},function(res){
@@ -134,6 +136,21 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
+        // 员工添加
+        addEmployee:function(deviceids,name,sex,brithday,phonenumber,employeenumber,job,faceimages,facedatas,callback){
+            $.ajax({
+                url:api+"/system/employee/add",
+                type:"post",
+                data:{deviceids:deviceids,name:name,sex:sex,brithday:brithday,phonenumber:phonenumber,employeenumber:employeenumber,job:job,faceimages:faceimages,facedatas:facedatas},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
           /**
          * 根据员工id获取员工基本信息
          * @param ep_id 员工id
@@ -149,11 +166,11 @@ define(["jquery"],function($){
             })
         },
         // 员工编辑
-        editEmployee:function(formData,callback){
+        editEmployee:function(ep_id,deviceids,name,sex,birthday,phonenumber,job,employeenumber,facedatas,faceimages,callback){
             $.ajax({
                 url:api+"/system/employee/update",
                 type:"post",
-                data:formData,
+                data:{employeeid:ep_id,deviceids:deviceids,name:name,sex:sex,birthday:birthday,phonenumber:phonenumber,job:job,employeenumber:employeenumber,facedatas:facedatas,faceimages:faceimages},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);

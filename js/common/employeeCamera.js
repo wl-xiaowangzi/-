@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "datetimepicker", "datetimepickerLang"], function ($, art, cameraTpl, API) {
+define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","people/add"], function ($, art, cameraTpl, API,addEmployee) {
     return function () {
         $("#modalcamera").remove();
 
@@ -18,11 +18,11 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "datetim
                 var base64Data = imgData.substr(22);
                 //将图片上传到服务器
                 API.uploadImage(base64Data,function(res){
-                    $("#btnPeopleManager").attr("faceimage",res.data.faceimage);
-                    $("#btnPeopleManager").attr("facedata",res.data.facedata);
-                    var faceimages = $("#btnPeopleManager").attr("faceimage");
-                    $(".secPIC").attr("src",faceimages);
-                    $camera.modal("hide");
+                    console.log(res)
+                    var faceimages=res.data.faceimage;
+                    var facedatas=res.data.facedata;
+                    $camera.modal("hide")
+                    addEmployee(faceimages,facedatas)
                 })
             })
 

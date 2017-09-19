@@ -1,7 +1,7 @@
 /**
- * 识别记录列表
+ * 员工识别记录列表
  * Author:land
- *   Date:2017/8/30
+ *   Date:2017/9/19
  */
 define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./show", "./edit", "moment", "datetimepicker", "datetimepickerLang", "daterangepicker"], function ($, art, recordListTpl, API, recordShow, recordEdit, moment) {
     return function () {
@@ -22,8 +22,8 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 //     //查看详细信息
                 .on("click", ".btn-show", function () {
                     var ps_id = $(this).parent().attr("ps_id");
-                    var ps_type = $(this).parent().attr("ps_type");
-                    recordShow(ps_id,ps_type);
+
+                    recordShow(ps_id);
                 })
 
                 //     //查看最近信息
