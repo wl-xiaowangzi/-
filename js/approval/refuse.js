@@ -4,22 +4,23 @@
  */
 define(["jquery", "artTemplate", "common/api", "text!tpls/approvalRefuse.html", "bootstrap"], function ($, art, API, approvalRefuseTpl) {
 
-    return function () {
+    return function (ep_id) {
 
         $("#modalApprovalRefuse").remove();
 
         var $approvalRefuse = $(approvalRefuseTpl);
-
-        $approvalRefuse.appendTo("body").modal();
+        var ep_id=ep_id;
+        console.log(ep_id)
         $approvalRefuse
-            .on("click", ".btn-refuse", function () {
+            .on("click", ".btn-blue", function () {
                 var checksuggestion = $(".checksuggestion").val();
-                API.checkEmployee(2, checksuggestion, function (res) {
+                console.log(checksuggestion)
+                API.checkEmployee(ep_id,2, checksuggestion, function (res) {
                     console.log(res);
                     $approvalRefuse.modal("hide");
                     $("#btnApproval").trigger("click");
                 })
             })
-
+             $approvalRefuse.appendTo("body").modal();
     }
 })

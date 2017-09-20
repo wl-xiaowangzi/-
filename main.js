@@ -62,7 +62,17 @@ require(["jquery", "artTemplate", "users/list", "people/list","people/visitant",
 
         })
     });
-
+    // 获取审批信息
+    setInterval(function(){
+        API.getMessageList(0,50,function(res){
+            console.log(res);
+            if(res.data.length==0){
+                $("#messages").removeClass("opacity1").addClass("opacity0")
+            }else{
+                $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
+            }
+        })
+    },10000)
     // 搜索
     $("#search").on("click", function () {
 
@@ -105,9 +115,7 @@ require(["jquery", "artTemplate", "users/list", "people/list","people/visitant",
     $("#btnRecord").on("click", function () {
         //识别记录
         $(".module-container").empty();
-
         recordList();
-
     })
 
     $("#btnPeopleManager").on("click", function () {
@@ -117,13 +125,13 @@ require(["jquery", "artTemplate", "users/list", "people/list","people/visitant",
     });
     
      $("#btnVisitorManager").on("click", function () {
-        //人员管理
+        //访客管理
         $(".module-container").empty();
         visitant();
     });
     
     $(".btnVisitantList").on("click", function () {
-        //人员管理
+        //访客管理
         $(".module-container").empty();
         visitant();
     });
@@ -150,8 +158,6 @@ require(["jquery", "artTemplate", "users/list", "people/list","people/visitant",
     });
     
 
-
-
     $("#btnUsersManager").on("click", function () {
         //用户管理
         $(".module-container").empty();
@@ -172,9 +178,4 @@ require(["jquery", "artTemplate", "users/list", "people/list","people/visitant",
         $("#sidebar-menu .side-menu li").removeClass("activate");
         $(this).addClass("activate")
     })
-
-
-
-
-
 })

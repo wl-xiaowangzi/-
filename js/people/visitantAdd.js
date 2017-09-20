@@ -13,12 +13,20 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
 
         $peopleVisitantAdd.on("click", "#start", function () {
             camera();
-            $peopleVisitantAdd.on("click", ".btn-blue", function () {
+        })
+        $peopleVisitantAdd.on("click", ".btn-blue", function () {
                 var deviceids=$.cookie("deviceids");
                 var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
                 var secondFacedatas = $("#btnPeopleManager").attr("facedata");
-                var faceimages=firstFaceimages+","+secondFaceimages;
-                var facedatas = "["+firstFacedatas+"]|"+"["+secondFacedatas+"]";
+                $("#btnPeopleManager").removeAttr("faceimage");
+                    $("#btnPeopleManager").removeAttr("facedata");
+                    if(secondFaceimages==undefined){
+                        faceimages=firstFaceimages;
+                        facedatas="["+firstFacedatas+"]";
+                    }else{
+                        var faceimages = firstFaceimages + "," + secondFaceimages;
+                        var facedatas = "["+firstFacedatas+"]|"+"["+secondFacedatas+"]";
+                    }
                 var birthday = $(".birthday-join").val();
                 var phonenumber = $(".phonenumber").val();
                 var name = $(".name").val();
@@ -26,6 +34,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
                 var starttime = $(".starttime").val();
                 var endtime = $(".endtime").val();
                 var sex = $(".sex").val();
+                console.log(birthday,phonenumber,starttime)
                 API.addVisitor(deviceids,name, sex, birthday, phonenumber,starttime,endtime, remark, faceimages, facedatas, function (res) {
                     $peopleVisitantAdd.modal("hide");
                     console.log(res)
@@ -34,21 +43,20 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
                 })
                 return false; //阻止同步提交表单
             });
-        })
 
         $peopleVisitantAdd.appendTo("body").modal();
         $(".mainPIC").attr("src",faceimages);
         //渲染入职日期-->日期控件
         $peopleVisitantAdd.find(".date-join").datetimepicker({
             weekStart: 1, //一周从哪一天开始。0（星期日）到6（星期六）
-            format: 'yyyy/mm/dd h:mm',
+            format: 'yyyy-mm-dd HH:mm:ss',
             autoclose: true,
             todayBtn: true,
             todayHighlight: true,
             language: "zh-CN"
         });
         $peopleVisitantAdd.find(".birthday-join").datetimepicker({
-            format: 'yyyy/mm/dd',
+            format: 'yyyy-mm-dd',
             weekStart: 1,
             autoclose: true,
             startView: 4,

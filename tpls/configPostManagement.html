@@ -1,48 +1,30 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        <table class="panel panel-default" style="background-color:#eee;">
-            <div class="panel-heading">
-                职务管理
-            </div>
-            <!--<div class="panel-body"></div>-->
-            <table class="table table-bordered table-hover" style="background-color:white;">
-                
-                <thead>
-                   可编辑职位
-                   
-                </thead>
-                <tbody>
-                    <!--{{each result.lessons}}-->
-                    <tr>
-                        <td>产品</td>
-                        <td>前台</td>
-                        <td>技术</td>
-                        <td>销售</td>
-                    </tr>
-                     <!--{{/each}}-->
-                     
-                </tbody>
-               
-            </table>
-            <table class="table table-bordered table-hover" style="background-color:white;">
-                
-                <thead>
-                    不可编辑职位
-                    
-                </thead>
-                <tbody>
-                    <!--{{each result.lessons}}-->
-                    <tr>
-                        <td>产品</td>
-                        <td>前台</td>
-                        <td>技术</td>
-                        <td>销售</td>
-                    </tr>
-                     <!--{{/each}}-->
-                     
-                </tbody>
-               
-            </table>
+<div class="device">
+    <div class="panel-heading">
+        <div class="title">
+            系统设置/职务管理
+            <div class="btn-device-add btnAdd"></div>
+        </div>
     </div>
-</div>
+    <div class="panel-body">
+        <table class="table table-hover text-center deviceTable">
+            <thead>
+                <th class="text-center">职位序号</th>
+                <th class="text-center">职位名称</th>
+                <th class="text-center">操作</th>
+            </thead>
+            <tbody>
+                {{each list}}
+                <tr>
+                    <td style="color:black;">{{$value.value}}</td>
+                    <td style="color:black;">{{$value.title}}</td>
+                    <td class="disCenter" para_key={{$value.parameterkey}}>
+                        <div class="btn-device-edit"></div>
+                        <div class="btn-device-del"></div>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
 </div>

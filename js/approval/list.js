@@ -23,8 +23,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
              .on("click", ".pass1", function () {
                 //获取人员id
                 var ps_id=$(this).parent().attr("ps_id");
+                var checksuggestion="审核通过";
                 //调用员工审查接口
-                 API.checkEmployee(ps_id,1,"审核通过", function (res) {
+                 API.checkEmployee(ps_id,1,checksuggestion, function (res) {
                     console.log(res);
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");
@@ -33,8 +34,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
             .on("click", ".pass2", function () {
                 //获取人员id
                 var ps_id=$(this).parent().attr("ps_id");
+                var checksuggestion="审核通过";
                 //加载访客审查接口
-                 API.checkVisitor(ps_id,1,"审核通过", function (res) {
+                 API.checkVisitor(ps_id,1,"checksuggestion", function (res) {
                     console.log(res);
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");

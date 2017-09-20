@@ -68,11 +68,11 @@ define(["jquery"],function($){
             })
         },
         // 员工审核
-        checkEmployee:function(ps_id,isagree,checksuggestion,callback){
+        checkEmployee:function(ep_id,isagree,checksuggestion,callback){
             $.ajax({
                 url:api+"/system/employee/check",
                 type:"post",
-                data:{employeeid:ps_id,isagree:isagree,checksuggestion:checksuggestion},
+                data:{employeeid:ep_id,isagree:isagree,checksuggestion:checksuggestion},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -125,10 +125,7 @@ define(["jquery"],function($){
                 type:"post",
                 data:{imagefile:imagefile},
                 success:function(res){
-                    if(res.code!=0){
-                    console.log(res.message);
-                    return;
-                }
+        
                 callback && callback(res);
                 }
             })
@@ -299,8 +296,8 @@ define(["jquery"],function($){
             })
         },
         // 系统参数列表
-         getParameterList:function(start,limit,callback){
-            $.get(api+"/system/parameter/query",{start,limit},function(res){
+         getParameterList:function(start,limit,para_key,callback){
+            $.get(api+"/system/systemparameter/queryDetail",{start:start,limit:limit,parameterkey:para_key},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -309,11 +306,11 @@ define(["jquery"],function($){
             })
         },
         // 系统参数增加
-         addParameter:function(formData,callback){
+         addParameter:function(para_key,itemparameterdata,description,callback){
             $.ajax({
-                url:api+"/system/parameter/add",
+                url:api+"/system/systemparameter/update",
                 type:"post",
-                data:formData,
+                data:{parameterkey:para_key,itemparameterdata:itemparameterdata,description:description},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -325,7 +322,7 @@ define(["jquery"],function($){
         },
         // 系统参数查询
         queryParameter:function(para_key,callback){
-            $.get(api+"/system/parameter/query",{parameterkey:para_key},function(res){
+            $.get(api+"/system/systemparameter/queryDetail",{parameterkey:para_key},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -336,7 +333,7 @@ define(["jquery"],function($){
         // 系统参数编辑
         editParameter:function(formData,callback){
             $.ajax({
-                url:api+"/system/parameter/update",
+                url:api+"/system/systemparameter/update",
                 type:"post",
                 data:formData,
                 success:function(res){
@@ -350,7 +347,7 @@ define(["jquery"],function($){
         },
         //系统参数删除
         delParameter:function(para_key,callback){
-            $.post(api+"/system/parameter/delete",{parameterkeys:para_key},function(res){
+            $.post(api+"/system/systemparameter/delete",{parameterkeys:para_key},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;

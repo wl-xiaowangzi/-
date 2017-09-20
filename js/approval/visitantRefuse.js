@@ -10,16 +10,17 @@ define(["jquery", "artTemplate", "common/api","text!tpls/approvalRefuse.html", "
 
         var $approvalRefuse = $(approvalRefuseTpl);
         var ps_id = ps_id;
-        $approvalRefuse.appendTo("body").modal();
+        console.log(ps_id)
         $approvalRefuse
-            .on("click", ".btn-refuse", function () {
+            .on("click", ".btn-blue", function () {
                 var checksuggestion = $(".checksuggestion").val();
+                console.log(checksuggestion)
                 API.checkVisitor(ps_id,2, checksuggestion, function (res) {
                     console.log(res);
                     $approvalRefuse.modal("hide");
                     $("#btnApproval").trigger("click");
                 })
             })
-
+             $approvalRefuse.appendTo("body").modal();
     }
 })

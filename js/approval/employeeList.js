@@ -15,15 +15,17 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         $approvalList
             .on("click", ".btn-show-approval", function () {
                 //获取人员id
-                var ps_id=$(this).parent().attr("ps_id");
+                var ep_id=$(this).attr("ep_id");
                 //加载审批信息的模块
-                showApproval(ps_id);
+                showApproval(ep_id);
             })
              .on("click", ".btn-pass", function () {
                 //获取人员id
-                var ps_id=$(this).parent().attr("ps_id");
+                var ep_id=$(this).attr("ep_id");
                 //调用员工审查接口
-                 API.checkEmployee(ps_id,1,"审核通过", function (res) {
+                console.log(ep_id)
+                var checksuggestion="审核通过";
+                API.checkEmployee(ep_id,1,checksuggestion, function (res) {
                     console.log(res);
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");
@@ -31,9 +33,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
             })
             .on("click", ".btn-refuse", function () {
                 //获取人员id
-                var ps_id=$(this).parent().attr("ps_id");
+                var ep_id=$(this).attr("ep_id");
                 //加载员工驳回模块
-                refuse(ps_id);
+                refuse(ep_id);
             })
             .on("click", "#btn-employee", function () {
                 $("#btnEmployeeApproval").trigger("click");

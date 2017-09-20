@@ -521,9 +521,7 @@ nav .search button{
     display: none;
 }
 /*修改密码样式 begin*/
-#changePWD{
 
-}
 #changePWD .eyes{
     display: block;
     height: 40px;
@@ -537,7 +535,19 @@ nav .search button{
 }
 /*修改密码样式 end*/
 /*设备管理样式 begin*/
-.lh54{line-height: 54px!important;}
+.device{
+    margin:13px 64px 0 64px;
+    background-color: #fff;
+    padding:0 10px;
+}
+.device .panel-heading{
+    height: 45px;
+}
+.device .title{
+    font-size: 18px;
+    color: #000;
+    margin-top: 8px;
+}
 .btn-device-edit{
     width: 20px;
     height: 20px;
@@ -566,11 +576,23 @@ nav .search button{
     color: #576780;
 }
 .deviceTable thead{
-    background-color: 
+    background-color: #f8fafb;
+    color: #576780;
+    font-size: 14px;
+}
+.deviceTable tr{
+    border-top: 1px solid #e6ebee;
+}
+.deviceTable tbody tr td{
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
+    border-top: 0px;
+    box-sizing: border-box;
 }
 /*设备管理样式 end*/
 /*拍照界面样式 begin*/
-#picture{
+.picture{
     width: 40px;
     height: 40px;
     margin-left: 300px;
