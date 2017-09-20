@@ -38,7 +38,7 @@ define(["jquery"],function($){
             })
         },
         // 查看审核详细信息
-        gqueryApproval:function(ps_id,ps_type,callback){
+        queryApproval:function(ps_id,ps_type,callback){
             $.get(api+"/system/person/query",{personid:ps_id,persontype:ps_type},function(res){
                 if(res.code!=0){
                     console.log(res.message);
@@ -267,12 +267,20 @@ define(["jquery"],function($){
         // 系统设置
         // 系统消息查询
         getMessageList:function(start,limit,callback){
-            $.get(api+"/system/message/query",{start,limit},function(res){
-                if(res.code!=0){
+            $.ajax({
+                url:api+"/system/message/query",
+                type:"get",
+                data:{start,limit},
+                beforeSend:function(){
+                    // console.log(1)
+                },
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     return;
                 }
                 callback && callback(res);
+                }
             })
         },
         // 系统消息详情

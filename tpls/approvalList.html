@@ -41,8 +41,8 @@
                 {{/if}}
                 <li>|</li>
                 <li ps_id={{$value.personid}} ps_type={{$value.persontype}}>
-                    <button class="btn btn-default btn-show-approval">查看</button>
-                    <button class="btn btn-default btn-pass ml24 psss{{$value.persontype}}" ep_id={{$value.employeeid}}>通过</button>
+                    <button class="btn btn-default btn-show-approval show{{$value.persontype}}">查看</button>
+                    <button class="btn btn-default btn-pass ml24 pass{{$value.persontype}}" ep_id={{$value.employeeid}}>通过</button>
                     <button class="btn btn-default btn-refuse ml24 refuse{{$value.persontype}}" ep_id={{$value.employeeid}}>驳回</button>
                 </li>
             </ul>

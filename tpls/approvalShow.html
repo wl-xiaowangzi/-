@@ -11,14 +11,7 @@
                     <div class="img-box"><img src="imgs/pic.jpg" alt="" width="100" height="100" style="border-radius:50%;margin-left:190px;margin-bottom:40px;"></div>
                     <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">姓名</span><span class="ml24 black">{{name}}</span></p>
                     <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">电话</span><span class="ml24 black">{{phonenumber}}</span></p>
-                    {{if persontype==1}}
-                    <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">职位</span><span class="ml24 black">{{job}}</span></p>
-                    <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">工号</span><span class="ml24 black">{{employeenumber}}</span></p>
-                    {{else if persontype==2}}
-                    <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">事由</span><span class="ml24 black">{{remark}}</span></p>
-                    <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">时间</span><span class="ml24 black">{{starttime}}</span></p>
-                    <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">至</span><span class="ml24 black">{{endtime}}</span></p>
-                    {{else if visitorid!=undefind}}
+                    {{if visitorid!=undefined}}
                     <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">事由</span><span class="ml24 black">{{remark}}</span></p>
                     <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">时间</span><span class="ml24 black">{{starttime}}</span></p>
                     <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">至</span><span class="ml24 black">{{endtime}}</span></p>
@@ -27,10 +20,10 @@
                     <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">工号</span><span class="ml24 black">{{employeenumber}}</span></p>
                     {{/if}}
                     
-                    <div class="form-group">
-                        <div class="col-sm-6 col-sm-offset-5">
-                            <button type="submit" class="btn btn-blue btn-pass" style="margin-left:35px;">通过</button>
-                            <button type="submit" class="btn btn-default btn-refuse">驳回</button>
+                    <div class="form-group" style="margin-top:30px;">
+                        <div class="col-sm-6 col-sm-offset-5" ep_id={{employeeid}}>
+                            <button type="submit" class="btn btn-blue btn-pass" style="margin-left:35px;" vs_id={{visitorid}}>通过</button>
+                            <button type="submit" class="btn btn-default btn-refuse" vs_id={{visitorid}}>驳回</button>
                         </div>
                     </div>
                 </form>
