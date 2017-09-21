@@ -8,7 +8,13 @@
             </div>
             <div class="modal-body">
                 <form class="form form-horizontal">
-                    <div class="img-box"><img src="imgs/pic.jpg" alt="" width="100" height="100" style="border-radius:50%;margin-left:190px;margin-bottom:40px;"></div>
+                    <div class="img-box" style="display:flex;justify-content:center;">
+                        <img src="{{faceimages[0]}}" alt="" width="100" height="100">
+                        {{if faceimages[1]!=undefined}}
+                        <img src="{{faceimages[0]}}" alt="" width="100" height="100"> 
+                        {{/if}}
+                    </div>
+
                     <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">姓名</span><span class="ml24 black">{{name}}</span></p>
                     <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">电话</span><span class="ml24 black">{{phonenumber}}</span></p>
                     {{if visitorid!=undefined}}
@@ -19,7 +25,7 @@
                     <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">职位</span><span class="ml24 black">{{job}}</span></p>
                     <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">工号</span><span class="ml24 black">{{employeenumber}}</span></p>
                     {{/if}}
-                    
+
                     <div class="form-group" style="margin-top:30px;">
                         <div class="col-sm-6 col-sm-offset-5" ep_id={{employeeid}}>
                             <button type="submit" class="btn btn-blue btn-pass" style="margin-left:35px;" vs_id={{visitorid}}>通过</button>
@@ -28,6 +34,8 @@
                     </div>
                 </form>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>

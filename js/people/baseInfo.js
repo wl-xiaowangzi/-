@@ -15,10 +15,16 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleBaseInfo.html"],fun
             
             $("#modalEditInfo").remove();
             $peopleBaseInfo.on("submit","form",function(){
-                var deviceids=$(".btn-blue").parent().attr("deviceids").replace(/\[|]/g,'');
+                var deviceids=$(".btn-blue").parent().attr("deviceids").replace(/\[|]/g,'').replace(/\"|"/g,'');
                 var employeeid=$(".btn-blue").parent().attr("employeeid");
-                var facedatas=$(".btn-blue").parent().attr("facedatas");
-                var faceimages=$(".btn-blue").parent().attr("faceimages");
+                var facedatas=$(".btn-blue").parent().attr("firstFacedatas");
+                var faceimages=$(".btn-blue").parent().attr("firstFaceimages");
+                var secondFacedatas=$(".btn-blue").attr("secondFacedatas");
+                var secondFaceimages=$(".btn-blue").attr("secondFaceimages");
+                 if(secondFaceimages!=undefined){
+                     facedatas=facedatas+"|"+secondFacedatas;
+                     faceimages=faceimages+","+secondFaceimages;
+                 }
                 var birthday=$(".birthday-join").val();
                 var phonenumber=$(".phonenumber").val();
                 var name=$(".name").val();
@@ -41,7 +47,15 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleBaseInfo.html"],fun
 
 
         
-
+            $peopleBaseInfo.find(".birthday-join").datetimepicker({
+            format: 'yyyy-mm-dd',
+            weekStart: 1,
+            autoclose: true,
+            startView: 4,
+            minView: 2,
+            forceParse: false,
+            language: 'zh-CN'
+        });
          //渲染入库日期-->日期控件
             $peopleBaseInfo.find(".date-join").datetimepicker({
                 weekStart:1,//一周从哪一天开始。0（星期日）到6（星期六）

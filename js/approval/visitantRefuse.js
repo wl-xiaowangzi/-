@@ -20,6 +20,7 @@ define(["jquery", "artTemplate", "common/api","text!tpls/approvalRefuse.html", "
                     $approvalRefuse.modal("hide");
                     $("#btnApproval").trigger("click");
                 })
+                return false;//阻止表单的自动提交
             })
              $approvalRefuse.appendTo("body").modal();
     }

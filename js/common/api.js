@@ -146,7 +146,7 @@ define(["jquery"],function($){
             $.ajax({
                 url:api+"/system/employee/add",
                 type:"post",
-                data:{deviceids:deviceids,name:name,sex:sex,brithday:brithday,phonenumber:phonenumber,employeenumber:employeenumber,job:job,faceimages:faceimages,facedatas:facedatas},
+                data:{deviceids:deviceids,name:name,sex:sex,birthtime:brithday,phonenumber:phonenumber,employeenumber:employeenumber,job:job,faceimages:faceimages,facedatas:facedatas},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -175,7 +175,7 @@ define(["jquery"],function($){
             $.ajax({
                 url:api+"/system/employee/update",
                 type:"post",
-                data:{employeeid:ep_id,deviceids:deviceids,name:name,sex:sex,birthday:birthday,phonenumber:phonenumber,job:job,employeenumber:employeenumber,facedatas:facedatas,faceimages:faceimages},
+                data:{employeeid:ep_id,deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,job:job,employeenumber:employeenumber,facedatas:facedatas,faceimages:faceimages},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -212,7 +212,7 @@ define(["jquery"],function($){
             $.ajax({
                 url:api+"/system/visitor/add",
                 type:"post",
-                data:{deviceids:deviceids,name:name,sex:sex,birthday:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,faceimages:faceimages,facedatas:facedatas},
+                data:{deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,faceimages:faceimages,facedatas:facedatas},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -228,7 +228,7 @@ define(["jquery"],function($){
          * @param callback
          */
         getVisitorBaseInfo:function(vs_id,callback){
-            $.get(api+"/system/visitor/query",{visitorid:vs_id},function(res){
+            $.get(api+"/system/visitor/queryDateil",{visitorid:vs_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -237,11 +237,11 @@ define(["jquery"],function($){
             })
         },
         // 访客编辑
-        editVisitor:function(formData,callback){
+        editVisitor:function(vs_id,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,callback){
             $.ajax({
                 url:api+"/system/visitor/update",
                 type:"post",
-                data:formData,
+                data:{visitorid:vs_id,deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,facedatas:facedatas,faceimages:faceimages},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);

@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">生日</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control birthday-join" name="birthday" value="{{birthday}}" placeholder="请选择">
+                            <input type="text" class="form-control birthday-join" name="birthday" value="{{birthtime}}" placeholder="请选择">
                         </div>
                     </div>
                     <div class="form-group">
@@ -59,8 +59,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-6 col-sm-offset-5" deviceids={{deviceids}} facedatas={{facedatas}} faceimages={{faceimages}} employeeid={{employeeid}}>
-                            <button type="submit" class="btn btn-blue" style="margin-left:35px;">保存</button>
+                        <div class="col-sm-6 col-sm-offset-5" deviceids={{deviceids}} firstFacedatas={{facedatas[0]}} firstFaceimages={{faceimages[0]}}  employeeid={{employeeid}}>
+                            <button type="submit" class="btn btn-blue" style="margin-left:35px;" secondFacedatas={{facedatas[1]}} secondFaceimages={{faceimages[1]}}>保存</button>
                             <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
                         </div>
                     </div>

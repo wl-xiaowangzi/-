@@ -8,7 +8,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         var organizationid = $.cookie("organizationid");
         var time = new Date();
         var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate();
-        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate();
+        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + (time.getDate()+1);
 
         API.getRecordList(organizationid, starttime, endtime, function (res) {
             console.log(res)

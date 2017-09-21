@@ -9,15 +9,52 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html"]
         //把渲染好的元素放到页面中
         //根据访客id获取访客基本信息
         API.getVisitorBaseInfo(vs_id,function(res){
-
-            var peopleVisitantInfo=art.render(peopleVisitantInfoTpl,res.data[0]);
+            console.log(res)
+            var peopleVisitantInfo=art.render(peopleVisitantInfoTpl,res.data);
 
             var $peopleVisitantInfo=$(peopleVisitantInfo);
 
             $("#modalVisitantEditInfo").remove();
+            $peopleVisitantInfo.on("submit","form",function(){
+                var deviceids=$(".btn-blue").parent().attr("deviceids").replace(/\[|]/g,'').replace(/\"|"/g,'');
+                var facedatas=$(".btn-blue").parent().attr("firstFacedatas");
+                var faceimages=$(".btn-blue").parent().attr("firstFaceimages");
+                var secondFacedatas=$(".btn-blue").attr("secondFacedatas");
+                var secondFaceimages=$(".btn-blue").attr("secondFaceimages");
+                 if(secondFaceimages!=undefined){
+                     facedatas=facedatas+"|"+secondFacedatas;
+                     faceimages=faceimages+","+secondFaceimages;
+                 }
+                var birthday=$(".birthday-join").val();
+                var phonenumber=$(".phonenumber").val();
+                var name=$(".name").val();
+                var remark = $(".remark").val();
+                var starttime = $(".starttime").val();
+                var endtime = $(".endtime").val();
+                var sex=$(".sex").val();
+                console.log(vs_id,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages)
+                API.editVisitor(vs_id,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,function(res){
+                    console.log(res)
+                    $peopleVisitantInfo.modal("hide");
+                    //数据更新成功-->跳转到员工列表
+                    $("#btnVisitorManager").trigger("click");
+
+                })
+
+                return false;
+            })
+
             $peopleVisitantInfo.appendTo("body").modal();
 
-        
+            $peopleVisitantInfo.find(".birthday-join").datetimepicker({
+            format: 'yyyy-mm-dd',
+            weekStart: 1,
+            autoclose: true,
+            startView: 4,
+            minView: 2,
+            forceParse: false,
+            language: 'zh-CN'
+            });
             //渲染入库日期-->日期控件
             $peopleVisitantInfo.find(".date-join").datetimepicker({
                 weekStart:1,//一周从哪一天开始。0（星期日）到6（星期六）
