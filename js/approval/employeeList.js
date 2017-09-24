@@ -5,7 +5,12 @@
  */
 define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./show", "./refuse"], function ($, art, API, approvalListTpl, showApproval, refuse) {
     return function () {
-        API.getPeopleApprovalList(0, 12, 1, function (res) {
+        var start = 0;
+        var limit = 30;
+        var keyword = $("#btnSearchWords").attr("keyword");
+        $("#btnSearchWords").removeAttr("keyword");
+
+        API.getPeopleApprovalList(start,limit, 1,keyword, function (res) {
             console.log(res)
         //编译模板
         var approvalList=art.render(approvalListTpl,res);
@@ -46,7 +51,11 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
             .on("click", ".btn-all", function () {
                 $("#btnApproval").trigger("click");
             })
-            
+            .on("click",".btn-search",function(){
+                    var keyword = $(".search-word").val();
+                    $("#btnSearchWords").attr("keyword",keyword);
+                    $("#btnEmployeeApproval").trigger("click");//刷新
+            })
 
         //把渲染好的元素放到页面中
         $(".module-container").append($approvalList);

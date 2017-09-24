@@ -8,7 +8,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", ".
     return function (ps_id) {
         console.log(ps_id)
         //获取对应的审批信息
-        API.getVisitorBaseInfo(ps_id, function (res) {
+        API.getVisitorCheckInfo(ps_id, function (res) {
             console.log(res)
             //删除原来的模态框
             $("#modalShowInfo").remove();

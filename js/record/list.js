@@ -7,10 +7,20 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
     return function () {
         var organizationid = $.cookie("organizationid");
         var time = new Date();
-        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate();
-        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + (time.getDate()+1);
+        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes();
+        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes();
+        var starttime = $("#btnStarttime").attr("starttime") || starttime;
+        var endtime = $("#btnEndtime").attr("endtime") || endtime;
+        var similarity = $("#btnSimilarity").attr("similarity") || 0.75;
+        $("#btnStarttime").removeAttr("starttime");
+        $("#btnEndtime").removeAttr("endtime");
+        $("#btnSimilarity").removeAttr("similarity");
 
-        API.getRecordList(organizationid, starttime, endtime, function (res) {
+        var start = 0;
+        var limit = 30;
+
+        console.log(starttime, endtime, similarity)
+        API.getRecordList(organizationid, starttime, endtime, start, limit, function (res) {
             console.log(res)
             //编译模板
             var recordList = art.render(recordListTpl, res);
@@ -23,7 +33,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 .on("click", ".btn-show", function () {
                     var ps_id = $(this).parent().attr("ps_id");
                     var ps_type = $(this).parent().attr("ps_type");
-                    recordShow(ps_id,ps_type);
+                    recordShow(ps_id, ps_type);
                 })
 
                 //     //查看最近信息
@@ -32,10 +42,16 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
 
                     recordEdit(ps_id);
                 })
+                .on("click", ".similarity li a", function () {
+                    var similarity = $(this).attr("similarity");
+                    console.log(similarity)
+                    $("#btnSimilarity").attr("similarity", similarity);
+                    $("#btnRecord").trigger("click");
+                })
 
             $(".module-container").append($recordList);
 
-
+            $(".slm").html(similarity * 100 + "%")
 
             function init() {
                 //定义locale汉化插件
@@ -53,7 +69,9 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                     "firstDay": 1
                 };
                 //初始化显示当前时间
-                $('#daterange-btn span').html(moment().subtract(1, 'months').format('YYYY-MM-DD H:mm') + ' - ' + moment().format('YYYY-MM-DD H:mm'));
+                $('#daterange-btn span').html(starttime + ' - ' + endtime);
+
+                // $('#daterange-btn span').html(moment().subtract(1, 'months').format('YYYY-MM-DD H:mm') + ' - ' + moment().format('YYYY-MM-DD H:mm'));
                 //日期控件初始化
                 $('#daterange-btn').daterangepicker({
                         'locale': locale,
@@ -74,17 +92,26 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                         endDate: moment()
                     },
                     function (start, end) {
+
                         $('#daterange-btn span').html(start.format('YYYY-MM-DD H:mm') + ' - ' + end.format('YYYY-MM-DD H:mm'));
+                        var starttime = start.format('YYYY-MM-DD H:mm');
+                        var endtime = end.format('YYYY-MM-DD H:mm');
+                        $("#btnStarttime").attr("starttime", starttime);
+                        $("#btnEndtime").attr("endtime", endtime);
                     }
                 );
             };
+
             $(document).ready(function () {
                 init();
-
             });
+            $(".daterangepicker .ranges li").on("click", function () {
+                $("#btnRecord").trigger("click");
+            })
+            $(".applyBtn").on("click", function () {
+                $("#btnRecord").trigger("click");
+            })
         })
-
-
 
     };
 });

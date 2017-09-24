@@ -19,7 +19,10 @@
                             var context = canvas.getContext("2d")
                             if (navigator.mediaDevices.getUserMedia) { // 标准的API
                                 var p = navigator.mediaDevices.getUserMedia({
-                                    video: true
+                                    video: {
+                                        width:640,
+                                        height:480
+                                    }
                                 });
                                 p.then(function (mediaStream) {
                                     var video = document.querySelector('video');

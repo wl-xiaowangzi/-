@@ -5,8 +5,11 @@
 define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.html", "./deviceAdd", "./deviceEdit", "./deviceDel"], function ($, art,API, configDeviceManagementTpl, deviceAdd, deviceEdit, deviceDel) {
 
     return function () {
-
-        API.getDeviceList(0,12,function(res){
+        var start = 0;
+        var limit = 30;
+        var keyword = $("#btnSearchWords").attr("keyword");
+        $("#btnSearchWords").removeAttr("keyword");
+        API.getDeviceList(start,limit,keyword,function(res){
         
             //编译模板
             var configDeviceManagement = art.render(configDeviceManagementTpl, res);
@@ -28,6 +31,11 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
                     var dv_id = $(this).parent().attr("dv_id");
                     console.log(dv_id)
                     deviceDel(dv_id);
+                })
+                .on("click",".btn-search",function(){
+                    var keyword = $(".search-word").val();
+                    $("#btnSearchWords").attr("keyword",keyword);
+                    $("#btnDeviceManagement").trigger("click");//刷新
                 })
 
             //把渲染好的元素放到页面中

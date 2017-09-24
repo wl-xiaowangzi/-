@@ -6,7 +6,11 @@
 define(["jquery","artTemplate","common/api","text!tpls/peopleList.html","./baseInfo","./visitant","./add","./del","common/employeeCamera"],function($,art,API,peopleListTpl,baseInfo,visitant,peopleAdd,peopleDel,employeeCamera){
 
     return function(){
-            API.getPeopleList(0,60,function(res){
+        var start = 0;
+        var limit = 30;
+        var keyword = $("#btnSearchWords").attr("keyword");
+        $("#btnSearchWords").removeAttr("keyword");
+            API.getPeopleList(start,limit,keyword,function(res){
             
             //编译模板
             var peopleList=art.render(peopleListTpl,res);
@@ -35,7 +39,11 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleList.html","./baseI
                 //将员工id传入信息模块
                 baseInfo(ep_id)
             })
-            
+            .on("click",".btn-search",function(){
+                    var keyword = $(".search-word").val();
+                    $("#btnSearchWords").attr("keyword",keyword);
+                    $("#btnPeopleManager").trigger("click");//刷新
+                })
             //把渲染好的元素放到页面中
             $(".module-container").append($peopleList);
         })

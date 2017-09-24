@@ -217,9 +217,9 @@ body{
 #sidebar-menu .side-menu #btnPeopleManager .img-icon{
     background-image: url(../imgs/peopleManager-icon-0.png);
 }
-#sidebar-menu .side-menu #btnUsersManager .img-icon{
+/*#sidebar-menu .side-menu #btnUsersManager .img-icon{
     background-image: url(../imgs/userManager-icon-0.png);
-}
+}*/
 #sidebar-menu .side-menu li.activate{
     text-shadow: rgba(0,0,0,.25) 0 -1px 0;
     background: linear-gradient(#334556,#2C4257),#2A3F54;
@@ -263,16 +263,17 @@ nav{
     padding-left: 64px;
     padding-right:160px; 
 }
- nav .navbar-nav{
-    
- }
- nav .search{
+
+.search{
     margin-top: 8px;
     width: 20vw;
-    position: relative;
+    position: fixed;
     min-width: 250px;
+    top: 20px;
+    left: 214px;
+    z-index: 8;
 }
-nav .search input{
+.search input{
     width: 20vw;
     background: #f8fafb;
     color: #9fafbc;
@@ -282,7 +283,7 @@ nav .search input{
     height: 40px;
     min-width: 250px;
 }
-nav .search button{
+.search button{
     position: absolute;
     right: 0;
     top: 1px;
@@ -292,6 +293,11 @@ nav .search button{
     height: 38px;
     width: 40px;
     z-index: 999;
+}
+.navbar-nav{
+    position: absolute;
+    top: 20px;
+    right: 150px;
 }
 .navbar-nav .open .dropdown-menu{
     width: 60px;

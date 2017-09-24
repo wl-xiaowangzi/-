@@ -5,8 +5,12 @@
 define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html","./visitantinfo","./visitantAdd","./visitantDel","common/visitorCamera"],function($,art,API,peopleVisitantListTpl,visitantinfo,visitantAdd,visitantDel,visitorCamera){
 
     return function(){
+        var start = 0;
+        var limit = 30;
+        var keyword = $("#btnSearchWords").attr("keyword");
+        $("#btnSearchWords").removeAttr("keyword");
 
-        API.getVisitorList(0,60,function(res){
+        API.getVisitorList(start,limit,keyword,function(res){
             console.log(res)
              $(".module-container").empty();
           
@@ -31,6 +35,11 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html",
                 var vs_id=$(this).attr("vs_id");
                 visitantDel(vs_id);
             })
+            .on("click",".btn-search",function(){
+                    var keyword = $(".search-word").val();
+                    $("#btnSearchWords").attr("keyword",keyword);
+                    $("#btnVisitorManager").trigger("click");//刷新
+                })
             //把渲染好的元素放到页面中
             $(".module-container").append($peopleVisitantList);
         })

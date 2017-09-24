@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery","artTemplate","common/api","text!tpls/peopleBaseInfo.html"],function ($,art,API,peopleBaseInfoTpl) {
+define(["jquery","artTemplate","common/api","text!tpls/peopleBaseInfo.html","common/editCamera1","common/editCamera2"],function ($,art,API,peopleBaseInfoTpl,editCamera1,editCamera2) {
 
     return function(ep_id){
         //根据员工id获取员工基本信息
@@ -14,6 +14,13 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleBaseInfo.html"],fun
             var $peopleBaseInfo=$(peopleBaseInfo);
             
             $("#modalEditInfo").remove();
+            $peopleBaseInfo.on("click", ".picture1", function () {
+                editCamera1();
+            });
+            $peopleBaseInfo.on("click", ".picture2", function () {
+                editCamera2();
+            });
+            
             $peopleBaseInfo.on("submit","form",function(){
                 var deviceids=$(".btn-blue").parent().attr("deviceids").replace(/\[|]/g,'').replace(/\"|"/g,'');
                 var employeeid=$(".btn-blue").parent().attr("employeeid");

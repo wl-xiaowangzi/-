@@ -8,8 +8,8 @@ define(["jquery"],function($){
     var api="http://127.0.0.1:80/facerecognition";
     return {
         // 识别记录
-        getRecordList:function(organizationid,starttime,endtime,callback){
-            $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime},function(res){
+        getRecordList:function(organizationid,starttime,endtime,start,limit,callback){
+            $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -28,8 +28,8 @@ define(["jquery"],function($){
             })
         },
         // 入库审批列表
-        getApprovalList:function(start,limit,callback){
-            $.get(api+"/system/person/query",{start,limit},function(res){
+        getApprovalList:function(start,limit,keyword,callback){
+            $.get(api+"/system/person/query",{start,limit,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -48,8 +48,8 @@ define(["jquery"],function($){
             })
         },
         // 员工审批列表
-        getPeopleApprovalList:function(start,limit,status,callback){
-            $.get(api+"/system/employee/query",{start,limit,status},function(res){
+        getPeopleApprovalList:function(start,limit,status,keyword,callback){
+            $.get(api+"/system/employee/query",{start,limit,status,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -83,8 +83,8 @@ define(["jquery"],function($){
             })
         },
         // 访客审批列表
-        getVisitorApprovalList:function(start,limit,status,callback){
-            $.get(api+"/system/visitor/query",{start,limit,status},function(res){
+        getVisitorApprovalList:function(start,limit,status,keyword,callback){
+            $.get(api+"/system/visitor/query",{start,limit,status,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -121,7 +121,7 @@ define(["jquery"],function($){
         uploadImage:function(imagefile,callback){
             $.ajax({
                 url:api+"/system/uploadFileBase64",
-                timeout:1000000,
+                timeout:100000,
                 type:"post",
                 data:{imagefile:imagefile},
                 success:function(res){
@@ -132,8 +132,8 @@ define(["jquery"],function($){
         },
 
         // 员工列表
-        getPeopleList:function(start,limit,callback){
-            $.get(api+"/system/employee/query",{start,limit},function(res){
+        getPeopleList:function(start,limit,keyword,callback){
+            $.get(api+"/system/employee/query",{start,limit,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -198,8 +198,8 @@ define(["jquery"],function($){
             })
         },
         // 访客列表
-        getVisitorList:function(start,limit,callback){
-            $.get(api+"/system/visitor/query",{start,limit},function(res){
+        getVisitorList:function(start,limit,keyword,callback){
+            $.get(api+"/system/visitor/query",{start,limit,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -366,8 +366,8 @@ define(["jquery"],function($){
             })
         },
         // 设备列表
-        getDeviceList:function(start,limit,callback){
-            $.get(api+"/system/device/query",{start,limit},function(res){
+        getDeviceList:function(start,limit,keyword,callback){
+            $.get(api+"/system/device/query",{start,limit,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -429,8 +429,8 @@ define(["jquery"],function($){
         },
         // 用户信息
         // 用户列表
-        getUsersList:function(start,limit,callback){
-            $.get(api+"/system/user/query",{start,limit},function(res){
+        getUsersList:function(start,limit,keyword,callback){
+            $.get(api+"/system/user/query",{start,limit,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
