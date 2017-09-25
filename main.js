@@ -63,15 +63,15 @@ require(["jquery", "artTemplate", "users/list", "people/list","people/visitant",
         })
     });
     // 获取审批信息
-    // setInterval(function(){
-    //     API.getMessageList(0,50,function(res){
-    //         if(res.data.length==0){
-    //             $("#messages").removeClass("opacity1").addClass("opacity0")
-    //         }else{
-    //             $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
-    //         }
-    //     })
-    // },1000)
+    setInterval(function(){
+        API.getMessageList(0,50,function(res){
+            if(res.data.length==0){
+                $("#messages").removeClass("opacity1").addClass("opacity0")
+            }else{
+                $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
+            }
+        })
+    },30000)
     // 搜索
     $("#search").on("click", function () {
 
