@@ -1,20 +1,26 @@
 /*公共样式 begin*/
-html,body{
+
+html,
+body {
     height: 100%;
 }
-body{
+
+body {
     background-repeat: no-repeat;
     background-position: center center;
     padding: 0!important;
 }
-.modal-content{
+
+.modal-content {
     border-radius: 0;
     width: 568px;
 }
-.modal-header{
-    border:none;
+
+.modal-header {
+    border: none;
 }
-.modal-header button span{
+
+.modal-header button span {
     display: block;
     width: 30px;
     height: 30px;
@@ -25,68 +31,91 @@ body{
     top: 0;
     right: 0;
 }
-.modal-title{
+
+.modal-title {
     font-size: 18px;
     color: #576780;
 }
-.form-group{
+
+.form-group {
     margin-bottom: 15px;
 }
-.form-control{
+
+.form-control {
     background-color: #f8fafb;
     height: 40px;
     border: 1px solid #f1f1f1;
     box-shadow: none;
 }
-button{
+
+button {
     width: 80px;
     height: 32px;
     font-size: 13px;
 }
-.btn:active,.btn:focus{
-    color:white!important;
-    background-color:#296ee1!important;  
+
+.btn:active,
+.btn:focus {
+    color: white!important;
+    background-color: #296ee1!important;
 }
-.mt10{margin-top: 10px;}
-.mt24{margin-top: 24px;}
-.btn{
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt24 {
+    margin-top: 24px;
+}
+
+.btn {
     border-radius: 20px;
 }
-.btn-blue{
+
+.btn-blue {
     background-color: #357aed;
     color: white;
 }
-.btn-blue:hover{
+
+.btn-blue:hover {
     color: white;
 }
-.btn-refuse:hover{
+
+.btn-refuse:hover {
     background-color: #ed354b!important;
     color: white!important;
-    border:none;
+    border: none;
 }
-.btn-refuse:active,.btn-refuse:focus{
-    color:white!important;
-    background-color:#ed354b!important;  
+
+.btn-refuse:active,
+.btn-refuse:focus {
+    color: white!important;
+    background-color: #ed354b!important;
 }
-.btn-default:hover{
+
+.btn-default:hover {
     background-color: #357aed;
     color: white;
-    border:none;
+    border: none;
 }
-.dropdown-menu li a{
+
+.dropdown-menu li a {
     display: flex;
     justify-content: center;
 }
-.dropdown-menu>li>a:hover{
+
+.dropdown-menu>li>a:hover {
     color: #357aed;
 }
+
 .user-profile img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
     margin-right: 10px;
 }
-#messages{
+
+#messages {
     display: block;
     width: 20px;
     height: 20px;
@@ -99,27 +128,39 @@ button{
     top: 20px;
     left: 90px;
 }
-.config-icon{
+
+.config-icon {
     display: block;
     width: 22px;
     height: 36px;
     background: url(../imgs/config-icon.png) no-repeat center 9px;
 }
-.dropdown-menu>li>a{
+
+.dropdown-menu>li>a {
     padding: 7px 20px;
 }
-.search-icon{
+
+.search-icon {
     background: url(../imgs/search-icon.png) no-repeat center center!important;
 }
-.eye-close{
+
+.eye-close {
     background: url(../imgs/eyes-close.png) no-repeat center center!important;
 }
-.eye-open{
+
+.eye-open {
     background: url(../imgs/eyes-open.png) no-repeat center center!important;
 }
-.caret{margin-left: 8px!important;}
-p{margin: 0;}
-.asterisk{
+
+.caret {
+    margin-left: 8px!important;
+}
+
+p {
+    margin: 0;
+}
+
+.asterisk {
     display: block;
     width: 40px;
     height: 40px;
@@ -131,6 +172,7 @@ p{margin: 0;}
     top: 3px;
     right: -24px;
 }
+
 .form-horizontal .cfmPWD {
     white-space: nowrap;
     background-color: #fff8f4;
@@ -142,24 +184,39 @@ p{margin: 0;}
     color: #e57b89;
     margin-bottom: 10px;
 }
-.datetimepicker {
-    top:200px!important;
-}
-.opacity0{
+
+.opacity0 {
     opacity: 0;
 }
-.opacity1{
+
+.opacity1 {
     opacity: 1;
 }
-.displayN{display: none;}
-.displayB{display: inline-block;}
-.black{color: black;}
+
+.displayN {
+    display: none;
+}
+
+.displayB {
+    display: inline-block;
+}
+
+.black {
+    color: black;
+}
+
+.noResult{
+    background-image: url(../imgs/noResult.png);
+}
+
 /*公共样式 end*/
-body{
+
+body {
     background-color: #edf2f6;
     font-size: 14px;
 }
-.content .content-left{
+
+.content .content-left {
     height: 100vh;
     position: fixed;
     top: 0;
@@ -168,7 +225,8 @@ body{
     z-index: 1;
     background-color: #1c232d;
 }
-.content .content-left .logo{
+
+.content .content-left .logo {
     height: 100px;
     display: flex;
     flex-direction: column;
@@ -177,83 +235,100 @@ body{
     background-color: #357aed;
     color: white;
 }
-.content .content-left .logo .img-box{
+
+.content .content-left .logo .img-box {
     height: 50%;
     width: 100%;
 }
-.content-left .logo .img-box img{
+
+.content-left .logo .img-box img {
     width: 100%;
     height: 100%;
 }
-#sidebar-menu{
+
+#sidebar-menu {
     position: relative;
     z-index: 9999;
 }
-.menu_section>ul{
+
+.menu_section>ul {
     margin-top: 0;
 }
 
-#sidebar-menu .side-menu li{
+#sidebar-menu .side-menu li {
     border-right: 5px solid transparent;
     height: 114px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;;
+    padding-top: 30px;
+    ;
     min-height: 80px;
 }
 
-#sidebar-menu .side-menu li .img-icon{
+#sidebar-menu .side-menu li .img-icon {
     height: 30px;
     width: 30px;
-    
 }
-#sidebar-menu .side-menu #btnRecord .img-icon{
+
+#sidebar-menu .side-menu #btnRecord .img-icon {
     background-image: url(../imgs/recrd-icon-0.png);
 }
-#sidebar-menu .side-menu #btnApproval .img-icon{
+
+#sidebar-menu .side-menu #btnApproval .img-icon {
     background-image: url(../imgs/approval-icon-0.png);
 }
-#sidebar-menu .side-menu #btnPeopleManager .img-icon{
+
+#sidebar-menu .side-menu #btnPeopleManager .img-icon {
     background-image: url(../imgs/peopleManager-icon-0.png);
 }
+
+
 /*#sidebar-menu .side-menu #btnUsersManager .img-icon{
     background-image: url(../imgs/userManager-icon-0.png);
 }*/
-#sidebar-menu .side-menu li.activate{
-    text-shadow: rgba(0,0,0,.25) 0 -1px 0;
-    background: linear-gradient(#334556,#2C4257),#2A3F54;
-    box-shadow: rgba(0,0,0,.25) 0 1px 0, inset rgba(255,255,255,.16) 0 1px 0;
+
+#sidebar-menu .side-menu li.activate {
+    text-shadow: rgba(0, 0, 0, .25) 0 -1px 0;
+    background: linear-gradient(#334556, #2C4257), #2A3F54;
+    box-shadow: rgba(0, 0, 0, .25) 0 1px 0, inset rgba(255, 255, 255, .16) 0 1px 0;
     border-right: 5px solid #357aed;
     color: white;
 }
-#sidebar-menu .side-menu #btnRecord.activate .img-icon{
+
+#sidebar-menu .side-menu #btnRecord.activate .img-icon {
     background-image: url(../imgs/recrd-icon-1.png);
 }
-#sidebar-menu .side-menu #btnApproval.activate .img-icon{
+
+#sidebar-menu .side-menu #btnApproval.activate .img-icon {
     background-image: url(../imgs/approval-icon-1.png);
 }
-#sidebar-menu .side-menu #btnPeopleManager.activate .img-icon{
+
+#sidebar-menu .side-menu #btnPeopleManager.activate .img-icon {
     background-image: url(../imgs/peopleManager-icon-1.png);
 }
-#sidebar-menu .side-menu #btnUsersManager.activate .img-icon{
+
+#sidebar-menu .side-menu #btnUsersManager.activate .img-icon {
     background-image: url(../imgs/userManager-icon-1.png);
 }
-.nav>li>.img-icon{
+
+.nav>li>.img-icon {
     margin-bottom: 12px;
 }
-.content-right{
+
+.content-right {
     min-width: 800px;
-    padding-left:150px;
+    padding-left: 150px;
 }
-.content-right .nav_menu{
+
+.content-right .nav_menu {
     height: 100px;
     position: fixed;
     top: 0;
     z-index: 1;
 }
 
-nav{
+nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -261,10 +336,10 @@ nav{
     background-color: white;
     height: 100px;
     padding-left: 64px;
-    padding-right:160px; 
+    padding-right: 160px;
 }
 
-.search{
+.search {
     margin-top: 8px;
     width: 20vw;
     position: fixed;
@@ -273,7 +348,8 @@ nav{
     left: 214px;
     z-index: 8;
 }
-.search input{
+
+.search input {
     width: 20vw;
     background: #f8fafb;
     color: #9fafbc;
@@ -283,7 +359,8 @@ nav{
     height: 40px;
     min-width: 250px;
 }
-.search button{
+
+.search button {
     position: absolute;
     right: 0;
     top: 1px;
@@ -294,80 +371,118 @@ nav{
     width: 40px;
     z-index: 999;
 }
-.navbar-nav{
+
+.navbar-nav {
     position: absolute;
     top: 20px;
     right: 150px;
 }
-.navbar-nav .open .dropdown-menu{
+
+.navbar-nav .open .dropdown-menu {
     width: 60px;
 }
-.module-container{
+
+.module-container {
     position: relative;
 }
-@media screen and (max-width:1050px){
-    .content .content-left{width: 80px;}
-    .content .content-left a{display: none;}
-    .content .content-left #sidebar-menu li img{height:40px;width:40px;margin-top: 10px;}
-    #messages{left:50px;}
-    .content .content-right{padding-left: 80px;}
-    nav{padding-right: 80px;}
-}
-@media screen and (max-width:776px){
-    .content .content-left{
+
+@media screen and (max-width:1050px) {
+    .content .content-left {
+        width: 80px;
+    }
+    .content .content-left a {
         display: none;
     }
-    .content .content-right{
+    .content .content-left #sidebar-menu li img {
+        height: 40px;
+        width: 40px;
+        margin-top: 10px;
+    }
+    #messages {
+        left: 50px;
+    }
+    .datetimepicker {
+        top: 200px!important;
+    }
+    .content .content-right {
+        padding-left: 80px;
+    }
+    nav {
+        padding-right: 80px;
+    }
+}
+
+@media screen and (max-width:776px) {
+    .content .content-left {
+        display: none;
+    }
+    .content .content-right {
         padding-left: 0;
     }
-    nav{display: none}
+    nav {
+        display: none
+    }
 }
-@media screen and (max-width:500px){
-    .content{
+
+@media screen and (max-width:500px) {
+    .content {
         display: none;
     }
 }
+
+
 /*@media screen and (max-width:1280px){
     #canvas{
         width: 
     }
 }*/
+
+
 /*识别记录样式 begin*/
-.record{
+
+.record {
     background: #edf2f6;
 }
-.top-nav{
+
+.top-nav {
     padding: 0 4%;
     background-color: #f8fafb;
 }
-.ml24{
+
+.ml24 {
     margin-left: 24px;
 }
-.top-nav .ml{
+
+.top-nav .ml {
     margin-left: 40px;
 }
-.table{
+
+.table {
     padding-left: 64px;
     padding-right: 64px;
 }
-.table .personal-info{
-     height: 90px;
-     width: 100%;
-     padding-right: 40px;
-     position: relative;
-     background-color: white;
+
+.table .personal-info {
+    height: 90px;
+    width: 100%;
+    padding-right: 40px;
+    position: relative;
+    background-color: white;
 }
-.table .personal-info .img-box{
+
+.table .personal-info .img-box {
     position: absolute;
     width: 28px;
     height: 25px;
     top: -4px;
 }
-.table .personal-info .img-box img{
+
+.table .personal-info .img-box img {
     width: 28px;
     height: 25px;
 }
-.personal-info ul{
+
+.personal-info ul {
     height: 90px;
     width: 100%;
     display: flex;
@@ -375,86 +490,101 @@ nav{
     padding: 0;
     margin-top: 12px;
 }
-.personal-info ul li img{
+
+.personal-info ul li img {
     border-radius: 50%;
     margin-left: 40px;
 }
 
-.personal-info ul li{
+.personal-info ul li {
     float: left;
     line-height: 90px;
-    list-style: none; 
+    list-style: none;
 }
-.personal-info ul li:nth-child(1){
+
+.personal-info ul li:nth-child(1) {
     min-width: 200px;
 }
-.personal-info ul li:nth-child(1) span{
+
+.personal-info ul li:nth-child(1) span {
     margin-left: 24px;
 }
 
-.personal-info ul li{
+.personal-info ul li {
     width: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;
     white-space: nowrap;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     /*overflow: hidden;*/
 }
-#modalEditRecord .people-visitor-record{
+
+#modalEditRecord .people-visitor-record {
     padding-left: 20px;
     padding-right: 20px;
 }
-#modalEditRecord .info-box{
+
+#modalEditRecord .info-box {
     padding: 20px;
-    display:flex;
-    justify-content:space-around;
+    display: flex;
+    justify-content: space-around;
     border-bottom: 1px solid #dedede;
 }
-#modalEditRecord .info-box .info{
+
+#modalEditRecord .info-box .info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position:relative;
-    width:25%;
-    
+    position: relative;
+    width: 25%;
 }
-#modalEditRecord .info-box .info .img-box{
+
+#modalEditRecord .info-box .info .img-box {
     margin-bottom: 10px;
 }
-#modalEditRecord .info-box .info .similarity{
+
+#modalEditRecord .info-box .info .similarity {
     display: block;
-    position:absolute;
-    top:55px;
-    right:10px;
+    position: absolute;
+    top: 55px;
+    right: 10px;
     color: white;
     background-color: #357aed;
     height: 16px!important;
     line-height: 18px;
-    padding:0 5px;
+    padding: 0 5px;
     border-radius: 8px;
     opacity: .8;
 }
 
-#modalEditRecord .info-box .info p{
+#modalEditRecord .info-box .info p {
     margin-top: 10px;
 }
 
+
 /*识别记录样式 end*/
 
+
 /*入户审批样式 begin*/
-.approval{
+
+.approval {
     background: #edf2f6;
 }
+
+
 /*入户审批样式 end*/
 
+
 /*人员管理样式 begin*/
-.people-management .info-content{
+
+.people-management .info-content {
     padding-left: 64px;
     padding-right: 64px;
 }
-.people-management .info-content .info{
+
+.people-management .info-content .info {
     width: 150px;
     height: 200px;
     background-repeat: no-repeat;
@@ -469,13 +599,14 @@ nav{
     background-color: white;
 }
 
-.people-management .info-content .info .info-box{
+.people-management .info-content .info .info-box {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
-.info .btn-people-del{
+
+.info .btn-people-del {
     width: 20px;
     height: 20px;
     text-align: center;
@@ -489,28 +620,34 @@ nav{
     display: none;
     cursor: pointer;
 }
-.info:hover .btn-people-del{
+
+.info:hover .btn-people-del {
     display: block;
 }
-.info .info-box p:nth-child(2){
+
+.info .info-box p:nth-child(2) {
     color: black;
     /*margin-top: 8px;*/
     /*margin-bottom: 6px;*/
 }
-.info .info-box p:nth-child(3){
+
+.info .info-box p:nth-child(3) {
     /*margin-bottom: 15px;*/
     font-size: 12px;
     color: #bdc2ca;
 }
-.people-management .info-content .info .img-box{
+
+.people-management .info-content .info .img-box {
     width: 100px;
     height: 100px;
 }
-.people-management .info-content .info .img-box img{
+
+.people-management .info-content .info .img-box img {
     width: 100%;
     height: 100%;
 }
-.btnAdd{
+
+.btnAdd {
     position: fixed;
     bottom: 62px;
     right: 86px;
@@ -520,19 +657,24 @@ nav{
     background: url(../imgs/btn-add_0.png) no-repeat center center;
 }
 
-.btnAdd:hover{
+.btnAdd:hover {
     background: url(../imgs/btn-add_1.png) no-repeat center center;
     -webkit-transition: all 1s;
     -moz-transition: all 1s;
     transition: all 1s;
 }
+
+
 /*人员管理样式 end*/
-.hidden{
+
+.hidden {
     display: none;
 }
+
+
 /*修改密码样式 begin*/
 
-#changePWD .eyes{
+#changePWD .eyes {
     display: block;
     height: 40px;
     width: 40px;
@@ -543,75 +685,99 @@ nav{
     right: 10px;
     z-index: 1;
 }
+
+
 /*修改密码样式 end*/
+
+
 /*设备管理样式 begin*/
-.device{
-    margin:13px 64px 0 64px;
+
+.device {
+    margin: 13px 64px 0 64px;
     background-color: #fff;
-    padding:0 10px;
+    padding: 0 10px;
 }
-.device .panel-heading{
+
+.device .panel-heading {
     height: 45px;
 }
-.device .title{
+
+.device .title {
     font-size: 18px;
     color: #000;
     margin-top: 8px;
 }
-.btn-device-edit{
+
+.btn-device-edit {
     width: 20px;
     height: 20px;
     background: url(../imgs/edit-icon_0.png) no-repeat center center;
 }
-.btn-device-del{
+
+.btn-device-del {
     width: 20px;
     height: 20px;
     margin-left: 78px;
     background: url(../imgs/del-icon_0.png) no-repeat center center;
 }
-.btn-device-edit:hover{
+
+.btn-device-edit:hover {
     background: url(../imgs/edit-icon_1.png) no-repeat center center;
 }
-.btn-device-del:hover{
+
+.btn-device-del:hover {
     background: url(../imgs/del-icon_1.png) no-repeat center center;
 }
-.disCenter{
+
+.disCenter {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.deviceTable{
+
+.deviceTable {
     background-color: white;
     border: 1px solid #e6ebee;
     color: #576780;
 }
-.deviceTable thead{
+
+.deviceTable thead {
     background-color: #f8fafb;
     color: #576780;
     font-size: 14px;
 }
-.deviceTable tr{
+
+.deviceTable tr {
     border-top: 1px solid #e6ebee;
 }
-.deviceTable tbody tr td{
+
+.deviceTable tbody tr td {
     padding: 0;
     height: 40px;
     line-height: 40px;
     border-top: 0px;
     box-sizing: border-box;
 }
+
+
 /*设备管理样式 end*/
+
+
 /*拍照界面样式 begin*/
-.picture{
+
+.picture {
     width: 40px;
     height: 40px;
     margin-left: 300px;
     margin-top: 14px;
     background: url(../imgs/photography-icon.png) no-repeat center center;
 }
-#re-photographed{
+
+#re-photographed {
     width: 80px;
     height: 32px;
     font-size: 13px;
 }
+
+
 /*拍照界面样式 end*/

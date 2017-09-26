@@ -8,18 +8,23 @@ define(["jquery"],function($){
     var api="http://127.0.0.1:80/facerecognition";
     return {
         // 识别记录
-        getRecordList:function(organizationid,starttime,endtime,start,limit,callback){
-            $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit},function(res){
+        getRecordList:function(organizationid,starttime,endtime,start,limit,persontype,similarity,keyword,callback){
+            $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,persontype:persontype,similarity:similarity,keyword:keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
                 }
-                callback && callback(res);
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
+                    callback && callback(res);
+                }
             })
         },
         // 查看详细信息
-        showRecord:function(ps_id,ps_type,organizationid,starttime,endtime,callback){
-            $.get(api+"/system/record/query",{personid:ps_id,persontype:ps_type,organizationid:organizationid,starttime:starttime,endtime:endtime},function(res){
+        showRecord:function(organizationid,starttime,endtime,start,limit,datanumber,callback){
+            $.get(api+"/system/record/query",{organizationid,starttime,endtime,start,limit,datanumber},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;

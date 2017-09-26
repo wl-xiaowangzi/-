@@ -7,20 +7,23 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
     return function () {
         var organizationid = $.cookie("organizationid");
         var time = new Date();
-        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate() + ' ' + time.getHours()+ ':' + time.getMinutes();
-        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() + ' ' +(time.getHours()+1) + ':' + time.getMinutes();
+        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes();
+        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes();
         var starttime = $("#btnStarttime").attr("starttime") || starttime;
         var endtime = $("#btnEndtime").attr("endtime") || endtime;
         var similarity = $("#btnSimilarity").attr("similarity") || 0.75;
+        var persontype = $("#btnPersontype").attr("persontype");
         $("#btnStarttime").removeAttr("starttime");
         $("#btnEndtime").removeAttr("endtime");
         $("#btnSimilarity").removeAttr("similarity");
-
+        $("#btnPersontype").removeAttr("persontype");
         var start = 0;
         var limit = 30;
+        var keyword = $("#btnSearchWords").attr("keyword");
+        $("#btnSearchWords").removeAttr("keyword");
 
         console.log(starttime, endtime, similarity)
-        API.getRecordList(organizationid, starttime, endtime, start, limit, function (res) {
+        API.getRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword, function (res) {
             console.log(res)
             //编译模板
             var recordList = art.render(recordListTpl, res);
@@ -31,9 +34,9 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
 
                 //     //查看详细信息
                 .on("click", ".btn-show", function () {
-                    var ps_id = $(this).parent().attr("ps_id");
-                    var ps_type = $(this).parent().attr("ps_type");
-                    recordShow(ps_id, ps_type);
+                    var datanumber = $(this).attr("datanumber");
+
+                    recordShow(datanumber);
                 })
 
                 //     //查看最近信息
@@ -44,13 +47,36 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 })
                 .on("click", ".similarity li a", function () {
                     var similarity = $(this).attr("similarity");
-                    console.log(similarity)
                     $("#btnSimilarity").attr("similarity", similarity);
+                    $("#btnRecord").trigger("click");
+                })
+                .on("click","#employeeRecord",function(){
+                    var persontype = 1;
+                    $("#btnPersontype").attr("persontype", persontype);
+                    $("#btnRecord").trigger("click");
+                })
+                .on("click","#visitorRecord",function(){
+                    var persontype = 2;
+                    $("#btnPersontype").attr("persontype", persontype);
+                    $("#btnRecord").trigger("click");
+                })
+                .on("click",".btn-search",function(){
+                    var keyword = $(".search-word").val();
+                    $("#btnSearchWords").attr("keyword",keyword);
+                    $("#btnRecord").trigger("click");//刷新
+                })
+                .on("click",".allRecord",function(){
                     $("#btnRecord").trigger("click");
                 })
 
             $(".module-container").append($recordList);
-
+            if(persontype==1){
+                $(".trick").html("员工");
+            }else if(persontype==2){
+                $(".trick").html("访客");
+            }else{
+                $(".trick").html("所有人员");
+            }
             $(".slm").html(similarity * 100 + "%")
 
             function init() {
@@ -92,7 +118,6 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                         endDate: moment()
                     },
                     function (start, end) {
-
                         $('#daterange-btn span').html(start.format('YYYY-MM-DD H:mm') + ' - ' + end.format('YYYY-MM-DD H:mm'));
                         var starttime = start.format('YYYY-MM-DD H:mm');
                         var endtime = end.format('YYYY-MM-DD H:mm');

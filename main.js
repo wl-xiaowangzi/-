@@ -39,7 +39,7 @@ require.config({
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery", "artTemplate", "users/list", "people/list","people/visitant", "approval/list", "approval/employeeList","approval/visitorList","people/baseInfo", "record/list", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList,visitant ,approvalList,approvalEmployeeList,approvalVisitorList, peopleBaseInfo, recordList, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
+require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
 
     //处理用户名
     var username = $.cookie("username");
@@ -63,15 +63,16 @@ require(["jquery", "artTemplate", "users/list", "people/list","people/visitant",
         })
     });
     // 获取审批信息
-    setInterval(function(){
-        API.getMessageList(0,50,function(res){
-            if(res.data.length==0){
+    setInterval(function () {
+        API.getMessageList(0, 50, function (res) {
+            console.log(res)
+            if (res.data.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0")
-            }else{
+            } else {
                 $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
             }
         })
-    },30000)
+    }, 30000)
     // 搜索
     $("#search").on("click", function () {
 
@@ -110,31 +111,31 @@ require(["jquery", "artTemplate", "users/list", "people/list","people/visitant",
 
     //实现点击不同功能菜单，出现不同功能的页面
 
-
     $("#btnRecord").on("click", function () {
         //识别记录
         $(".module-container").empty();
         recordList();
     })
+    
 
     $("#btnPeopleManager").on("click", function () {
         //人员管理
         $(".module-container").empty();
         peopleList();
     });
-    
-     $("#btnVisitorManager").on("click", function () {
+
+    $("#btnVisitorManager").on("click", function () {
         //访客管理
         $(".module-container").empty();
         visitant();
     });
-    
+
     $(".btnVisitantList").on("click", function () {
         //访客管理
         $(".module-container").empty();
         visitant();
     });
-    
+
 
 
     $("#btnApproval").on("click", function () {
@@ -155,7 +156,7 @@ require(["jquery", "artTemplate", "users/list", "people/list","people/visitant",
 
         approvalVisitorList();
     });
-    
+
 
     $("#btnUsersManager").on("click", function () {
         //用户管理

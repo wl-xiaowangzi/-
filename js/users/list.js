@@ -4,7 +4,7 @@
  */
 define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./edit", "./del", "./add"], function ($, art, API, usersListTpl, editUsers, delUsers, addUsers) {
 
-    return function (keyword) {
+    return function () {
         var start = 0;
         var limit = 30;
         var keyword = $("#btnSearchWords").attr("keyword");
