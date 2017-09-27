@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html"],function ($,art,API,peopleVisitantInfoTpl) {
+define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html","common/editCamera1","common/editCamera2"],function ($,art,API,peopleVisitantInfoTpl,editCamera1,editCamera2) {
 
     return function(vs_id){
         //把渲染好的元素放到页面中
@@ -15,8 +15,15 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html"]
             var $peopleVisitantInfo=$(peopleVisitantInfo);
 
             $("#modalVisitantEditInfo").remove();
+            $peopleVisitantInfo.on("click", ".picture1", function () {
+                editCamera1();
+            });
+            $peopleVisitantInfo.on("click", ".picture2", function () {
+                editCamera2();
+            });
             $peopleVisitantInfo.on("submit","form",function(){
                 var deviceids=$(".btn-blue").parent().attr("deviceids").replace(/\[|]/g,'').replace(/\"|"/g,'');
+                var visitorid=$(".btn-blue").parent().attr("visitorid");
                 var facedatas=$(".btn-blue").parent().attr("firstFacedatas");
                 var faceimages=$(".btn-blue").parent().attr("firstFaceimages");
                 var secondFacedatas=$(".btn-blue").attr("secondFacedatas");
@@ -32,8 +39,8 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html"]
                 var starttime = $(".starttime").val();
                 var endtime = $(".endtime").val();
                 var sex=$(".sex").val();
-                console.log(vs_id,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages)
-                API.editVisitor(vs_id,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,function(res){
+                console.log(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages)
+                API.editVisitor(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,function(res){
                     console.log(res)
                     $peopleVisitantInfo.modal("hide");
                     //数据更新成功-->跳转到员工列表

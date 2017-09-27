@@ -16,22 +16,20 @@
                     <input type="text" class="form-control search-word" placeholder="请输入您要找的人员名称">
                     <button class="search-icon btn-search" type="submit"></button>
                 </div>
-                <!-- /input-group -->
             </div>
         </div>
-
     </div>
 
     <div class="info-content">
-        {{each data}} {{if $value.status==3}}
-        <div class="info col-sm-2" style="background-image:url(imgs/visiting-tip.png)">
+        {{each data}} 
+        {{if $value.status==3}}
+            <div class="info col-sm-2" style="background-image:url(imgs/visiting-tip.png)">
             {{else}}
             <div class="info col-sm-2" style="background-image:url(imgs/visited-tip.png)">
                 {{/if}}
-
                 <div class="btn-people-del btn-visitant-del" vs_id="{{$value.visitorid}}">×</div>
                 <div class="info-box">
-                    <div class="img-box"><img src="{{$value.headfaceimages[0]}}" alt=""></div>
+                    <div class="img-box"><img src="{{$value.headfaceimages}}" alt=""></div>
                     <p>{{$value.name}}</p>
                     <p>{{$value.remark}}</p>
                     <h3 vs_id="{{$value.visitorid}}"><button class="btn btn-default btn-edit-visitant-baseinfo">信息</button></h3>
