@@ -14,7 +14,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
             $peopleAdd.on("click", "#start", function () {
                 camera();
             });
-            $peopleAdd.on("click", ".btn-blue", function () {
+            $peopleAdd.on("submit", "form", function () {
                     var deviceids = $.cookie("deviceids");
                     var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
                     var secondFacedatas = $("#btnPeopleManager").attr("facedata");
@@ -33,7 +33,6 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                     var job = $(".job").val();
                     var employeenumber = $(".employeenumber").val();
                     var sex = $(".sex").val();
-                    console.log(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas)
                     API.addEmployee(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas, function (res) {
                         $peopleAdd.modal("hide");
                         //成功的添加员工->刷新员工管理页面

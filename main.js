@@ -63,9 +63,9 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
         })
     });
     // 获取审批信息
+    var keyword;
     setInterval(function () {
-        API.getMessageList(0, 50, function (res) {
-            console.log(res)
+        API.getApprovalList(0, 100,keyword, function (res) {
             if (res.data.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0")
             } else {
@@ -73,10 +73,6 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
             }
         })
     }, 30000)
-    // 搜索
-    $("#search").on("click", function () {
-
-    })
 
     //系统设置
     $("#btnPostManagement").on("click", function () {
@@ -166,7 +162,15 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
         //加载用户管理模块
         usersList();
     });
-
+    $(function () { 
+        document.onkeydown = function (event) { 
+        var e = event || window.event || arguments.callee.caller.arguments[0]; 
+        if (e && e.keyCode == 13) { 
+            $(".btn-search").trigger("click");
+        } 
+    }; 
+    }); 
+    
 
 
     //希望一开始就渲染出识别记录

@@ -12,7 +12,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalRefuse.html", 
         var ep_id=ep_id;
         console.log(ep_id)
         $approvalRefuse
-            .on("click", ".btn-blue", function () {
+            .on("submit", "form", function () {
                 var checksuggestion = $(".checksuggestion").val();
                 console.log(checksuggestion)
                 API.checkEmployee(ep_id,2, checksuggestion, function (res) {

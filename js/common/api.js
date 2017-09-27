@@ -4,12 +4,12 @@
  *   Date:2017/9/6
  */
 define(["jquery"],function($){
-    // var api="http://39.108.171.172:8081/facerecognition";
+    // var api="http://39.108.171.172:80/facerecognition";
     var api="http://127.0.0.1:80/facerecognition";
     return {
         // 识别记录
-        getRecordList:function(organizationid,starttime,endtime,start,limit,persontype,similarity,keyword,callback){
-            $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,persontype:persontype,similarity:similarity,keyword:keyword},function(res){
+        getRecordList:function(organizationid,starttime,endtime,start,limit,persontype,similarity,keyword,personid,callback){
+            $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,persontype:persontype,similarity:similarity,keyword:keyword,personid:personid},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
@@ -18,8 +18,8 @@ define(["jquery"],function($){
                     $("body").addClass("noResult")
                 }else{
                     $("body").removeClass("noResult")
-                    callback && callback(res);
                 }
+                callback && callback(res);
             })
         },
         // 查看详细信息
@@ -34,12 +34,25 @@ define(["jquery"],function($){
         },
         // 入库审批列表
         getApprovalList:function(start,limit,keyword,callback){
-            $.get(api+"/system/person/query",{start,limit,keyword},function(res){
-                if(res.code!=0){
+            $.ajax({
+                url:api+"/system/person/query",
+                type:"get",
+                data:{start,limit,keyword},
+                beforeSend:function(){
+                    // console.log(1)
+                },
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     return;
                 }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
+                }
                 callback && callback(res);
+                }
             })
         },
         // 查看审核详细信息
@@ -58,6 +71,11 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
+                }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
                 }
                 callback && callback(res);
             })
@@ -93,6 +111,11 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
+                }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
                 }
                 callback && callback(res);
             })
@@ -142,6 +165,11 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
+                }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
                 }
                 callback && callback(res);
             })
@@ -208,6 +236,11 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
+                }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
                 }
                 callback && callback(res);
             })
@@ -284,6 +317,11 @@ define(["jquery"],function($){
                     console.log(res.message);
                     return;
                 }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
+                }
                 callback && callback(res);
                 }
             })
@@ -305,6 +343,11 @@ define(["jquery"],function($){
                     console.log(res.message);
                     return;
                 }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
+                }
                 callback && callback(res);
             })
         },
@@ -314,6 +357,11 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
+                }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
                 }
                 callback && callback(res);
             })
@@ -377,6 +425,11 @@ define(["jquery"],function($){
                     console.log(res.message);
                     return;
                 }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
+                }
                 callback && callback(res);
             })
         },
@@ -439,6 +492,11 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     return;
+                }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
                 }
                 callback && callback(res);
             })

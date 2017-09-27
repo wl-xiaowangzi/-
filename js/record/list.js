@@ -7,8 +7,8 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
     return function () {
         var organizationid = $.cookie("organizationid");
         var time = new Date();
-        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes();
-        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes();
+        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate();
+        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate();
         var starttime = $("#btnStarttime").attr("starttime") || starttime;
         var endtime = $("#btnEndtime").attr("endtime") || endtime;
         var similarity = $("#btnSimilarity").attr("similarity") || 0.75;
@@ -20,10 +20,11 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         var start = 0;
         var limit = 30;
         var keyword = $("#btnSearchWords").attr("keyword");
+        var personid;
         $("#btnSearchWords").removeAttr("keyword");
 
         console.log(starttime, endtime, similarity)
-        API.getRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword, function (res) {
+        API.getRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
             console.log(res)
             //编译模板
             var recordList = art.render(recordListTpl, res);
@@ -82,7 +83,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
             function init() {
                 //定义locale汉化插件
                 var locale = {
-                    "format": 'YYYY-MM-DD H:mm',
+                    "format": 'YYYY-MM-DD',
                     "separator": " -222 ",
                     "applyLabel": "确定",
                     "cancelLabel": "取消",
@@ -118,9 +119,9 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                         endDate: moment()
                     },
                     function (start, end) {
-                        $('#daterange-btn span').html(start.format('YYYY-MM-DD H:mm') + ' - ' + end.format('YYYY-MM-DD H:mm'));
-                        var starttime = start.format('YYYY-MM-DD H:mm');
-                        var endtime = end.format('YYYY-MM-DD H:mm');
+                        $('#daterange-btn span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+                        var starttime = start.format('YYYY-MM-DD');
+                        var endtime = end.format('YYYY-MM-DD');
                         $("#btnStarttime").attr("starttime", starttime);
                         $("#btnEndtime").attr("endtime", endtime);
                     }

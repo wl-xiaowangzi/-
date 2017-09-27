@@ -530,6 +530,7 @@ nav {
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid #dedede;
+    flex-wrap:wrap;
 }
 
 #modalEditRecord .info-box .info {
@@ -540,7 +541,9 @@ nav {
     position: relative;
     width: 25%;
 }
-
+.record_time{
+    padding-left:30px;
+}
 #modalEditRecord .info-box .info .img-box {
     margin-bottom: 10px;
 }

@@ -10,9 +10,9 @@
                 <div class="info-box">
                     {{each data}}
                     <div class="info">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">{{$value.similarity}}</span></div>
+                        <div class="img-box"><img src="{{$value.faceimage}}" alt="" width="80" height="80" style="border-radius:50%;"><span class="similarity">{{$value.similarity*100}}%</span></div>
                         <p>{{$value.devicename}}</p>
-                        <p>{{$value.identificationtime}}</p>
+                        <p class="record_time">{{$value.identificationtime}}</p>
                     </div>
                     {{/each}}
                 </div>

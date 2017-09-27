@@ -5,6 +5,7 @@
 define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html","./visitantinfo","./visitantAdd","./visitantDel","common/visitorCamera"],function($,art,API,peopleVisitantListTpl,visitantinfo,visitantAdd,visitantDel,visitorCamera){
 
     return function(){
+        $(".module-container").empty();
         var start = 0;
         var limit = 30;
         var keyword = $("#btnSearchWords").attr("keyword");
@@ -12,10 +13,9 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantList.html",
 
         API.getVisitorList(start,limit,keyword,function(res){
             console.log(res)
-             $(".module-container").empty();
-          
+            
             //编译模板
-            var peopleVisitantList=art.render(peopleVisitantListTpl,res);
+            var peopleVisitantList=art.render(peopleVisitantListTpl, res);
 
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
             var $peopleVisitantList=$(peopleVisitantList);

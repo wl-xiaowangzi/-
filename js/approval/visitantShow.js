@@ -8,12 +8,12 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", ".
     return function (ps_id) {
         console.log(ps_id)
         //获取对应的审批信息
-        API.getVisitorCheckInfo(ps_id, function (res) {
+        API.getVisitorBaseInfo(ps_id, function (res) {
             console.log(res)
             //删除原来的模态框
             $("#modalShowInfo").remove();
             //编译模板文件，获取含有真正数据的字符串
-            var approvalShow = art.render(approvalShowTpl, res.data[0]);
+            var approvalShow = art.render(approvalShowTpl, res.data);
             //将字符串转换为jq对象
             var $approvalShow = $(approvalShow);
             $approvalShow

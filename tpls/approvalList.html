@@ -35,7 +35,7 @@
                 {{/if}}
                 </div>
             <ul vs_id={{$value.visitorid}}>
-                <li><img src="{{$value.faceimage}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
+                <li><img src="{{$value.headfaceimages[0]}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
                 <li>|</li>
                 {{if $value.persontype==1}}
                 <li>{{$value.job}}</li>

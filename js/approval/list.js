@@ -11,8 +11,13 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         $("#btnSearchWords").removeAttr("keyword");
 
         API.getApprovalList(start,limit,keyword,function(res){
-            console.log(res)
+            if (res.data.length == 0) {
+                $("#messages").removeClass("opacity1").addClass("opacity0")
+            } else {
+                $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
+            }
         //编译模板
+        
         var approvalList=art.render(approvalListTpl,res);
         var $approvalList = $(approvalList);
 
