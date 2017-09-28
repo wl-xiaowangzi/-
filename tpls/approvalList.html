@@ -48,12 +48,22 @@
                 {{/if}}
                 <li>|</li>
                 <li ps_id={{$value.personid}} ps_type={{$value.persontype}}>
-                    <button class="btn btn-default btn-show-approval show{{$value.persontype}}">查看</button>
+                    <button class="btn btn-default btn-show-approval show{{$value.persontype}}" ep_id={{$value.employeeid}}>查看</button>
                     <button class="btn btn-default btn-pass ml24 pass{{$value.persontype}}" ep_id={{$value.employeeid}}>通过</button>
                     <button class="btn btn-default btn-refuse ml24 refuse{{$value.persontype}}" ep_id={{$value.employeeid}}>驳回</button>
                 </li>
             </ul>
         </div>
         {{/each}}
+        <div class="pages">
+        <ul class="pagination" id="page1">
+        </ul>
+        <!--<div class="pageJump">
+            <span>跳转到</span>
+            <input type="text" />
+            <span>页</span>
+            <button type="button" class="button">确定</button>
+        </div>-->
+    </div>
     </div>
 </div>

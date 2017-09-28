@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/8/30
  */
-define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./show", "./edit", "moment", "datetimepicker", "datetimepickerLang", "daterangepicker"], function ($, art, recordListTpl, API, recordShow, recordEdit, moment) {
+define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./show", "./edit", "moment", "datetimepicker", "datetimepickerLang", "daterangepicker","pager"], function ($, art, recordListTpl, API, recordShow, recordEdit, moment) {
     return function () {
         var organizationid = $.cookie("organizationid");
         var time = new Date();
@@ -17,14 +17,15 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         $("#btnEndtime").removeAttr("endtime");
         $("#btnSimilarity").removeAttr("similarity");
         $("#btnPersontype").removeAttr("persontype");
-        var start = 0;
-        var limit = 30;
+        var page = $("#btnPager").attr("page")||1;
+        $("#btnPager").removeAttr("page");
+        var start = 30*(page-1);
+        var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
         var personid;
         $("#btnSearchWords").removeAttr("keyword");
 
-        console.log(starttime, endtime, similarity)
-        API.getRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
+        API.getRecordList(organizationid, starttime, endtime, start, limit, persontype, similarity, keyword, personid, function (res) {
             console.log(res)
             //编译模板
             var recordList = art.render(recordListTpl, res);
@@ -51,31 +52,46 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                     $("#btnSimilarity").attr("similarity", similarity);
                     $("#btnRecord").trigger("click");
                 })
-                .on("click","#employeeRecord",function(){
+                .on("click", "#employeeRecord", function () {
                     var persontype = 1;
                     $("#btnPersontype").attr("persontype", persontype);
                     $("#btnRecord").trigger("click");
                 })
-                .on("click","#visitorRecord",function(){
+                .on("click", "#visitorRecord", function () {
                     var persontype = 2;
                     $("#btnPersontype").attr("persontype", persontype);
                     $("#btnRecord").trigger("click");
                 })
-                .on("click",".btn-search",function(){
+                .on("click", ".btn-search", function () {
                     var keyword = $(".search-word").val();
-                    $("#btnSearchWords").attr("keyword",keyword);
-                    $("#btnRecord").trigger("click");//刷新
+                    $("#btnSearchWords").attr("keyword", keyword);
+                    $("#btnRecord").trigger("click"); //刷新
                 })
-                .on("click",".allRecord",function(){
+                .on("click", ".allRecord", function () {
                     $("#btnRecord").trigger("click");
                 })
 
             $(".module-container").append($recordList);
-            if(persontype==1){
+
+            var num = Math.ceil(res.sumsize/30);
+            
+            Page({
+                num: num, //页码数
+                startnum: page||1, //指定页码
+                elem: $('#page1'), //指定的元素
+                callback: function (n) { //回调函数
+                    $("#btnPager").attr("page",n);
+                    $("#btnRecord").trigger("click");
+                }
+            });
+
+
+
+            if (persontype == 1) {
                 $(".trick").html("员工");
-            }else if(persontype==2){
+            } else if (persontype == 2) {
                 $(".trick").html("访客");
-            }else{
+            } else {
                 $(".trick").html("所有人员");
             }
             $(".slm").html(similarity * 100 + "%")

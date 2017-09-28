@@ -2,11 +2,13 @@
  * 设备管理
  * Created by land 2017/9/4.
  */
-define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.html", "./deviceAdd", "./deviceEdit", "./deviceDel"], function ($, art,API, configDeviceManagementTpl, deviceAdd, deviceEdit, deviceDel) {
+define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.html", "./deviceAdd", "./deviceEdit", "./deviceDel","pager"], function ($, art,API, configDeviceManagementTpl, deviceAdd, deviceEdit, deviceDel) {
 
     return function () {
-        var start = 0;
-        var limit = 30;
+        var page = $("#btnPager").attr("page")||1;
+        $("#btnPager").removeAttr("page");
+        var start = 30*(page-1);
+        var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
         $("#btnSearchWords").removeAttr("keyword");
         API.getDeviceList(start,limit,keyword,function(res){
@@ -40,6 +42,17 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
 
             //把渲染好的元素放到页面中
             $(".module-container").append($configDeviceManagement);
+
+            var num = Math.ceil(res.sumsize/30);
+            Page({
+                num: num, //页码数
+                startnum: page||1, //指定页码
+                elem: $('#page1'), //指定的元素
+                callback: function (n) { //回调函数
+                    $("#btnPager").attr("page",n);
+                    $("#btnDeviceManagement").trigger("click");//刷新
+                }
+            });
         })
 
 

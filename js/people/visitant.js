@@ -2,17 +2,19 @@
  * 访客列表
  * Created by land on 2017/9/2.
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.html", "./visitantinfo", "./visitantAdd", "./visitantDel", "common/visitorCamera"], function ($, art, API, peopleVisitantListTpl, visitantinfo, visitantAdd, visitantDel, visitorCamera) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.html", "./visitantinfo", "./visitantAdd", "./visitantDel", "common/visitorCamera","pager"], function ($, art, API, peopleVisitantListTpl, visitantinfo, visitantAdd, visitantDel, visitorCamera) {
 
     return function () {
-        var start = 0;
-        var limit = 30;
+        var page = $("#btnPager").attr("page")||1;
+        $("#btnPager").removeAttr("page");
+        var start = 30*(page-1);
+        var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
         $("#btnSearchWords").removeAttr("keyword");
         $(".module-container").empty();
 
         API.getVisitorList(start, limit, keyword, function (res) {
-            console.log(res)
+           
             //编译模板
             var peopleVisitantList = art.render(peopleVisitantListTpl, res);
 
@@ -41,6 +43,18 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
                 })
             //把渲染好的元素放到页面中
             $(".module-container").append($peopleVisitantList);
+
+            var num = Math.ceil(res.sumsize/30);
+            
+            Page({
+                num: num, //页码数
+                startnum: page||1, //指定页码
+                elem: $('#page1'), //指定的元素
+                callback: function (n) { //回调函数
+                    $("#btnPager").attr("page",n);
+                    $("#btnVisitorManager").trigger("click"); //刷新
+                }
+            });
         })
 
     }

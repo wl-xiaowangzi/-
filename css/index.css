@@ -19,14 +19,32 @@ body {
 .modal-header {
     border: none;
 }
-
-.modal-header button span {
+.modal-header button{
     display: block;
     width: 30px;
     height: 30px;
     background-color: #edf2f6;
     text-align: center;
     line-height: 30px;
+    opacity:1;
+    color:#000;
+    margin:0!important;
+    padding:0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.modal-header button span {
+    display: block;
+    width: 30px;
+    margin:0;
+    padding:0;
+    height: 30px;
+    background-color: #edf2f6;
+    text-align: center;
+    line-height: 30px;
+    opacity:1;
+    color:#000;
     position: absolute;
     top: 0;
     right: 0;
@@ -209,6 +227,13 @@ p {
     background-image: url(../imgs/noResult.png);
 }
 
+.pages{
+    width:100%;
+    margin-top:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /*公共样式 end*/
 
 body {
@@ -262,7 +287,6 @@ body {
     flex-direction: column;
     align-items: center;
     padding-top: 30px;
-    ;
     min-height: 80px;
 }
 

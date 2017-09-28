@@ -3,11 +3,13 @@
  * Created by landon 2017/9/4.
  */
 
-define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./baseInfo", "./visitant", "./add", "./del", "common/employeeCamera"], function ($, art, API, peopleListTpl, baseInfo, visitant, peopleAdd, peopleDel, employeeCamera) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./baseInfo", "./visitant", "./add", "./del", "common/employeeCamera","pager"], function ($, art, API, peopleListTpl, baseInfo, visitant, peopleAdd, peopleDel, employeeCamera) {
 
     return function () {
-        var start = 0;
-        var limit = 30;
+        var page = $("#btnPager").attr("page")||1;
+        $("#btnPager").removeAttr("page");
+        var start = 30*(page-1);
+        var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
         $("#btnSearchWords").removeAttr("keyword");
         API.getPeopleList(start, limit, keyword, function (res) {
@@ -46,6 +48,19 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
                 })
             //把渲染好的元素放到页面中
             $(".module-container").append($peopleList);
+
+            var num = Math.ceil(res.sumsize/30);
+            
+            Page({
+                num: num, //页码数
+                startnum: page||1, //指定页码
+                elem: $('#page1'), //指定的元素
+                callback: function (n) { //回调函数
+                    $("#btnPager").attr("page",n);
+                    $("#btnPeopleManager").trigger("click"); //刷新
+                }
+            });
+
         })
 
 

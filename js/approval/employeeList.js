@@ -3,10 +3,12 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./show", "./refuse"], function ($, art, API, approvalListTpl, showApproval, refuse) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./show", "./refuse","pager"], function ($, art, API, approvalListTpl, showApproval, refuse) {
     return function () {
-        var start = 0;
-        var limit = 30;
+        var page = $("#btnPager").attr("page")||1;
+        $("#btnPager").removeAttr("page");
+        var start = 30*(page-1);
+        var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
         $("#btnSearchWords").removeAttr("keyword");
 
@@ -60,6 +62,16 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         //把渲染好的元素放到页面中
         $(".module-container").append($approvalList);
         $(".peopleType").html("员工");
+        var num = Math.ceil(res.sumsize/30);
+            Page({
+                num: num, //页码数
+                startnum: page||1, //指定页码
+                elem: $('#page1'), //指定的元素
+                callback: function (n) { //回调函数
+                    $("#btnPager").attr("page",n);
+                    $("#btnEmployeeApproval").trigger("click");//刷新
+                }
+            });
         })
 
     }

@@ -19,22 +19,41 @@
             </div>
         </div>
     </div>
-
     <div class="info-content">
-        {{each data}} 
+        {{each data}}
         {{if $value.status==3}}
-            <div class="info col-sm-2" style="background-image:url(imgs/visiting-tip.png)">
-            {{else}}
-            <div class="info col-sm-2" style="background-image:url(imgs/visited-tip.png)">
-                {{/if}}
-                <div class="btn-people-del btn-visitant-del" vs_id="{{$value.visitorid}}">×</div>
-                <div class="info-box">
-                    <div class="img-box"><img src="{{$value.headfaceimages}}" alt=""></div>
-                    <p>{{$value.name}}</p>
-                    <p>{{$value.remark}}</p>
-                    <h3 vs_id="{{$value.visitorid}}"><button class="btn btn-default btn-edit-visitant-baseinfo">信息</button></h3>
-                </div>
+        <div class="info col-sm-2" style="background-image:url(imgs/visiting-tip.png)">
+            <div class="btn-people-del btn-visitant-del" vs_id="{{$value.visitorid}}">×</div>
+            <div class="info-box">
+                <div class="img-box"><img src="{{$value.headfaceimages[0]}}" alt=""></div>
+                <p>{{$value.name}}</p>
+                <p>{{$value.remark}}</p>
+                <h3 vs_id="{{$value.visitorid}}"><button class="btn btn-default btn-edit-visitant-baseinfo">信息</button></h3>
             </div>
-            {{/each}}
         </div>
+        {{else if $value.status==4}}
+        <div class="info col-sm-2" style="background-image:url(imgs/visited-tip.png)">
+            <div class="btn-people-del btn-visitant-del" vs_id="{{$value.visitorid}}">×</div>
+            <div class="info-box">
+                <div class="img-box"><img src="{{$value.headfaceimages[0]}}" alt=""></div>
+                <p>{{$value.name}}</p>
+                <p>{{$value.remark}}</p>
+                <h3 vs_id="{{$value.visitorid}}"><button class="btn btn-default btn-edit-visitant-baseinfo">信息</button></h3>
+            </div>
+        </div>
+        {{else}}
+        {{/if}} 
+        {{/each}}
+        
     </div>
+    <div class="pages">
+        <ul class="pagination" id="page1">
+        </ul>
+        <!--<div class="pageJump">
+            <span>跳转到</span>
+            <input type="text" />
+            <span>页</span>
+            <button type="button" class="button">确定</button>
+        </div>-->
+    </div>
+</div>

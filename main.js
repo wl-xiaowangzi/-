@@ -11,6 +11,7 @@ require.config({
         text: "lib/text",
         artTemplate: "lib/template-web",
         bootstrap: "../assets/bootstrap/js/bootstrap",
+        pager:"../assets/jQueryPage/pager",
         //配置模板文件夹的路径
         tpls: "../tpls",
         upload: "../assets/uploadify/jquery.uploadify",
@@ -64,6 +65,15 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     });
     // 获取审批信息
     var keyword;
+    setTimeout(function () {
+        API.getApprovalList(0, 100,keyword, function (res) {
+            if (res.data.length == 0) {
+                $("#messages").removeClass("opacity1").addClass("opacity0")
+            } else {
+                $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
+            }
+        })
+    }, 0)
     setInterval(function () {
         API.getApprovalList(0, 100,keyword, function (res) {
             if (res.data.length == 0) {

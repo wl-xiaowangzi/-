@@ -3,15 +3,16 @@
  * Author:land
  *   Date:2017/9/18
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./show", "./visitantRefuse"], function ($, art, API, approvalListTpl, showApproval, visitantRefuse) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./visitantShow", "./visitantRefuse","pager"], function ($, art, API, approvalListTpl, showApproval, visitantRefuse) {
     return function () {
-        var start = 0;
-        var limit = 30;
+        var page = $("#btnPager").attr("page")||1;
+        $("#btnPager").removeAttr("page");
+        var start = 30*(page-1);
+        var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
         $("#btnSearchWords").removeAttr("keyword");
 
          API.getVisitorApprovalList(start,limit, 1,keyword, function (res) {
-            console.log(res)
         //编译模板
         var approvalList=art.render(approvalListTpl,res);
         var $approvalList = $(approvalList);
@@ -58,6 +59,16 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         //把渲染好的元素放到页面中
         $(".module-container").append($approvalList);
          $(".peopleType").html("访客");
+         var num = Math.ceil(res.sumsize/30);
+            Page({
+                num: num, //页码数
+                startnum: page||1, //指定页码
+                elem: $('#page1'), //指定的元素
+                callback: function (n) { //回调函数
+                    $("#btnPager").attr("page",n);
+                    $("#btnVisitorApproval").trigger("click");//刷新
+                }
+            });
         })
 
     }

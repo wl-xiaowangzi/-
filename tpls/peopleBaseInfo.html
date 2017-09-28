@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">电话</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control phonenumber" maxlength="11" pattern="^(0|86|17951)?1[0-9]{10}" oninvalid="setCustomValidity('请输入11位手机号')" name="phonenumber" value="{{phonenumber}}" placeholder="请输入..."/><span class="asterisk">*</span>
+                            <input type="text" class="form-control phonenumber" minlength="11" maxlength="11" pattern="^(0|86|17951)?1[0-9]{10}" required="required" name="phonenumber" value="{{phonenumber}}" placeholder="请输入11位手机号码"/><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
