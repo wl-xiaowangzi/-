@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./show", "./refuse","pager"], function ($, art, API, approvalListTpl, showApproval, refuse) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./show", "./refuse","./agree","pager"], function ($, art, API, approvalListTpl, showApproval, refuse,agree) {
     return function () {
         var page = $("#btnPager").attr("page")||1;
         $("#btnPager").removeAttr("page");
@@ -34,6 +34,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 var checksuggestion="审核通过";
                 API.checkEmployee(ep_id,1,checksuggestion, function (res) {
                     console.log(res);
+                    agree();
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");
                 })

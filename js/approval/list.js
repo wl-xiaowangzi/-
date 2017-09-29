@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./show","./visitantShow" ,"./refuse","./visitantRefuse","pager"], function ($, art, API, approvalListTpl, showApproval,showVisitantApproval ,refuse,visitantRefuse) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./show","./visitantShow" ,"./refuse","./visitantRefuse","./agree","pager"], function ($, art, API, approvalListTpl, showApproval,showVisitantApproval ,refuse,visitantRefuse,agree) {
     return function () {
         var page = $("#btnPager").attr("page")||1;
         $("#btnPager").removeAttr("page");
@@ -44,6 +44,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 //调用员工审查接口
                  API.checkEmployee(ps_id,1,checksuggestion, function (res) {
                     console.log(res);
+                    agree()
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");
                 })
@@ -55,6 +56,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 //加载访客审查接口
                  API.checkVisitor(ps_id,1,checksuggestion, function (res) {
                     console.log(res);
+                    agree();
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");
                 })
