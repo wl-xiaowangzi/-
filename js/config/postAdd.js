@@ -6,31 +6,36 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostAdd.html", "
 
     return function () {
         var parameterkey = "key_job";
-        var organizationid=$.cookie("organizationid");
+        var organizationid = $.cookie("organizationid");
         API.getParameterList(0, 1, parameterkey, function (res) {
             console.log(res)
             $("#modalConfigPostAdd").remove();
-            var configPostAdd = art.render(configPostAddTpl, res.data)
-            var $configPostAdd = $(configPostAdd);
+            // var configPostAdd = art.render(configPostAddTpl, res.data)
+            var $configPostAdd = $(configPostAddTpl);
+            var list = res.data.list;
+            console.log(list)
             $configPostAdd
                 .on("submit", "form", function () {
                     var parameterkey = "key_job";
-                    var titles = $("input[name='itemtitle']");
-                    // 这一版titles，values取值一样
-                    var values = $("input[name='itemtitle']");
-                    var remarks = $("input[name='itemremark']");
-                    console.log(titles)
+                    var addTitle = $(".addTitle").val();
+                    var addValue = $(".addValue").val();
+                    var addRemark = $(".addRemark").val();
                     var parameters = '[';
-                    titles.each(function (i) {
-                        var title = titles[i].value;
-                        var value = values[i].value;
-                        var remark = remarks[i].value;
-                        console.log(i)
-                        console.log(title);
+                    for (var i = -1; i < list.length; i++) {
+                        if (i == -1) {
+                            var title = addTitle;
+                            var value = addTitle;
+                            var remark = addRemark;
+                        }else{
+                            var title = list[i].title;
+                            var value = list[i].value;
+                            var remark = list[i].remark;
+                        }
                         if (title != '' && value != '') {
                             parameters += "{'title' : '" + title + "','parameterkey':'" + parameterkey + "', 'value' : '" + value + "','remark' : '" + remark + "'},";
+
                         }
-                    });
+                    }
 
                     if (parameters != '[') {
                         parameters = parameters.substring(0, parameters.length - 1);
@@ -39,8 +44,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostAdd.html", "
 
                     var description = "职位管理";
 
-                    console.log(organizationid,parameterkey, parameters, description)
-                    API.addParameter(organizationid,parameterkey, parameters, description, function (res) {
+                    console.log(organizationid, parameterkey, parameters, description)
+                    API.addParameter(organizationid, parameterkey, parameters, description, function (res) {
                         console.log(res)
                         $configPostAdd.modal("hide");
 

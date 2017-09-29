@@ -15,6 +15,7 @@ require.config({
         //配置模板文件夹的路径
         tpls: "../tpls",
         upload: "../assets/uploadify/jquery.uploadify",
+        // 日期控件
         datetimepicker: "../assets/datetimepicker/js/bootstrap-datetimepicker",
         daterangepicker: "../assets/daterangepicker/js/daterangepicker",
         moment: "../assets/daterangepicker/js/moment.min",
@@ -65,6 +66,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     });
     // 获取审批信息
     var keyword;
+    // 登录获取未审批人员人数
     setTimeout(function () {
         API.getApprovalList(0, 100,keyword, function (res) {
             if (res.data.length == 0) {
@@ -74,6 +76,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
             }
         })
     }, 0)
+    // 定时抓取未审批人数
     setInterval(function () {
         API.getApprovalList(0, 100,keyword, function (res) {
             if (res.data.length == 0) {
@@ -172,6 +175,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
         //加载用户管理模块
         usersList();
     });
+    // 给全局绑定按键事件
     $(function () { 
         document.onkeydown = function (event) { 
         var e = event || window.event || arguments.callee.caller.arguments[0]; 
@@ -181,7 +185,8 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     }; 
     }); 
     
-
+    // 添加全局的session识别事件，如果session失效，自动登出
+    
 
     //希望一开始就渲染出识别记录
     //  -->触发识别记录的点击事件

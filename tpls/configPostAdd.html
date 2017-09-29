@@ -11,14 +11,9 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">职位名称</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="itemtitle" value="" />
-                            <input type="hidden" class="form-control" name="itemvalue" value="" />
-                            <input type="hidden" class="form-control" name="itemremark" value="" /> 
-                            {{each list}}
-                            <input type="hidden" class="form-control" name="itemtitle" value="{{$value.title}}" />
-                            <input type="hidden" class="form-control" name="itemvalue" value="{{$value.value}}" />
-                            <input type="hidden" class="form-control" name="itemremark" value="{{$value.remark}}" /> 
-                            {{/each}}
+                            <input type="text" class="form-control addTitle" name="itemtitle" value="" />
+                            <input type="hidden" class="form-control addValue" name="itemvalue" value="" />
+                            <input type="hidden" class="form-control addRemark" name="itemremark" value="" /> 
                         </div>
                     </div>
                     <div class="form-group">

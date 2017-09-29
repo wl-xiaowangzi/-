@@ -2,7 +2,7 @@
  * 注销访客提示
  * Created by land on 2017/9/18.
  */
-define(["jquery","artTemplate","common/api","text!tpls/visitantDel.html","bootstrap"],function($,art,API,visitantDelTpl){
+define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantDel.html","bootstrap"],function($,art,API,visitantDelTpl){
     
     return function(vs_id){
      
