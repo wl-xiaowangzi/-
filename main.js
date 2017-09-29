@@ -11,7 +11,7 @@ require.config({
         text: "lib/text",
         artTemplate: "lib/template-web",
         bootstrap: "../assets/bootstrap/js/bootstrap",
-        pager:"../assets/jQueryPage/pager",
+        pager: "../assets/jQueryPage/pager",
         //配置模板文件夹的路径
         tpls: "../tpls",
         upload: "../assets/uploadify/jquery.uploadify",
@@ -68,7 +68,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     var keyword;
     // 登录获取未审批人员人数
     setTimeout(function () {
-        API.getApprovalList(0, 100,keyword, function (res) {
+        API.getApprovalList(0, 100, keyword, function (res) {
             if (res.data.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0")
             } else {
@@ -78,7 +78,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     }, 0)
     // 定时抓取未审批人数
     setInterval(function () {
-        API.getApprovalList(0, 100,keyword, function (res) {
+        API.getApprovalList(0, 100, keyword, function (res) {
             if (res.data.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0")
             } else {
@@ -125,7 +125,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
         $(".module-container").empty();
         recordList();
     })
-    
+
 
     $("#btnPeopleManager").on("click", function () {
         //人员管理
@@ -176,17 +176,33 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
         usersList();
     });
     // 给全局绑定按键事件
-    $(function () { 
-        document.onkeydown = function (event) { 
-        var e = event || window.event || arguments.callee.caller.arguments[0]; 
-        if (e && e.keyCode == 13) { 
-            $(".btn-search").trigger("click");
-        } 
-    }; 
-    }); 
-    
+    $(function () {
+        document.onkeydown = function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 13) {
+                $(".btn-search").trigger("click");
+            }
+        };
+    });
+
     // 添加全局的session识别事件，如果session失效，自动登出
-    
+   
+    // var text = XMLHttpRequest.responseText;
+    // var startnum = text.indexOf("*$$*{");
+    // var lastnum = text.lastIndexOf("}*$$*");
+    // text = text.substring(startnum + 5, lastnum);
+    // console.log(text)
+    // var data = text.split("/*#*/");
+    // if (data[0] == 1) { //session过期
+    //     if (messageDialogFlag == false) { //添加此判断是为了防止弹出多个提示信息窗口。
+    //         messageDialogFlag = true;
+    //         $.messager.alert("提示", "会话已过期，请重新登入！", null, function () {
+    //             var tagert_URL = Sync.bp();
+    //             top.location.href = tagert_URL;
+    //             messageDialogFlag = false;
+    //         });
+    //     }
+    // }
 
     //希望一开始就渲染出识别记录
     //  -->触发识别记录的点击事件

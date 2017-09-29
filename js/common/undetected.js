@@ -4,18 +4,20 @@
  */
 define(["jquery","artTemplate","text!tpls/undetected.html","bootstrap"],function($,art,undetectedTpl){
     
-    return function(){
+    return function(info){
      
             $("#modalUndetected").remove();
 
             var $undetected=$(undetectedTpl);
-
+            var info = info;
+            console.log(info)
+            
             $undetected.on("click", ".btn-blue", function () {
             context.clearRect(0, 0, 640, 480);
             $undetected.modal("hide");
             return false;
         })
             $undetected.appendTo("body").modal();
-
+            $(".cameraInfo").html(info)
     }
 })

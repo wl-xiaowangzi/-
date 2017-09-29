@@ -516,7 +516,6 @@ nav {
 }
 
 .personal-info ul li img {
-    border-radius: 50%;
     margin-left: 40px;
 }
 
@@ -665,8 +664,8 @@ nav {
 }
 
 .people-management .info-content .info .img-box {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
 }
 
 .people-management .info-content .info .img-box img {

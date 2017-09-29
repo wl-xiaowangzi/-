@@ -19,7 +19,7 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                 //将图片上传到服务器
                 API.uploadImage(base64Data,function(res){
                      if (res.code != 0) {
-                        undetected()
+                        undetected(res.message)
                         return
                     }
                     $(".btn-blue").parent().attr("firstFaceimages",res.data.faceimage);
