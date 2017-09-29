@@ -1,26 +1,22 @@
-<div class="modal fade" id="modalConfigPostAdd" tabindex="-1" role="dialog">
+<div class="modal fade" id="modalConfigPostEdit" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="margin-top:25vh;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">职位添加</h4>
+                <h4 class="modal-title">职位编辑</h4>
             </div>
             <div class="modal-body">
                 <form class="form form-horizontal">
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">职位名称</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="itemtitle" value="" />
-                            <input type="hidden" class="form-control" name="itemvalue" value="" />
-                            <input type="hidden" class="form-control" name="itemremark" value="" /> 
-                            {{each list}}
-                            <input type="hidden" class="form-control" name="itemtitle" value="{{$value.title}}" />
-                            <input type="hidden" class="form-control" name="itemvalue" value="{{$value.value}}" />
-                            <input type="hidden" class="form-control" name="itemremark" value="{{$value.remark}}" /> 
-                            {{/each}}
+                            <input type="text" class="form-control thisTitle" name="itemtitle" value="{{title}}"/>
+                            <input type="hidden" class="form-control thisValue" name="itemvalue" value="{{value}}"/>
+                            <input type="hidden" class="form-control thisRemark" name="itemremark" value="{{remark}}"/>
                         </div>
                     </div>
+                    
                     <div class="form-group">
                         <div class="col-sm-6 col-sm-offset-5">
                             <button type="text" class="btn btn-blue" style="margin-left:35px;">确认</button>
@@ -29,8 +25,6 @@
                     </div>
                 </form>
             </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>

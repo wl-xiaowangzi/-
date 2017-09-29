@@ -2,47 +2,51 @@
  * 职务添加
  * Created by land on 2017/9/20.
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/configPostAdd.html", "bootstrap"], function ($, art, API, configPostAddTpl) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/configPostEdit.html", "bootstrap"], function ($, art, API, configPostEditTpl) {
 
-    return function () {
+    return function (num) {
         var parameterkey = "key_job";
         var organizationid=$.cookie("organizationid");
+        var num = num;
         API.getParameterList(0, 1, parameterkey, function (res) {
             console.log(res)
-            $("#modalConfigPostAdd").remove();
-            var configPostAdd = art.render(configPostAddTpl, res.data)
-            var $configPostAdd = $(configPostAdd);
-            $configPostAdd
+            $("#modalConfigPostEdit").remove();
+            var configPostEdit = art.render(configPostEditTpl, res.data.list[num])
+            var $configPostEdit = $(configPostEdit);
+            var list = res.data.list;
+            
+            $configPostEdit
                 .on("submit", "form", function () {
                     var parameterkey = "key_job";
-                    var titles = $("input[name='itemtitle']");
-                    // 这一版titles，values取值一样
-                    var values = $("input[name='itemtitle']");
-                    var remarks = $("input[name='itemremark']");
-                    console.log(titles)
+                    var thisTitle = $(".thisTitle").val();
+                    var thisValue = $(".thisValue").val();
+                    var thisRemark = $(".thisRemark").val();
                     var parameters = '[';
-                    titles.each(function (i) {
-                        var title = titles[i].value;
-                        var value = values[i].value;
-                        var remark = remarks[i].value;
-                        console.log(i)
-                        console.log(title);
+                    for(var i=0;i<list.length;i++){
+                        var title = list[i].title;
+                        var value = list[i].value;
+                        var remark = list[i].remark;
+                        if(i==num){
+                            title = thisTitle;
+                            value = thisTitle;
+                            remark = thisRemark;
+                        }
                         if (title != '' && value != '') {
                             parameters += "{'title' : '" + title + "','parameterkey':'" + parameterkey + "', 'value' : '" + value + "','remark' : '" + remark + "'},";
+                            
                         }
-                    });
-
+                    }
                     if (parameters != '[') {
                         parameters = parameters.substring(0, parameters.length - 1);
                     }
                     parameters += ']';
-
+                    
                     var description = "职位管理";
 
                     console.log(organizationid,parameterkey, parameters, description)
                     API.addParameter(organizationid,parameterkey, parameters, description, function (res) {
                         console.log(res)
-                        $configPostAdd.modal("hide");
+                        $configPostEdit.modal("hide");
 
                         //成功的添加职位-->刷新职位管理页面
                         $("#btnPostManagement").trigger("click");
@@ -52,7 +56,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostAdd.html", "
                     return false; //阻止同步提交表单
                 });
 
-            $configPostAdd.appendTo("body").modal();
+            $configPostEdit.appendTo("body").modal();
 
         })
     }

@@ -12,7 +12,7 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
         var keyword = $("#btnSearchWords").attr("keyword");
         $("#btnSearchWords").removeAttr("keyword");
         API.getDeviceList(start,limit,keyword,function(res){
-        
+        console.log(res)
             //编译模板
             var configDeviceManagement = art.render(configDeviceManagementTpl, res);
 

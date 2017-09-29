@@ -18,6 +18,7 @@
                 <th class="text-center">设备编码</th>
                 <th class="text-center">设备名称</th>
                 <th class="text-center">设备状态</th>
+                <th class="text-center">在线状态</th>
                 <th class="text-center">操作</th>
             </thead>
             <tbody>
@@ -29,6 +30,11 @@
                     <td class="">正常</td>
                     {{else}}
                     <td style="color:red;">故障</td>
+                    {{/if}}
+                    {{if $value.online==0}}
+                    <td class="">在线</td>
+                    {{else}}
+                    <td style="color:red;">下线</td>
                     {{/if}}
                     <td class="disCenter" dv_id={{$value.deviceid}}>
                         <div class="btn-device-edit"></div>

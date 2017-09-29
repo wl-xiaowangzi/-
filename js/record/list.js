@@ -8,7 +8,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         var organizationid = $.cookie("organizationid");
         var time = new Date();
         var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate();
-        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate();
+        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + (time.getDate()+1);
         var starttime = $("#btnStarttime").attr("starttime") || starttime;
         var endtime = $("#btnEndtime").attr("endtime") || endtime;
         var similarity = $("#btnSimilarity").attr("similarity") || 0.75;
@@ -24,7 +24,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         var keyword = $("#btnSearchWords").attr("keyword");
         var personid;
         $("#btnSearchWords").removeAttr("keyword");
-
+        console.log(starttime,endtime)
         API.getRecordList(organizationid, starttime, endtime, start, limit, persontype, similarity, keyword, personid, function (res) {
             console.log(res)
             //编译模板
@@ -44,8 +44,8 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 //     //查看最近信息
                 .on("click", ".btn-edit", function () {
                     var ps_id = $(this).parent().attr("ps_id");
-
-                    recordEdit(ps_id);
+                    var ps_type = $(this).parent().attr("ps_type");
+                    recordEdit(ps_id,ps_type);
                 })
                 .on("click", ".similarity li a", function () {
                     var similarity = $(this).attr("similarity");
@@ -118,16 +118,15 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 //日期控件初始化
                 $('#daterange-btn').daterangepicker({
                         'locale': locale,
-                        timePicker: true, //是否显示小时和分钟 
-                        timePickerIncrement: 10, //时间的增量，单位为分钟 
+                        
                         timePicker24Hour: true,
-                        timePicker12Hour: false, //是否使用12小时制来显示时间 
+                        
                         //汉化按钮部分
                         ranges: {
-                            '今日': [moment().startOf('day'), moment()],
-                            '昨日': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
-                            '最近7日': [moment().subtract(6, 'days').startOf('day'), moment()],
-                            '最近30日': [moment().subtract(29, 'days').startOf('day'), moment()],
+                            '今日': [moment().startOf('day'), moment().subtract(-1, 'days')],
+                            '昨日': [moment().subtract(1, 'days').startOf('day'), moment().subtract(0, 'days').endOf('day')],
+                            '最近7日': [moment().subtract(6, 'days').startOf('day'), moment().subtract(-1, 'days')],
+                            '最近30日': [moment().subtract(29, 'days').startOf('day'), moment().subtract(-1, 'days')],
                             '本月': [moment().startOf('month'), moment().endOf('month')],
                             '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
                         },
@@ -140,6 +139,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                         var endtime = end.format('YYYY-MM-DD');
                         $("#btnStarttime").attr("starttime", starttime);
                         $("#btnEndtime").attr("endtime", endtime);
+                        $("#btnRecord").trigger("click");
                     }
                 );
             };
@@ -147,12 +147,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
             $(document).ready(function () {
                 init();
             });
-            $(".daterangepicker .ranges li").on("click", function () {
-                $("#btnRecord").trigger("click");
-            })
-            $(".applyBtn").on("click", function () {
-                $("#btnRecord").trigger("click");
-            })
+            
         })
 
     };

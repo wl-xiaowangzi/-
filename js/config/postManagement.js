@@ -2,7 +2,7 @@
  * 职务管理
  * Created by land 2017/9/4.
  */
-define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html","./postAdd","pager"],function($,art,API,configPostManagementTpl,postAdd){
+define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html","./postAdd","./postDel","./postEdit","pager"],function($,art,API,configPostManagementTpl,postAdd,postDel,postEdit){
 
     return function(){
         var parameterkey="key_job";
@@ -20,18 +20,16 @@ define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html
 
             //实现编辑职位
             $configPostManagement
-                .on("click", ".btn-device-add", function () {
-                    var dv_id = $(this).parent().attr("dv_id");
+                .on("click", ".btn-post-add", function () {
                     postAdd();
                 })
-                .on("click", ".btn-device-edit", function () {
-                    var dv_id = $(this).parent().attr("dv_id");
-                    deviceEdit(dv_id);
+                .on("click", ".btn-post-edit", function () {
+                    var num = $(this).parent().parent().attr("num");
+                    postEdit(num);
                 })
-                .on("click", ".btn-device-del", function () {
-                    var dv_id = $(this).parent().attr("dv_id");
-                    console.log(dv_id)
-                    deviceDel(dv_id);
+                .on("click", ".btn-post-del", function () {
+                    var num = $(this).parent().parent().attr("num");
+                    postDel(num);
                 })
             
             //把渲染好的元素放到页面中

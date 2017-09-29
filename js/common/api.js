@@ -367,11 +367,11 @@ define(["jquery"],function($){
             })
         },
         // 系统参数增加
-         addParameter:function(para_key,itemparameterdata,description,callback){
+         addParameter:function(organizationid,para_key,itemparameterdata,description,callback){
             $.ajax({
                 url:api+"/system/systemparameter/update",
                 type:"post",
-                data:{parameterkey:para_key,itemparameterdata:itemparameterdata,description:description},
+                data:{organizationid:organizationid,parameterkey:para_key,itemparameterdata:itemparameterdata,description:description},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
