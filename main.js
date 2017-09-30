@@ -53,11 +53,9 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     $("#btnLogout").on("click", function () {
         API.logout(function (res) {
             if (res.code == 0) {
-                var usid = $.cookie("USERID")
-                if (usid == undefined) {
-                    //清除cookie值
-                    $.removeCookie("username");
-                }
+                //清除cookie值
+                $.removeCookie("USERID");
+                $.removeCookie("username");
                 //跳转到登录页
                 location.href = "login.html";
             }
@@ -187,22 +185,6 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
 
     // 添加全局的session识别事件，如果session失效，自动登出
    
-    // var text = XMLHttpRequest.responseText;
-    // var startnum = text.indexOf("*$$*{");
-    // var lastnum = text.lastIndexOf("}*$$*");
-    // text = text.substring(startnum + 5, lastnum);
-    // console.log(text)
-    // var data = text.split("/*#*/");
-    // if (data[0] == 1) { //session过期
-    //     if (messageDialogFlag == false) { //添加此判断是为了防止弹出多个提示信息窗口。
-    //         messageDialogFlag = true;
-    //         $.messager.alert("提示", "会话已过期，请重新登入！", null, function () {
-    //             var tagert_URL = Sync.bp();
-    //             top.location.href = tagert_URL;
-    //             messageDialogFlag = false;
-    //         });
-    //     }
-    // }
 
     //希望一开始就渲染出识别记录
     //  -->触发识别记录的点击事件

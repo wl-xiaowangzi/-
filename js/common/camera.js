@@ -24,8 +24,7 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     }
                     $("#btnPeopleManager").attr("faceimage",res.data.faceimage);
                     $("#btnPeopleManager").attr("facedata",res.data.facedata);
-                    var faceimages = $("#btnPeopleManager").attr("faceimage");
-                    $(".secPIC").attr("src",faceimages);
+                    $(".secPIC").attr("src",res.data.headfaceimage);
                     $camera.modal("hide");
                 })
             })

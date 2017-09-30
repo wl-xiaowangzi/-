@@ -24,7 +24,7 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     }
                     $(".btn-blue").parent().attr("firstFaceimages",res.data.faceimage);
                     $(".btn-blue").parent().attr("firstFacedatas",res.data.facedata);
-                    $(".picture1").attr("src",res.data.faceimage)
+                    $(".picture1").attr("src",res.data.headfaceimage)
                     $camera.modal("hide");
                 })
             })

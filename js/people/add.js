@@ -4,12 +4,14 @@
  *   Date:2017/9/5
  */
 define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "common/camera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleAddTpl, API, camera) {
-    return function (faceimages, facedatas) {
+    return function (faceimages, facedatas,headfaceimage) {
         $("#modalPeopleAdd").remove();
 
         var $peopleAdd = $(peopleAddTpl);
         var firstFaceimages = faceimages;
         var firstFacedatas = facedatas;
+        var headfaceimage = headfaceimage;
+        console.log(headfaceimage)
             // 如果点击start则表示提交两张图片
             $peopleAdd.on("click", "#start", function () {
                 camera();
@@ -42,7 +44,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 });
         
         $peopleAdd.appendTo("body").modal();
-        $(".mainPIC").attr("src", faceimages);
+        $(".mainPIC").attr("src", headfaceimage);
         //渲染入职日期-->日期控件
         $peopleAdd.find(".birthday-join").datetimepicker({
             format: 'yyyy-mm-dd',

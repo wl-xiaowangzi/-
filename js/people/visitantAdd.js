@@ -4,13 +4,13 @@
  *   Date:2017/9/5
  */
 define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api", "common/camera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleVisitantAddTpl, API, camera) {
-    return function (faceimages,facedatas) {
+    return function (faceimages,facedatas,headfaceimage) {
         $("#modalVisitantAdd").remove();
 
         var $peopleVisitantAdd = $(peopleVisitantAddTpl);
         var firstFaceimages=faceimages;
         var firstFacedatas=facedatas;
-
+        var headfaceimage = headfaceimage;
         $peopleVisitantAdd.on("click", "#start", function () {
             camera();
         })
@@ -45,7 +45,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
             });
 
         $peopleVisitantAdd.appendTo("body").modal();
-        $(".mainPIC").attr("src",faceimages);
+        $(".mainPIC").attr("src",headfaceimage);
         //渲染入职日期-->日期控件
         $peopleVisitantAdd.find(".date-join").datetimepicker({
             weekStart: 1, //一周从哪一天开始。0（星期日）到6（星期六）

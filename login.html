@@ -58,7 +58,13 @@
                     //登录成功
                     //保存用户名,组织名,以及是否选择自动登录
                     // 不设置过期时间，就相当于关闭浏览器即清空
-                    $.cookie("username",res.data.username);
+                    console.log($("#checkbox1")[0].checked)
+                    if($("#checkbox1")[0].checked){
+                        $.cookie("username",res.data.username,{expires:7});
+                    }else{
+                        $.cookie("username",res.data.username);
+                    }
+                    
                     $.cookie("organizationid",res.data.organizationid,{expires:7});
                     $.cookie("userid",res.data.userid,{expires:7});
                     $.cookie("deviceids",res.data.deviceids,{expires:7})

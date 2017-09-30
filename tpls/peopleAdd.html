@@ -8,17 +8,27 @@
             </div>
             <div class="modal-body">
                 <form class="form form-horizontal">
-                    <div class="form-group" style="display:flex;justify-content:center;">
-                        <div class="img-box"><img class="mainPIC" src="imgs/pic.jpg" alt="" width="80" height="80"></div>
-                        <div class="img-box" id="start" class="condition"><img class="secPIC" src="imgs/pic.jpg" alt="" width="80" height="80"></div>
+                    <div class="form-group mb32" style="display:flex;justify-content:center;">
+                        <div class="img-box img_info_box mr32">
+                            <img class="mainPIC ml10" src="imgs/pic.jpg" alt="" width="100" height="100">
+                            <p class="recording reminder_text mt16 text-center">(识别头像)</p>
+                            <p class="getHeadPic iptinfo_text mt8 text-center">已获取正脸照片</p>
+                        </div>
+                        <div class="img-box img_info_box condition" id="start">
+                            <img class="secPIC text-center ml10" src="imgs/pic.jpg" alt="" width="100" height="100">
+                            <p class="recording reminder_text mt16 text-center">(可选项)</p>
+                            <p class="getHeadPic iptinfo_text mt8 text-center">请摘掉眼镜获取正脸</p>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" required="required" class="form-control name" required="required" name="name" value="" /><span class="asterisk">*</span>
+                            <input type="text" required="required" class="form-control name" required="required" name="name" value="" />
+                            <span
+                                class="asterisk">*</span>
                         </div>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">性别</label>
                         <div class="col-sm-7">
                             <select name="sex" class="form-control sex">
@@ -36,19 +46,23 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">电话</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control phonenumber" minlength="11" maxlength="11" pattern="^(0|86|17951)?1[0-9]{10}" required="required" name="phonenumber" value="" placeholder="请输入11位手机号码"/><span class="asterisk">*</span>
+                            <input type="text" class="form-control phonenumber" minlength="11" maxlength="11" pattern="^(0|86|17951)?1[0-9]{10}" required="required"
+                                name="phonenumber" value="" placeholder="请输入11位手机号码" /><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">职务</label>
                         <div class="col-sm-7">
-                            <input type="text" required="required" class="form-control job" required="required" name="job" value="" /><span class="asterisk">*</span>
+                            <input type="text" required="required" class="form-control job" required="required" name="job" value="" />
+                            <span
+                                class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">工号</label>
                         <div class="col-sm-7">
-                            <input type="text" required="required" class="form-control employeenumber" required="required" name="employeenumber" value="" /><span class="asterisk">*</span>
+                            <input type="text" required="required" class="form-control employeenumber" required="required" name="employeenumber" value=""
+                            /><span class="asterisk">*</span>
                         </div>
                     </div>
                     <!--<div class="form-group">
@@ -57,17 +71,17 @@
                             <input type="text" class="form-control date-join" data-date-format="yyyy-mm-dd" name="tc_join_date" value="">
                         </div>
                     </div>-->
-                    
+
                     <div class="form-group">
                         <div class="col-sm-6 col-sm-offset-5">
                             <button type="submit" class="btn btn-blue" style="margin-left:35px;">确认</button>
                             <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
-                        </button>
-                    </div>
+                            </button>
+                        </div>
                 </form>
+                </div>
             </div>
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal-dialog -->
-</div>

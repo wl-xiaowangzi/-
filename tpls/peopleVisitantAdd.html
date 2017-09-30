@@ -8,9 +8,17 @@
             </div>
             <div class="modal-body">
                 <form class="form form-horizontal">
-                    <div class="form-group" style="display:flex;justify-content:center;">
-                        <div class="img-box"><img class="mainPIC" src="imgs/pic.jpg" alt="" width="80" height="80"></div>
-                        <div class="img-box" id="start"><img class="secPIC" src="imgs/pic.jpg" alt="" width="80" height="80"></div>
+                    <div class="form-group mb32" style="display:flex;justify-content:center;">
+                        <div class="img-box img_info_box mr32">
+                            <img class="mainPIC ml10" src="imgs/pic.jpg" alt="" width="100" height="100">
+                            <p class="recording reminder_text mt16 text-center">(识别头像)</p>
+                            <p class="getHeadPic iptinfo_text mt8 text-center">已获取正脸照片</p>
+                        </div>
+                        <div class="img-box img_info_box condition" id="start">
+                            <img class="secPIC text-center ml10" src="imgs/pic.jpg" alt="" width="100" height="100">
+                            <p class="recording reminder_text mt16 text-center">(可选项)</p>
+                            <p class="getHeadPic iptinfo_text mt8 text-center">请摘掉眼镜获取正脸</p>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>

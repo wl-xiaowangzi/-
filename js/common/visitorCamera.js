@@ -25,8 +25,9 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","people/v
                     console.log(res)
                     var faceimages=res.data.faceimage;
                     var facedatas=res.data.facedata;
+                    var headfaceimage=res.data.headfaceimage;
                     $camera.modal("hide")
-                    addVisitor(faceimages,facedatas)
+                    addVisitor(faceimages,facedatas,headfaceimage)
                 })
             })
 

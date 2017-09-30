@@ -10,7 +10,24 @@ body {
     background-position: center center;
     padding: 0!important;
 }
-
+p{
+    margin: 0;
+    padding: 0;
+}
+/*文字样式 begin*/
+.reminder_text{
+    font-size: 12px;
+    color: #a6b5c1;
+}
+.info_text{
+    font-size: 13px;
+    color: #576780;
+}
+.iptinfo_text{
+    font-size: 13px;
+    color: #000;
+}
+/*文字样式 end*/
 .modal-content {
     border-radius: 0;
     width: 568px;
@@ -77,15 +94,38 @@ button {
     color: white!important;
     background-color: #296ee1!important;
 }
-
+/*间距样式 begin*/
+.mt8 {
+    margin-top: 8px;
+}
 .mt10 {
     margin-top: 10px;
 }
-
+.mt16 {
+    margin-top: 16px;
+}
+.mt18 {
+    margin-top: 18px;
+}
 .mt24 {
     margin-top: 24px;
 }
-
+.ml10{
+    margin-left: 10px;
+}
+.ml24 {
+    margin-left: 24px;
+}
+.ml28{
+    margin-left: 28px;
+}
+.mb32{
+    margin-bottom: 32px;
+}
+.mr32{
+    margin-right: 32px;
+}
+/*间距样式 end*/
 .btn {
     border-radius: 20px;
 }
@@ -174,10 +214,6 @@ button {
     margin-left: 8px!important;
 }
 
-p {
-    margin: 0;
-}
-
 .asterisk {
     display: block;
     width: 40px;
@@ -233,6 +269,10 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.img_info_box{
+    width: 120px;
 }
 /*公共样式 end*/
 
@@ -473,9 +513,6 @@ nav {
     background-color: #f8fafb;
 }
 
-.ml24 {
-    margin-left: 24px;
-}
 
 .top-nav .ml {
     margin-left: 40px;
