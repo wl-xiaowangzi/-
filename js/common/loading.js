@@ -21,9 +21,9 @@ define(["jquery", "text!tpls/loading.html"], function ($, loadingTpl) {
         complete: function (xhr,status) {
             console.log(status)
             var sessionStatus = xhr.getResponseHeader('sessionstatus');
-            if (sessionStatus == 'timeout') {
+            if (status != 'success') {
                 confirm('由于您长时间没有操作, session已过期, 请重新登录.');
-                location.href("login.html")
+                location.href="login.html";
             }
             $loadingTpl.modal("hide");
         }
