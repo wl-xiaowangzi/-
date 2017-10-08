@@ -16,7 +16,7 @@ ul {
 	padding:6px 12px;
 	margin-left:-1px;
 	line-height:1.42857143;
-	color:#337ab7;
+	color:#357aed;
 	text-decoration:none;
 	background-color:#fff;
 	border:1px solid #ddd;
@@ -46,8 +46,8 @@ ul {
 .pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{
 	z-index:3;color:#fff;
 	cursor:default;
-	background-color:#337ab7;
-	border-color:#337ab7;
+	background-color:#357aed;
+	border-color:#357aed;
 }  
 .pagination>.disabled>a,.pagination>.disabled>a:focus,.pagination>.disabled>a:hover,.pagination>.disabled>span,.pagination>.disabled>span:focus,.pagination>.disabled>span:hover{
 	color:#777;
