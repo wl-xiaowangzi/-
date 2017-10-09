@@ -46,6 +46,13 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
 
         $peopleVisitantAdd.appendTo("body").modal();
         $(".mainPIC").attr("src",headfaceimage);
+        // 判断图片是否加载完成
+        $(".mainPIC").load(function(){
+            $(".mainHeadPIC").html("已获取正脸照片")
+        })
+        $(".secPIC").load(function(){
+            $(".secHeadPIC").html("已获取正脸照片")
+        })
         //渲染入职日期-->日期控件
         $peopleVisitantAdd.find(".date-join").datetimepicker({
             weekStart: 1, //一周从哪一天开始。0（星期日）到6（星期六）

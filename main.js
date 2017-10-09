@@ -11,6 +11,7 @@ require.config({
         text: "lib/text",
         artTemplate: "lib/template-web",
         bootstrap: "../assets/bootstrap/js/bootstrap",
+        typeahead:"../assets/bootstrap/js/bootstrap-typeahead",
         pager: "../assets/jQueryPage/pager",
         //配置模板文件夹的路径
         tpls: "../tpls",

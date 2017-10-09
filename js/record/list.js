@@ -3,12 +3,12 @@
  * Author:land
  *   Date:2017/8/30
  */
-define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./show", "./edit", "moment", "datetimepicker", "datetimepickerLang", "daterangepicker","pager"], function ($, art, recordListTpl, API, recordShow, recordEdit, moment) {
+define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./show", "./visitorShow", "./edit", "moment", "datetimepicker", "datetimepickerLang", "daterangepicker", "pager"], function ($, art, recordListTpl, API, recordShow, visitorShow, recordEdit, moment) {
     return function () {
         var organizationid = $.cookie("organizationid");
         var time = new Date();
         var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate();
-        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + (time.getDate()+1);
+        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + (time.getDate() + 1);
         var starttime = $("#btnStarttime").attr("starttime") || starttime;
         var endtime = $("#btnEndtime").attr("endtime") || endtime;
         var similarity = $("#btnSimilarity").attr("similarity") || 0.75;
@@ -17,35 +17,41 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         $("#btnEndtime").removeAttr("endtime");
         $("#btnSimilarity").removeAttr("similarity");
         $("#btnPersontype").removeAttr("persontype");
-        var page = $("#btnPager").attr("page")||1;
+        var page = $("#btnPager").attr("page") || 1;
         $("#btnPager").removeAttr("page");
-        var start = 30*(page-1);
-        var limit = 30*(page);
+        var start = 30 * (page - 1);
+        var limit = 30 * (page);
         var keyword = $("#btnSearchWords").attr("keyword");
         var personid;
         $("#btnSearchWords").removeAttr("keyword");
-        console.log(starttime,endtime)
+        console.log(starttime, endtime)
+
+        
         API.getRecordList(organizationid, starttime, endtime, start, limit, persontype, similarity, keyword, personid, function (res) {
             console.log(res)
             //编译模板
             var recordList = art.render(recordListTpl, res);
             var $recordList = $(recordList);
 
-            // //修改用户状态
+            //修改用户状态
             $recordList
+                //查看详细信息
+                .on("click", ".show1", function () {
+                    var ep_id = $(this).attr("personid");
 
-                //     //查看详细信息
-                .on("click", ".btn-show", function () {
-                    var datanumber = $(this).attr("datanumber");
+                    recordShow(ep_id);
+                })
+                .on("click", ".show2", function () {
+                    var vs_id = $(this).attr("personid");
 
-                    recordShow(datanumber);
+                    visitorShow(vs_id);
                 })
 
-                //     //查看最近信息
+                //查看最近信息
                 .on("click", ".btn-edit", function () {
                     var ps_id = $(this).parent().attr("ps_id");
                     var ps_type = $(this).parent().attr("ps_type");
-                    recordEdit(ps_id,ps_type);
+                    recordEdit(ps_id, ps_type);
                 })
                 .on("click", ".similarity li a", function () {
                     var similarity = $(this).attr("similarity");
@@ -73,14 +79,14 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
 
             $(".module-container").append($recordList);
 
-            var num = Math.ceil(res.sumsize/30);
-            
+            var num = Math.ceil(res.sumsize / 30);
+
             Page({
                 num: num, //页码数
-                startnum: page||1, //指定页码
+                startnum: page || 1, //指定页码
                 elem: $('#page1'), //指定的元素
                 callback: function (n) { //回调函数
-                    $("#btnPager").attr("page",n);
+                    $("#btnPager").attr("page", n);
                     $("#btnRecord").trigger("click");
                 }
             });
@@ -95,6 +101,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 $(".trick").html("所有人员");
             }
             $(".slm").html(similarity * 100 + "%")
+
 
             function init() {
                 //定义locale汉化插件
@@ -118,9 +125,9 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 //日期控件初始化
                 $('#daterange-btn').daterangepicker({
                         'locale': locale,
-                        
+
                         timePicker24Hour: true,
-                        
+
                         //汉化按钮部分
                         ranges: {
                             '今日': [moment().startOf('day'), moment().subtract(-1, 'days')],
@@ -147,7 +154,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
             $(document).ready(function () {
                 init();
             });
-            
+
         })
 
     };

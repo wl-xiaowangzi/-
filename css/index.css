@@ -119,6 +119,9 @@ button {
 .ml28{
     margin-left: 28px;
 }
+.ml66{
+    margin-left: 66px;
+}
 .mb32{
     margin-bottom: 32px;
 }
@@ -554,6 +557,8 @@ nav {
 
 .personal-info ul li img {
     margin-left: 40px;
+    position: absolute;
+    left: 0;
 }
 
 .personal-info ul li {
@@ -567,6 +572,7 @@ nav {
 }
 
 .personal-info ul li:nth-child(1) span {
+    position: absolute;
     margin-left: 24px;
 }
 
@@ -853,12 +859,22 @@ p{
 
 
 /*拍照界面样式 begin*/
-
+.boxx{
+    display: flex;
+    justify-content: space-between;
+    width: 640px;
+}
+.hintInfo{
+    margin-top: 30px;
+}
+.hintInfo .info{
+    color: #fff;
+    margin-left: 5px;
+}
 .picture {
     width: 40px;
     height: 40px;
-    margin-left: 300px;
-    margin-top: 14px;
+    margin-top: 20px;
     background: url(../imgs/photography-icon.png) no-repeat center center;
 }
 

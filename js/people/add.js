@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "common/camera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleAddTpl, API, camera) {
+define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "common/camera", "datetimepicker", "datetimepickerLang", "typeahead"], function ($, art, peopleAddTpl, API, camera) {
     return function (faceimages, facedatas,headfaceimage) {
         $("#modalPeopleAdd").remove();
 
@@ -14,7 +14,8 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
         console.log(headfaceimage)
             // 如果点击start则表示提交两张图片
             $peopleAdd.on("click", "#start", function () {
-                camera();
+                var ps_type = 1;
+                camera(ps_type);
             });
             $peopleAdd.on("submit", "form", function () {
                     var deviceids = $.cookie("deviceids");
@@ -44,7 +45,23 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 });
         
         $peopleAdd.appendTo("body").modal();
+        
         $(".mainPIC").attr("src", headfaceimage);
+        // 判断图片是否加载完成
+        $(".mainPIC").load(function(){
+            $(".mainHeadPIC").html("已获取正脸照片")
+        })
+        $(".secPIC").load(function(){
+            $(".secHeadPIC").html("已获取正脸照片")
+        })
+         // 利用typeahead插件完成输入提醒功能
+            $(function(){
+                var mySource = $("#btnMySource").attr("mySource");
+                var mySource=JSON.parse(mySource)
+                $(".job").typeahead({
+                    source: mySource
+                })
+            })
         //渲染入职日期-->日期控件
         $peopleAdd.find(".birthday-join").datetimepicker({
             format: 'yyyy-mm-dd',

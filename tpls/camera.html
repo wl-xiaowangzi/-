@@ -4,13 +4,15 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">拍照入库</h4>
+                <h4 class="modal-title">获取<span class="psType"></span>照片</h4>
             </div>
             <div class="modal-body">
                 <form class="form form-horizontal">
                     <video id="video" autoplay="" style='width:640px;height:480px;'></video>
-                    <div class="picture"></div>
-                    
+                    <div class="boxx">
+                        <div class="hintInfo">提示：<span class="info">请保持正脸获取照片</span></div>
+                        <div class="picture"></div>
+                    </div>
                     <canvas id="canvas" width="640" height="480" style="position:absolute;top:15px;background:url(imgs/cover.png) no-repeat center center">
                         <script>
                             var video = document.getElementById("video");

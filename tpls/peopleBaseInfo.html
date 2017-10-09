@@ -11,7 +11,7 @@
                     <div class="form-group" style="display:flex;justify-content:center;">
                         <div class="img-box"><img src="{{headfaceimages[0]}}" class="picture1" alt="" width="80" height="80"></div>
                         {{if headfaceimages[1]!=undefind}}
-                        <div class="img-box"><img src="{{headfaceimages[1]}}" class="picture2" alt="" width="80" height="80"></div>
+                        <div class="img-box"><img src="{{headfaceimages[1]}}" class="picture2 ml66" alt="" width="80" height="80"></div>
                         {{/if}}
                     </div>
                     <div class="form-group">
@@ -43,13 +43,13 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">电话</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control phonenumber" minlength="11" maxlength="11" pattern="^(0|86|17951)?1[0-9]{10}" required="required" name="phonenumber" value="{{phonenumber}}" placeholder="请输入11位手机号码"/><span class="asterisk">*</span>
+                            <input type="text"  class="form-control phonenumber" minlength="11" maxlength="11" pattern="^(0|86|17951)?1[0-9]{10}" required="required" name="phonenumber" value="{{phonenumber}}" placeholder="请输入11位手机号码"/><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">职位</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control job" name="job" value="{{job}}" placeholder="请输入..."/><span class="asterisk">*</span>
+                            <input type="text" autocomplete="off" class="form-control job" name="job" value="{{job}}" placeholder="请输入..."/><span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">

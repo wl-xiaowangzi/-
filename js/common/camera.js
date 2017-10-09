@@ -4,7 +4,7 @@
  *   Date:2017/9/5
  */
 define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/undetected"], function ($, art, cameraTpl,API, undetected) {
-    return function () {
+    return function (ps_type) {
         $("#modalcamera").remove();
 
         var $camera = $(cameraTpl);
@@ -30,6 +30,11 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
             })
 
         $camera.appendTo("body").modal();
-
+        if(ps_type==1){
+            $(".psType").html("员工");
+        }else{
+            $(".psType").html("访客");
+        }
+        
     };
 });

@@ -4,9 +4,9 @@
  *   Date:2017/8/31
  */
 define(["jquery","artTemplate","text!tpls/recordShow.html","common/api"],function ($,art,recordShowTpl,API) {
-    return function (ep_id) {
+    return function (vs_id) {
         //根据id获取人员信息
-        API.getEmployeeBaseInfo(ep_id,function(res){
+        API.getEmployeeBaseInfo(vs_id,function(res){
             $("#modalShowRecord").remove();
             console.log(res)
             var recordShow=art.render(recordShowTpl,res.data);

@@ -32,6 +32,6 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "people/
             })
 
         $camera.appendTo("body").modal();
-
+        $(".psType").html("员工");
     };
 });

@@ -3,17 +3,26 @@
         <div class="modal-content" style="margin-top:120px;padding-bottom:50px;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">详细信息</h4>
+                <h4 class="modal-title"><span class="black">{{name}}</span>的入库信息</h4>
             </div>
             <div class="modal-body">
-                <div class="img-box"><img src="{{faceimage}}" alt="" width="100" height="100" style="margin-left:190px;margin-bottom:40px;"></div>
+                <div class="form-group" style="display:flex;justify-content:center;">
+                <div class="img-box"><img src="{{headfaceimages[0]}}" alt="" width="100" height="100"></div>
+                {{if headfaceimages[1]!=undefind}}
+                <div class="img-box"><img src="{{headfaceimages[1]}}" alt="" width="100" height="100" style="margin-left:16px;"></div>
+                {{/if}}
+                </div>
                 <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">姓名</span><span class="ml24 black">{{name}}</span></p>
-                <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">类型</span><span class="ml24 black">{{if persontype==1}}员工{{else}}访客{{/if}}</span></p>
-                <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">相似度</span><span class="ml24 black">{{similarity*100}}%</span></p>
-                <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">识别时间</span><span class="ml24 black">{{identificationtime}}</span></p>
+                {{if starttime==undefined}}
+                <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">职位</span><span class="ml24 black">{{job}}</span></p>
+                {{else}}
+                <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">访问事由</span><span class="ml24 black">{{remark}}</span></p>
+                <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">访问时间</span><span class="ml24 black">{{starttime}}</span></p>
+                <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">至</span><span class="ml24 black">{{endtime}}</span></p>
+                {{/if}}
                 <div class="form-group" style="margin-top:50px;">
                     <div class="col-sm-4 col-sm-offset-8">
-                        <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                        <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">关闭</button>
                     </div>
                 </div>
             </div>
