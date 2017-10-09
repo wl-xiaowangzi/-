@@ -113,6 +113,9 @@ button {
 .ml10{
     margin-left: 10px;
 }
+.ml20{
+    margin-left: 20px;
+}
 .ml24 {
     margin-left: 24px;
 }
@@ -124,6 +127,9 @@ button {
 }
 .mb32{
     margin-bottom: 32px;
+}
+.mb11{
+    margin-bottom: 11px;
 }
 .mr32{
     margin-right: 32px;
@@ -711,6 +717,7 @@ p{
 }
 
 .people-management .info-content .info .img-box {
+    margin-top: 10px;
     width: 80px;
     height: 80px;
 }
@@ -736,8 +743,36 @@ p{
     -moz-transition: all 1s;
     transition: all 1s;
 }
+.img-box{
+    position: relative;
+}
+.camera_icon{
+    display: block;
+    position: absolute;
+    bottom: -11px;
+    right: -11px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #357aed;
+    background-image: url(../imgs/headimages_icon.png);
+    background-size: 22px 22px;
+}
 
-
+.secPIC{
+    background-image: url(../imgs/uploadIMG.png);
+    background-size: 100px 100px;
+}
+.secPIC:hover{
+    background-image: url(../imgs/uploadIMG_hover.png);
+}
+.success_record{
+    height:16px; 
+    background-image: url(../imgs/right-icon.png);
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position-x: 52px;
+}
 /*人员管理样式 end*/
 
 .hidden {
@@ -886,3 +921,23 @@ p{
 
 
 /*拍照界面样式 end*/
+
+
+/*个人中心样式 begin*/
+.ewm_box{
+    margin-left: 156px;
+    display: flex;
+    justify-content: space-between;
+}
+.ewm_box .right_cont{
+    display: flex;
+    width: 216px;
+    margin-right:42px; 
+    flex-direction: column;
+    justify-content: space-between;
+}
+.ewm_box .right_cont a{
+    text-decoration:underline; 
+    color: #000;
+}
+/*个人中心样式 end*/

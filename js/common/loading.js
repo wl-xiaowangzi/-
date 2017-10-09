@@ -11,9 +11,7 @@ define(["jquery", "text!tpls/loading.html"], function ($, loadingTpl) {
          * ajax请求发送之前执行的回调函数
          */
         beforeSend: function () {
-            $loadingTpl.appendTo("body").modal({
-                backdrop: "static" //模态框不会自动关闭
-            })
+            $(".module-container").append($loadingTpl);
         },
         /**
          * ajax请求完成(成功 or 失败)之后执行的回调函数
@@ -25,7 +23,7 @@ define(["jquery", "text!tpls/loading.html"], function ($, loadingTpl) {
                 confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                 location.href="login.html";
             }
-            $loadingTpl.modal("hide");
+            $loadingTpl.remove();
         }
     })
 });

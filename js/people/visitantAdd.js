@@ -48,9 +48,11 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
         $(".mainPIC").attr("src",headfaceimage);
         // 判断图片是否加载完成
         $(".mainPIC").load(function(){
+            $(".pic1record").html("").addClass("success_record")
             $(".mainHeadPIC").html("已获取正脸照片")
         })
         $(".secPIC").load(function(){
+            $(".pic2record").html("").addClass("success_record")
             $(".secHeadPIC").html("已获取正脸照片")
         })
         //渲染入职日期-->日期控件

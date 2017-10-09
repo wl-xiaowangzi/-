@@ -7,31 +7,37 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/personalCenter.html"],
 
     return function () {
         var userid = $.cookie("userid");
-      API.queryUser(userid,function(res){
-     
-        console.log(res)
-        $("#modalPersonalCenter").remove();
+        API.queryUser(userid, function (res) {
 
-        var personalCenter=art.render(personalCenterTpl,res.data[0]);
+            console.log(res)
+            $("#modalPersonalCenter").remove();
 
-        var $personalCenter = $(personalCenter);
+            var personalCenter = art.render(personalCenterTpl, res.data[0]);
 
-        $personalCenter
-        // .on("submit","form",function(){
+            var $personalCenter = $(personalCenter);
+            var frm = null;
+            var timer = null
 
-        //     var formData=$(this).serialize();
-
-        //     API.editSavePersonalCenter(formData,function(){
-        //         location.href="/";//刷新页面
-        //     })
-
-        //     return false;
-        // })
+            
+            $personalCenter
 
 
+            // .on("submit","form",function(){
 
-        $personalCenter.appendTo("body").modal();
-        
+            //     var formData=$(this).serialize();
+
+            //     API.editSavePersonalCenter(formData,function(){
+            //         location.href="/";//刷新页面
+            //     })
+
+            //     return false;
+            // })
+
+
+
+            $personalCenter.appendTo("body").modal();
+
+            
         })
 
     }

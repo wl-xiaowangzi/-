@@ -548,10 +548,7 @@ define(["jquery"],function($){
                 type:"post",
                 data:{userids:user_id},
                 success:function(res){
-                    if(res.code!=0){
-                    console.log(res.message);
-                    return;
-                }
+                    
                 callback && callback(res);
                 }
             })

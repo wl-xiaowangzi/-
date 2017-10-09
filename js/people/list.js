@@ -15,21 +15,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
         var parameterkey = "key_job";
         var start = 0;
         var limit = 30;
-        API.getParameterList(start, limit, parameterkey, function (res) {
-            var list = res.data.list;
-            var mySource = "["
-            for (var i = 0; i < list.length; i++) {
-                var title = list[i].title;
-                if (title != '') {
-                    mySource += '{"id":' + (i + 1) + ',"name":"' + title + '"},';
-                }
-            }
-            if (mySource != '[') {
-                mySource = mySource.substring(0, mySource.length - 1);
-            }
-            mySource += ']';
-            $("#btnMySource").attr("mySource", mySource)
-        })
+        
         API.getPeopleList(start, limit, keyword, function (res) {
 
             //编译模板
@@ -79,6 +65,21 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
                 }
             });
 
+        })
+        API.getParameterList(start, limit, parameterkey, function (res) {
+            var list = res.data.list;
+            var mySource = "["
+            for (var i = 0; i < list.length; i++) {
+                var title = list[i].title;
+                if (title != '') {
+                    mySource += '{"id":' + (i + 1) + ',"name":"' + title + '"},';
+                }
+            }
+            if (mySource != '[') {
+                mySource = mySource.substring(0, mySource.length - 1);
+            }
+            mySource += ']';
+            $("#btnMySource").attr("mySource", mySource)
         })
     }
 })
