@@ -52,21 +52,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
                 })
             //把渲染好的元素放到页面中
             $(".module-container").append($peopleList);
-
-            var num = Math.ceil(res.sumsize/30);
-            
-            Page({
-                num: num, //页码数
-                startnum: page||1, //指定页码
-                elem: $('#page1'), //指定的元素
-                callback: function (n) { //回调函数
-                    $("#btnPager").attr("page",n);
-                    $("#btnPeopleManager").trigger("click"); //刷新
-                }
-            });
-
-        })
-        API.getParameterList(start, limit, parameterkey, function (res) {
+            API.getParameterList(start, limit, parameterkey, function (res) {
             var list = res.data.list;
             var mySource = "["
             for (var i = 0; i < list.length; i++) {
@@ -81,5 +67,19 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
             mySource += ']';
             $("#btnMySource").attr("mySource", mySource)
         })
+            var num = Math.ceil(res.sumsize/30);
+            
+            Page({
+                num: num, //页码数
+                startnum: page||1, //指定页码
+                elem: $('#page1'), //指定的元素
+                callback: function (n) { //回调函数
+                    $("#btnPager").attr("page",n);
+                    $("#btnPeopleManager").trigger("click"); //刷新
+                }
+            });
+
+        })
+       
     }
 })

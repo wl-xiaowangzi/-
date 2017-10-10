@@ -12,6 +12,11 @@ define(["jquery"],function($){
             $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,persontype:persontype,similarity:similarity,keyword:keyword,personid:personid},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -27,6 +32,11 @@ define(["jquery"],function($){
             $.get(api+"/system/record/query",{organizationid,starttime,endtime,start,limit,datanumber},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -38,12 +48,42 @@ define(["jquery"],function($){
                 url:api+"/system/person/query",
                 type:"get",
                 data:{start,limit,keyword},
-                beforeSend:function(){
-                    // console.log(1)
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 定时请求不用调loading
+        queryApprovalList:function(start,limit,keyword,callback){
+            $.ajax({
+                url:api+"/system/person/query",
+                type:"get",
+                data:{start,limit,keyword},
+                beforeSend:function(res){
+
                 },
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -60,6 +100,11 @@ define(["jquery"],function($){
             $.get(api+"/system/person/query",{personid:ps_id,persontype:ps_type},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -70,6 +115,11 @@ define(["jquery"],function($){
             $.get(api+"/system/employee/query",{start,limit,status,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -85,6 +135,11 @@ define(["jquery"],function($){
             $.get(api+"/system/employee/getCheckinfos",{employeeid:ep_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -99,6 +154,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -110,6 +170,11 @@ define(["jquery"],function($){
             $.get(api+"/system/visitor/query",{start,limit,status,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -125,6 +190,11 @@ define(["jquery"],function($){
             $.get(api+"/system/visitor/getCheckinfos",{visitorid:vs_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -139,6 +209,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -164,6 +239,11 @@ define(["jquery"],function($){
             $.get(api+"/system/employee/query",{start,limit,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -183,6 +263,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -198,6 +283,11 @@ define(["jquery"],function($){
             $.get(api+"/system/employee/queryDateil",{employeeid:ep_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -212,6 +302,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -223,6 +318,11 @@ define(["jquery"],function($){
             $.post(api+"/system/employee/delete",{employeeids:ep_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
 
@@ -235,6 +335,11 @@ define(["jquery"],function($){
             $.get(api+"/system/visitor/query",{start,limit,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -254,6 +359,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -269,6 +379,11 @@ define(["jquery"],function($){
             $.get(api+"/system/visitor/queryDateil",{visitorid:vs_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -283,6 +398,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -294,6 +414,11 @@ define(["jquery"],function($){
             $.post(api+"/system/visitor/delete",{visitorids:vs_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
 
@@ -315,6 +440,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -331,6 +461,11 @@ define(["jquery"],function($){
             $.get(api+"/system/message/getMessage",{datanumber:datanumber},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -341,6 +476,11 @@ define(["jquery"],function($){
             $.get(api+"/system/message/read",{datanumber:datanumber},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -356,6 +496,11 @@ define(["jquery"],function($){
             $.get(api+"/system/systemparameter/queryDetail",{start:start,limit:limit,parameterkey:para_key},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -375,6 +520,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -386,6 +536,11 @@ define(["jquery"],function($){
             $.get(api+"/system/systemparameter/queryDetail",{parameterkey:para_key},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -400,6 +555,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -411,6 +571,11 @@ define(["jquery"],function($){
             $.post(api+"/system/systemparameter/delete",{parameterkeys:para_key},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
 
@@ -423,6 +588,11 @@ define(["jquery"],function($){
             $.get(api+"/system/device/query",{start,limit,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -442,6 +612,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -453,6 +628,11 @@ define(["jquery"],function($){
             $.get(api+"/system/device/query",{deviceid:dv_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -467,6 +647,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -478,6 +663,11 @@ define(["jquery"],function($){
             $.post(api+"/system/device/delete",{deviceids:dv_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
 
@@ -491,6 +681,11 @@ define(["jquery"],function($){
             $.get(api+"/system/user/query",{start,limit,keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 if(res.data.length==0){
@@ -510,6 +705,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -521,6 +721,11 @@ define(["jquery"],function($){
             $.get(api+"/system/user/query",{userid:user_id},function(res){
                 if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);
@@ -535,6 +740,11 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
                     return;
                 }
                 callback && callback(res);

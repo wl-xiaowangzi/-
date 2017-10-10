@@ -28,8 +28,6 @@
 .form-horizontal{
     height: 380px;
     width: 430px;
-    border-radius: 5px;
-    background: #fff;
     padding-bottom: 40px;
     text-align: center;
 }
@@ -38,7 +36,7 @@
     font-size: 18px;
     font-weight: 700;
     padding-top: 64px;
-    padding-bottom: 48px;
+    padding-bottom: 38px;
     color: #357ade;
 }
 .form-horizontal .heading .line{
@@ -80,6 +78,21 @@
     color: #357ade;
     font-size: 14px;
     font-weight: 700;
+}
+.form-horizontal .form-control::-webkit-input-placeholder{
+    font-weight: normal;
+    font-size: 14px;
+    color: #acbac5;
+}
+.form-horizontal .form-control::-moz-placeholder{
+    font-weight: normal;
+    font-size: 14px;
+    color: #acbac5;
+}
+.form-horizontal .form-control:-ms-input-placeholder{
+    font-weight: normal;
+    font-size: 14px;
+    color: #acbac5;
 }
 .form-horizontal .form-control:focus{
     background: #f0f0f0;
@@ -125,9 +138,9 @@
     float: left;
     width: 16px;
     height: 16px;
-    background: #f5f5f5;
+    background-image: url(../imgs/login/check-box.png);
     position: relative;
-    margin: 8px 0 0 5px;
+    margin: 22px 0 0 5px;
     border: 1px solid #f5f5f5;
 }
 .form-horizontal .main-checkbox label{
@@ -137,26 +150,14 @@
     top: 0;
     left: 0;
     cursor: pointer;
-}
-.form-horizontal .main-checkbox label:after{
-    content: "";
-    width: 10px;
-    height: 5px;
-    position: absolute;
-    top: 4px;
-    left: 3px;
-    border: 3px solid #000;
-    border-top: none;
-    border-right: none;
-    background: transparent;
+    background-image: url(../imgs/login/check.png);
     opacity: 0;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
 }
+
 .form-horizontal .main-checkbox input[type=checkbox]{
     visibility: hidden;
 }
-.form-horizontal .main-checkbox input[type=checkbox]:checked + label:after{
+.form-horizontal .main-checkbox input[type=checkbox]:checked+label{
     opacity: 1;
 }
 .form-horizontal .text{
@@ -164,18 +165,57 @@
     margin-left: 7px;
     line-height: 20px;
     padding-top: 5px;
+    margin-top: 14px;
     text-transform: capitalize;
 }
 .form-horizontal .btn{
     float: right;
+    height: 51px;
+    width: 110px;
     font-size: 18px;
+    margin-top: 8px;
     color: #fff;
     background: url(../imgs/login/login-btn.png);
-    padding: 10px 35px;
+    background-size: 110px 51px;
     border: none;
     text-transform: capitalize;
     transition: all 0.5s ease 0s;
+    position: relative;
+    left: 6px;
 }
+
+.form-horizontal .btn .login-icon{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(../imgs/login/login-icon.png) no-repeat center center;
+    position: absolute;
+    top: 12px;
+    left: 70px;
+    z-index: 999;
+    opacity: 0;
+    transition: all 0.5s ease 0s;
+}
+.btn:active, .btn.active{
+    box-shadow:none;
+    -webkit-box-shadow:none;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus{outline: none;outline-offset: 0;}
+.form-horizontal .btn span{
+    position: absolute;
+    top: 8px;
+    left: 37px;
+    transition: all 0.5s ease 0s;
+}
+.form-horizontal .btn:hover .login-icon{
+    opacity: 1;
+    transition: all 0.5s ease 0s;
+}
+.form-horizontal .btn:hover .info{
+    left: 24px;
+    transition: all 0.5s ease 0s;
+}
+
 .opacity0{
     opacity: 0;
 }

@@ -42,7 +42,8 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
 
             //把渲染好的元素放到页面中
             $(".module-container").append($configDeviceManagement);
-
+            // 去掉左侧菜单栏激活状态
+            $("#sidebar-menu .side-menu li").removeClass("activate");
             var num = Math.ceil(res.sumsize/30);
             Page({
                 num: num, //页码数

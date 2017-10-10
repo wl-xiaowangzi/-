@@ -17,7 +17,6 @@ define(["jquery","artTemplate","text!tpls/configViewLog.html"],function($,art,co
             // test
             var $configViewLog=$(configViewLogTpl);
 
-            //实现编辑课时
             // $configViewLog
             // .on("click","#peopleVisitantList",function(){
 

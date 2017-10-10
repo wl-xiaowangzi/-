@@ -46,7 +46,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
                 })
             //把渲染好的元素放到页面中
             $(".module-container").append($usersList);
-
+            // 去掉左侧菜单栏激活状态
+            $("#sidebar-menu .side-menu li").removeClass("activate");
             var num = Math.ceil(res.sumsize/30);
             
             Page({

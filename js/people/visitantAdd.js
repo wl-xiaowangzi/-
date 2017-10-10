@@ -14,7 +14,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
         $peopleVisitantAdd.on("click", "#start", function () {
             camera();
         })
-        $peopleVisitantAdd.on("click", ".btn-blue", function () {
+        $peopleVisitantAdd.on("submit", "form", function () {
                 var deviceids=$.cookie("deviceids");
                 var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
                 var secondFacedatas = $("#btnPeopleManager").attr("facedata");

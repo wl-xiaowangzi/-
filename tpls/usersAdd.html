@@ -38,10 +38,22 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">手机号码</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" required="required" name="phonenumber" value="" placeholder="请输入您常用手机号"/><span class="asterisk">*</span>
+                            <input type="text" class="form-control" id="phonenumber" name="phonenumber" value="" minlength="11" maxlength="11" pattern="^(0|86|17951)?1[0-9]{10}" required="required" placeholder="请输入11位手机号码"/><span class="asterisk">*</span>
                         </div>
                     </div>
-                
+                    <script>
+                        var user = document.getElementById("phonenumber");
+                        user.onblur = function () {
+                            if (user.value) {
+                                user.setCustomValidity(""); //现将有输入时的提示设置为空
+                            } else if (user.validity.valueMissing) {
+                                user.setCustomValidity("请输入11位手机号码");
+                            };
+                            if (user.validity.patternMismatch) {
+                                user.setCustomValidity("手机号码只能是11位数字");
+                            }
+                        };
+                    </script>
                     <div class="form-group">
                         <div class="col-sm-6 col-sm-offset-5">
                             <button type="submit" class="btn btn-blue" style="margin-left:35px;">确认</button>

@@ -17,7 +17,6 @@ define(["jquery","artTemplate","text!tpls/configOrganizationalManagement.html"],
             // test
             var $configOrganizationalManagement=$(configOrganizationalManagementTpl);
 
-            //实现编辑课时
             // $configViewLog
             // .on("click","#peopleVisitantList",function(){
 

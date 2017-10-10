@@ -17,7 +17,6 @@ define(["jquery","artTemplate","text!tpls/configCauseManagement.html"],function(
             // test
             var $configCauseManagement=$(configCauseManagementTpl);
 
-            //实现编辑课时
             // $configViewLog
             // .on("click","#peopleVisitantList",function(){
 

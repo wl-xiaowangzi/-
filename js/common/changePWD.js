@@ -65,7 +65,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], fu
         })
 
         $changePWD.appendTo("body").modal();
-
+        
 
     }
 })

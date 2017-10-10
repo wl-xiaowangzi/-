@@ -37,12 +37,15 @@ require.config({
         },
         daterangepicker: {
             deps: ["moment"]
-        }
+        },
+        typeahead: {
+            deps: ["bootstrap"]
+        } 
     }
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
+require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit","common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList,recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
 
     //处理用户名
     var username = $.cookie("username");
@@ -67,7 +70,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     var keyword;
     // 登录获取未审批人员人数
     setTimeout(function () {
-        API.getApprovalList(0, 100, keyword, function (res) {
+        API.queryApprovalList(0, 100, keyword, function (res) {
             if (res.data.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0")
             } else {
@@ -77,7 +80,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     }, 0)
     // 定时抓取未审批人数
     setInterval(function () {
-        API.getApprovalList(0, 100, keyword, function (res) {
+        API.queryApprovalList(0, 100, keyword, function (res) {
             if (res.data.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0")
             } else {
@@ -124,8 +127,12 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
         $(".module-container").empty();
         recordList();
     })
-
-
+    $("#btnRecordEdit").on("click", function () {
+        //识别记录
+        $(".modal-backdrop").remove();
+        $("#modalEditRecord").remove();
+        recordEdit();
+    })
     $("#btnPeopleManager").on("click", function () {
         //人员管理
         $(".module-container").empty();

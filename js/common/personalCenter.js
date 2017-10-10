@@ -36,7 +36,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/personalCenter.html"],
 
 
             $personalCenter.appendTo("body").modal();
-
+            
             
         })
 
