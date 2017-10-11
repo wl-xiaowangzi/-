@@ -2,7 +2,7 @@
     <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:50px;padding:9px 0 0 0;">
         <div class="top-nav">
             <!--下拉搜索条件-->
-            <div class="dropdown pull-left btn" style="margin-left:-20px;">
+            <div class="dropdown pull-left" style="margin-left:-20px;">
                 <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="trick">所有人员</span><span class="caret"></span></div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li><a href="#" class="allRecord">所有人员</a></li>
@@ -10,7 +10,7 @@
                     <li><a href="#" id="visitorRecord">访客</a></li>
                 </ul>
             </div>
-            <div class="dropdown pull-left ml btn">
+            <div class="dropdown pull-left ml ">
                 <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">相似度<span class="slm"></span><span class="caret"></span></div>
                 <ul class="dropdown-menu similarity" aria-labelledby="dropdownMenu1">
                     <li><a href="#" similarity="0.65">65%以上</a></li>
@@ -51,11 +51,11 @@
             </div>
             <ul>
                 <li><img src="{{$value.faceimage}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
-                <li>|</li>
+                <li class="bdcolor">|</li>
                 <li>{{$value.devicename}}</li>
-                <li>|</li>
+                <li class="bdcolor">|</li>
                 <li>{{$value.updatetime}}</li>
-                <li>|</li>
+                <li class="bdcolor">|</li>
                 <li ps_id={{$value.personid}} ps_type={{$value.persontype}}>
                     <button class="btn btn-default btn-show show{{$value.persontype}}" personid={{$value.personid}}>信息</button>
                     <button class="btn btn-default btn-edit ml24">记录</button>

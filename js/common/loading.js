@@ -20,7 +20,7 @@ define(["jquery", "text!tpls/loading.html"], function ($, loadingTpl) {
             console.log(status)
             // var sessionStatus = xhr.getResponseHeader('sessionstatus');
             if (status != 'success') {
-                confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                 location.href="login.html";
             }
             $loadingTpl.remove();

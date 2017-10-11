@@ -66,6 +66,26 @@ p{
     top: 0;
     right: 0;
 }
+.form-control::-webkit-input-placeholder{
+    font-weight: normal;
+    font-size: 14px;
+    color: #acbac5;
+}
+.form-control::-moz-placeholder{
+    font-weight: normal;
+    font-size: 14px;
+    color: #acbac5;
+}
+.form-control:-ms-input-placeholder{
+    font-weight: normal;
+    font-size: 14px;
+    color: #acbac5;
+}
+.dropdown{
+    margin-top: 7px;
+    margin-left: -6px!important;
+    margin-right: 45px;
+}
 
 .modal-title {
     font-size: 18px;
@@ -75,7 +95,9 @@ p{
 .form-group {
     margin-bottom: 15px;
 }
-
+.panel-body{
+    border-top: 0!important;
+}
 .form-control {
     background-color: #f8fafb;
     height: 40px;
@@ -93,6 +115,10 @@ button {
 .btn:focus {
     color: white!important;
     background-color: #296ee1!important;
+}
+
+.bdcolor{
+    color: #e6ebee;
 }
 /*间距样式 begin*/
 .mt8 {
@@ -283,6 +309,9 @@ button {
 .img_info_box{
     width: 120px;
 }
+#sidebar-menu .side-menu li:hover{
+    border-color: #357aed!important;
+}
 /*公共样式 end*/
 
 body {
@@ -297,7 +326,7 @@ body {
     left: 0;
     width: 150px;
     z-index: 1;
-    background-color: #1c232d;
+    background-color: #151a21;
 }
 
 .content .content-left .logo {
@@ -318,6 +347,7 @@ body {
 .content-left .logo .img-box img {
     width: 100%;
     height: 100%;
+    padding: 0 30px;
 }
 
 #sidebar-menu {
@@ -365,7 +395,7 @@ body {
     text-shadow: rgba(0, 0, 0, .25) 0 -1px 0;
     background: linear-gradient(#334556, #2C4257), #2A3F54;
     box-shadow: rgba(0, 0, 0, .25) 0 1px 0, inset rgba(255, 255, 255, .16) 0 1px 0;
-    border-right: 5px solid #357aed;
+    border-right: 5px solid transparent;
     color: white;
 }
 
@@ -410,6 +440,7 @@ nav {
     height: 100px;
     padding-left: 64px;
     padding-right: 160px;
+    border-bottom: 1px solid #e6ebee;
 }
 
 .search {
@@ -425,7 +456,7 @@ nav {
 .search input {
     width: 20vw;
     background: #f8fafb;
-    color: #9fafbc;
+    color: #000;
     /*border: none;*/
     border-radius: 20px;
     box-shadow: none;
@@ -460,6 +491,10 @@ nav {
 }
 
 @media screen and (max-width:1050px) {
+    
+    .logo-img{
+        opacity: 0!important;
+    }
     .content .content-left {
         width: 80px;
     }
@@ -781,17 +816,20 @@ p{
     left: 159.484px;
     display: block;
     z-index: 9999;
+    border: 1px solid #dedeed;
 }
 
 #job_select li a{
     display: block;
-    padding: 3px 20px;
+    padding: 3px 0px;
+    width: 292.66px;
     font-size: 12px;
-    color: #fff;
-    background-color:#337ab7 ;
+    color: #000;
+    background-color:#fff;
 }
 #job_select li a:hover{
-    opacity: .8;
+    background-color:#357aed;
+    color: #fff;
 }
 /*人员管理样式 end*/
 

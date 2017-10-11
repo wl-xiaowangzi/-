@@ -25,16 +25,23 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 camera(ps_type);
             });
             // 使用下拉菜单完成快捷选择职位
-            $peopleAdd.on("click", ".job", function () {
+            $peopleAdd.on("click", ".jobSel", function () {
                 if ($(".job").val() == "") {
                     $("#job_select").removeClass("displayN").addClass("displayB");
                     $("#job_select>li>a").on("click", function () {
+                        console.log($(this).html())
                         $(".job").val($(this).html());
                         $("#job_select").removeClass("displayB").addClass("displayN");
                     })
                 }
-
             });
+            $peopleAdd.on("input",".job",function(){
+                if($(".job").val()!=""){
+                    $("#job_select").removeClass("displayB").addClass("displayN");
+                }
+            })
+            
+                
             $peopleAdd.on("submit", "form", function () {
                 var deviceids = $.cookie("deviceids");
                 var secondFaceimages = $("#btnPeopleManager").attr("faceimage");

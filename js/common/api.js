@@ -29,7 +29,7 @@ define(["jquery"],function($){
         },
         // 查看详细信息
         showRecord:function(organizationid,starttime,endtime,start,limit,datanumber,callback){
-            $.get(api+"/system/record/query",{organizationid,starttime,endtime,start,limit,datanumber},function(res){
+            $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,datanumber:datanumber},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
@@ -85,11 +85,6 @@ define(["jquery"],function($){
                         location.href = "login.html";
                     }
                     return;
-                }
-                if(res.data.length==0){
-                    $("body").addClass("noResult")
-                }else{
-                    $("body").removeClass("noResult")
                 }
                 callback && callback(res);
                 }

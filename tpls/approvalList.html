@@ -3,7 +3,7 @@
         <div class="top-nav">
             <!--下拉搜索条件-->
             <div class="dropdown pull-left" style="margin-left:-20px;">
-                <div class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="peopleType">所有人员</span><span class="caret"></span></div>
+                <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="peopleType">所有人员</span><span class="caret"></span></div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li class="btn-all"><a href="#">所有人员</a></li>
                     <li id="btn-employee"><a href="#">员工</a></li>
@@ -36,7 +36,7 @@
                 </div>
             <ul vs_id={{$value.visitorid}}>
                 <li><img src="{{$value.headfaceimages[0]}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
-                <li>|</li>
+                <li class="bdcolor">|</li>
                 {{if $value.persontype==1}}
                 <li>{{$value.job}}</li>
                 {{else if $value.persontype==2}}
@@ -46,7 +46,7 @@
                 {{else}}
                 <li>{{$value.job}}</li>
                 {{/if}}
-                <li>|</li>
+                <li class="bdcolor">|</li>
                 <li ps_id={{$value.personid}} ps_type={{$value.persontype}}>
                     <button class="btn btn-default btn-show-approval show{{$value.persontype}}" ep_id={{$value.employeeid}}>查看</button>
                     <button class="btn btn-default btn-pass ml24 pass{{$value.persontype}}" ep_id={{$value.employeeid}}>通过</button>
