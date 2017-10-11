@@ -69,6 +69,11 @@
                             <span class="asterisk">*</span>
                         </div>
                     </div>
+                    <ul id="job_select" class="displayN">
+                        {{each list}}
+                        <li><a href="#" class="text-center">{{$value.title}}</a></li>
+                        {{/each}}
+                    </ul>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">工号</label>
                         <div class="col-sm-7">
