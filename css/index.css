@@ -10,7 +10,7 @@ body {
     background-position: center center;
     padding: 0!important;
 }
-p{
+p,h1,h2,h3,h4,h5{
     margin: 0;
     padding: 0;
 }
@@ -31,8 +31,16 @@ p{
 .modal-content {
     border-radius: 0;
     width: 568px;
+    vertical-align: center;
+    margin: 0!important;
 }
-
+.modal-dialog{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
 .modal-header {
     border: none;
 }
@@ -85,11 +93,31 @@ p{
     margin-top: 7px;
     margin-left: -6px!important;
     margin-right: 45px;
+    cursor: pointer;
+    color: #000;
+    /*height: 25px;*/
 }
-
+.dropdown-menu{
+    margin: 0!important;
+}
+.btn,button{
+    margin-bottom: 0;
+}
+#psDropdown,
+#sysDropdown{
+    margin: 0!important;
+}
+.top_nav .nav .open>a, .top_nav .nav .open>a:focus, .top_nav .nav .open>a:hover, .top_nav .nav>li>a:focus, .top_nav .nav>li>a:hover {
+    background: transparent;
+}
 .modal-title {
     font-size: 18px;
     color: #576780;
+}
+select{
+    appearance:none;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari 和 Chrome */
 }
 
 .form-group {
@@ -478,7 +506,6 @@ nav {
 
 .navbar-nav {
     position: absolute;
-    top: 20px;
     right: 150px;
 }
 
@@ -553,7 +580,7 @@ nav {
 }
 
 .top-nav {
-    padding: 0 4%;
+    padding: 0 71px 0 68px;
     background-color: #f8fafb;
 }
 
@@ -699,18 +726,20 @@ p{
 }
 
 .people-management .info-content .info {
-    width: 150px;
-    height: 200px;
+    width: 180px;
+    /*height: 200px;*/
     background-repeat: no-repeat;
     background-size: 46px 21px;
     background-position-x: 2px;
     background-position-y: 2px;
-    padding: 20px 0;
+    padding: 24px 0;
     border: 1px solid #e6ebee;
     margin-top: 18px;
-    margin-left: 5px;
-    margin-right: 7px;
+    /*margin-left: 5px;*/
+    padding: 24px;
+    margin-right: 12px;
     background-color: white;
+    overflow: hidden;
 }
 
 .people-management .info-content .info .info-box {
@@ -741,20 +770,25 @@ p{
 
 .info .info-box p:nth-child(2) {
     color: black;
-    /*margin-top: 8px;*/
-    /*margin-bottom: 6px;*/
+    margin-top: 16px;
+    margin-bottom: 4px;
 }
 
 .info .info-box p:nth-child(3) {
-    /*margin-bottom: 15px;*/
+    margin-bottom: 16px;
     font-size: 12px;
     color: #bdc2ca;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-overflow:ellipsis;
+    text-align: center;
 }
 
 .people-management .info-content .info .img-box {
-    margin-top: 10px;
-    width: 80px;
-    height: 80px;
+    /*margin-top: 10px;*/
+    width: 100px;
+    height: 100px;
 }
 
 .people-management .info-content .info .img-box img {

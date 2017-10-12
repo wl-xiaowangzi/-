@@ -42,12 +42,20 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
                 .on("click",".btn-search",function(){
                     var keyword = $(".search-word").val();
                     $("#btnSearchWords").attr("keyword",keyword);
+                    // 设置搜索关键字保留
+                    $("#btnKeepSearchWords").attr("searchWords",keyword);
                     $("#btnUsersManager").trigger("click");//刷新
                 })
             //把渲染好的元素放到页面中
             $(".module-container").append($usersList);
             // 去掉左侧菜单栏激活状态
             $("#sidebar-menu .side-menu li").removeClass("activate");
+            // 设置搜索关键字保留
+            var searchWords=$("#btnKeepSearchWords").attr("searchWords")
+            $(".search-word").val(searchWords)
+            // 清除上一次的关键字
+            $("#btnKeepSearchWords").removeAttr("searchWords")
+            
             var num = Math.ceil(res.sumsize/30);
             
             Page({

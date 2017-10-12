@@ -37,6 +37,8 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
                 .on("click",".btn-search",function(){
                     var keyword = $(".search-word").val();
                     $("#btnSearchWords").attr("keyword",keyword);
+                    // 设置搜索关键字保留
+                    $("#btnKeepSearchWords").attr("searchWords",keyword);
                     $("#btnDeviceManagement").trigger("click");//刷新
                 })
 
@@ -44,6 +46,12 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
             $(".module-container").append($configDeviceManagement);
             // 去掉左侧菜单栏激活状态
             $("#sidebar-menu .side-menu li").removeClass("activate");
+            // 设置搜索关键字保留
+            var searchWords=$("#btnKeepSearchWords").attr("searchWords")
+            $(".search-word").val(searchWords)
+            // 清除上一次的关键字
+            $("#btnKeepSearchWords").removeAttr("searchWords")
+
             var num = Math.ceil(res.sumsize/30);
             Page({
                 num: num, //页码数

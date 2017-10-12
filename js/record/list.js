@@ -71,6 +71,8 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 .on("click", ".btn-search", function () {
                     var keyword = $(".search-word").val();
                     $("#btnSearchWords").attr("keyword", keyword);
+                    // 设置搜索关键字保留
+                    $("#btnKeepSearchWords").attr("searchWords",keyword);
                     $("#btnRecord").trigger("click"); //刷新
                 })
                 .on("click", ".allRecord", function () {
@@ -78,7 +80,15 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 })
 
             $(".module-container").append($recordList);
-
+            // 设置下拉菜单鼠标移入触发
+            $('div.dropdown').mouseover(function() {   
+            $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');}); 
+            // 设置搜索关键字保留
+            var searchWords=$("#btnKeepSearchWords").attr("searchWords")
+            $(".search-word").val(searchWords)
+            // 清除上一次的关键字
+            $("#btnKeepSearchWords").removeAttr("searchWords")
+            
             var num = Math.ceil(res.sumsize / 30);
 
             Page({

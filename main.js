@@ -203,4 +203,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
         $("#sidebar-menu .side-menu li").removeClass("activate");
         $(this).addClass("activate")
     })
+    // 给下拉菜单变为鼠标移入触发
+    $('li.dropdown').mouseover(function() {   
+    $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');});
 })
