@@ -15,7 +15,7 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceAdd.html", 
                 var formData = $(this).serialize();
 
                 API.addDevice(formData, function (res) {
-                    console.log(res)
+                    
                     $configDeviceAdd.modal("hide");
 
                     //成功的添加设备-->刷新设备管理页面

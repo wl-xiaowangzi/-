@@ -43,7 +43,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 var checksuggestion="审核通过";
                 //调用员工审查接口
                  API.checkEmployee(ps_id,1,checksuggestion, function (res) {
-                    console.log(res);
+                    
                     agree()
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");
@@ -55,7 +55,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 var checksuggestion="审核通过";
                 //加载访客审查接口
                  API.checkVisitor(ps_id,1,checksuggestion, function (res) {
-                    console.log(res);
+                    
                     agree();
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");

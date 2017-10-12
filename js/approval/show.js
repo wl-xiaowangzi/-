@@ -9,7 +9,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", ".
         console.log(ps_id)
         //获取对应的审批信息
         API.getEmployeeBaseInfo(ps_id, function (res) {
-            console.log(res)
+            
             //删除原来的模态框
             $("#modalShowInfo").remove();
             //编译模板文件，获取含有真正数据的字符串
@@ -23,7 +23,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", ".
                     var checksuggestion = "审核通过";
                     //加载访客审查接口
                     API.checkVisitor(ep_id, 1, checksuggestion, function (res) {
-                        console.log(res);
+                        
                         // 刷新审核页面
                         $("#btnApproval").trigger("click");
                     })
@@ -31,7 +31,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", ".
                 .on("click", ".btn-refuse", function () {
                         //获取人员id
                         var ep_id = $(this).parent().attr("ep_id");
-                        console.log(ep_id)
+                        
                         $approvalShow.modal("hide");
                         refuse(ep_id);
                         return false; //阻止表单同步提交

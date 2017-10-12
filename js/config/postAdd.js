@@ -8,12 +8,12 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostAdd.html", "
         var parameterkey = "key_job";
         var organizationid = $.cookie("organizationid");
         API.getParameterList(0, 1, parameterkey, function (res) {
-            console.log(res)
+            
             $("#modalConfigPostAdd").remove();
             // var configPostAdd = art.render(configPostAddTpl, res.data)
             var $configPostAdd = $(configPostAddTpl);
             var list = res.data.list;
-            console.log(list)
+            
             $configPostAdd
                 .on("submit", "form", function () {
                     var parameterkey = "key_job";
@@ -44,9 +44,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostAdd.html", "
 
                     var description = "职位管理";
 
-                    console.log(organizationid, parameterkey, parameters, description)
+                    
                     API.addParameter(organizationid, parameterkey, parameters, description, function (res) {
-                        console.log(res)
+                        
                         $configPostAdd.modal("hide");
 
                         //成功的添加职位-->刷新职位管理页面

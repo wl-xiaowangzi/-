@@ -9,7 +9,7 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
         //把渲染好的元素放到页面中
         //根据访客id获取访客基本信息
         API.getVisitorBaseInfo(vs_id,function(res){
-            console.log(res)
+            
             var peopleVisitantInfo=art.render(peopleVisitantInfoTpl,res.data);
 
             var $peopleVisitantInfo=$(peopleVisitantInfo);
@@ -42,9 +42,9 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
                 var starttime = $(".starttime").val();
                 var endtime = $(".endtime").val();
                 var sex=$(".sex").val();
-                console.log(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages)
+                
                 API.editVisitor(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,function(res){
-                    console.log(res)
+                    
                     $peopleVisitantInfo.modal("hide");
                     //数据更新成功-->跳转到员工列表
                     $("#btnVisitorManager").trigger("click");

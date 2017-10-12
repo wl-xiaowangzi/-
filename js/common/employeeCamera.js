@@ -14,8 +14,6 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "people/
                 context.drawImage(video, 0, 0, 640, 480);
                 //从画布上获取照片数据  
                 var imgData = canvas.toDataURL("image/png");
-                // 关闭摄像头
-                mediaStreamTrack && mediaStreamTrack.stop();
                 //将图片转换为Base64  
                 var base64Data = imgData.substr(22);
                 //将图片上传到服务器
@@ -24,13 +22,15 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "people/
                         undetected(res.message)
                         return
                     }
-                    console.log(res)
+                   // 关闭摄像头
+                    mediaStreamTrack && mediaStreamTrack.stop();
                     var faceimages = res.data.faceimage;
                     var facedatas = res.data.facedata;
                     var headfaceimage=res.data.headfaceimage;
                     $camera.modal("hide")
                     addEmployee(faceimages, facedatas,headfaceimage)
                 })
+                
             })
 
         $camera.appendTo("body").modal();

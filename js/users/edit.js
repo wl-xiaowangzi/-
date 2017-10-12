@@ -7,7 +7,7 @@ define(["jquery","artTemplate","common/api","text!tpls/usersEdit.html","bootstra
     return function(user_id){
         // var organizationid = $.cookie("organizationid");
         API.queryUser(user_id,function(res){
-             console.log(res)
+             
             $("#modalEditUsers").remove();
 
             var usersEdit=art.render(usersEditTpl,res.data[0]);
@@ -17,7 +17,7 @@ define(["jquery","artTemplate","common/api","text!tpls/usersEdit.html","bootstra
 
                 //获取表单信息
                 var formData=$(this).serialize();
-                console.log(formData)
+                
                 API.editUser(formData,function(res){
                    
                     //成功的更新了分类信息

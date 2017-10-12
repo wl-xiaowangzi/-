@@ -11,7 +11,7 @@ define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html
         var start = 30*(page-1);
         var limit = 30*(page);
         API.getParameterList(start,limit,parameterkey,function(res){
-            console.log(res)
+            
             //编译模板
             var configPostManagement=art.render(configPostManagementTpl,res.data);
 

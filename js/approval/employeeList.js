@@ -30,10 +30,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 //获取人员id
                 var ep_id=$(this).attr("ep_id");
                 //调用员工审查接口
-                console.log(ep_id)
+                
                 var checksuggestion="审核通过";
                 API.checkEmployee(ep_id,1,checksuggestion, function (res) {
-                    console.log(res);
+                    
                     agree();
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");

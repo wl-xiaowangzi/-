@@ -9,7 +9,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/personalCenter.html"],
         var userid = $.cookie("userid");
         API.queryUser(userid, function (res) {
 
-            console.log(res)
             $("#modalPersonalCenter").remove();
 
             var personalCenter = art.render(personalCenterTpl, res.data[0]);

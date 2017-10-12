@@ -10,7 +10,7 @@ define(["jquery","artTemplate","text!tpls/undetected.html","bootstrap"],function
 
             var $undetected=$(undetectedTpl);
             var info = info;
-            console.log(info)
+            
             
             $undetected.on("click", ".btn-blue", function () {
             context.clearRect(0, 0, 640, 480);

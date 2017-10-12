@@ -14,11 +14,11 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
         var headfaceimage = headfaceimage;
         $("#modalPeopleAdd").remove();
         API.getParameterList(start, limit, parameterkey, function (res) {
-            console.log(res)
+            
             var peopleAdd = art.render(peopleAddTpl, res.data)
             var $peopleAdd = $(peopleAdd);
     
-            console.log(headfaceimage)
+            
             // 如果点击start则表示提交两张图片
             $peopleAdd.on("click", "#start", function () {
                 var ps_type = 1;
@@ -26,10 +26,10 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
             });
             // 使用下拉菜单完成快捷选择职位
             $peopleAdd.on("click", ".jobSel", function () {
+                
                 if ($(".job").val() == "") {
                     $("#job_select").removeClass("displayN").addClass("displayB");
                     $("#job_select>li>a").on("click", function () {
-                        console.log($(this).html())
                         $(".job").val($(this).html());
                         $("#job_select").removeClass("displayB").addClass("displayN");
                     })
@@ -70,8 +70,6 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
             });
 
             $peopleAdd.appendTo("body").modal();
-            
-            
             
             $(".mainPIC").attr("src", headfaceimage);
             // 判断图片是否加载完成

@@ -5,10 +5,10 @@
 define(["jquery","artTemplate","common/api","text!tpls/configDeviceEdit.html","bootstrap"],function($,art,API,configDeviceEditTpl){
     
     return function(dv_id){
-        console.log(dv_id)
+        
         // var organizationid = $.cookie("organizationid");
         API.queryDevice(dv_id,function(res){
-             console.log(res)
+             
             $("#modalConfigDeviceEdit").remove();
 
             var configDeviceEdit=art.render(configDeviceEditTpl,res.data[0]);
@@ -18,7 +18,7 @@ define(["jquery","artTemplate","common/api","text!tpls/configDeviceEdit.html","b
 
                 //获取表单信息
                 var formData=$(this).serialize();
-                console.log(formData)
+                
                 API.editDevice(formData,function(res){
                    
                     //成功的更新了分类信息

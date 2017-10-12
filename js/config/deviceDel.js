@@ -10,7 +10,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configDeviceDel.html",
         var $configDeviceDel = $(configDeviceDelTpl);
 
         $configDeviceDel.on("submit", "form", function () {
-            console.log(dv_id)
+            
             API.delDevice(dv_id, function (res) {
                  $configDeviceDel.modal("hide");
                 $("#btnDeviceManagement").trigger("click");

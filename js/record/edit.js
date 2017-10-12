@@ -20,7 +20,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html"], fun
         var personid=ps_id;
         
         API.getRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
-            console.log(res)
+            
             //编译模板
             var recordEdit = art.render(recordEditTpl, res);
             var $recordEdit = $(recordEdit);
@@ -29,14 +29,14 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html"], fun
 
             $recordEdit
                 .on("scroll", ".modal-body", function (e) {
-                    console.log(e)
+                    
                 })
                 .on("click",".replaceIMG",function(res){
-                    console.log(9)
+                    
                 })
                 .on("click",".loadMore",function(){
                     page++
-                    console.log(page)
+                    
                     $("#btnPager").attr("page",page);
                     $("#btnRecordEdit").trigger("click");
                 })

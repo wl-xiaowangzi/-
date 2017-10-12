@@ -9,7 +9,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostDel.html", "
         var organizationid = $.cookie("organizationid");
         var num = num;
         API.getParameterList(0, 1, parameterkey, function (res) {
-            console.log(res)
+            
             $("#modalConfigPostDel").remove();
             var $configPostDel = $(configPostDelTpl);
             var list = res.data.list;
@@ -39,9 +39,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostDel.html", "
 
                     var description = "职位管理";
 
-                    console.log(organizationid, parameterkey, parameters, description)
+                    
                     API.addParameter(organizationid, parameterkey, parameters, description, function (res) {
-                        console.log(res)
+                        
                         $configPostDel.modal("hide");
 
                         //成功的添加职位-->刷新职位管理页面

@@ -12,7 +12,7 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
         var keyword = $("#btnSearchWords").attr("keyword");
         $("#btnSearchWords").removeAttr("keyword");
         API.getDeviceList(start,limit,keyword,function(res){
-        console.log(res)
+        
             //编译模板
             var configDeviceManagement = art.render(configDeviceManagementTpl, res);
 
@@ -31,7 +31,7 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
                 })
                 .on("click", ".btn-device-del", function () {
                     var dv_id = $(this).parent().attr("dv_id");
-                    console.log(dv_id)
+                    
                     deviceDel(dv_id);
                 })
                 .on("click",".btn-search",function(){

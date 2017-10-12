@@ -30,7 +30,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 var vs_id=$(this).parent().parent().attr("vs_id");
                 //调用员工审查接口
                  API.checkEmployee(vs_id,1,"审核通过", function (res) {
-                    console.log(res);
+                    
                     agree();
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");

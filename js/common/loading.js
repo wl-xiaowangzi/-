@@ -17,10 +17,9 @@ define(["jquery", "text!tpls/loading.html"], function ($, loadingTpl) {
          * ajax请求完成(成功 or 失败)之后执行的回调函数
          */
         complete: function (xhr,status) {
-            console.log(status)
-            // var sessionStatus = xhr.getResponseHeader('sessionstatus');
+            
             if (status != 'success') {
-                // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                 location.href="login.html";
             }
             $loadingTpl.remove();

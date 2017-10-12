@@ -8,7 +8,7 @@ define(["jquery","artTemplate","text!tpls/recordShow.html","common/api"],functio
         //根据id获取人员信息
         API.getEmployeeBaseInfo(ep_id,function(res){
             $("#modalShowRecord").remove();
-            console.log(res)
+            
             var recordShow=art.render(recordShowTpl,res.data);
 
             var $recordShow=$(recordShow);

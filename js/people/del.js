@@ -12,9 +12,9 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleDel.html","bootstra
             var ep_id = ep_id;
 
             $peopleDel.on("submit", "form", function () {
-            console.log(ep_id)
+            
             API.delEmployee(ep_id, function (res) {
-                console.log(res)
+                
                 $peopleDel.modal("hide");
                 $("#btnPeopleManager").trigger("click");
             })

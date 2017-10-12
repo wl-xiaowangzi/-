@@ -20,7 +20,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
 
             //编译模板
             var peopleList = art.render(peopleListTpl, res);
-            console.log(res)
+            
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
             var $peopleList = $(peopleList);
 

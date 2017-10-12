@@ -24,11 +24,10 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         var keyword = $("#btnSearchWords").attr("keyword");
         var personid;
         $("#btnSearchWords").removeAttr("keyword");
-        console.log(starttime, endtime)
-
+       
         
         API.getRecordList(organizationid, starttime, endtime, start, limit, persontype, similarity, keyword, personid, function (res) {
-            console.log(res)
+            
             //编译模板
             var recordList = art.render(recordListTpl, res);
             var $recordList = $(recordList);

@@ -13,7 +13,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
         $("#btnSearchWords").removeAttr("keyword");
     
         API.getUsersList(start, limit, keyword, function (res) {
-            console.log(res)
+            
             //编译模板
             var usersList = art.render(usersListTpl, res);
             var $usersList = $(usersList);

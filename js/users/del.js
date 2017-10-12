@@ -11,7 +11,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersDel.html", "boots
         var user_id = user_id;
 
         $usersDel.on("submit", "form", function () {
-            console.log(user_id)
+            
             API.delUser(user_id, function (res) {
                 if(res.code!=0){
                     $usersDel.modal("hide");

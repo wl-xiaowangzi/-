@@ -8,7 +8,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
     return function (ep_id) {
         //根据员工id获取员工基本信息
         API.getEmployeeBaseInfo(ep_id, function (res) {
-            console.log(res.data)
+            
             var peopleBaseInfo = art.render(peopleBaseInfoTpl, res.data);
 
             var $peopleBaseInfo = $(peopleBaseInfo);
@@ -41,9 +41,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
                 var job = $(".job").val();
                 var employeenumber = $(".employeenumber").val();
                 var sex = $(".sex").val();
-                console.log(facedatas)
+                
                 API.editEmployee(ep_id, deviceids, name, sex, birthday, phonenumber, job, employeenumber, facedatas, faceimages, function (res) {
-                    console.log(res)
+                    
                     $peopleBaseInfo.modal("hide");
                     //数据更新成功-->跳转到员工列表
                     $("#btnPeopleManager").trigger("click");

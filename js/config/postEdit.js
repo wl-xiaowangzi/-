@@ -9,7 +9,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostEdit.html", 
         var organizationid=$.cookie("organizationid");
         var num = num;
         API.getParameterList(0, 1, parameterkey, function (res) {
-            console.log(res)
+            
             $("#modalConfigPostEdit").remove();
             var configPostEdit = art.render(configPostEditTpl, res.data.list[num])
             var $configPostEdit = $(configPostEdit);
@@ -43,9 +43,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostEdit.html", 
                     
                     var description = "职位管理";
 
-                    console.log(organizationid,parameterkey, parameters, description)
+                    
                     API.addParameter(organizationid,parameterkey, parameters, description, function (res) {
-                        console.log(res)
+                        
                         $configPostEdit.modal("hide");
 
                         //成功的添加职位-->刷新职位管理页面

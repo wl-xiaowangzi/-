@@ -6,10 +6,10 @@
 define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", "./visitantRefuse"], function ($, art, API, approvalShowTpl, visitantRefuse) {
 
     return function (ps_id) {
-        console.log(ps_id)
+        
         //获取对应的审批信息
         API.getVisitorBaseInfo(ps_id, function (res) {
-            console.log(res)
+            
             //删除原来的模态框
             $("#modalShowInfo").remove();
             //编译模板文件，获取含有真正数据的字符串
@@ -23,7 +23,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", ".
                     var checksuggestion = "审核通过";
                     //加载访客审查接口
                     API.checkVisitor(vs_id, 1, checksuggestion, function (res) {
-                        console.log(res);
+                        
                         // 刷新审核页面
                         $("#btnApproval").trigger("click");
                     })

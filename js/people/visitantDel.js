@@ -12,9 +12,9 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantDel.html","
             var vs_id = vs_id;
 
             $visitantDel.on("submit", "form", function () {
-            console.log(vs_id)
+            
             API.delVisitor(vs_id, function (res) {
-                console.log(res)
+                
                 $visitantDel.modal("hide");
                 $(".btnVisitantList").trigger("click");
             })

@@ -34,10 +34,10 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
                 var starttime = $(".starttime").val();
                 var endtime = $(".endtime").val();
                 var sex = $(".sex").val();
-                console.log(deviceids,facedatas)
+                
                 API.addVisitor(deviceids,name, sex, birthday, phonenumber,starttime,endtime, remark, faceimages, facedatas, function (res) {
                     $peopleVisitantAdd.modal("hide");
-                    console.log(res)
+                   
                     //成功的添加员工->刷新员工管理页面
                     $("#btnVisitorManager").trigger("click");
                 })
