@@ -24,14 +24,17 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
             $peopleVisitantInfo.on("submit","form",function(){
                 var deviceids=$(".btn-blue").parent().attr("deviceids").replace(/\[|]/g,'').replace(/\"|"/g,'');
                 var visitorid=$(".btn-blue").parent().attr("visitorid");
-                var facedatas=$(".btn-blue").parent().attr("firstFacedatas");
-                var faceimages=$(".btn-blue").parent().attr("firstFaceimages");
-                var secondFacedatas=$(".btn-blue").attr("secondFacedatas");
-                var secondFaceimages=$(".btn-blue").attr("secondFaceimages");
-                 if(secondFaceimages!=undefined){
-                     facedatas=facedatas+"|"+secondFacedatas;
-                     faceimages=faceimages+","+secondFaceimages;
-                 }
+                var firstFacedatas = $(".btn-blue").parent().attr("firstFacedatas").replace(/\[|]/g, '');
+                var firstFaceimages = $(".btn-blue").parent().attr("firstFaceimages");
+                var secondFacedatas = $(".btn-blue").attr("secondFacedatas").replace(/\[|]/g, '');
+                var secondFaceimages = $(".btn-blue").attr("secondFaceimages");
+                if (secondFaceimages == undefined) {
+                    var faceimages = firstFaceimages;
+                    var facedatas = "[" + firstFacedatas + "]";
+                } else {
+                    var faceimages = firstFaceimages + "," + secondFaceimages;
+                    var facedatas = "[" + firstFacedatas + "]|" + "[" + secondFacedatas + "]";
+                }
                 var birthday=$(".birthday-join").val();
                 var phonenumber=$(".phonenumber").val();
                 var name=$(".name").val();

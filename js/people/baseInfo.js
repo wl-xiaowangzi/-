@@ -24,13 +24,16 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
             $peopleBaseInfo.on("submit", "form", function () {
                 var deviceids = $(".btn-blue").parent().attr("deviceids").replace(/\[|]/g, '').replace(/\"|"/g, '');
                 var employeeid = $(".btn-blue").parent().attr("employeeid");
-                var facedatas = $(".btn-blue").parent().attr("firstFacedatas");
-                var faceimages = $(".btn-blue").parent().attr("firstFaceimages");
-                var secondFacedatas = $(".btn-blue").attr("secondFacedatas");
+                var firstFacedatas = $(".btn-blue").parent().attr("firstFacedatas").replace(/\[|]/g, '');
+                var firstFaceimages = $(".btn-blue").parent().attr("firstFaceimages");
+                var secondFacedatas = $(".btn-blue").attr("secondFacedatas").replace(/\[|]/g, '');
                 var secondFaceimages = $(".btn-blue").attr("secondFaceimages");
-                if (secondFaceimages != undefined) {
-                    facedatas = facedatas + "|" + secondFacedatas;
-                    faceimages = faceimages + "," + secondFaceimages;
+                if (secondFaceimages == undefined) {
+                    var faceimages = firstFaceimages;
+                    var facedatas = "[" + firstFacedatas + "]";
+                } else {
+                    var faceimages = firstFaceimages + "," + secondFaceimages;
+                    var facedatas = "[" + firstFacedatas + "]|" + "[" + secondFacedatas + "]";
                 }
                 var birthday = $(".birthday-join").val();
                 var phonenumber = $(".phonenumber").val();
@@ -38,7 +41,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
                 var job = $(".job").val();
                 var employeenumber = $(".employeenumber").val();
                 var sex = $(".sex").val();
-                console.log(deviceids)
+                console.log(facedatas)
                 API.editEmployee(ep_id, deviceids, name, sex, birthday, phonenumber, job, employeenumber, facedatas, faceimages, function (res) {
                     console.log(res)
                     $peopleBaseInfo.modal("hide");

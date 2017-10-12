@@ -71,6 +71,8 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
 
             $peopleAdd.appendTo("body").modal();
             
+            
+            
             $(".mainPIC").attr("src", headfaceimage);
             // 判断图片是否加载完成
             $(".mainPIC").load(function () {

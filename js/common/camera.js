@@ -12,6 +12,8 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
         $camera
             .on("click", ".picture", function () {
                 context.drawImage(video, 0, 0, 640, 480);
+                // 关闭摄像头
+                mediaStreamTrack && mediaStreamTrack.stop();
                 //从画布上获取照片数据  
                 var imgData = canvas.toDataURL("image/png");
                 //将图片转换为Base64  
@@ -28,6 +30,10 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     $camera.modal("hide");
                 })
             })
+            .on("click","#close",function(){
+                
+                
+            },false)
 
         $camera.appendTo("body").modal();
         if(ps_type==1){

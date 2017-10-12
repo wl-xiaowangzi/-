@@ -13,47 +13,47 @@
                         <div class="hintInfo">提示：<span class="info">请保持正脸获取照片</span></div>
                         <div class="picture"></div>
                     </div>
+                    <div id="close"></div>
                     <canvas id="canvas" width="640" height="480" style="position:absolute;top:15px;background:url(imgs/cover.png) no-repeat center center">
                         <script>
                             var video = document.getElementById("video");
 
                             var canvas = document.getElementById("canvas");
-                            var context = canvas.getContext("2d")
-                            if (navigator.mediaDevices.getUserMedia) { // 标准的API
-                                var p = navigator.mediaDevices.getUserMedia({
-                                    video: {
-                                        width:640,
-                                        height:480
-                                    }
-                                });
-                                p.then(function (mediaStream) {
-                                    var video = document.querySelector('video');
-                                    video.src = window.URL.createObjectURL(mediaStream);
-                                    video.onloadedmetadata = function (e) {
-                                        // Do something with the video here.
-                                        video.play();
-                                    };
-                                });
-                                p.catch(function (err) {
-                                    console.log(err.name);
-                                });
-                            } else if (navigator.mediaDevices.webkitGetUserMedia) { // WebKit 核心的API
-                                var p = navigator.mediaDevices.webkitGetUserMedia({
+                            var context = canvas.getContext("2d");
+                            var close = document.getElementById("close");
+                            var mediaStreamTrack;
+                            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                                navigator.mediaDevices.getUserMedia({
+                                    video: {width:640,height:480},
+                                    audio: true
+                                }).then(function (stream) {
+                                    console.log(stream);
+
+                                    mediaStreamTrack = typeof stream.stop === 'function' ? stream : stream.getTracks()[1];
+                                    console.log(mediaStreamTrack)
+                                    video.src = (window.URL || window.webkitURL).createObjectURL(stream);
+                                    video.play();
+                                }).catch(function (err) {
+                                    console.log(err);
+                                })
+                            }
+                            // 使用旧方法打开摄像头
+                            else if (navigator.getMedia) {
+                                navigator.getMedia({
                                     video: true
-                                });
-                                p.then(function (mediaStream) {
-                                    var video = document.querySelector('video');
-                                    video.src = window.URL.createObjectURL(mediaStream);
-                                    video.onloadedmetadata = function (e) {
-                                        // Do something with the video here.
-                                        video.play();
-                                    };
-                                });
-                                p.catch(function (err) {
-                                    console.log(err.name);
+                                }, function (stream) {
+                                    mediaStreamTrack = stream.getTracks()[0];
+
+                                    video.src = (window.URL || window.webkitURL).createObjectURL(stream);
+                                    video.play();
+                                }, function (err) {
+                                    console.log(err);
                                 });
                             }
-                            
+                            // 关闭摄像头
+                            close.addEventListener('click', function () {
+                                mediaStreamTrack && mediaStreamTrack.stop();
+                            }, false);
                         </script>
                     </canvas>
                     <!--<div class="form-group">

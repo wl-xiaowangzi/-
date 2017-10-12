@@ -197,7 +197,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     //希望一开始就渲染出识别记录
     //  -->触发识别记录的点击事件
     $("#btnRecord").trigger("click");
-
+    
     // 给侧边栏添加点击效果
     $("#sidebar-menu .side-menu li").on("click", function () {
         $("#sidebar-menu .side-menu li").removeClass("activate");
