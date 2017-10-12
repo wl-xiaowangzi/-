@@ -831,6 +831,8 @@ p{
 .secPIC{
     background-image: url(../imgs/uploadIMG.png);
     background-size: 100px 100px;
+    border: 1px solid #dedeed;
+    display: block;
 }
 .secPIC:hover{
     background-image: url(../imgs/uploadIMG_hover.png);
