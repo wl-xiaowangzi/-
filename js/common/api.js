@@ -13,7 +13,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -33,7 +33,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -52,7 +52,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -80,7 +80,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -96,7 +96,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -111,7 +111,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -131,7 +131,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -150,7 +150,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -166,7 +166,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -186,7 +186,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -205,7 +205,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -235,7 +235,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -259,7 +259,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -279,7 +279,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -298,7 +298,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -314,7 +314,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -331,7 +331,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -355,7 +355,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -375,7 +375,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -394,7 +394,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -410,7 +410,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -436,7 +436,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -457,7 +457,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -472,7 +472,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -492,7 +492,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -516,7 +516,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -532,7 +532,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -551,7 +551,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -567,7 +567,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -584,7 +584,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -608,7 +608,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -624,7 +624,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -643,7 +643,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -659,7 +659,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -677,7 +677,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -701,7 +701,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -717,7 +717,7 @@ define(["jquery"],function($){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
@@ -736,7 +736,7 @@ define(["jquery"],function($){
                     if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
-                        confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
                         location.href = "login.html";
                     }
