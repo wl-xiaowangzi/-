@@ -4,7 +4,6 @@ html,
 body {
     height: 100%;
 }
-
 body {
     background-repeat: no-repeat;
     background-position: center center;
@@ -103,8 +102,17 @@ p,h1,h2,h3,h4,h5{
 .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus{
     background-color: #357aed;
 }
+.caret{
+    color: #576780;
+}
 .btn,button{
     margin-bottom: 0;
+}
+.dropdown:hover .caret{
+    transform: rotate(180deg);
+}
+.caret_down{
+    transform: rotate(180deg);
 }
 #psDropdown,
 #sysDropdown{
@@ -117,12 +125,18 @@ p,h1,h2,h3,h4,h5{
     font-size: 18px;
     color: #576780;
 }
-select{
+/*清除下拉框默认箭头*/
+select.form-control{
     appearance:none;
     -moz-appearance:none; /* Firefox */
     -webkit-appearance:none; /* Safari 和 Chrome */
+    background-image: url(../imgs/triangle_down.png);
+    background-position: 270px center;
+    background-repeat: no-repeat;
 }
-
+select.triangle_down{
+    background-image: url(../imgs/triangle_up.png);
+}
 .form-group {
     margin-bottom: 15px;
 }
@@ -134,18 +148,6 @@ select{
     height: 40px;
     border: 1px solid #f1f1f1;
     box-shadow: none;
-}
-
-button {
-    width: 80px;
-    height: 32px;
-    font-size: 13px;
-}
-
-.btn:active,
-.btn:focus {
-    color: white!important;
-    background-color: #296ee1!important;
 }
 
 .bdcolor{
@@ -195,7 +197,16 @@ button {
 .btn {
     border-radius: 20px;
 }
-
+button {
+    width: 80px;
+    height: 32px;
+    font-size: 13px;
+}
+.btn:active,
+.btn:focus {
+    color: white!important;
+    background-color: #296ee1!important;
+}
 .btn-blue {
     background-color: #357aed;
     color: white;
@@ -222,23 +233,19 @@ button {
     color: white;
     border: none;
 }
-
 .dropdown-menu li a {
     display: flex;
     justify-content: center;
 }
-
 .dropdown-menu>li>a:hover {
     color: #357aed;
 }
-
 .user-profile img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
     margin-right: 10px;
 }
-
 #messages {
     display: block;
     width: 20px;
@@ -252,34 +259,27 @@ button {
     top: 20px;
     left: 90px;
 }
-
 .config-icon {
     display: block;
     width: 22px;
     height: 36px;
     background: url(../imgs/config-icon.png) no-repeat center 9px;
 }
-
 .dropdown-menu>li>a {
     padding: 7px 20px;
 }
-
 .search-icon {
     background: url(../imgs/search-icon.png) no-repeat center center!important;
 }
-
 .eye-close {
     background: url(../imgs/eyes-close.png) no-repeat center center!important;
 }
-
 .eye-open {
     background: url(../imgs/eyes-open.png) no-repeat center center!important;
 }
-
 .caret {
     margin-left: 8px!important;
 }
-
 .asterisk {
     display: block;
     width: 40px;

@@ -7,23 +7,20 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
 
     return function () {
         var page = $("#btnPager").attr("page")||1;
-        $("#btnPager").removeAttr("page");
+        var parameterkey = "key_job";
         var start = 30*(page-1);
         var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
+        // 移除参数
         $("#btnSearchWords").removeAttr("keyword");
-        var parameterkey = "key_job";
-        var start = 0;
-        var limit = 30;
+        $("#btnPager").removeAttr("page");
         
+        // 调用接口
         API.getPeopleList(start, limit, keyword, function (res) {
-
             //编译模板
             var peopleList = art.render(peopleListTpl, res);
-            
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
             var $peopleList = $(peopleList);
-
             //实现人员管理事件
             $peopleList
                 .on("click", "#peopleAdd", function () {
@@ -62,7 +59,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
             $(".search-word").val(searchWords)
             // 清除上一次的关键字
             $("#btnKeepSearchWords").removeAttr("searchWords")
-
+            // 获取员工参数
             API.getParameterList(start, limit, parameterkey, function (res) {
             var list = res.data.list;
             var mySource = "["
@@ -78,8 +75,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
             mySource += ']';
             $("#btnMySource").attr("mySource", mySource)
         })
+            // 设置分页
             var num = Math.ceil(res.sumsize/30);
-            
             Page({
                 num: num, //页码数
                 startnum: page||1, //指定页码
@@ -89,8 +86,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
                     $("#btnPeopleManager").trigger("click"); //刷新
                 }
             });
-
         })
-       
     }
 })

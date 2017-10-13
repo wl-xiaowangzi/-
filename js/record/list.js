@@ -5,6 +5,7 @@
  */
 define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./show", "./visitorShow", "./edit", "moment", "datetimepicker", "datetimepickerLang", "daterangepicker", "pager"], function ($, art, recordListTpl, API, recordShow, visitorShow, recordEdit, moment) {
     return function () {
+        // 获取所需参数
         var organizationid = $.cookie("organizationid");
         var time = new Date();
         var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate();
@@ -13,48 +14,48 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         var endtime = $("#btnEndtime").attr("endtime") || endtime;
         var similarity = $("#btnSimilarity").attr("similarity") || 0.75;
         var persontype = $("#btnPersontype").attr("persontype");
+        var page = $("#btnPager").attr("page") || 1;
+        var keyword = $("#btnSearchWords").attr("keyword");
+        var start = 30 * (page - 1);
+        var limit = 30 * (page);
+        var personid;
+        // 获取参数后清空自定义属性
         $("#btnStarttime").removeAttr("starttime");
         $("#btnEndtime").removeAttr("endtime");
         $("#btnSimilarity").removeAttr("similarity");
         $("#btnPersontype").removeAttr("persontype");
-        var page = $("#btnPager").attr("page") || 1;
         $("#btnPager").removeAttr("page");
-        var start = 30 * (page - 1);
-        var limit = 30 * (page);
-        var keyword = $("#btnSearchWords").attr("keyword");
-        var personid;
         $("#btnSearchWords").removeAttr("keyword");
-       
-        
+        // 调用识别记录接口   
         API.getRecordList(organizationid, starttime, endtime, start, limit, persontype, similarity, keyword, personid, function (res) {
-            
             //编译模板
             var recordList = art.render(recordListTpl, res);
             var $recordList = $(recordList);
-
             //修改用户状态
             $recordList
                 //查看详细信息
                 .on("click", ".show1", function () {
                     var ep_id = $(this).attr("personid");
-
                     recordShow(ep_id);
                 })
                 .on("click", ".show2", function () {
                     var vs_id = $(this).attr("personid");
-
                     visitorShow(vs_id);
                 })
-
                 //查看最近信息
                 .on("click", ".btn-edit", function () {
                     var ps_id = $(this).parent().attr("ps_id");
                     var ps_type = $(this).parent().attr("ps_type");
                     recordEdit(ps_id, ps_type);
                 })
+                // 选择相似度
                 .on("click", ".similarity li a", function () {
                     var similarity = $(this).attr("similarity");
                     $("#btnSimilarity").attr("similarity", similarity);
+                    $("#btnRecord").trigger("click");
+                })
+                // 人员类别选择
+                .on("click", ".allRecord", function () {
                     $("#btnRecord").trigger("click");
                 })
                 .on("click", "#employeeRecord", function () {
@@ -67,6 +68,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                     $("#btnPersontype").attr("persontype", persontype);
                     $("#btnRecord").trigger("click");
                 })
+                // 关键字搜索
                 .on("click", ".btn-search", function () {
                     var keyword = $(".search-word").val();
                     $("#btnSearchWords").attr("keyword", keyword);
@@ -74,11 +76,20 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                     $("#btnKeepSearchWords").attr("searchWords",keyword);
                     $("#btnRecord").trigger("click"); //刷新
                 })
-                .on("click", ".allRecord", function () {
-                    $("#btnRecord").trigger("click");
-                })
-
+                
+            // 将模板数据添加的指定位置
             $(".module-container").append($recordList);
+            // 为日期选择增加箭头上下指示，为下拉框替换左侧小三角
+            var flag=true;
+            $("#daterange-btn").on("click",function(){
+                if(flag){
+                    $("#daterange-btn .caret").addClass("caret_down");
+                    flag=false;
+                }else{
+                    $("#daterange-btn .caret").removeClass("caret_down");
+                    flag=true;
+                }
+            })
             // 设置下拉菜单鼠标移入触发
             $('div.dropdown').mouseover(function() {   
             $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');}); 
@@ -87,9 +98,8 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
             $(".search-word").val(searchWords)
             // 清除上一次的关键字
             $("#btnKeepSearchWords").removeAttr("searchWords")
-            
+            // 设置分页
             var num = Math.ceil(res.sumsize / 30);
-
             Page({
                 num: num, //页码数
                 startnum: page || 1, //指定页码
@@ -99,9 +109,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                     $("#btnRecord").trigger("click");
                 }
             });
-
-
-
+            // 设置下拉选项显示文字
             if (persontype == 1) {
                 $(".trick").html("员工");
             } else if (persontype == 2) {
@@ -109,9 +117,9 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
             } else {
                 $(".trick").html("所有人员");
             }
+            // 相似度
             $(".slm").html(similarity * 100 + "%")
-
-
+            // 设置日期控件
             function init() {
                 //定义locale汉化插件
                 var locale = {
@@ -129,7 +137,6 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 };
                 //初始化显示当前时间
                 $('#daterange-btn span').html(starttime + ' - ' + endtime);
-
                 // $('#daterange-btn span').html(moment().subtract(1, 'months').format('YYYY-MM-DD H:mm') + ' - ' + moment().format('YYYY-MM-DD H:mm'));
                 //日期控件初始化
                 $('#daterange-btn').daterangepicker({
@@ -159,7 +166,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                     }
                 );
             };
-
+            // 默认加载
             $(document).ready(function () {
                 init();
             });

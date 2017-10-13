@@ -5,19 +5,19 @@
 define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./edit", "./del", "./add","pager"], function ($, art, API, usersListTpl, editUsers, delUsers, addUsers) {
 
     return function () {
+        // 获取参数
         var page = $("#btnPager").attr("page")||1;
-        $("#btnPager").removeAttr("page");
+        var keyword = $("#btnSearchWords").attr("keyword");
         var start = 30*(page-1);
         var limit = 30*(page);
-        var keyword = $("#btnSearchWords").attr("keyword");
+        // 移除参数
         $("#btnSearchWords").removeAttr("keyword");
-    
+        $("#btnPager").removeAttr("page");
+        // 调用接口
         API.getUsersList(start, limit, keyword, function (res) {
-            
             //编译模板
             var usersList = art.render(usersListTpl, res);
             var $usersList = $(usersList);
-
             //实现添加分类功能--->给添加分类的按钮绑定单击事件
             $usersList
                 .on("click", "#btnUserAdd", function () {
@@ -31,7 +31,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
                     var user_id = $(this).parent().attr("user_id");
                     //加载删除账号的模块
                     delUsers(user_id);
-
                 })
                 .on("click", ".btn-edit", function () {
                     //获取该行数据对应的分类id
@@ -55,9 +54,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
             $(".search-word").val(searchWords)
             // 清除上一次的关键字
             $("#btnKeepSearchWords").removeAttr("searchWords")
-            
+            // 设置分页
             var num = Math.ceil(res.sumsize/30);
-            
             Page({
                 num: num, //页码数
                 startnum: page||1, //指定页码
@@ -68,6 +66,5 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
                 }
             });
         })
-
     };
 })

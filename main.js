@@ -44,10 +44,7 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
 
     //处理用户名
     var username = $.cookie("username");
-
     $("#userName").html(username);
-
-
     //给退出这个按钮绑定事件实现退出登录的功能
     $("#btnLogout").on("click", function () {
         API.logout(function (res) {
@@ -58,7 +55,6 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
                 //跳转到登录页
                 location.href = "login.html";
             }
-
         })
     });
     // 获取审批信息
@@ -151,19 +147,16 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     $("#btnApproval").on("click", function () {
         //全部入库审批
         $(".module-container").empty();
-
         approvalList();
     });
     $("#btnEmployeeApproval").on("click", function () {
         //员工入库审批
         $(".module-container").empty();
-
         approvalEmployeeList();
     });
     $("#btnVisitorApproval").on("click", function () {
         //访客入库审批
         $(".module-container").empty();
-
         approvalVisitorList();
     });
 
@@ -171,8 +164,6 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     $("#btnUsersManager").on("click", function () {
         //用户管理
         $(".module-container").empty();
-
-
         //加载用户管理模块
         usersList();
     });
@@ -185,9 +176,6 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
             }
         };
     });
-
-    // 添加全局的session识别事件，如果session失效，自动登出
-   
 
     //希望一开始就渲染出识别记录
     //  -->触发识别记录的点击事件

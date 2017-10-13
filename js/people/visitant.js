@@ -6,18 +6,17 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
 
     return function () {
         var page = $("#btnPager").attr("page")||1;
-        $("#btnPager").removeAttr("page");
         var start = 30*(page-1);
         var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
         $("#btnSearchWords").removeAttr("keyword");
+        $("#btnPager").removeAttr("page");
+        // 渲染前清空数据
         $(".module-container").empty();
-
+        // 调用接口
         API.getVisitorList(start, limit, keyword, function (res) {
-           
             //编译模板
             var peopleVisitantList = art.render(peopleVisitantListTpl, res);
-
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
             var $peopleVisitantList = $(peopleVisitantList);
             //编辑入库信息
@@ -53,9 +52,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
             $(".search-word").val(searchWords)
             // 清除上一次的关键字
             $("#btnKeepSearchWords").removeAttr("searchWords")
-            
+            // 设置分页
             var num = Math.ceil(res.sumsize/30);
-            
             Page({
                 num: num, //页码数
                 startnum: page||1, //指定页码
@@ -66,6 +64,5 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
                 }
             });
         })
-
     }
 })

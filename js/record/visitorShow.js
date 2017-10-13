@@ -8,13 +8,9 @@ define(["jquery","artTemplate","text!tpls/recordShow.html","common/api"],functio
         //根据id获取人员信息
         API.getEmployeeBaseInfo(vs_id,function(res){
             $("#modalShowRecord").remove();
-            
             var recordShow=art.render(recordShowTpl,res.data);
-
             var $recordShow=$(recordShow);
-
             $recordShow.appendTo("body").modal();
         })
-
     };
 });

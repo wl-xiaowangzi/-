@@ -9,18 +9,19 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
         //把渲染好的元素放到页面中
         //根据访客id获取访客基本信息
         API.getVisitorBaseInfo(vs_id,function(res){
-            
+            // 渲染模板
             var peopleVisitantInfo=art.render(peopleVisitantInfoTpl,res.data);
-
             var $peopleVisitantInfo=$(peopleVisitantInfo);
-
+            // 移除上一次模态框
             $("#modalVisitantEditInfo").remove();
+            // 调用摄像头
             $peopleVisitantInfo.on("click", ".picture1", function () {
                 editCamera1();
             });
             $peopleVisitantInfo.on("click", ".picture2", function () {
                 editCamera2();
             });
+            // 提交表单
             $peopleVisitantInfo.on("submit","form",function(){
                 var deviceids=$(".btn-blue").parent().attr("deviceids").replace(/\[|]/g,'').replace(/\"|"/g,'');
                 var visitorid=$(".btn-blue").parent().attr("visitorid");
@@ -28,13 +29,6 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
                 var firstFaceimages = $(".btn-blue").parent().attr("firstFaceimages");
                 var secondFacedatas = $(".btn-blue").attr("secondFacedatas").replace(/\[|]/g, '');
                 var secondFaceimages = $(".btn-blue").attr("secondFaceimages");
-                if (secondFaceimages == undefined) {
-                    var faceimages = firstFaceimages;
-                    var facedatas = "[" + firstFacedatas + "]";
-                } else {
-                    var faceimages = firstFaceimages + "," + secondFaceimages;
-                    var facedatas = "[" + firstFacedatas + "]|" + "[" + secondFacedatas + "]";
-                }
                 var birthday=$(".birthday-join").val();
                 var phonenumber=$(".phonenumber").val();
                 var name=$(".name").val();
@@ -42,20 +36,35 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
                 var starttime = $(".starttime").val();
                 var endtime = $(".endtime").val();
                 var sex=$(".sex").val();
-                
+                // 设置条件1张or2张照片
+                if (secondFaceimages == undefined) {
+                    var faceimages = firstFaceimages;
+                    var facedatas = "[" + firstFacedatas + "]";
+                } else {
+                    var faceimages = firstFaceimages + "," + secondFaceimages;
+                    var facedatas = "[" + firstFacedatas + "]|" + "[" + secondFacedatas + "]";
+                }
+                // 提那家访客
                 API.editVisitor(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,function(res){
-                    
                     $peopleVisitantInfo.modal("hide");
                     //数据更新成功-->跳转到员工列表
                     $("#btnVisitorManager").trigger("click");
-
                 })
-
                 return false;
             })
-
             $peopleVisitantInfo.appendTo("body").modal();
-
+            // 为下拉框替换左侧小三角
+            var flag=true;
+            $("select").on("click",function(){
+                if(flag){
+                    $(this).addClass("triangle_down");
+                    flag=false;
+                }else{
+                    $(this).removeClass("triangle_down");
+                    flag=true;
+                }
+            })
+            // 日期控件
             $peopleVisitantInfo.find(".birthday-join").datetimepicker({
             format: 'yyyy-mm-dd',
             weekStart: 1,
