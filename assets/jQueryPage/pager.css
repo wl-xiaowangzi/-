@@ -19,7 +19,7 @@ ul {
 	color:#357aed;
 	text-decoration:none;
 	background-color:#fff;
-	border:1px solid #ddd;
+	border:1px solid #dedeed;
 	cursor: pointer;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -41,7 +41,7 @@ ul {
 	z-index:2;
 	color:#23527c;
 	background-color:#eee;
-	border-color:#ddd;
+	border-color:#dedeed;
 }  
 .pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{
 	z-index:3;color:#fff;
@@ -53,7 +53,7 @@ ul {
 	color:#777;
 	cursor:not-allowed;
 	background-color:#fff;
-	border-color:#ddd;
+	border-color:#dedeed;
 }  
 .pagination-lg>li>a,.pagination-lg>li>span{
 	padding:10px 16px;
@@ -94,7 +94,7 @@ ul {
 	display:inline-block;
 	padding:5px 14px;
 	background-color:#fff;
-	border:1px solid #ddd;
+	border:1px solid #dedeed;
 	border-radius:15px;
 }  
 .pager li>a:focus,.pager li>a:hover{
@@ -127,7 +127,7 @@ ul {
 	color:#337ab7;
 	text-decoration:none;
 	background-color:#fff;
-	border:1px solid #ddd
+	border:1px solid #dedeed;
 }
 .pageJump input{
 	width:20px;

@@ -100,6 +100,9 @@ p,h1,h2,h3,h4,h5{
 .dropdown-menu{
     margin: 0!important;
 }
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus{
+    background-color: #357aed;
+}
 .btn,button{
     margin-bottom: 0;
 }
