@@ -328,19 +328,19 @@ button {
 .black {
     color: black;
 }
-
 .noResult{
     background-image: url(../imgs/noResult.png);
 }
-
 .pages{
     width:100%;
-    margin-top:-38px;
+    margin-top:20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+.device .pages{
+    margin-top:-38px;
+}
 .img_info_box{
     width: 120px;
 }
@@ -483,18 +483,16 @@ nav {
     left: 214px;
     z-index: 8;
 }
-
 .search input {
     width: 20vw;
     background: #f8fafb;
     color: #000;
-    /*border: none;*/
+    cursor: pointer;
     border-radius: 20px;
     box-shadow: none;
     height: 40px;
     min-width: 250px;
 }
-
 .search button {
     position: absolute;
     right: 0;
@@ -506,12 +504,10 @@ nav {
     width: 40px;
     z-index: 999;
 }
-
 .navbar-nav {
     position: absolute;
     right: 150px;
 }
-
 .navbar-nav .open .dropdown-menu {
     width: 60px;
 }
@@ -736,14 +732,12 @@ p{
     background-color: white;
     overflow: hidden;
 }
-
 .people-management .info-content .info .info-box {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
-
 .info .btn-people-del {
     width: 20px;
     height: 20px;
@@ -758,17 +752,14 @@ p{
     display: none;
     cursor: pointer;
 }
-
 .info:hover .btn-people-del {
     display: block;
 }
-
 .info .info-box p:nth-child(2) {
     color: black;
     margin-top: 16px;
     margin-bottom: 4px;
 }
-
 .info .info-box p:nth-child(3) {
     margin-bottom: 16px;
     font-size: 12px;
@@ -779,18 +770,15 @@ p{
     text-overflow:ellipsis;
     text-align: center;
 }
-
 .people-management .info-content .info .img-box {
     /*margin-top: 10px;*/
     width: 100px;
     height: 100px;
 }
-
 .people-management .info-content .info .img-box img {
     width: 100%;
     height: 100%;
 }
-
 .btnAdd {
     position: fixed;
     bottom: 62px;
@@ -798,9 +786,9 @@ p{
     width: 84px;
     height: 84px;
     z-index: 999;
+    cursor: pointer;
     background: url(../imgs/btn-add_0.png) no-repeat center center;
 }
-
 .btnAdd:hover {
     background: url(../imgs/btn-add_1.png) no-repeat center center;
     -webkit-transition: all 1s;
@@ -822,7 +810,6 @@ p{
     background-image: url(../imgs/headimages_icon.png);
     background-size: 22px 22px;
 }
-
 .secPIC{
     background-image: url(../imgs/uploadIMG.png);
     background-size: 100px 100px;
@@ -839,7 +826,6 @@ p{
     background-repeat: no-repeat;
     background-position-x: 52px;
 }
-
 #job_select{
     position: absolute;
     width: auto;
@@ -849,7 +835,6 @@ p{
     z-index: 9999;
     border: 1px solid #dedeed;
 }
-
 #job_select li a{
     display: block;
     padding: 3px 0px;
@@ -866,7 +851,6 @@ p{
 .hidden {
     display: none;
 }
-
 /*修改密码样式 begin*/
 #changePWD .eyes {
     display: block;
@@ -898,11 +882,13 @@ p{
 .btn-device-edit {
     width: 20px;
     height: 20px;
+    cursor: pointer;
     background: url(../imgs/edit-icon_0.png) no-repeat center center;
 }
 .btn-device-del {
     width: 20px;
     height: 20px;
+    cursor: pointer;
     margin-left: 78px;
     background: url(../imgs/del-icon_0.png) no-repeat center center;
 }
@@ -915,11 +901,13 @@ p{
 .btn-post-edit {
     width: 20px;
     height: 20px;
+    cursor: pointer;
     background: url(../imgs/edit-icon_0.png) no-repeat center center;
 }
 .btn-post-del {
     width: 20px;
     height: 20px;
+    cursor: pointer;
     margin-left: 78px;
     background: url(../imgs/del-icon_0.png) no-repeat center center;
 }
@@ -948,9 +936,9 @@ p{
     border-top: 1px solid #e6ebee;
 }
 .deviceTable tbody tr td {
-    padding: 0 0 0 30px;
+    /*padding: 0 0 0 30px;*/
     height: 40px;
-    max-width: 300px;
+    /*max-width: 300px;*/
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -981,6 +969,9 @@ p{
     height: 40px;
     margin-top: 20px;
     background: url(../imgs/photography-icon.png) no-repeat center center;
+}
+.picture1,.picture2,#start{
+    cursor: pointer;
 }
 #re-photographed {
     width: 80px;
