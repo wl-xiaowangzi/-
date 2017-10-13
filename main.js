@@ -21,11 +21,6 @@ require.config({
         daterangepicker: "../assets/daterangepicker/js/daterangepicker",
         moment: "../assets/daterangepicker/js/moment.min",
         datetimepickerLang: "../assets/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
-        //UE主文件
-        UEditor: "../assets/UEditor/ueditor.all",
-        //UE配置文件
-        UEditorConf: "../assets/UEditor/ueditor.config",
-        eCharts: "lib/echarts.min"
     },
     // 设置依赖
     shim: {

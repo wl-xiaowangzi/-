@@ -418,10 +418,6 @@ body {
 }
 
 
-/*#sidebar-menu .side-menu #btnUsersManager .img-icon{
-    background-image: url(../imgs/userManager-icon-0.png);
-}*/
-
 #sidebar-menu .side-menu li.activate {
     text-shadow: rgba(0, 0, 0, .25) 0 -1px 0;
     background: linear-gradient(#334556, #2C4257), #2A3F54;
@@ -567,13 +563,6 @@ nav {
         display: none;
     }
 }
-
-
-/*@media screen and (max-width:1280px){
-    #canvas{
-        width: 
-    }
-}*/
 
 
 /*识别记录样式 begin*/
@@ -871,14 +860,11 @@ p{
     color: #fff;
 }
 /*人员管理样式 end*/
-
 .hidden {
     display: none;
 }
 
-
 /*修改密码样式 begin*/
-
 #changePWD .eyes {
     display: block;
     height: 40px;
@@ -890,94 +876,74 @@ p{
     right: 10px;
     z-index: 1;
 }
-
-
 /*修改密码样式 end*/
 
-
 /*设备管理样式 begin*/
-
 .device {
     margin: 13px 64px 0 64px;
     background-color: #fff;
     padding: 0 10px;
 }
-
 .device .panel-heading {
     height: 45px;
 }
-
 .device .title {
     font-size: 18px;
     color: #000;
     margin-top: 8px;
 }
-
 .btn-device-edit {
     width: 20px;
     height: 20px;
     background: url(../imgs/edit-icon_0.png) no-repeat center center;
 }
-
 .btn-device-del {
     width: 20px;
     height: 20px;
     margin-left: 78px;
     background: url(../imgs/del-icon_0.png) no-repeat center center;
 }
-
 .btn-device-edit:hover {
     background: url(../imgs/edit-icon_1.png) no-repeat center center;
 }
-
 .btn-device-del:hover {
     background: url(../imgs/del-icon_1.png) no-repeat center center;
 }
-
-
 .btn-post-edit {
     width: 20px;
     height: 20px;
     background: url(../imgs/edit-icon_0.png) no-repeat center center;
 }
-
 .btn-post-del {
     width: 20px;
     height: 20px;
     margin-left: 78px;
     background: url(../imgs/del-icon_0.png) no-repeat center center;
 }
-
 .btn-post-edit:hover {
     background: url(../imgs/edit-icon_1.png) no-repeat center center;
 }
-
 .btn-post-del:hover {
     background: url(../imgs/del-icon_1.png) no-repeat center center;
 }
-
 .disCenter {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .deviceTable {
     background-color: white;
     border: 1px solid #e6ebee;
     color: #576780;
 }
-
 .deviceTable thead {
     background-color: #f8fafb;
     color: #576780;
     font-size: 14px;
 }
-
 .deviceTable tr {
     border-top: 1px solid #e6ebee;
 }
-
 .deviceTable tbody tr td {
     padding: 0;
     height: 40px;
@@ -986,9 +952,7 @@ p{
     box-sizing: border-box;
 }
 
-
 /*设备管理样式 end*/
-
 
 /*拍照界面样式 begin*/
 .boxx{
@@ -1009,16 +973,12 @@ p{
     margin-top: 20px;
     background: url(../imgs/photography-icon.png) no-repeat center center;
 }
-
 #re-photographed {
     width: 80px;
     height: 32px;
     font-size: 13px;
 }
-
-
 /*拍照界面样式 end*/
-
 
 /*个人中心样式 begin*/
 .ewm_box{
