@@ -15,7 +15,6 @@ require.config({
         pager: "../assets/jQueryPage/pager",
         //配置模板文件夹的路径
         tpls: "../tpls",
-        upload: "../assets/uploadify/jquery.uploadify",
         // 日期控件
         datetimepicker: "../assets/datetimepicker/js/bootstrap-datetimepicker",
         daterangepicker: "../assets/daterangepicker/js/daterangepicker",

@@ -5,10 +5,11 @@
  */
 define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "people/add","common/undetected"], function ($, art, cameraTpl, API, addEmployee,undetected) {
     return function () {
+        // 移除上一次点出的模态框
         $("#modalcamera").remove();
-
+        // 转换为jq对象
         var $camera = $(cameraTpl);
-
+        // 拍照上传
         $camera
             .on("click", ".picture", function () {
                 context.drawImage(video, 0, 0, 640, 480);
@@ -30,10 +31,9 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "people/
                     $camera.modal("hide")
                     addEmployee(faceimages, facedatas,headfaceimage)
                 })
-                
             })
-
         $camera.appendTo("body").modal();
+        // 修改标题
         $(".psType").html("员工");
     };
 });

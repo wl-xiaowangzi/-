@@ -5,18 +5,19 @@
  */
 define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./visitantShow", "./visitantRefuse","./agree","pager"], function ($, art, API, approvalListTpl, showApproval, visitantRefuse,agree) {
     return function () {
+        // 获取参数
         var page = $("#btnPager").attr("page")||1;
-        $("#btnPager").removeAttr("page");
         var start = 30*(page-1);
         var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
+        // 移除参数
         $("#btnSearchWords").removeAttr("keyword");
-
+        $("#btnPager").removeAttr("page");
+        // 获取访客审批列表
          API.getVisitorApprovalList(start,limit, 1,keyword, function (res) {
         //编译模板
         var approvalList=art.render(approvalListTpl,res);
         var $approvalList = $(approvalList);
-
         //入库审批点击事件
         $approvalList
             .on("click", ".btn-show-approval", function () {
@@ -30,7 +31,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 var vs_id=$(this).parent().parent().attr("vs_id");
                 //调用员工审查接口
                  API.checkEmployee(vs_id,1,"审核通过", function (res) {
-                    
                     agree();
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");
@@ -71,6 +71,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         $("#btnKeepSearchWords").removeAttr("searchWords")
 
         $(".peopleType").html("访客");
+        // 分页
          var num = Math.ceil(res.sumsize/30);
             Page({
                 num: num, //页码数

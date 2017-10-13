@@ -5,10 +5,11 @@
  */
 define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/undetected"], function ($, art, cameraTpl,API, undetected) {
     return function (ps_type) {
+        // 移除上一次调出的模板
         $("#modalcamera").remove();
-
+        // 转换为jq对象
         var $camera = $(cameraTpl);
-
+        // 拍照上传
         $camera
             .on("click", ".picture", function () {
                 context.drawImage(video, 0, 0, 640, 480);
@@ -29,19 +30,13 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     $(".secPIC").attr("src",res.data.headfaceimage);
                     $camera.modal("hide");
                 })
-                
             })
-            .on("click","#close",function(){
-                
-                
-            },false)
-
         $camera.appendTo("body").modal();
+        // 设置标题对应的值
         if(ps_type==1){
             $(".psType").html("员工");
         }else{
             $(".psType").html("访客");
         }
-        
     };
 });

@@ -3,21 +3,20 @@
  * Created by land 2017/9/4.
  */
 define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html","./postAdd","./postDel","./postEdit","pager"],function($,art,API,configPostManagementTpl,postAdd,postDel,postEdit){
-
     return function(){
+        // 获取参数
         var parameterkey="key_job";
         var page = $("#btnPager").attr("page")||1;
-        $("#btnPager").removeAttr("page");
         var start = 30*(page-1);
         var limit = 30*(page);
+        // 移除参数
+        $("#btnPager").removeAttr("page");
+        // 获取职位参数列表
         API.getParameterList(start,limit,parameterkey,function(res){
-            
             //编译模板
             var configPostManagement=art.render(configPostManagementTpl,res.data);
-
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
             var $configPostManagement=$(configPostManagement);
-
             //实现编辑职位
             $configPostManagement
                 .on("click", ".btn-post-add", function () {
@@ -36,8 +35,8 @@ define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html
             $(".module-container").append($configPostManagement);
             // 去掉左侧菜单栏激活状态
             $("#sidebar-menu .side-menu li").removeClass("activate");
+            // 分页
             var num = Math.ceil(res.sumsize/30);
-            
             Page({
                 num: num, //页码数
                 startnum: page||1, //指定页码
@@ -48,8 +47,5 @@ define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html
                 }
             });
         })
-
-        
-
     }
 })

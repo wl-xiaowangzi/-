@@ -5,10 +5,11 @@
  */
 define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/undetected"], function ($, art, cameraTpl,API, undetected) {
     return function () {
+        // 移除上一次点出的模态框
         $("#modalcamera").remove();
-
+        // 转化为jq对象
         var $camera = $(cameraTpl);
-
+        // 拍照上传
         $camera
             .on("click", ".picture", function () {
                 context.drawImage(video, 0, 0, 640, 480);
@@ -30,8 +31,6 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     $camera.modal("hide");
                 })
             })
-
         $camera.appendTo("body").modal();
-
     };
 });

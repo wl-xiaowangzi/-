@@ -5,13 +5,15 @@
  */
 define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./show","./visitantShow" ,"./refuse","./visitantRefuse","./agree","pager"], function ($, art, API, approvalListTpl, showApproval,showVisitantApproval ,refuse,visitantRefuse,agree) {
     return function () {
+        // 获取参数
         var page = $("#btnPager").attr("page")||1;
-        $("#btnPager").removeAttr("page");
         var start = 30*(page-1);
         var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
+        // 移除参数
+        $("#btnPager").removeAttr("page");
         $("#btnSearchWords").removeAttr("keyword");
-
+        // 获取审批列表
         API.getApprovalList(start,limit,keyword,function(res){
             if (res.data.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0")
@@ -19,10 +21,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
             }
         //编译模板
-        
         var approvalList=art.render(approvalListTpl,res);
         var $approvalList = $(approvalList);
-
         //入库审批点击事件
         $approvalList
             .on("click", ".show1", function () {
@@ -43,7 +43,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 var checksuggestion="审核通过";
                 //调用员工审查接口
                  API.checkEmployee(ps_id,1,checksuggestion, function (res) {
-                    
                     agree()
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");
@@ -55,7 +54,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 var checksuggestion="审核通过";
                 //加载访客审查接口
                  API.checkVisitor(ps_id,1,checksuggestion, function (res) {
-                    
                     agree();
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");
@@ -100,7 +98,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         $(".search-word").val(searchWords)
         // 清除上一次的关键字
         $("#btnKeepSearchWords").removeAttr("searchWords")
-
+        // 分页
          var num = Math.ceil(res.sumsize/30);
             Page({
                 num: num, //页码数

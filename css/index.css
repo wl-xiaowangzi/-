@@ -30,8 +30,14 @@ p,h1,h2,h3,h4,h5{
 .modal-content {
     border-radius: 0;
     width: 568px;
+    padding:0 0 5px 0; 
     vertical-align: center;
     margin: 0!important;
+    -webkit-box-shadow: none;
+    box-shadow:none;
+}
+.modal-content button{
+    margin-top: 10px;
 }
 .modal-dialog{
     display: flex;
@@ -42,6 +48,8 @@ p,h1,h2,h3,h4,h5{
 }
 .modal-header {
     border: none;
+    padding-top: 30px;
+    padding-left: 30px;
 }
 .modal-header button{
     display: block;
@@ -149,7 +157,6 @@ select.triangle_down{
     border: 1px solid #f1f1f1;
     box-shadow: none;
 }
-
 .bdcolor{
     color: #e6ebee;
 }
@@ -215,19 +222,16 @@ button {
 .btn-blue:hover {
     color: white;
 }
-
 .btn-refuse:hover {
     background-color: #ed354b!important;
     color: white!important;
     border: none;
 }
-
 .btn-refuse:active,
 .btn-refuse:focus {
     color: white!important;
     background-color: #ed354b!important;
 }
-
 .btn-default:hover {
     background-color: #357aed;
     color: white;
@@ -331,7 +335,7 @@ button {
 
 .pages{
     width:100%;
-    margin-top:20px;
+    margin-top:-38px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -357,7 +361,7 @@ body {
     left: 0;
     width: 150px;
     z-index: 1;
-    background-color: #151a21;
+    background-color: #151a22;
 }
 
 .content .content-left .logo {
@@ -421,9 +425,9 @@ body {
 #sidebar-menu .side-menu li.activate {
     text-shadow: rgba(0, 0, 0, .25) 0 -1px 0;
     background: linear-gradient(#334556, #2C4257), #2A3F54;
-    box-shadow: rgba(0, 0, 0, .25) 0 1px 0, inset rgba(255, 255, 255, .16) 0 1px 0;
-    border-right: 5px solid transparent;
+    border-right: 5px solid #357aed;
     color: white;
+    opacity: .8;
 }
 
 #sidebar-menu .side-menu #btnRecord.activate .img-icon {
@@ -515,7 +519,11 @@ nav {
 .module-container {
     position: relative;
 }
-
+@media screen and (max-width:1280px) {
+    .datetimepicker.dropdown-menu {
+        top: 200px!important;
+    }
+}
 @media screen and (max-width:1050px) {
     
     .logo-img{
@@ -534,9 +542,6 @@ nav {
     }
     #messages {
         left: 50px;
-    }
-    .datetimepicker {
-        top: 200px!important;
     }
     .content .content-right {
         padding-left: 80px;
@@ -620,20 +625,18 @@ nav {
     position: absolute;
     left: 0;
 }
-
 .personal-info ul li {
     float: left;
     line-height: 90px;
     list-style: none;
 }
-
 .personal-info ul li:nth-child(1) {
     min-width: 200px;
 }
-
 .personal-info ul li:nth-child(1) span {
     position: absolute;
     margin-left: 24px;
+    max-width: 30px;
 }
 
 .personal-info ul li {
@@ -945,13 +948,19 @@ p{
     border-top: 1px solid #e6ebee;
 }
 .deviceTable tbody tr td {
-    padding: 0;
+    padding: 0 0 0 30px;
     height: 40px;
+    max-width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     line-height: 40px;
     border-top: 0px;
     box-sizing: border-box;
 }
-
+.table > thead > tr > th{
+    border-bottom: 0;
+}
 /*设备管理样式 end*/
 
 /*拍照界面样式 begin*/

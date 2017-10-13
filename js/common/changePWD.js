@@ -4,15 +4,12 @@
  *   Date:2017/9/4
  */
 define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], function ($, art, API, changePWDTpl) {
-
     return function () {
-
+        // 移除上一次调出的模板
         $("#modalChangePWD").remove();
-
-        // var personalCenter=art.render(personalCenterTpl,res.result);
-
+        // 转换为jq对象
         var $changePWD = $(changePWDTpl);
-
+        // 点击事件
         $changePWD
             .on("click", ".oldPWD", function () {
                 if ($(".oldPassword").attr("type") == "password") {
@@ -48,11 +45,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], fu
                    $(".cfmPWD").removeClass("opacity1");
                }
            })
-           
+        // 提交表单   
         .on("submit","form",function(){
-
             var formData=$(this).serialize();
-
             API.changePWD(formData,function(res){
                 if(res.message=="原密码错误！"){
                     $(".cfmPWD").addClass('opacity1').html("原密码错误！")
@@ -60,12 +55,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], fu
                 }
                 $changePWD.modal("hide");
             })
-
             return false;
         })
-
         $changePWD.appendTo("body").modal();
-        
-
     }
 })

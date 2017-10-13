@@ -5,19 +5,19 @@
  */
 define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", "./show", "./refuse","./agree","pager"], function ($, art, API, approvalListTpl, showApproval, refuse,agree) {
     return function () {
+        // 获取参数
         var page = $("#btnPager").attr("page")||1;
-        $("#btnPager").removeAttr("page");
         var start = 30*(page-1);
         var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
+        // 移除参数
         $("#btnSearchWords").removeAttr("keyword");
-
+        $("#btnPager").removeAttr("page");
+        // 调用人员列表
         API.getPeopleApprovalList(start,limit, 1,keyword, function (res) {
-            console.log(res)
         //编译模板
         var approvalList=art.render(approvalListTpl,res);
         var $approvalList = $(approvalList);
-
         //入库审批点击事件
         $approvalList
             .on("click", ".btn-show-approval", function () {
@@ -30,10 +30,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 //获取人员id
                 var ep_id=$(this).attr("ep_id");
                 //调用员工审查接口
-                
                 var checksuggestion="审核通过";
                 API.checkEmployee(ep_id,1,checksuggestion, function (res) {
-                    
                     agree();
                     // 刷新审核页面
                     $("#btnApproval").trigger("click");
@@ -85,6 +83,5 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 }
             });
         })
-
     }
 });

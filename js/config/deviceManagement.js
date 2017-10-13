@@ -3,22 +3,21 @@
  * Created by land 2017/9/4.
  */
 define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.html", "./deviceAdd", "./deviceEdit", "./deviceDel","pager"], function ($, art,API, configDeviceManagementTpl, deviceAdd, deviceEdit, deviceDel) {
-
     return function () {
+        // 获取参数
         var page = $("#btnPager").attr("page")||1;
-        $("#btnPager").removeAttr("page");
         var start = 30*(page-1);
         var limit = 30*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
+        // 移除参数
         $("#btnSearchWords").removeAttr("keyword");
+        $("#btnPager").removeAttr("page");
+        // 获取设备列表
         API.getDeviceList(start,limit,keyword,function(res){
-        
             //编译模板
             var configDeviceManagement = art.render(configDeviceManagementTpl, res);
-
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
             var $configDeviceManagement = $(configDeviceManagement);
-
             //实现编辑设备
             $configDeviceManagement
                 .on("click", ".btn-device-add", function () {
@@ -31,7 +30,6 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
                 })
                 .on("click", ".btn-device-del", function () {
                     var dv_id = $(this).parent().attr("dv_id");
-                    
                     deviceDel(dv_id);
                 })
                 .on("click",".btn-search",function(){
@@ -41,7 +39,6 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
                     $("#btnKeepSearchWords").attr("searchWords",keyword);
                     $("#btnDeviceManagement").trigger("click");//刷新
                 })
-
             //把渲染好的元素放到页面中
             $(".module-container").append($configDeviceManagement);
             // 去掉左侧菜单栏激活状态
@@ -51,7 +48,7 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
             $(".search-word").val(searchWords)
             // 清除上一次的关键字
             $("#btnKeepSearchWords").removeAttr("searchWords")
-
+            // 分页
             var num = Math.ceil(res.sumsize/30);
             Page({
                 num: num, //页码数
@@ -63,8 +60,5 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
                 }
             });
         })
-
-
-
     }
 })

@@ -6,38 +6,16 @@
 define(["jquery", "artTemplate", "common/api", "text!tpls/personalCenter.html"], function ($, art, API, personalCenterTpl) {
 
     return function () {
+        // 获取员工id
         var userid = $.cookie("userid");
+        // 查询员工信息
         API.queryUser(userid, function (res) {
-
+            // 移除上一次的模态框
             $("#modalPersonalCenter").remove();
-
+            // 渲染模板
             var personalCenter = art.render(personalCenterTpl, res.data[0]);
-
             var $personalCenter = $(personalCenter);
-            var frm = null;
-            var timer = null
-
-            
-            $personalCenter
-
-
-            // .on("submit","form",function(){
-
-            //     var formData=$(this).serialize();
-
-            //     API.editSavePersonalCenter(formData,function(){
-            //         location.href="/";//刷新页面
-            //     })
-
-            //     return false;
-            // })
-
-
-
             $personalCenter.appendTo("body").modal();
-            
-            
         })
-
     }
 })
