@@ -9,19 +9,30 @@
             <div class="modal-body">
                 <form class="form form-horizontal">
                     <div class="form-group" style="display:flex;justify-content:center;">
-                        <div class="img-box mb11 picture1"><img src="{{headfaceimages[0]}}" alt="" width="100" height="100"><span class="camera_icon"></span></div>
+                        <div class="img-box mb11 picture1"><img src="{{headfaceimages[0]}}" class="headfaceimage1" alt="" width="100" height="100"><span class="camera_icon"></span></div>
                         {{if headfaceimages[1]!=undefind}}
-                        <div class="img-box mb11 picture2"><img src="{{headfaceimages[1]}}" class="ml66" alt="" width="100" height="100"><span class="camera_icon"></div>
+                        <div class="img-box mb11 picture2"><img src="{{headfaceimages[1]}}" class="ml66 headfaceimage2" alt="" width="100" height="100"><span class="camera_icon"></div>
                         {{else}}
-                        <div class="img-box mb11 picture2"><img class="secPIC ml66" alt="" width="100" height="100"><span class="camera_icon"></div>
+                        <div class="img-box mb11 picture2"><img class="secPIC ml66 headfaceimage2" alt="" width="100" height="100"><span class="camera_icon"></div>
                         {{/if}}
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control name" name="name" value="{{name}}" /><span class="asterisk">*</span>
+                            <input type="text" id="baseInfoName" maxlength="20" class="form-control name" name="name" value="{{name}}" /><span class="asterisk">*</span>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("baseInfoName").onpropertychange = document.getElementById("baseInfoName").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 20) {
+                                        alert("字数超限，请保持在20字以内")
+                                    }
+                                }
+                        })
+                    </script>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">性别</label>
                         <div class="col-sm-7">

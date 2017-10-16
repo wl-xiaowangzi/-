@@ -38,12 +38,17 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
                 var starttime = $(".starttime").val();
                 var endtime = $(".endtime").val();
                 var sex = $(".sex").val();
-                // 添加员工
+                if(Date.parse(starttime)>Date.parse(endtime)){
+                    alert("结束时间不能小于开始时间");
+                }else{
+                    // 添加员工
                 API.addVisitor(deviceids,name, sex, birthday, phonenumber,starttime,endtime, remark, faceimages, facedatas, function (res) {
                     $peopleVisitantAdd.modal("hide");
                     //成功的添加员工->刷新员工管理页面
                     $("#btnVisitorManager").trigger("click");
                 })
+                }
+                
                 return false; //阻止同步提交表单
             });
         $peopleVisitantAdd.appendTo("body").modal();

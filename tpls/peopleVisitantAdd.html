@@ -23,9 +23,20 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" required="required" class="form-control name" required="required" name="name" value="" /><span class="asterisk">*</span>
+                            <input type="text" id="visitantName" maxlength="20" required="required" class="form-control name" required="required" name="name" value="" /><span class="asterisk">*</span>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("visitantName").onpropertychange = document.getElementById("visitantName").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 20) {
+                                        alert("字数超限，请保持在20字以内")
+                                    }
+                                }
+                        })
+                    </script>
                      <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">性别</label>
                         <div class="col-sm-7">
@@ -68,17 +79,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">时间</label>
+                        <label  class="col-sm-2 col-sm-offset-1 control-label">时间</label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control date-join starttime" data-date-format="yyyy-mm-dd" name="starttime" value="">
                             <span
                                 class="asterisk">*</span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">至</label>
+                    <div class="form-group endtime-box">
+                        <label for="endtime" id="endtimeLabel" class="col-sm-2 col-sm-offset-1 control-label">至</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control date-join endtime" data-date-format="yyyy-mm-dd" name="endtime" value="">
+                            <input type="text" id="endtime" class="form-control date-join endtime" data-date-format="yyyy-mm-dd" name="endtime" value="">
                             <span
                                 class="asterisk">*</span>
                         </div>

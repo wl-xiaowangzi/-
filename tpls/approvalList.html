@@ -22,6 +22,7 @@
     </div>
     <div class="table">
         {{each data}}
+        {{if $value.status!=4}}
         <div class="personal-info">
             <div class="img-box">
                 {{if $value.persontype==1}}
@@ -54,6 +55,38 @@
                 </li>
             </ul>
         </div>
+        {{else}}
+        <div class="personal-info approvaled">
+            <div class="img-box">
+                {{if $value.persontype==1}}
+                <img src="imgs/employeeed-tip.png" alt="">
+                {{else if $value.persontype==2}}
+                <img src="imgs/visitored-tip.png" alt="">
+                {{else if $value.visitorid!=undefind}}
+                <img src="imgs/visitored-tip.png" alt="">
+                {{else}}
+                <img src="imgs/employeeed-tip.png" alt="">
+                {{/if}}
+                </div>
+            <ul vs_id={{$value.visitorid}}>
+                <li><img src="{{$value.headfaceimages[0]}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
+                <li class="bdcolor">|</li>
+                {{if $value.persontype==1}}
+                <li>{{$value.job}}</li>
+                {{else if $value.persontype==2}}
+                <li>{{$value.remark}}</li>
+                {{else if $value.visitorid!=undefind}}
+                <li>{{$value.remark}}</li>
+                {{else}}
+                <li>{{$value.job}}</li>
+                {{/if}}
+                <li class="bdcolor">|</li>
+                <li ps_id={{$value.personid}} ps_type={{$value.persontype}}>
+                    {{$value.starttime}}-{{$value.endtime}}
+                </li>
+            </ul>
+        </div>
+        {{/if}}
         {{/each}}
         <div class="pages">
         <ul class="pagination" id="page1">

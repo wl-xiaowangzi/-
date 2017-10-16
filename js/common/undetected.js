@@ -10,12 +10,19 @@ define(["jquery","artTemplate","text!tpls/undetected.html","bootstrap"],function
             var $undetected=$(undetectedTpl);
             var info = info;
             // 提交表单
-            $undetected.on("submit", "from", function () {
+            $undetected
+            .on("click", ".btn-blue", function () {
                 // 重绘清空canvas
                 context.clearRect(0, 0, 640, 480);
                 $undetected.modal("hide");
                 return false;
-        })
+            })
+            .on("click",".btn-default",function(){
+                // 重绘清空canvas
+                context.clearRect(0, 0, 640, 480);
+                $undetected.modal("hide");
+                return false;
+            })
             $undetected.appendTo("body").modal();
             $(".cameraInfo").html(info)
     }

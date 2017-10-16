@@ -44,13 +44,16 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
                     var faceimages = firstFaceimages + "," + secondFaceimages;
                     var facedatas = "[" + firstFacedatas + "]|" + "[" + secondFacedatas + "]";
                 }
-                console.log(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages)
+                if(Date.parse(starttime)>Date.parse(endtime)){
+                    alert("结束时间不能小于开始时间");
+                }else{
                 // 添加访客
                 API.editVisitor(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,function(res){
                     $peopleVisitantInfo.modal("hide");
                     //数据更新成功-->跳转到员工列表
                     $("#btnVisitorManager").trigger("click");
                 })
+                }
                 return false;
             })
             $peopleVisitantInfo.appendTo("body").modal();

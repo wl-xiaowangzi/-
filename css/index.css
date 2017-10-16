@@ -694,28 +694,22 @@ p{
     margin-top: 0px;
     margin-bottom: 18px;
 }
-
-
 /*识别记录样式 end*/
 
-
 /*入户审批样式 begin*/
-
 .approval {
     background: #edf2f6;
 }
-
-
+.approvaled{
+    color: #a6b5c1;
+}
 /*入户审批样式 end*/
 
-
 /*人员管理样式 begin*/
-
 .people-management .info-content {
     padding-left: 64px;
     padding-right: 64px;
 }
-
 .people-management .info-content .info {
     width: 180px;
     /*height: 200px;*/
@@ -759,6 +753,11 @@ p{
     color: black;
     margin-top: 16px;
     margin-bottom: 4px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    text-align: center;
 }
 .info .info-box p:nth-child(3) {
     margin-bottom: 16px;
@@ -956,6 +955,7 @@ p{
     display: flex;
     justify-content: space-between;
     width: 640px;
+    margin-bottom: 24px;
 }
 .hintInfo{
     margin-top: 30px;

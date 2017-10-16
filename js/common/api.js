@@ -47,7 +47,7 @@ define(["jquery"],function($){
             $.ajax({
                 url:api+"/system/person/query",
                 type:"get",
-                data:{start,limit,keyword},
+                data:{start:start,limit:limit,keyword:keyword},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -72,7 +72,7 @@ define(["jquery"],function($){
             $.ajax({
                 url:api+"/system/person/query",
                 type:"get",
-                data:{start,limit,keyword},
+                data:{start:start,limit:limit,keyword:keyword},
                 beforeSend:function(res){
 
                 },
@@ -107,7 +107,7 @@ define(["jquery"],function($){
         },
         // 员工审批列表
         getPeopleApprovalList:function(start,limit,status,keyword,callback){
-            $.get(api+"/system/employee/query",{start,limit,status,keyword},function(res){
+            $.get(api+"/system/employee/query",{start:start,limit:limit,status:status,keyword:keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
@@ -162,7 +162,7 @@ define(["jquery"],function($){
         },
         // 访客审批列表
         getVisitorApprovalList:function(start,limit,status,keyword,callback){
-            $.get(api+"/system/visitor/query",{start,limit,status,keyword},function(res){
+            $.get(api+"/system/visitor/query",{start:start,limit:limit,status:status,keyword:keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
@@ -327,7 +327,7 @@ define(["jquery"],function($){
         },
         // 访客列表
         getVisitorList:function(start,limit,keyword,callback){
-            $.get(api+"/system/visitor/query",{start,limit,keyword},function(res){
+            $.get(api+"/system/visitor/query",{start:start,limit:limit,keyword:keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
@@ -428,7 +428,7 @@ define(["jquery"],function($){
             $.ajax({
                 url:api+"/system/message/query",
                 type:"get",
-                data:{start,limit},
+                data:{start:start,limit:limit},
                 beforeSend:function(){
                     // console.log(1)
                 },
@@ -580,7 +580,7 @@ define(["jquery"],function($){
         },
         // 设备列表
         getDeviceList:function(start,limit,keyword,callback){
-            $.get(api+"/system/device/query",{start,limit,keyword},function(res){
+            $.get(api+"/system/device/query",{start:start,limit:limit,keyword:keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
@@ -673,7 +673,7 @@ define(["jquery"],function($){
         // 用户信息
         // 用户列表
         getUsersList:function(start,limit,keyword,callback){
-            $.get(api+"/system/user/query",{start,limit,keyword},function(res){
+            $.get(api+"/system/user/query",{start:start,limit:limit,keyword:keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
@@ -699,7 +699,7 @@ define(["jquery"],function($){
                 data:formData,
                 success:function(res){
                     if(res.code!=0){
-                    console.log(res.message);
+                    alert(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
@@ -734,7 +734,7 @@ define(["jquery"],function($){
                 data:formData,
                 success:function(res){
                     if(res.code!=0){
-                    console.log(res.message);
+                    alert(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页

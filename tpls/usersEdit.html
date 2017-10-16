@@ -14,17 +14,38 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" required="required" class="form-control" name="name" value="{{name}}" /><span class="asterisk">*</span>
+                            <input type="text" id="userEditName" required="required" class="form-control" name="name" value="{{name}}" /><span class="asterisk">*</span>
                         </div>
                     </div>
-                   
+                   <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("userEditName").onpropertychange = document.getElementById("userEditName").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 20) {
+                                        alert("字数超限，请保持在20字以内")
+                                    }
+                                }
+                        })
+                    </script>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">账号</label>
                         <div class="col-sm-7">
-                            <input type="text" required="required" class="form-control" name="username" value="{{username}}" /><span class="asterisk">*</span>
+                            <input type="text" id="admin" required="required" class="form-control" name="username" value="{{username}}" /><span class="asterisk">*</span>
                             <input type="hidden" name="userid" value="{{userid}}">
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("admin").onpropertychange = document.getElementById("admin").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 10) {
+                                        alert("账号 允许长度范围为2-10位")
+                                    }
+                                }
+                        })
+                    </script>
                     <!--<div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">邮箱</label>
                         <div class="col-sm-7">
