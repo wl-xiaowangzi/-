@@ -7,8 +7,8 @@ define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html
         // 获取参数
         var parameterkey="key_job";
         var page = $("#btnPager").attr("page")||1;
-        var start = 30*(page-1);
-        var limit = 30*(page);
+        var start = 60*(page-1);
+        var limit = 60*(page);
         // 移除参数
         $("#btnPager").removeAttr("page");
         // 获取职位参数列表
@@ -36,7 +36,7 @@ define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html
             // 去掉左侧菜单栏激活状态
             $("#sidebar-menu .side-menu li").removeClass("activate");
             // 分页
-            var num = Math.ceil(res.sumsize/30);
+            var num = Math.ceil(res.sumsize/60);
             Page({
                 num: num, //页码数
                 startnum: page||1, //指定页码

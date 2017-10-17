@@ -1,0 +1,7 @@
+{{each data}}
+<div class="info">
+    <div class="img-box"><img src="{{$value.faceimage}}" class="replaceIMG" alt="" width="50" height="50"><span class="similarity">{{$value.similarity*100}}%</span></div>
+    <!--<p>{{$value.devicename}}</p>-->
+    <p class="record_time">{{$value.updatetime}}</p>
+</div>
+{{/each}}

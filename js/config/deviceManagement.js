@@ -6,8 +6,8 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
     return function () {
         // 获取参数
         var page = $("#btnPager").attr("page")||1;
-        var start = 30*(page-1);
-        var limit = 30*(page);
+        var start = 60*(page-1);
+        var limit = 60*(page);
         var keyword = $("#btnSearchWords").attr("keyword");
         // 移除参数
         $("#btnSearchWords").removeAttr("keyword");
@@ -49,7 +49,7 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
             // 清除上一次的关键字
             $("#btnKeepSearchWords").removeAttr("searchWords")
             // 分页
-            var num = Math.ceil(res.sumsize/30);
+            var num = Math.ceil(res.sumsize/60);
             Page({
                 num: num, //页码数
                 startnum: page||1, //指定页码
