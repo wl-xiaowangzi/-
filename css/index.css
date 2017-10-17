@@ -611,7 +611,6 @@ nav {
 #modalEditRecord .info-box {
     padding: 20px;
     display: flex;
-    justify-content: space-around;
     flex-wrap:wrap;
 }
 p{
@@ -801,7 +800,6 @@ p{
 }
 #modalPeopleChoicePicture .info-box{
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
 }
 #modalPeopleChoicePicture .info-box .info{
@@ -809,6 +807,7 @@ p{
     height: 100px;
     box-sizing: border-box;
     margin-bottom: 3px;
+    margin-left: 3px;
     border: 3px solid transparent;
     cursor: pointer;
 }
