@@ -78,7 +78,9 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
         var t = newDate.toJSON(); 
         $peopleVisitantAdd.find(".date-join").datetimepicker({
             weekStart: 1, //一周从哪一天开始。0（星期日）到6（星期六）
-            format: 'yyyy-mm-dd HH:mm:ss',
+            format: 'yyyy-mm-dd HH:ii:ss',//选ii才能选择分钟
+            minView:0,
+            minuteStep:5,
             autoclose: true,
             todayBtn: true,
             todayHighlight: true,

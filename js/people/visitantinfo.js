@@ -81,16 +81,13 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
             //渲染入库日期-->日期控件
             var newDate = new Date();
             var t = newDate.toJSON(); 
-            // var starttime = $(".starttime").val();
-            // if(starttime!=""){
-            //     t = starttime;
-            // }
             $peopleVisitantInfo.find(".date-join").datetimepicker({
                 weekStart:1,//一周从哪一天开始。0（星期日）到6（星期六）
-                format: 'yyyy-mm-dd h:mm:ss',
+                format: 'yyyy-mm-dd h:ii:ss',//选ii才能选择分钟
                 //daysOfWeekDisabled:[0,1,2]  //指定周几不能使用
                 autoclose:true,
-                // minView:"month",
+                minView:0,
+                minuteStep:5,
                 todayBtn:true,
                 todayHighlight:true,
                 startDate:new Date(t),

@@ -312,7 +312,6 @@ button {
 .opacity0 {
     opacity: 0;
 }
-
 .opacity1 {
     opacity: 1;
 }
@@ -517,7 +516,8 @@ nav {
 }
 @media screen and (max-width:1280px) {
     .datetimepicker.dropdown-menu {
-        top: 200px!important;
+        position: fixed;
+        top: 20vw!important;
     }
 }
 @media screen and (max-width:1050px) {
