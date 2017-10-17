@@ -10,13 +10,13 @@ require.config({
         cookie: "lib/jquery.cookie",
         text: "lib/text",
         artTemplate: "lib/template-web",
-        bootstrap: "../assets/bootstrap/js/bootstrap",
+        bootstrap: "../assets/bootstrap/js/bootstrap.min",
         typeahead:"../assets/bootstrap/js/bootstrap-typeahead",
         pager: "../assets/jQueryPage/pager",
         //配置模板文件夹的路径
         tpls: "../tpls",
         // 日期控件
-        datetimepicker: "../assets/datetimepicker/js/bootstrap-datetimepicker",
+        datetimepicker: "../assets/datetimepicker/js/bootstrap-datetimepicker.min",
         daterangepicker: "../assets/daterangepicker/js/daterangepicker",
         moment: "../assets/daterangepicker/js/moment.min",
         datetimepickerLang: "../assets/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
