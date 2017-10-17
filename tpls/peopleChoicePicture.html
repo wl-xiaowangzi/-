@@ -1,18 +1,19 @@
-<div class="modal fade" id="modalEditRecord" data-backdrop="static" tabindex="-1" role="dialog">
+<div class="modal fade" id="modalPeopleChoicePicture" data-backdrop="static" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title text-center">人员来访记录</h4>
+                <h4 class="modal-title">替换<span class="replaceName"></span>主图</h4>
             </div>
-            <div class="modal-body people-visitor-record" style="height:60vh;overflow-y: scroll">
+            <div class="modal-body people-visitor-record" style="height:630px;overflow-y: scroll">
                 <div class="info-box">
+                    <div class="info editCamera1 choiceCamera">
+                        <img src="imgs/uploadIMG_hover.png" alt="" width="94" height="94">
+                    </div>
                     {{each data}}
-                    <div class="info">
-                        <div class="img-box"><img src="{{$value.faceimage}}" class="replaceIMG" alt="" width="50" height="50"><span class="similarity">{{$value.similarity*100}}%</span></div>
-                        <!--<p>{{$value.devicename}}</p>-->
-                        <p class="record_time">{{$value.updatetime}}</p>
+                    <div class="info replaceIMG">
+                        <img src="{{$value.faceimage}}" alt="" width="94" height="94">
                     </div>
                     {{/each}}
                 </div>

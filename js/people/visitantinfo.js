@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html","common/editCamera1","common/editCamera2"],function ($,art,API,peopleVisitantInfoTpl,editCamera1,editCamera2) {
+define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html","common/editCamera1","common/editCamera2", "./choicePicture1", "./choicePicture2"],function ($,art,API,peopleVisitantInfoTpl,editCamera1,editCamera2,choicePicture1,choicePicture2) {
 
     return function(vs_id){
         //把渲染好的元素放到页面中
@@ -14,12 +14,15 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
             var $peopleVisitantInfo=$(peopleVisitantInfo);
             // 移除上一次模态框
             $("#modalVisitantEditInfo").remove();
-            // 调用摄像头
+            // 选择照片
+            var ps_id = vs_id;
+            var ps_type = 2;
+            var ps_name = res.data.name;
             $peopleVisitantInfo.on("click", ".picture1", function () {
-                editCamera1();
+                choicePicture1(ps_id,ps_type,ps_name);
             });
             $peopleVisitantInfo.on("click", ".picture2", function () {
-                editCamera2();
+                choicePicture2(ps_id,ps_type,ps_name);
             });
             // 提交表单
             $peopleVisitantInfo.on("submit","form",function(){

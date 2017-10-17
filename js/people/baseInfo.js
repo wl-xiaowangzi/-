@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", "common/editCamera1", "common/editCamera2", "typeahead"], function ($, art, API, peopleBaseInfoTpl, editCamera1, editCamera2) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", "common/editCamera1", "common/editCamera2", "./choicePicture1", "./choicePicture2","typeahead"], function ($, art, API, peopleBaseInfoTpl, editCamera1, editCamera2,choicePicture1,choicePicture2) {
     return function (ep_id) {
         //根据员工id获取员工基本信息
         API.getEmployeeBaseInfo(ep_id, function (res) {
@@ -12,12 +12,15 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
             var $peopleBaseInfo = $(peopleBaseInfo);
             // 移除模板
             $("#modalEditInfo").remove();
-            // 调用摄像头
+            // 选择照片
+            var ps_id = ep_id;
+            var ps_type = 1;
+            var ps_name = res.data.name;
             $peopleBaseInfo.on("click", ".picture1", function () {
-                editCamera1();
+                choicePicture1(ps_id,ps_type,ps_name);
             });
             $peopleBaseInfo.on("click", ".picture2", function () {
-                editCamera2();
+                choicePicture2(ps_id,ps_type,ps_name);
             });
             // 提交表单
             $peopleBaseInfo.on("submit", "form", function () {

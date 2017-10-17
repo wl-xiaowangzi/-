@@ -4,8 +4,8 @@
  *   Date:2017/9/6
  */
 define(["jquery"],function($){
-    // var api="http://39.108.171.172:80/facerecognition";
-    var api="http://127.0.0.1:80/facerecognition";
+    var api="http://39.108.171.172:80/facerecognition";
+    // var api="http://127.0.0.1:80/facerecognition";
     return {
         // 识别记录
         getRecordList:function(organizationid,starttime,endtime,start,limit,persontype,similarity,keyword,personid,callback){
@@ -231,7 +231,7 @@ define(["jquery"],function($){
 
         // 员工列表
         getPeopleList:function(start,limit,keyword,callback){
-            $.get(api+"/system/employee/query",{start,limit,keyword},function(res){
+            $.get(api+"/system/employee/query",{start:start,limit:limit,keyword:keyword},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
