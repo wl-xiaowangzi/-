@@ -33,8 +33,16 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                     editCamera2();
                 })
                 .on("click",".replaceIMG",function(){
+                    // 设置点击样式
                     $(this).siblings().removeClass("opacity05");
                     $(this).addClass("opacity05");
+                    // 调用接口
+
+                    // 保存数据
+                    // $(".btn-blue").attr("secondFaceimages",res.data.faceimage);
+                    // $(".btn-blue").attr("secondFacedatas",res.data.facedata);
+                    // $(".headfaceimage2").attr("src",res.data.headfaceimage);
+                    // $peopleChoicePicture.modal("hide");
                 })
                 .on("click",".loadMore",function(){
                     page++

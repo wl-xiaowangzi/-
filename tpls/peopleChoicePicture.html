@@ -1,10 +1,10 @@
-<div class="modal fade" id="modalPeopleChoicePicture" data-backdrop="static" tabindex="-1" role="dialog">
+<div class="modal fade" id="modalPeopleChoicePicture" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">替换<span class="replaceName"></span>主图</h4>
+                <h4 class="modal-title">替换<span class="replaceName black"></span>的主图</h4>
             </div>
             <div class="modal-body people-visitor-record" style="height:630px;overflow-y: scroll">
                 <div class="info-box">
@@ -13,7 +13,7 @@
                     </div>
                     {{each data}}
                     <div class="info replaceIMG">
-                        <img src="{{$value.faceimage}}" alt="" width="94" height="94">
+                        <div class="img-box"><img src="{{$value.faceimage}}" alt="" width="94" height="94"><span class="similarity"></span><span class="sim-text">{{$value.similarity*100}}%</span></div>
                     </div>
                     {{/each}}
                 </div>

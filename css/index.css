@@ -636,14 +636,24 @@ p{
 #modalEditRecord .info-box .info .similarity {
     display: block;
     position: absolute;
-    top: 38px;
+    top: 34px;
     color: white;
     background-color: #000;
     width: 50px;
-    height: 12px!important;
-    line-height: 12px;
+    height: 16px!important;
+    line-height: 16px;
     text-align: center;
-    opacity: .5;
+    opacity: .3;
+}
+#modalEditRecord .info-box .info .sim-text{
+    display: block;
+    position: absolute;
+    top: 34px;
+    color: white;
+    width: 50px;
+    height: 16px!important;
+    line-height: 16px;
+    text-align: center;
 }
 #modalEditRecord .info-box .info p {
     margin-top: 0px;
@@ -819,6 +829,28 @@ p{
 }
 #modalPeopleChoicePicture .info-box .replaceIMG:hover{
     border-color: #357aed;
+}
+#modalPeopleChoicePicture .info-box .info .similarity {
+    display: block;
+    position: absolute;
+    top: 78px;
+    color: white;
+    background-color: #000;
+    width: 94px;
+    height: 16px!important;
+    line-height: 16px;
+    text-align: center;
+    opacity: .3;
+}
+#modalPeopleChoicePicture .info-box .info .sim-text{
+    display: block;
+    position: absolute;
+    top: 78px;
+    color: white;
+    width: 94px;
+    height: 16px!important;
+    line-height: 16px;
+    text-align: center;
 }
 /*人员管理样式 end*/
 .hidden {

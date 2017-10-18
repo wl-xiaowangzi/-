@@ -4,8 +4,8 @@
  *   Date:2017/9/6
  */
 define(["jquery"],function($){
-    var api="http://39.108.171.172:80/facerecognition";
-    // var api="http://127.0.0.1:80/facerecognition";
+    // var api="http://39.108.171.172:80/facerecognition";
+    var api="http://127.0.0.1:80/facerecognition";
     return {
         // 识别记录
         getRecordList:function(organizationid,starttime,endtime,start,limit,persontype,similarity,keyword,personid,callback){
