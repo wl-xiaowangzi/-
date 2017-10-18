@@ -590,10 +590,38 @@ nav {
 .personal-info ul li:nth-child(1) {
     min-width: 200px;
 }
-.personal-info ul li:nth-child(1) span {
+.personal-info ul li:nth-child(1) span{
     position: absolute;
     margin-left: 24px;
     max-width: 30px;
+}
+.personal-info ul li:nth-child(1) span.similarity {
+    display: block;
+    position: absolute;
+    top: 54px;
+    left: 40px;
+    margin-left: 0px;
+    max-width: 50px;
+    color: white;
+    background-color: #000;
+    width: 50px;
+    height: 16px!important;
+    line-height: 16px;
+    text-align: center;
+    opacity: .3;
+}
+.personal-info ul li:nth-child(1) span.sim-text{
+    display: block;
+    position: absolute;
+    top: 55px;
+    left: 40px;
+    margin-left: 0px;
+    max-width: 50px;
+    color: white;
+    width: 50px;
+    height: 16px!important;
+    line-height: 16px;
+    text-align: center;
 }
 .personal-info ul li {
     width: 20vw;
@@ -648,7 +676,7 @@ p{
 #modalEditRecord .info-box .info .sim-text{
     display: block;
     position: absolute;
-    top: 34px;
+    top: 35px;
     color: white;
     width: 50px;
     height: 16px!important;
@@ -845,7 +873,7 @@ p{
 #modalPeopleChoicePicture .info-box .info .sim-text{
     display: block;
     position: absolute;
-    top: 78px;
+    top: 79px;
     color: white;
     width: 94px;
     height: 16px!important;
@@ -941,9 +969,7 @@ p{
     border-top: 1px solid #e6ebee;
 }
 .deviceTable tbody tr td {
-    /*padding: 0 0 0 30px;*/
     height: 40px;
-    /*max-width: 300px;*/
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

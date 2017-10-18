@@ -51,7 +51,10 @@
                 <img src="imgs/visitor-tip.png" alt=""> {{/if}}
             </div>
             <ul>
-                <li><img src="{{$value.faceimage}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
+                <li><img src="{{$value.faceimage}}" alt="" width="50" height="50"><span>{{$value.name}}</span>
+                <span class="similarity"></span>
+                <span class="sim-text">{{$value.similarity*100}}%</span>
+                </li>
                 <li class="bdcolor">|</li>
                 <li>{{$value.devicename}}</li>
                 <li class="bdcolor">|</li>

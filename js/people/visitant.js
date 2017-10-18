@@ -18,7 +18,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
             //编译模板
             var peopleVisitantList = art.render(peopleVisitantListTpl, res);
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
-            var $peopleVisitantList = $(peopleVisitantList);
+            var $peopleVisitantList = $(peopleVisitantList);console.log(res)
             //编辑入库信息
             $peopleVisitantList
                 .on("click", ".btn-peopleList", function () {

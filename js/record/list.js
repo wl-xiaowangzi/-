@@ -22,7 +22,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         // 获取参数后清空自定义属性
         $("#btnStarttime").removeAttr("starttime");
         $("#btnEndtime").removeAttr("endtime");
-        $("#btnSimilarity").removeAttr("similarity");
+        // $("#btnSimilarity").removeAttr("similarity");
         $("#btnPersontype").removeAttr("persontype");
         $("#btnPager").removeAttr("page");
         $("#btnSearchWords").removeAttr("keyword");
