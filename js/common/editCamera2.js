@@ -27,6 +27,7 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     mediaStreamTrack && mediaStreamTrack.stop();
                     $(".btn-blue").attr("secondFaceimages",res.data.faceimage);
                     $(".btn-blue").attr("secondFacedatas",res.data.facedata);
+                    $(".btn-blue").parent().attr("facetypes2","1");
                     $(".headfaceimage2").attr("src",res.data.headfaceimage);
                     $camera.modal("hide");
                 })

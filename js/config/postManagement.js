@@ -11,6 +11,7 @@ define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html
         var limit = 60*(page);
         // 移除参数
         $("#btnPager").removeAttr("page");
+        $("body").removeClass("noResult")
         // 获取职位参数列表
         API.getParameterList(start,limit,parameterkey,function(res){
             //编译模板

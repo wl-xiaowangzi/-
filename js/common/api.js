@@ -42,6 +42,21 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
+        // 识别记录人脸替换
+        replaceRecordIMG:function(ps_id,ps_type,facedata,faceimage,callback){
+            $.get(api+"/system/record/updatefaceimage",{personid:ps_id,persontype:ps_type,facedata:facedata,faceimage:faceimage},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+            })
+        },
         // 入库审批列表
         getApprovalList:function(start,limit,keyword,callback){
             $.ajax({
@@ -250,11 +265,11 @@ define(["jquery"],function($){
             })
         },
         // 员工添加
-        addEmployee:function(deviceids,name,sex,brithday,phonenumber,employeenumber,job,faceimages,facedatas,callback){
+        addEmployee:function(deviceids,name,sex,brithday,phonenumber,employeenumber,job,faceimages,facedatas,facetypes,callback){
             $.ajax({
                 url:api+"/system/employee/add",
                 type:"post",
-                data:{deviceids:deviceids,name:name,sex:sex,birthtime:brithday,phonenumber:phonenumber,employeenumber:employeenumber,job:job,faceimages:faceimages,facedatas:facedatas},
+                data:{deviceids:deviceids,name:name,sex:sex,birthtime:brithday,phonenumber:phonenumber,employeenumber:employeenumber,job:job,faceimages:faceimages,facedatas:facedatas,facetypes:facetypes},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -289,11 +304,11 @@ define(["jquery"],function($){
             })
         },
         // 员工编辑
-        editEmployee:function(ep_id,deviceids,name,sex,birthday,phonenumber,job,employeenumber,facedatas,faceimages,callback){
+        editEmployee:function(ep_id,deviceids,name,sex,birthday,phonenumber,job,employeenumber,facedatas,faceimages,facetypes,callback){
             $.ajax({
                 url:api+"/system/employee/update",
                 type:"post",
-                data:{employeeid:ep_id,deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,job:job,employeenumber:employeenumber,facedatas:facedatas,faceimages:faceimages},
+                data:{employeeid:ep_id,deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,job:job,employeenumber:employeenumber,facedatas:facedatas,faceimages:faceimages,facetypes:facetypes},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -346,11 +361,11 @@ define(["jquery"],function($){
             })
         },
         // 访客添加
-        addVisitor:function(deviceids,name, sex, birthday, phonenumber,starttime,endtime, remark, faceimages, facedatas,callback){
+        addVisitor:function(deviceids,name, sex, birthday, phonenumber,starttime,endtime, remark, faceimages, facedatas,facetypes,callback){
             $.ajax({
                 url:api+"/system/visitor/add",
                 type:"post",
-                data:{deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,faceimages:faceimages,facedatas:facedatas},
+                data:{deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,faceimages:faceimages,facedatas:facedatas,facetypes:facetypes},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -385,11 +400,11 @@ define(["jquery"],function($){
             })
         },
         // 访客编辑
-        editVisitor:function(vs_id,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,callback){
+        editVisitor:function(vs_id,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,facetypes,callback){
             $.ajax({
                 url:api+"/system/visitor/update",
                 type:"post",
-                data:{visitorid:vs_id,deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,facedatas:facedatas,faceimages:faceimages},
+                data:{visitorid:vs_id,deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,facedatas:facedatas,faceimages:faceimages,facetypes:facetypes},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);

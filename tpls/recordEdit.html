@@ -10,7 +10,7 @@
                 <div class="info-box">
                     {{each data}}
                     <div class="info">
-                        <div class="img-box"><img src="{{$value.faceimage}}" class="replaceIMG" alt="" width="50" height="50"><span class="similarity"></span><span class="sim-text">{{$value.similarity*100}}%</span></div>
+                        <div class="img-box" datanumber={{$value.datanumber}}><img src="{{$value.faceimage}}" class="replaceIMG" alt="" width="50" height="50"><span class="similarity"></span><span class="sim-text">{{$value.similarity*100}}%</span></div>
                         <!--<p>{{$value.devicename}}</p>-->
                         <p class="record_time">{{$value.identificationtime}}</p>
                     </div>

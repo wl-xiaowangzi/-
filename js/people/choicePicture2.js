@@ -36,13 +36,16 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                     // 设置点击样式
                     $(this).siblings().removeClass("opacity05");
                     $(this).addClass("opacity05");
-                    // 调用接口
-
-                    // 保存数据
-                    // $(".btn-blue").attr("secondFaceimages",res.data.faceimage);
-                    // $(".btn-blue").attr("secondFacedatas",res.data.facedata);
-                    // $(".headfaceimage2").attr("src",res.data.headfaceimage);
-                    // $peopleChoicePicture.modal("hide");
+                     // 调用接口
+                    var datanumber = $(this).attr("datanumber");
+                    API.showRecord(organizationid,starttime,endtime,start,limit,datanumber,function(res){
+                    // 保存人脸数据
+                    $(".btn-blue").attr("secondFaceimages",res.data[0].faceimage);
+                    $(".btn-blue").attr("secondFacedatas",res.data[0].facedata);
+                    $(".btn-blue").attr("facetypes2","2");
+                    $(".headfaceimage2").attr("src",res.data[0].faceimage);
+                    $peopleChoicePicture.modal("hide");
+                    })
                 })
                 .on("click",".loadMore",function(){
                     page++

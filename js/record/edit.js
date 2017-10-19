@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/8/31
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html","./editLoadMore"], function ($, art, API, recordEditTpl,editLoadMore) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html","./editLoadMore","./replaceIMG"], function ($, art, API, recordEditTpl,editLoadMore,replaceIMG) {
     return function (ps_id,ps_type) {
         // 获取参数
         var organizationid = $.cookie("organizationid");
@@ -32,7 +32,14 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html","./ed
                     
                 })
                 .on("click",".replaceIMG",function(res){
-                    
+                    var datanumber = $(this).parent().attr("datanumber");
+                    API.showRecord(organizationid,starttime,endtime,start,limit,datanumber,function(res){
+                        var ps_id = res.data[0].personid;
+                        var ps_type = res.data[0].persontype;
+                        var facedata = res.data[0].facedata;
+                        var faceimage = res.data[0].faceimage;
+                        replaceIMG(ps_id,ps_type,facedata,faceimage)
+                    })
                 })
                 .on("click",".loadMore",function(){
                     page++

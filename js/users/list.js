@@ -13,6 +13,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
         // 移除参数
         $("#btnSearchWords").removeAttr("keyword");
         $("#btnPager").removeAttr("page");
+        $("body").removeClass("noResult");
         // 调用接口
         API.getUsersList(start, limit, keyword, function (res) {
             //编译模板

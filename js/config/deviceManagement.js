@@ -12,6 +12,7 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
         // 移除参数
         $("#btnSearchWords").removeAttr("keyword");
         $("#btnPager").removeAttr("page");
+        $("body").removeClass("noResult");
         // 获取设备列表
         API.getDeviceList(start,limit,keyword,function(res){
             //编译模板

@@ -38,9 +38,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], fu
                     $(".confirmPWD").removeClass("eye-open").addClass("eye-close")
                 }
             })
-           .on("input",".confirmPassword",function(){
-               if($(".newPassword").val()!=$(".confirmPassword").val()){
+           .on("keyup",".confirmPassword",function(){
+               if($(".newPassword").val().length==$(".confirmPassword").val().length&&$(".newPassword").val()!=$(".confirmPassword").val()){
                   $(".cfmPWD").addClass("opacity1").html("两次输入密码不一致！");
+                  setTimeout(function(){$(".cfmPWD").removeClass('opacity1')},2000);
                }else{
                    $(".cfmPWD").removeClass("opacity1");
                }
@@ -51,6 +52,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], fu
             API.changePWD(formData,function(res){
                 if(res.message=="原密码错误！"){
                     $(".cfmPWD").addClass('opacity1').html("原密码错误！")
+                    setTimeout(function(){$(".cfmPWD").removeClass('opacity1')},2000);
                     return;
                 }
                 $changePWD.modal("hide");

@@ -26,11 +26,12 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         $("#btnPersontype").removeAttr("persontype");
         $("#btnPager").removeAttr("page");
         $("#btnSearchWords").removeAttr("keyword");
+        $("body").removeClass("noResult");
         // 调用识别记录接口   
         API.getRecordList(organizationid, starttime, endtime, start, limit, persontype, similarity, keyword, personid, function (res) {
             //编译模板
             var recordList = art.render(recordListTpl, res);
-            var $recordList = $(recordList);
+            var $recordList = $(recordList);console.log(res)
             //修改用户状态
             $recordList
                 //查看详细信息

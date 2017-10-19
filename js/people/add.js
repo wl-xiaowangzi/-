@@ -52,16 +52,18 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 var employeenumber = $(".employeenumber").val();
                 var sex = $(".sex").val();
                 if (secondFaceimages == undefined) {
-                    faceimages = firstFaceimages;
-                    facedatas = "[" + firstFacedatas + "]";
+                    var faceimages = firstFaceimages;
+                    var facedatas = "[" + firstFacedatas + "]";
+                    var facetypes = 1;
                 } else {
                     var faceimages = firstFaceimages + "," + secondFaceimages;
                     var facedatas = "[" + firstFacedatas + "]|" + "[" + secondFacedatas + "]";
+                    var facetypes = 1+","+1;
                 }
                 $("#btnPeopleManager").removeAttr("faceimage");
                 $("#btnPeopleManager").removeAttr("facedata");
                 // 调用接口
-                API.addEmployee(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas, function (res) {
+                API.addEmployee(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes, function (res) {
                     $peopleAdd.modal("hide");
                     //成功的添加员工->刷新员工管理页面
                     $("#btnPeopleManager").trigger("click");

@@ -37,12 +37,15 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                     $(this).siblings().removeClass("opacity05");
                     $(this).addClass("opacity05");
                     // 调用接口
-
+                    var datanumber = $(this).attr("datanumber");
+                    API.showRecord(organizationid,starttime,endtime,start,limit,datanumber,function(res){
                     // 保存人脸数据
-                    // $(".btn-blue").parent().attr("firstFaceimages",res.data.faceimage);
-                    // $(".btn-blue").parent().attr("firstFacedatas",res.data.facedata);
-                    // $(".headfaceimage1").attr("src",res.data.headfaceimage);
-                    // $peopleChoicePicture.modal("hide");
+                    $(".btn-blue").parent().attr("firstFaceimages",res.data[0].faceimage);
+                    $(".btn-blue").parent().attr("firstFacedatas",res.data[0].facedata);
+                    $(".btn-blue").parent().attr("facetypes1","2");
+                    $(".headfaceimage1").attr("src",res.data[0].faceimage);
+                    $peopleChoicePicture.modal("hide");
+                    })
                 })
                 .on("click",".loadMore",function(){
                     page++

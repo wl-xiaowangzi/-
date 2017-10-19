@@ -10,8 +10,8 @@ require.config({
         cookie: "lib/jquery.cookie",
         text: "lib/text",
         artTemplate: "lib/template-web",
-        bootstrap: "../assets/bootstrap/js/bootstrap.min",
-        typeahead:"../assets/bootstrap/js/bootstrap-typeahead",
+        bootstrap: "../assets/bootstrap/js/bootstrap",
+        typeahead: "../assets/bootstrap/js/bootstrap-typeahead",
         pager: "../assets/jQueryPage/pager",
         //配置模板文件夹的路径
         tpls: "../tpls",
@@ -34,12 +34,12 @@ require.config({
         },
         typeahead: {
             deps: ["bootstrap"]
-        } 
+        }
     }
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit","common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList,recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
+require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
 
     //处理用户名
     var username = $.cookie("username");
@@ -179,13 +179,17 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     //希望一开始就渲染出识别记录
     //  -->触发识别记录的点击事件
     $("#btnRecord").trigger("click");
-    
+
     // 给侧边栏添加点击效果
     $("#sidebar-menu .side-menu li").on("click", function () {
         $("#sidebar-menu .side-menu li").removeClass("activate");
         $(this).addClass("activate")
     })
     // 给下拉菜单变为鼠标移入触发
-    $('li.dropdown').mouseover(function() {   
-    $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');});
+    $('li.dropdown').mouseover(function () {
+        $(this).addClass('open');
+    }).mouseout(function () {
+        $(this).removeClass('open');
+    });
+    
 })

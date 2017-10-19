@@ -22,7 +22,7 @@ p,h1,h2,h3,h4,h5{
     color: #576780;
 }
 .iptinfo_text{
-    font-size: 13px;
+    font-size: 16px;
     color: #000;
 }
 /*文字样式 end*/
@@ -188,7 +188,7 @@ select.triangle_down{
     margin-left: 28px;
 }
 .ml66{
-    margin-left: 66px;
+    margin-left: 48px;
 }
 .mb32{
     margin-bottom: 32px;
@@ -327,6 +327,7 @@ button {
 }
 .noResult{
     background-image: url(../imgs/noResult.png);
+    background-position: 50vw 38vh;
 }
 .pages{
     width:100%;
@@ -461,7 +462,6 @@ nav {
     width: 20vw;
     background: #f8fafb;
     color: #000;
-    cursor: pointer;
     border-radius: 20px;
     box-shadow: none;
     height: 40px;
@@ -476,6 +476,7 @@ nav {
     box-shadow: none;
     height: 38px;
     width: 40px;
+    cursor: pointer;
     z-index: 999;
 }
 .navbar-nav {
@@ -540,6 +541,14 @@ nav {
 /*识别记录样式 begin*/
 .record {
     background: #edf2f6;
+}
+.applyBtn{
+    background-color: #357aed;
+    border:0;
+}
+.applyBtn:hover{
+    background-color: #357aed;
+    border:0;
 }
 .top-nav {
     padding: 0 71px 0 68px;
@@ -709,11 +718,10 @@ p{
     background-size: 46px 21px;
     background-position-x: 2px;
     background-position-y: 2px;
-    padding: 24px 0;
     border: 1px solid #e6ebee;
     margin-top: 18px;
     padding: 24px;
-    margin-right: 12px;
+    margin-right: 1.3vw;
     background-color: white;
     overflow: hidden;
 }
@@ -779,10 +787,10 @@ p{
     background: url(../imgs/btn-add_0.png) no-repeat center center;
 }
 .btnAdd:hover {
-    background: url(../imgs/btn-add_1.png) no-repeat center center;
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    transition: all 1s;
+    transform: rotate(90deg);
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
 }
 .img-box{
     position: relative;
@@ -790,14 +798,14 @@ p{
 .camera_icon{
     display: block;
     position: absolute;
-    bottom: -11px;
-    right: -11px;
-    width: 22px;
-    height: 22px;
+    bottom: 4px;
+    right: 4px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: #357aed;
     background-image: url(../imgs/headimages_icon.png);
-    background-size: 22px 22px;
+    background-size: 20px 20px;
 }
 .secPIC{
     background-image: url(../imgs/uploadIMG.png);

@@ -8,7 +8,7 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
     return function(vs_id){
         //把渲染好的元素放到页面中
         //根据访客id获取访客基本信息
-        API.getVisitorBaseInfo(vs_id,function(res){
+        API.getVisitorBaseInfo(vs_id,function(res){console.log(res)
             // 渲染模板
             var peopleVisitantInfo=art.render(peopleVisitantInfoTpl,res.data);
             var $peopleVisitantInfo=$(peopleVisitantInfo);
@@ -27,11 +27,13 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
             // 提交表单
             $peopleVisitantInfo.on("submit","form",function(){
                 var deviceids=$(".btn-blue").parent().attr("deviceids").replace(/\[|]/g,'').replace(/\"|"/g,'');
-                var visitorid=$(".btn-blue").parent().attr("visitorid");
+                var visitorid=ps_id;
                 var firstFacedatas = $(".btn-blue").parent().attr("firstFacedatas").replace(/\[|]/g, '');
                 var firstFaceimages = $(".btn-blue").parent().attr("firstFaceimages");
                 var secondFacedatas = $(".btn-blue").attr("secondFacedatas").replace(/\[|]/g, '');
                 var secondFaceimages = $(".btn-blue").attr("secondFaceimages");
+                var facetypes1 = $(".btn-blue").parent().attr("facetypes1")||1;
+                var facetypes2 = $(".btn-blue").attr("facetypes2")||1;
                 var birthday=$(".birthday-join").val();
                 var phonenumber=$(".phonenumber").val();
                 var name=$(".name").val();
@@ -43,15 +45,18 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
                 if (secondFaceimages == undefined) {
                     var faceimages = firstFaceimages;
                     var facedatas = "[" + firstFacedatas + "]";
+                    var facetypes = facetypes1;
                 } else {
                     var faceimages = firstFaceimages + "," + secondFaceimages;
                     var facedatas = "[" + firstFacedatas + "]|" + "[" + secondFacedatas + "]";
+                    var facetypes = facetypes1+","+facetypes2;
                 }
                 if(Date.parse(starttime)>Date.parse(endtime)){
                     alert("结束时间不能小于开始时间");
                 }else{
-                // 添加访客
-                API.editVisitor(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,function(res){
+                    console.log(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,facetypes)
+                // 编辑访客
+                API.editVisitor(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,facetypes,function(res){
                     $peopleVisitantInfo.modal("hide");
                     //数据更新成功-->跳转到员工列表
                     $("#btnVisitorManager").trigger("click");

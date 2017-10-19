@@ -6,7 +6,7 @@
 define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", "common/editCamera1", "common/editCamera2", "./choicePicture1", "./choicePicture2","typeahead"], function ($, art, API, peopleBaseInfoTpl, editCamera1, editCamera2,choicePicture1,choicePicture2) {
     return function (ep_id) {
         //根据员工id获取员工基本信息
-        API.getEmployeeBaseInfo(ep_id, function (res) {
+        API.getEmployeeBaseInfo(ep_id, function (res) {console.log(res)
             // 渲染模板
             var peopleBaseInfo = art.render(peopleBaseInfoTpl, res.data);
             var $peopleBaseInfo = $(peopleBaseInfo);
@@ -31,6 +31,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
                 var firstFaceimages = $(".btn-blue").parent().attr("firstFaceimages");
                 var secondFacedatas = $(".btn-blue").attr("secondFacedatas").replace(/\[|]/g, '');
                 var secondFaceimages = $(".btn-blue").attr("secondFaceimages");
+                var facetypes1 = $(".btn-blue").parent().attr("facetypes1")||1;
+                var facetypes2 = $(".btn-blue").attr("facetypes2")||1;
                 var employeenumber = $(".employeenumber").val();
                 var phonenumber = $(".phonenumber").val();
                 var birthday = $(".birthday-join").val();
@@ -41,11 +43,13 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
                 if (secondFaceimages == undefined) {
                     var faceimages = firstFaceimages;
                     var facedatas = "[" + firstFacedatas + "]";
+                    var facetypes = facetypes1;
                 } else {
                     var faceimages = firstFaceimages + "," + secondFaceimages;
                     var facedatas = "[" + firstFacedatas + "]|" + "[" + secondFacedatas + "]";
+                    var facetypes = facetypes1+","+facetypes2;
                 }
-                API.editEmployee(ep_id, deviceids, name, sex, birthday, phonenumber, job, employeenumber, facedatas, faceimages, function (res) {
+                API.editEmployee(ep_id, deviceids, name, sex, birthday, phonenumber, job, employeenumber, facedatas, faceimages,facetypes, function (res) {
                     // 隐藏模态框
                     $peopleBaseInfo.modal("hide");
                     //数据更新成功-->跳转到员工列表
