@@ -8,10 +8,12 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         // 获取参数
         var page = $("#btnPager").attr("page")||1;
         var start = 30*(page-1);
-        var limit = 30*(page);
+        var limit = 30;
         var keyword = $("#btnSearchWords").attr("keyword");
         // 移除参数
-        $("#btnSearchWords").removeAttr("keyword");
+        setTimeout(function(){
+            $("#btnSearchWords").removeAttr("keyword");
+        },30000);
         $("#btnPager").removeAttr("page");
         // 获取访客审批列表
          API.getVisitorApprovalList(start,limit, 1,keyword, function (res) {

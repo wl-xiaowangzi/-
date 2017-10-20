@@ -8,7 +8,7 @@ define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html
         var parameterkey="key_job";
         var page = $("#btnPager").attr("page")||1;
         var start = 60*(page-1);
-        var limit = 60*(page);
+        var limit = 60;
         // 移除参数
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult")

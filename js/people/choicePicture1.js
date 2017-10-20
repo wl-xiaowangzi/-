@@ -53,7 +53,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                 })
             // 渲染数据
             $peopleChoicePicture.appendTo("body").modal();
-            $(".replaceName").html(ps_name)
+            $(".replaceName").html(ps_name);
+            $("body").removeClass("noResult");
         })
     };
 });

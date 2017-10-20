@@ -30,7 +30,7 @@
                                     video.src = (window.URL || window.webkitURL).createObjectURL(stream);
                                     video.play();
                                 }).catch(function (err) {
-                                    console.log(err);
+                                    alert("没有检测到可用摄像头");
                                 })
                             }
                             // 使用旧方法打开摄像头
@@ -42,7 +42,7 @@
                                     video.src = (window.URL || window.webkitURL).createObjectURL(stream);
                                     video.play();
                                 }, function (err) {
-                                    console.log(err);
+                                    alert("没有检测到可用摄像头");
                                 });
                             }
                             // 关闭摄像头

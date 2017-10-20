@@ -44,8 +44,12 @@ define(["jquery"],function($){
         },
         // 识别记录人脸替换
         replaceRecordIMG:function(ps_id,ps_type,facedata,faceimage,callback){
-            $.get(api+"/system/record/updatefaceimage",{personid:ps_id,persontype:ps_type,facedata:facedata,faceimage:faceimage},function(res){
-                if(res.code!=0){
+            $.ajax({
+                url:api+"/system/record/updatefaceimage",
+                type:"post",
+                data:{personid:ps_id,persontype:ps_type,facedata:facedata,faceimage:faceimage},
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
@@ -55,6 +59,7 @@ define(["jquery"],function($){
                     return;
                 }
                 callback && callback(res);
+                }
             })
         },
         // 入库审批列表
@@ -436,7 +441,23 @@ define(["jquery"],function($){
 
             })
         },
-        
+        // 过期访客删除
+        expiredVisitor:function(vs_id,callback){
+            $.post(api+"/system/visitor/expired",{visitorids:vs_id},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+
+                callback && callback();
+
+            })
+        },
         // 系统设置
         // 系统消息查询
         getMessageList:function(start,limit,callback){

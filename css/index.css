@@ -25,6 +25,10 @@ p,h1,h2,h3,h4,h5{
     font-size: 16px;
     color: #000;
 }
+.ipt_text{
+    font-size: 13px;
+    color: #000;
+}
 /*文字样式 end*/
 .modal-content {
     border-radius: 0;
@@ -80,6 +84,7 @@ p,h1,h2,h3,h4,h5{
     top: 0;
     right: 0;
 }
+/*修改表单placeholder·样式*/
 .form-control::-webkit-input-placeholder{
     font-weight: normal;
     font-size: 14px;
@@ -94,6 +99,18 @@ p,h1,h2,h3,h4,h5{
     font-weight: normal;
     font-size: 14px;
     color: #acbac5;
+}
+.daterangepicker .ranges li{
+    color: #000;
+}
+.daterangepicker .ranges li.active, .daterangepicker .ranges li:hover {
+    background:#c3d7fa;
+    border: 1px solid #c3d7fa;
+    color: #000;
+}
+.daterangepicker td.active, .daterangepicker td.active:hover {
+    background-color: #357aed;
+    color: #fff;
 }
 .dropdown{
     margin-top: 7px;
@@ -823,6 +840,12 @@ p{
     background-repeat: no-repeat;
     background-position-x: 52px;
 }
+.typeahead{
+    width: 294.66px;
+    display: block;
+    z-index: 9999;
+    border: 1px solid #dedeed;
+}
 #job_select{
     position: absolute;
     width: auto;
@@ -835,7 +858,7 @@ p{
 #job_select li a{
     display: block;
     padding: 3px 0px;
-    width: 292.66px;
+    width: 290.66px;
     font-size: 12px;
     color: #000;
     background-color:#fff;

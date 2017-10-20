@@ -17,15 +17,14 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         var page = $("#btnPager").attr("page") || 1;
         var keyword = $("#btnSearchWords").attr("keyword");
         var start = 30 * (page - 1);
-        var limit = 30 * (page);
+        var limit = 30;
         var personid;
         // 获取参数后清空自定义属性
-        $("#btnStarttime").removeAttr("starttime");
-        $("#btnEndtime").removeAttr("endtime");
-        // $("#btnSimilarity").removeAttr("similarity");
-        $("#btnPersontype").removeAttr("persontype");
+        // $("#btnPersontype").removeAttr("persontype");
         $("#btnPager").removeAttr("page");
-        $("#btnSearchWords").removeAttr("keyword");
+        setTimeout(function(){
+            $("#btnSearchWords").removeAttr("keyword");
+        },30000);
         $("body").removeClass("noResult");
         // 调用识别记录接口   
         API.getRecordList(organizationid, starttime, endtime, start, limit, persontype, similarity, keyword, personid, function (res) {
@@ -47,7 +46,9 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 .on("click", ".btn-edit", function () {
                     var ps_id = $(this).parent().attr("ps_id");
                     var ps_type = $(this).parent().attr("ps_type");
-                    recordEdit(ps_id, ps_type);
+                    // 设置截止时间
+                    var ps_time = $(this).parent().siblings()[4].innerText;
+                    recordEdit(ps_id, ps_type,ps_time);
                 })
                 // 选择相似度
                 .on("click", ".similarity li a", function () {
@@ -57,6 +58,8 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 })
                 // 人员类别选择
                 .on("click", ".allRecord", function () {
+                    var persontype = null;
+                    $("#btnPersontype").attr("persontype", persontype);
                     $("#btnRecord").trigger("click");
                 })
                 .on("click", "#employeeRecord", function () {

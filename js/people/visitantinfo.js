@@ -8,7 +8,7 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
     return function(vs_id){
         //把渲染好的元素放到页面中
         //根据访客id获取访客基本信息
-        API.getVisitorBaseInfo(vs_id,function(res){console.log(res)
+        API.getVisitorBaseInfo(vs_id,function(res){
             // 渲染模板
             var peopleVisitantInfo=art.render(peopleVisitantInfoTpl,res.data);
             var $peopleVisitantInfo=$(peopleVisitantInfo);
@@ -54,7 +54,6 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
                 if(Date.parse(starttime)>Date.parse(endtime)){
                     alert("结束时间不能小于开始时间");
                 }else{
-                    console.log(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,facetypes)
                 // 编辑访客
                 API.editVisitor(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,facetypes,function(res){
                     $peopleVisitantInfo.modal("hide");

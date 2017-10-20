@@ -7,10 +7,12 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
         // 获取参数
         var page = $("#btnPager").attr("page")||1;
         var start = 60*(page-1);
-        var limit = 60*(page);
+        var limit = 60;
         var keyword = $("#btnSearchWords").attr("keyword");
         // 移除参数
-        $("#btnSearchWords").removeAttr("keyword");
+        setTimeout(function(){
+            $("#btnSearchWords").removeAttr("keyword");
+        },30000);
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
         // 获取设备列表

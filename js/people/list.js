@@ -9,10 +9,12 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
         var page = $("#btnPager").attr("page")||1;
         var parameterkey = "key_job";
         var start = 30*(page-1);
-        var limit = 30*(page);
+        var limit = 30;
         var keyword = $("#btnSearchWords").attr("keyword");
         // 移除参数
-        $("#btnSearchWords").removeAttr("keyword");
+        setTimeout(function(){
+            $("#btnSearchWords").removeAttr("keyword");
+        },30000);
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
         

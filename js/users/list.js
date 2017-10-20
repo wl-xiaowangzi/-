@@ -9,9 +9,11 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
         var page = $("#btnPager").attr("page")||1;
         var keyword = $("#btnSearchWords").attr("keyword");
         var start = 30*(page-1);
-        var limit = 30*(page);
+        var limit = 30;
         // 移除参数
-        $("#btnSearchWords").removeAttr("keyword");
+        setTimeout(function(){
+            $("#btnSearchWords").removeAttr("keyword");
+        },30000);
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
         // 调用接口

@@ -2,14 +2,16 @@
  * 访客列表
  * Created by land on 2017/9/2.
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.html", "./visitantinfo", "./visitantAdd", "./visitantDel", "common/visitorCamera","pager"], function ($, art, API, peopleVisitantListTpl, visitantinfo, visitantAdd, visitantDel, visitorCamera) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.html", "./visitantinfo", "./visitantAdd", "./visitantDel", "./visitantExpired","common/visitorCamera","pager"], function ($, art, API, peopleVisitantListTpl, visitantinfo, visitantAdd, visitantDel, visitantExpired,visitorCamera) {
 
     return function () {
         var page = $("#btnPager").attr("page")||1;
         var start = 30*(page-1);
-        var limit = 30*(page);
+        var limit = 30;
         var keyword = $("#btnSearchWords").attr("keyword");
-        $("#btnSearchWords").removeAttr("keyword");
+        setTimeout(function(){
+            $("#btnSearchWords").removeAttr("keyword");
+        },30000);
         $("#btnPager").removeAttr("page");
         // 渲染前清空数据
         $(".module-container").empty();
@@ -18,7 +20,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
             //编译模板
             var peopleVisitantList = art.render(peopleVisitantListTpl, res);
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
-            var $peopleVisitantList = $(peopleVisitantList);console.log(res)
+            var $peopleVisitantList = $(peopleVisitantList);
             //编辑入库信息
             $peopleVisitantList
                 .on("click", ".btn-peopleList", function () {
@@ -33,7 +35,12 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
                 })
                 .on("click", ".btn-visitant-del", function () {
                     var vs_id = $(this).attr("vs_id");
-                    visitantDel(vs_id);
+                    var vs_status = $(this).attr("vs_status");
+                    if(vs_status==3){
+                        visitantExpired(vs_id);
+                    }else{
+                        visitantDel(vs_id);
+                    }
                 })
                 .on("click", ".btn-search", function () {
                     var keyword = $(".search-word").val();
