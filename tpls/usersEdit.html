@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" id="userEditName" required="required" class="form-control" name="name" value="{{name}}" /><span class="asterisk">*</span>
+                            <input type="text" maxlength="20" id="userEditName" required="required" class="form-control" name="name" value="{{name}}" /><span class="asterisk">*</span>
                         </div>
                     </div>
                    <script type="text/javascript">
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">账号</label>
                         <div class="col-sm-7">
-                            <input type="text" id="admin" required="required" class="form-control" name="username" value="{{username}}" /><span class="asterisk">*</span>
+                            <input type="text" maxlength="20" id="admin" required="required" class="form-control" name="username" value="{{username}}" /><span class="asterisk">*</span>
                             <input type="hidden" name="userid" value="{{userid}}">
                         </div>
                     </div>
@@ -40,8 +40,8 @@
                             document.getElementById("admin").onpropertychange = document.getElementById("admin").onkeyup =
                                 function () {
                                     var lenE = this.value.length;
-                                    if (lenE == 10) {
-                                        alert("账号 允许长度范围为2-10位")
+                                    if (lenE == 20) {
+                                        alert("账号 允许长度范围为2-20位")
                                     }
                                 }
                         })

@@ -14,12 +14,12 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" id="userName" required="required" class="form-control" name="name" value="" /><span class="asterisk">*</span>
+                            <input type="text" maxlength="20" id="userName-add" required="required" class="form-control" name="name" value="" /><span class="asterisk">*</span>
                         </div>
                     </div>
                     <script type="text/javascript">
                         $(function () {
-                            document.getElementById("userName").onpropertychange = document.getElementById("userName").onkeyup =
+                            document.getElementById("userName-add").onpropertychange = document.getElementById("userName-add").onkeyup =
                                 function () {
                                     var lenE = this.value.length;
                                     if (lenE == 20) {
@@ -31,15 +31,37 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">账号</label>
                         <div class="col-sm-7">
-                            <input type="text" required="required" class="form-control" name="username" value="" /><span class="asterisk">*</span>
+                            <input type="text" id="admin-add" maxlength="20" required="required" class="form-control" name="username" value="" /><span class="asterisk">*</span>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("admin-add").onpropertychange = document.getElementById("admin-add").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 20) {
+                                        alert("账号 允许长度范围为2-20位")
+                                    }
+                                }
+                        })
+                    </script>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">密码</label>
                         <div class="col-sm-7">
-                            <input type="text" required="required" minlength="6" class="form-control" name="password" value="" /><span class="asterisk">*</span>
+                            <input type="text" id="password-add" required="required" minlength="6" maxlength="20" class="form-control" name="password" value="" /><span class="asterisk">*</span>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("password-add").onpropertychange = document.getElementById("password-add").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 20) {
+                                        alert("密码 允许长度范围为6-20位")
+                                    }
+                                }
+                        })
+                    </script>
                     <!--<div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">邮箱</label>
                         <div class="col-sm-7">

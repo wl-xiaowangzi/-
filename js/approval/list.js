@@ -12,6 +12,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         var keyword = $("#btnSearchWords").attr("keyword");
         // 移除参数
         $("#btnPager").removeAttr("page");
+        $("body").removeClass("noResult");
         setTimeout(function(){
             $("#btnSearchWords").removeAttr("keyword");
         },30000);

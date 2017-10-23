@@ -738,7 +738,7 @@ p{
     border: 1px solid #e6ebee;
     margin-top: 18px;
     padding: 24px;
-    margin-right: 1.3vw;
+    margin-right: 1.2vw;
     background-color: white;
     overflow: hidden;
 }
@@ -842,7 +842,6 @@ p{
 }
 .typeahead{
     width: 294.66px;
-    display: block;
     z-index: 9999;
     border: 1px solid #dedeed;
 }

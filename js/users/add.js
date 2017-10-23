@@ -18,7 +18,7 @@ define(["jquery", "artTemplate", "text!tpls/usersAdd.html", "common/api"], funct
                 // 接口
                 API.addUser(formData, function (res) {
                     $usersAdd.modal("hide");
-                    //成功的添加讲师-->刷新讲师管理页面
+                    //成功的添加用户->刷新用户管理页面
                     $("#btnUsersManager").trigger("click");
                 })
                 return false; //阻止同步提交表单

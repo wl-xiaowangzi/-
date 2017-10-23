@@ -48,6 +48,7 @@ define(["jquery"],function($){
                 url:api+"/system/record/updatefaceimage",
                 type:"post",
                 data:{personid:ps_id,persontype:ps_type,facedata:facedata,faceimage:faceimage},
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -93,9 +94,7 @@ define(["jquery"],function($){
                 url:api+"/system/person/query",
                 type:"get",
                 data:{start:start,limit:limit,keyword:keyword},
-                beforeSend:function(res){
-
-                },
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -166,6 +165,7 @@ define(["jquery"],function($){
                 url:api+"/system/employee/check",
                 type:"post",
                 data:{employeeid:ep_id,isagree:isagree,checksuggestion:checksuggestion},
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -221,6 +221,7 @@ define(["jquery"],function($){
                 url:api+"/system/visitor/check",
                 type:"post",
                 data:{visitorid:ps_id,isagree:isagree,checksuggestion:checksuggestion},
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -242,6 +243,7 @@ define(["jquery"],function($){
                 timeout:100000,
                 type:"post",
                 data:{imagefile:imagefile},
+                beforeSend:function(res){},
                 success:function(res){
         
                 callback && callback(res);
@@ -275,6 +277,7 @@ define(["jquery"],function($){
                 url:api+"/system/employee/add",
                 type:"post",
                 data:{deviceids:deviceids,name:name,sex:sex,birthtime:brithday,phonenumber:phonenumber,employeenumber:employeenumber,job:job,faceimages:faceimages,facedatas:facedatas,facetypes:facetypes},
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -295,8 +298,13 @@ define(["jquery"],function($){
          * @param callback
          */
         getEmployeeBaseInfo:function(ep_id,callback){
-            $.get(api+"/system/employee/queryDateil",{employeeid:ep_id},function(res){
-                if(res.code!=0){
+            $.ajax({
+                url:api+"/system/employee/queryDateil",
+                type:"get",
+                data:{employeeid:ep_id},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
@@ -306,6 +314,7 @@ define(["jquery"],function($){
                     return;
                 }
                 callback && callback(res);
+                }
             })
         },
         // 员工编辑
@@ -314,6 +323,7 @@ define(["jquery"],function($){
                 url:api+"/system/employee/update",
                 type:"post",
                 data:{employeeid:ep_id,deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,job:job,employeenumber:employeenumber,facedatas:facedatas,faceimages:faceimages,facetypes:facetypes},
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -371,6 +381,7 @@ define(["jquery"],function($){
                 url:api+"/system/visitor/add",
                 type:"post",
                 data:{deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,faceimages:faceimages,facedatas:facedatas,facetypes:facetypes},
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -391,8 +402,13 @@ define(["jquery"],function($){
          * @param callback
          */
         getVisitorBaseInfo:function(vs_id,callback){
-            $.get(api+"/system/visitor/queryDateil",{visitorid:vs_id},function(res){
-                if(res.code!=0){
+             $.ajax({
+                url:api+"/system/visitor/queryDateil",
+                type:"get",
+                data:{visitorid:vs_id},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
@@ -402,6 +418,7 @@ define(["jquery"],function($){
                     return;
                 }
                 callback && callback(res);
+                }
             })
         },
         // 访客编辑
@@ -410,6 +427,7 @@ define(["jquery"],function($){
                 url:api+"/system/visitor/update",
                 type:"post",
                 data:{visitorid:vs_id,deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,facedatas:facedatas,faceimages:faceimages,facetypes:facetypes},
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -548,6 +566,7 @@ define(["jquery"],function($){
                 url:api+"/system/systemparameter/update",
                 type:"post",
                 data:{organizationid:organizationid,parameterkey:para_key,itemparameterdata:itemparameterdata,description:description},
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -583,6 +602,7 @@ define(["jquery"],function($){
                 url:api+"/system/systemparameter/update",
                 type:"post",
                 data:formData,
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -640,6 +660,7 @@ define(["jquery"],function($){
                 url:api+"/system/device/add",
                 type:"post",
                 data:formData,
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -675,6 +696,7 @@ define(["jquery"],function($){
                 url:api+"/system/device/update",
                 type:"post",
                 data:formData,
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -733,6 +755,7 @@ define(["jquery"],function($){
                 url:api+"/system/user/add",
                 type:"post",
                 data:formData,
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     alert(res.message);
@@ -768,6 +791,7 @@ define(["jquery"],function($){
                 url:api+"/system/user/update",
                 type:"post",
                 data:formData,
+                beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
                     alert(res.message);
@@ -788,6 +812,7 @@ define(["jquery"],function($){
                 url:api+"/system/user/delete",
                 type:"post",
                 data:{userids:user_id},
+                beforeSend:function(res){},
                 success:function(res){
                     
                 callback && callback(res);
@@ -800,6 +825,7 @@ define(["jquery"],function($){
                 url:api+"/system/user/editpwd",
                 type:"post",
                 data:formData,
+                beforeSend:function(res){},
                 success:function(res){
                     
                 callback && callback(res);
@@ -811,6 +837,7 @@ define(["jquery"],function($){
             $.ajax({
                 url:api+"/system/logout",
                 type:"post",
+                beforeSend:function(res){},
                 success:function(res){
                     
                 callback && callback(res);

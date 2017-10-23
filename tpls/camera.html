@@ -31,18 +31,20 @@
                                     video.play();
                                 }).catch(function (err) {
                                     alert("没有检测到可用摄像头");
+                                    return
                                 })
                             }
                             // 使用旧方法打开摄像头
                             else if (navigator.getMedia) {
                                 navigator.getMedia({
-                                    video: true
+                                    video: {width:640,height:480}
                                 }, function (stream) {
                                     mediaStreamTrack = stream.getTracks()[0];
                                     video.src = (window.URL || window.webkitURL).createObjectURL(stream);
                                     video.play();
                                 }, function (err) {
                                     alert("没有检测到可用摄像头");
+                                    return
                                 });
                             }
                             // 关闭摄像头
