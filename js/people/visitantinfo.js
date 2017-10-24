@@ -9,11 +9,11 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
         //把渲染好的元素放到页面中
         //根据访客id获取访客基本信息
         API.getVisitorBaseInfo(vs_id,function(res){
+            // 移除上一次模态框
+            $("#modalVisitantEditInfo").remove();
             // 渲染模板
             var peopleVisitantInfo=art.render(peopleVisitantInfoTpl,res.data);
             var $peopleVisitantInfo=$(peopleVisitantInfo);
-            // 移除上一次模态框
-            $("#modalVisitantEditInfo").remove();
             // 选择照片
             var ps_id = vs_id;
             var ps_type = 2;
@@ -25,22 +25,27 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
                 choicePicture2(ps_id,ps_type,ps_name);
             });
             // 提交表单
-            $peopleVisitantInfo.on("submit","form",function(){
-                var deviceids=$(".btn-blue").parent().attr("deviceids").replace(/\[|]/g,'').replace(/\"|"/g,'');
+            $peopleVisitantInfo.on("click","#VE-submit",function(){
+                var deviceids = $("#VE-submit").parent().parent().attr("deviceids");
+                if(deviceids!=null){
+                    var deviceids = $("#VE-submit").parent().parent().attr("deviceids").replace(/\[|]/g, '').replace(/\"|"/g, '');
+                }else{
+                    var deviceids = $.cookie("deviceids");
+                }
                 var visitorid=ps_id;
-                var firstFacedatas = $(".btn-blue").parent().attr("firstFacedatas").replace(/\[|]/g, '');
-                var firstFaceimages = $(".btn-blue").parent().attr("firstFaceimages");
-                var secondFacedatas = $(".btn-blue").attr("secondFacedatas").replace(/\[|]/g, '');
-                var secondFaceimages = $(".btn-blue").attr("secondFaceimages");
-                var facetypes1 = $(".btn-blue").parent().attr("facetypes1")||1;
-                var facetypes2 = $(".btn-blue").attr("facetypes2")||1;
-                var birthday=$(".birthday-join").val();
-                var phonenumber=$(".phonenumber").val();
-                var name=$(".name").val();
-                var remark = $(".remark").val();
-                var starttime = $(".starttime").val();
-                var endtime = $(".endtime").val();
-                var sex=$(".sex").val();
+                var firstFacedatas = $("#VE-submit").parent().attr("firstFacedatas").replace(/\[|]/g, '');
+                var firstFaceimages = $("#VE-submit").parent().attr("firstFaceimages");
+                var secondFacedatas = $("#VE-submit").attr("secondFacedatas").replace(/\[|]/g, '');
+                var secondFaceimages = $("#VE-submit").attr("secondFaceimages");
+                var facetypes1 = $("#VE-submit").parent().attr("facetypes1")||1;
+                var facetypes2 = $("#VE-submit").attr("facetypes2")||1;
+                var birthday=$("#VE-birthday").val();
+                var phonenumber=$("#VE-phonenumber").val();
+                var name=$("#visitantInfoName").val();
+                var remark = $("#VE-remark").val();
+                var starttime = $("#VE-starttime").val();
+                var endtime = $("#VE-endtime").val();
+                var sex=$("#VE-sex").val();
                 // 设置条件1张or2张照片
                 if (secondFaceimages == undefined) {
                     var faceimages = firstFaceimages;
@@ -54,6 +59,7 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
                 if(Date.parse(starttime)>Date.parse(endtime)){
                     alert("结束时间不能小于开始时间");
                 }else{
+                    console.log(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,facetypes)
                 // 编辑访客
                 API.editVisitor(visitorid,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,facetypes,function(res){
                     $peopleVisitantInfo.modal("hide");

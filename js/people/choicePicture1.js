@@ -20,7 +20,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
         // 清除参数
         $("#btnPager").removeAttr("page");
         // 调用识别记录接口
-        API.getRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
+        API.queryRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
             //编译模板
             var peopleChoicePicture = art.render(peopleChoicePictureTpl, res);
             var $peopleChoicePicture = $(peopleChoicePicture);

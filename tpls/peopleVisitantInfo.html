@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">性别</label>
                         <div class="col-sm-7">
-                            <select name="sex" class="form-control sex">
+                            <select id="VE-sex" name="sex" class="form-control sex">
                                 {{if(sex==1)}}
                                     <option value="1" selected="selected">男</option>
                                     <option value="2">女</option>
@@ -50,17 +50,17 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">生日</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control birthday-join" name="birthtime" value="{{birthtime}}" placeholder="请选择">
+                            <input type="text" id="VE-birthday" class="form-control birthday-join" name="birthtime" value="{{birthtime}}" placeholder="请选择">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">电话</label>
                         <div class="col-sm-7">
-                            <input type="text" id="phonenumber" class="form-control phonenumber" name="phonenumber" value="{{phonenumber}}" minlength="11" maxlength="11" pattern="^(0|86|17951)?1[0-9]{10}" required="required" placeholder="请输入11位手机号码"/><span class="asterisk">*</span>
+                            <input type="text" id="VE-phonenumber" class="form-control phonenumber" name="phonenumber" value="{{phonenumber}}" minlength="11" maxlength="11" pattern="^(0|86|17951)?1[0-9]{10}" required="required" placeholder="请输入11位手机号码"/><span class="asterisk">*</span>
                         </div>
                     </div>
                     <script>
-                        var user = document.getElementById("phonenumber");
+                        var user = document.getElementById("VE-phonenumber");
                         user.onblur = function () {
                             if (user.value) {
                                 user.setCustomValidity(""); //现将有输入时的提示设置为空
@@ -75,14 +75,14 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">拜访事由</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control remark" name="remark" value="{{remark}}" placeholder="请输入拜访事由"/>
+                            <input type="text" id="VE-remark" class="form-control remark" name="remark" value="{{remark}}" placeholder="请输入拜访事由"/>
                             <span class="asterisk">*</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">时间</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control date-join starttime" data-date-format="yyyy-mm-dd" name="starttime" value="{{starttime}}">
+                            <input type="text" id="VE-starttime" class="form-control date-join starttime" data-date-format="yyyy-mm-dd" name="starttime" value="{{starttime}}">
                             <span
                                 class="asterisk">*</span>
                         </div>
@@ -90,14 +90,14 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">至</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control date-join endtime" data-date-format="yyyy-mm-dd" name="endtime" value="{{endtime}}">
+                            <input type="text" id="VE-endtime" class="form-control date-join endtime" data-date-format="yyyy-mm-dd" name="endtime" value="{{endtime}}">
                             <span
                                 class="asterisk">*</span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-6 col-sm-offset-5" deviceids={{deviceids}} firstFacedatas={{facedatas[0]}} firstFaceimages={{faceimages[0]}}  visitorid={{visitorid}}>
-                            <button type="submit" class="btn btn-blue" style="margin-left:35px;" secondFacedatas={{facedatas[1]}} secondFaceimages={{faceimages[1]}} {{if status==4}}disabled="disabled"{{/if}}>保存</button>
+                    <div class="form-group" deviceids={{deviceids}}>
+                        <div class="col-sm-6 col-sm-offset-5" firstFacedatas={{facedatas[0]}} firstFaceimages={{faceimages[0]}}  visitorid={{visitorid}}>
+                            <button type="submit" id="VE-submit" class="btn btn-blue" style="margin-left:35px;" secondFacedatas={{facedatas[1]}} secondFaceimages={{faceimages[1]}} {{if status==4}}disabled="disabled"{{/if}}>保存</button>
                             <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
                         </div>
                     </div>

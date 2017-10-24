@@ -22,13 +22,13 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
             var deviceids = $.cookie("deviceids");
             var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
             var secondFacedatas = $("#btnPeopleManager").attr("facedata");
-            var birthday = $(".birthday-join").val();
-            var phonenumber = $(".phonenumber").val();
-            var name = $(".name").val();
-            var remark = $(".remark").val();
-            var starttime = $(".starttime").val();
-            var endtime = $(".endtime").val();
-            var sex = $(".sex").val();
+            var birthday = $("#VA-birthday").val();
+            var phonenumber = $("#VA-phonenumber").val();
+            var name = $("#visitantName").val();
+            var remark = $("#VA-remark").val();
+            var starttime = $("#VA-starttime").val();
+            var endtime = $("#VA-endtime").val();
+            var sex = $("#VA-sex").val();
             $("#btnPeopleManager").removeAttr("faceimage");
             $("#btnPeopleManager").removeAttr("facedata");
             if (secondFaceimages == undefined) {
@@ -80,7 +80,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
         var t = newDate.toJSON();
         $peopleVisitantAdd.find(".date-join").datetimepicker({
             weekStart: 1, //一周从哪一天开始。0（星期日）到6（星期六）
-            format: 'yyyy-mm-dd HH:ii:ss', //选ii才能选择分钟
+            format: 'yyyy-mm-dd h:ii:ss', //选ii才能选择分钟
             minView: 0,
             minuteStep: 5,
             autoclose: true,

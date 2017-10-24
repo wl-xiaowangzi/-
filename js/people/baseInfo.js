@@ -7,38 +7,44 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
     return function (ep_id) {
         //根据员工id获取员工基本信息
         API.getEmployeeBaseInfo(ep_id, function (res) {console.log(res)
+            // 移除模板
+            $("#modalEditInfo").remove();
             // 渲染模板
             var peopleBaseInfo = art.render(peopleBaseInfoTpl, res.data);
             var $peopleBaseInfo = $(peopleBaseInfo);
-            // 移除模板
-            $("#modalEditInfo").remove();
             // 选择照片
             var ps_id = ep_id;
             var ps_type = 1;
             var ps_name = res.data.name;
-            $peopleBaseInfo.on("click", ".picture1", function () {
+            $peopleBaseInfo
+            .on("click", ".picture1", function () {
                 choicePicture1(ps_id,ps_type,ps_name);
-            });
-            $peopleBaseInfo.on("click", ".picture2", function () {
+            })
+            .on("click", ".picture2", function () {
                 choicePicture2(ps_id,ps_type,ps_name);
-            });
+            })
             // 提交表单
-            $peopleBaseInfo.on("submit", "form", function () {
+            .on("click", "#PE-submit", function () {
                 // 获取参数
-                var deviceids = $(".btn-blue").parent().attr("deviceids").replace(/\[|]/g, '').replace(/\"|"/g, '');
-                var employeeid = $(".btn-blue").parent().attr("employeeid");
-                var firstFacedatas = $(".btn-blue").parent().attr("firstFacedatas").replace(/\[|]/g, '');
-                var firstFaceimages = $(".btn-blue").parent().attr("firstFaceimages");
-                var secondFacedatas = $(".btn-blue").attr("secondFacedatas").replace(/\[|]/g, '');
-                var secondFaceimages = $(".btn-blue").attr("secondFaceimages");
-                var facetypes1 = $(".btn-blue").parent().attr("facetypes1")||1;
-                var facetypes2 = $(".btn-blue").attr("facetypes2")||1;
-                var employeenumber = $(".employeenumber").val();
-                var phonenumber = $(".phonenumber").val();
-                var birthday = $(".birthday-join").val();
-                var name = $(".name").val();
-                var job = $(".job").val();
-                var sex = $(".sex").val();
+                var deviceids = $("#PE-submit").parent().parent().attr("deviceids");
+                if(deviceids!=null){
+                    var deviceids = $("#PE-submit").parent().parent().attr("deviceids").replace(/\[|]/g, '').replace(/\"|"/g, '');
+                }else{
+                    var deviceids = $.cookie("deviceids");
+                }
+                var employeeid = $("#PE-submit").parent().attr("employeeid");
+                var firstFacedatas = $("#PE-submit").parent().attr("firstFacedatas").replace(/\[|]/g, '');
+                var firstFaceimages = $("#PE-submit").parent().attr("firstFaceimages");
+                var secondFacedatas = $("#PE-submit").attr("secondFacedatas").replace(/\[|]/g, '');
+                var secondFaceimages = $("#PE-submit").attr("secondFaceimages");
+                var facetypes1 = $("#PE-submit").parent().attr("facetypes1")||1;
+                var facetypes2 = $("#PE-submit").attr("facetypes2")||1;
+                var employeenumber = $("#PE-employeenumber").val();
+                var phonenumber = $("#PE-phonenumber").val();
+                var birthday = $("#PE-birthday").val();
+                var name = $("#baseInfoName").val();
+                var job = $("#PE-job").val();
+                var sex = $("#PE-sex").val();
                 // 设置条件一张或者两张
                 if (secondFaceimages == undefined) {
                     var faceimages = firstFaceimages;
@@ -49,6 +55,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
                     var facedatas = "[" + firstFacedatas + "]|" + "[" + secondFacedatas + "]";
                     var facetypes = facetypes1+","+facetypes2;
                 }
+                console.log(ep_id, deviceids, name, sex, birthday, phonenumber, job, employeenumber, facedatas, faceimages,facetypes)
                 API.editEmployee(ep_id, deviceids, name, sex, birthday, phonenumber, job, employeenumber, facedatas, faceimages,facetypes, function (res) {
                     // 隐藏模态框
                     $peopleBaseInfo.modal("hide");

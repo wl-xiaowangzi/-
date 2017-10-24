@@ -26,16 +26,16 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
             });
             // 使用下拉菜单完成快捷选择职位
             $peopleAdd.on("click", ".jobSel", function () {
-                if ($(".job").val() == "") {
+                if ($("#PA-job").val() == "") {
                     $("#job_select").removeClass("displayN").addClass("displayB");
                     $("#job_select>li>a").on("click", function () {
-                        $(".job").val($(this).html());
+                        $("#PA-job").val($(this).html());
                         $("#job_select").removeClass("displayB").addClass("displayN");
                     })
                 }
             });
-            $peopleAdd.on("input",".job",function(){
-                if($(".job").val()!=""){
+            $peopleAdd.on("input","#PA-job",function(){
+                if($("#PA-job").val()!=""){
                     $("#job_select").removeClass("displayB").addClass("displayN");
                 }
             })
@@ -45,12 +45,12 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 var deviceids = $.cookie("deviceids");
                 var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
                 var secondFacedatas = $("#btnPeopleManager").attr("facedata");
-                var birthday = $(".birthday-join").val();
-                var phonenumber = $(".phonenumber").val();
-                var name = $(".name").val();
-                var job = $(".job").val();
-                var employeenumber = $(".employeenumber").val();
-                var sex = $(".sex").val();
+                var birthday = $("#PA-birthday").val();
+                var phonenumber = $("#PA-phonenumber").val();
+                var name = $("#visitorName").val();
+                var job = $("#PA-Job").val();
+                var employeenumber = $("#PA-employeenumber").val();
+                var sex = $("#PA-sex").val();
                 if (secondFaceimages == undefined) {
                     var faceimages = firstFaceimages;
                     var facedatas = "[" + firstFacedatas + "]";
@@ -63,6 +63,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 $("#btnPeopleManager").removeAttr("faceimage");
                 $("#btnPeopleManager").removeAttr("facedata");
                 // 调用接口
+                console.log(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes)
                 API.addEmployee(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes, function (res) {
                     $peopleAdd.modal("hide");
                     //成功的添加员工->刷新员工管理页面

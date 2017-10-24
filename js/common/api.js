@@ -27,6 +27,27 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
+        //查询识别记录（无加载动画）
+        queryRecordList:function(organizationid,starttime,endtime,start,limit,persontype,similarity,keyword,personid,callback){
+            $.ajax({
+                url:api+"/system/record/query",
+                type:"get",
+                data:{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,persontype:persontype,similarity:similarity,keyword:keyword,personid:personid},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
         // 查看详细信息
         showRecord:function(organizationid,starttime,endtime,start,limit,datanumber,callback){
             $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,datanumber:datanumber},function(res){
@@ -551,11 +572,6 @@ define(["jquery"],function($){
                         location.href = "login.html";
                     }
                     return;
-                }
-                if(res.data.length==0){
-                    $("body").addClass("noResult")
-                }else{
-                    $("body").removeClass("noResult")
                 }
                 callback && callback(res);
             })

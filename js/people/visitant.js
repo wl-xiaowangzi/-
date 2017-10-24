@@ -3,11 +3,10 @@
  * Created by land on 2017/9/2.
  */
 define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.html", "./visitantinfo", "./visitantAdd", "./visitantDel", "./visitantExpired","common/visitorCamera","pager"], function ($, art, API, peopleVisitantListTpl, visitantinfo, visitantAdd, visitantDel, visitantExpired,visitorCamera) {
-
     return function () {
         var page = $("#btnPager").attr("page")||1;
-        var start = 30*(page-1);
-        var limit = 30;
+        var start = 40*(page-1);
+        var limit = 40;
         var keyword = $("#btnSearchWords").attr("keyword");
         setTimeout(function(){
             $("#btnSearchWords").removeAttr("keyword");
@@ -60,7 +59,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
             // 清除上一次的关键字
             $("#btnKeepSearchWords").removeAttr("searchWords")
             // 设置分页
-            var num = Math.ceil(res.sumsize/30);
+            var num = Math.ceil(res.sumsize/40);
             Page({
                 num: num, //页码数
                 startnum: page||1, //指定页码

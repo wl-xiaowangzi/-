@@ -8,8 +8,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
     return function () {
         var page = $("#btnPager").attr("page")||1;
         var parameterkey = "key_job";
-        var start = 30*(page-1);
-        var limit = 30;
+        var start = 40*(page-1);
+        var limit = 40;
         var keyword = $("#btnSearchWords").attr("keyword");
         // 移除参数
         setTimeout(function(){
@@ -19,7 +19,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
         $("body").removeClass("noResult");
         
         // 调用接口
-        API.getPeopleList(start, limit, keyword, function (res) {
+        API.getPeopleList(start, limit, keyword, function (res) {console.log(res)
             //编译模板
             var peopleList = art.render(peopleListTpl, res);
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
@@ -79,7 +79,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
             $("#btnMySource").attr("mySource", mySource)
         })
             // 设置分页
-            var num = Math.ceil(res.sumsize/30);
+            var num = Math.ceil(res.sumsize/40);
             Page({
                 num: num, //页码数
                 startnum: page||1, //指定页码
