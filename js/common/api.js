@@ -361,8 +361,13 @@ define(["jquery"],function($){
         },
         // 员工注销
         delEmployee:function(ep_id,callback){
-            $.post(api+"/system/employee/delete",{employeeids:ep_id},function(res){
-                if(res.code!=0){
+            $.ajax({
+                url:api+"/system/employee/delete",
+                type:"post",
+                data:{employeeids:ep_id},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
@@ -371,9 +376,8 @@ define(["jquery"],function($){
                     }
                     return;
                 }
-
-                callback && callback();
-
+                callback && callback(res);
+                }
             })
         },
         // 访客列表
@@ -465,8 +469,13 @@ define(["jquery"],function($){
         },
         // 访客注销
         delVisitor:function(vs_id,callback){
-            $.post(api+"/system/visitor/delete",{visitorids:vs_id},function(res){
-                if(res.code!=0){
+             $.ajax({
+                url:api+"/system/visitor/delete",
+                type:"post",
+                data:{visitorids:vs_id},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
@@ -475,15 +484,19 @@ define(["jquery"],function($){
                     }
                     return;
                 }
-
-                callback && callback();
-
+                callback && callback(res);
+                }
             })
         },
         // 过期访客删除
         expiredVisitor:function(vs_id,callback){
-            $.post(api+"/system/visitor/expired",{visitorids:vs_id},function(res){
-                if(res.code!=0){
+            $.ajax({
+                url:api+"/system/visitor/expired",
+                type:"post",
+                data:{visitorids:vs_id},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
@@ -492,9 +505,8 @@ define(["jquery"],function($){
                     }
                     return;
                 }
-
-                callback && callback();
-
+                callback && callback(res);
+                }
             })
         },
         // 系统设置
@@ -693,8 +705,13 @@ define(["jquery"],function($){
         },
          // 查看设备信息
         queryDevice:function(dv_id,callback){
-            $.get(api+"/system/device/query",{deviceid:dv_id},function(res){
-                if(res.code!=0){
+            $.ajax({
+                url:api+"/system/device/query",
+                type:"get",
+                data:{deviceid:dv_id},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
@@ -704,6 +721,7 @@ define(["jquery"],function($){
                     return;
                 }
                 callback && callback(res);
+                }
             })
         },
         // 设备编辑
@@ -729,8 +747,13 @@ define(["jquery"],function($){
         },
         //删除设备
         delDevice:function(dv_id,callback){
-            $.post(api+"/system/device/delete",{deviceids:dv_id},function(res){
-                if(res.code!=0){
+            $.ajax({
+                url:api+"/system/device/delete",
+                type:"post",
+                data:{deviceids:dv_id},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
@@ -739,9 +762,8 @@ define(["jquery"],function($){
                     }
                     return;
                 }
-
-                callback && callback();
-
+                callback && callback(res);
+                }
             })
         },
         // 用户信息
@@ -788,9 +810,14 @@ define(["jquery"],function($){
         },
         // 查看用户信息
         queryUser:function(user_id,callback){
-            $.get(api+"/system/user/query",{userid:user_id},function(res){
-                if(res.code!=0){
-                    console.log(res.message);
+            $.ajax({
+                url:api+"/system/user/query",
+                type:"post",
+                data:{userid:user_id},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    alert(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
@@ -799,6 +826,7 @@ define(["jquery"],function($){
                     return;
                 }
                 callback && callback(res);
+                }
             })
         },
         // 用户编辑
