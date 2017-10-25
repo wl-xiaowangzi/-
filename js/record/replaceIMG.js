@@ -4,8 +4,6 @@
  */
 define(["jquery","artTemplate","common/api","text!tpls/recordReplaceIMG.html","common/prompt","bootstrap"],function($,art,API,recordReplaceIMGTpl,prompt){
     return function(ps_id,ps_type,facedata,faceimage){
-            // 移除模态框
-            $("#modalRecordReplaceIMG").remove();
             // 渲染模板
             var $recordReplaceIMG=$(recordReplaceIMGTpl);
             // 提交表单
@@ -17,6 +15,10 @@ define(["jquery","artTemplate","common/api","text!tpls/recordReplaceIMG.html","c
             })
             return false;
         })
+            // 移除模态框
+            $("#modalRecordReplaceIMG").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             $recordReplaceIMG.appendTo("body").modal();
     }
 })

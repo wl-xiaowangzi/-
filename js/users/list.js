@@ -49,6 +49,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
                     $("#btnUsersManager").trigger("click");//刷新
                 })
             //把渲染好的元素放到页面中
+            $(".module-container").empty();
             $(".module-container").append($usersList);
             // 去掉左侧菜单栏激活状态
             $("#sidebar-menu .side-menu li").removeClass("activate");

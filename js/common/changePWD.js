@@ -5,8 +5,6 @@
  */
 define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], function ($, art, API, changePWDTpl) {
     return function () {
-        // 移除上一次调出的模板
-        $("#modalChangePWD").remove();
         // 转换为jq对象
         var $changePWD = $(changePWDTpl);
         // 点击事件
@@ -59,6 +57,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/changePWD.html", ], fu
             })
             return false;
         })
+        // 移除上一次调出的模板
+        $("#modalChangePWD").remove();
+        // 移除弹出层，防止重复点击造成页面卡顿
+        $(".modal-backdrop").remove();
         $changePWD.appendTo("body").modal();
     }
 })

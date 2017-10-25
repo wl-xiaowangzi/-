@@ -7,8 +7,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", ".
     return function (ps_id) {
         //获取对应的审批信息
         API.getVisitorBaseInfo(ps_id, function (res) {
-            //删除原来的模态框
-            $("#modalShowInfo").remove();
             //编译模板文件，获取含有真正数据的字符串
             var approvalShow = art.render(approvalShowTpl, res.data);
             //将字符串转换为jq对象
@@ -32,6 +30,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalShow.html", ".
                         visitantRefuse(vs_id);
                         return false; //阻止表单同步提交
                 })
+            //删除原来的模态框
+            $("#modalShowInfo").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             //把jq对象中包含的dom元素放到页面中，并以模态框的形式展现出来
             $approvalShow.appendTo("body").modal();
         })

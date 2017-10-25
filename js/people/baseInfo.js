@@ -7,8 +7,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
     return function (ep_id) {
         //根据员工id获取员工基本信息
         API.getEmployeeBaseInfo(ep_id, function (res) {console.log(res)
-            // 移除模板
-            $("#modalEditInfo").remove();
             // 渲染模板
             var peopleBaseInfo = art.render(peopleBaseInfoTpl, res.data);
             var $peopleBaseInfo = $(peopleBaseInfo);
@@ -65,6 +63,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
                 // 阻止表单自动提交
                 return false;
             })
+            // 移除模板
+            $("#modalEditInfo").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             // 弹出模态框
             $peopleBaseInfo.appendTo("body").modal();
             // 为下拉框替换左侧小三角

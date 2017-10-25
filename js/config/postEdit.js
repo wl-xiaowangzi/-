@@ -11,8 +11,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostEdit.html", 
         var num = num;
         // 获取职位参数列表
         API.getParameterList(0, 1, parameterkey, function (res) {
-            // 移除模态框
-            $("#modalConfigPostEdit").remove();
             // 渲染模板
             var configPostEdit = art.render(configPostEditTpl, res.data.list[num])
             var $configPostEdit = $(configPostEdit);
@@ -52,6 +50,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostEdit.html", 
                     })
                     return false; //阻止同步提交表单
                 });
+            // 移除模态框
+            $("#modalConfigPostEdit").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             $configPostEdit.appendTo("body").modal();
         })
     }

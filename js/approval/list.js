@@ -84,14 +84,15 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                  $("#btnVisitorApproval").trigger("click");
             })
             .on("click",".btn-search",function(){
-                    var keyword = $(".search-word").val();
-                    $("#btnSearchWords").attr("keyword",keyword);
-                    // 设置搜索关键字保留
-                    $("#btnKeepSearchWords").attr("searchWords",keyword);
-                    $("#btnApproval").trigger("click");//刷新
+                var keyword = $(".search-word").val();
+                $("#btnSearchWords").attr("keyword",keyword);
+                // 设置搜索关键字保留
+                $("#btnKeepSearchWords").attr("searchWords",keyword);
+                $("#btnApproval").trigger("click");//刷新
             })
 
         //把渲染好的元素放到页面中
+        $(".module-container").empty();
         $(".module-container").append($approvalList);
         // 下拉选项变为鼠标移入触发
         $('div.dropdown').mouseover(function() {   

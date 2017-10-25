@@ -4,8 +4,7 @@
  */
 define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantDel.html","bootstrap"],function($,art,API,visitantDelTpl){
     return function(vs_id){
-           //移除上一次模板 
-            $("#modalDelVisitant").remove();
+           
             // 渲染模板
             var $visitantDel=$(visitantDelTpl);
             var vs_id = vs_id;
@@ -17,7 +16,11 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantDel.html","
             })
             return false;
         })
-            $visitantDel.appendTo("body").modal();
-            $(".vsDelInfo").html("删除");
+        //移除上一次模板 
+        $("#modalDelVisitant").remove();
+        // 移除弹出层，防止重复点击造成页面卡顿
+        $(".modal-backdrop").remove();
+        $visitantDel.appendTo("body").modal();
+        $(".vsDelInfo").html("删除");
     }
 })

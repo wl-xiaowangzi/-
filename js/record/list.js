@@ -82,6 +82,7 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 })
                 
             // 将模板数据添加的指定位置
+            $(".module-container").empty();
             $(".module-container").append($recordList);
             // 为日期选择增加箭头上下指示，为下拉框替换左侧小三角
             var flag=true;

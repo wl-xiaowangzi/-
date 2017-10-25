@@ -10,8 +10,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostDel.html", "
         var num = num;
         // 获取职位参数列表
         API.getParameterList(0, 1, parameterkey, function (res) {
-            // 移除上一次模态框
-            $("#modalConfigPostDel").remove();
             // 渲染模板
             var $configPostDel = $(configPostDelTpl);
             var list = res.data.list;
@@ -47,6 +45,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostDel.html", "
                     })
                     return false; //阻止同步提交表单
                 });
+            // 移除上一次模态框
+            $("#modalConfigPostDel").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             $configPostDel.appendTo("body").modal();
         })
     }

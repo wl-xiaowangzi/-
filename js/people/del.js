@@ -4,8 +4,6 @@
  */
 define(["jquery","artTemplate","common/api","text!tpls/peopleDel.html","bootstrap"],function($,art,API,peopleDelTpl){
     return function(ep_id){
-            // 移除模态框
-            $("#modalDelPeople").remove();
             // 渲染模板
             var $peopleDel=$(peopleDelTpl);
             var ep_id = ep_id;
@@ -17,6 +15,10 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleDel.html","bootstra
             })
             return false;
         })
-            $peopleDel.appendTo("body").modal();
+        // 移除模态框
+        $("#modalDelPeople").remove();
+        // 移除弹出层，防止重复点击造成页面卡顿
+        $(".modal-backdrop").remove();
+        $peopleDel.appendTo("body").modal();
     }
 })

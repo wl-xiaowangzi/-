@@ -9,8 +9,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostAdd.html", "
         var organizationid = $.cookie("organizationid");
         // 获取系统参数列表
         API.getParameterList(0, 1, parameterkey, function (res) {
-            // 移除上一次的模板
-            $("#modalConfigPostAdd").remove();
             // 渲染模板
             var $configPostAdd = $(configPostAddTpl);
             var list = res.data.list;
@@ -50,6 +48,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/configPostAdd.html", "
                     })
                     return false; //阻止同步提交表单
                 });
+            // 移除上一次的模板
+            $("#modalConfigPostAdd").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             $configPostAdd.appendTo("body").modal();
         })
     }

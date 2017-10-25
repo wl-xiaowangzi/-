@@ -17,7 +17,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
         },30000);
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
-        
         // 调用接口
         API.getPeopleList(start, limit, keyword, function (res) {console.log(res)
             //编译模板
@@ -53,6 +52,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
                     $("#btnPeopleManager").trigger("click"); //刷新
                 })
             //把渲染好的元素放到页面中
+            $(".module-container").empty();
             $(".module-container").append($peopleList);
             // 设置下拉菜单鼠标移入触发
             $('div.dropdown').mouseover(function() {   

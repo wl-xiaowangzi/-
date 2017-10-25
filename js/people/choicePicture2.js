@@ -24,8 +24,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
             //编译模板
             var peopleChoicePicture = art.render(peopleChoicePictureTpl, res);
             var $peopleChoicePicture = $(peopleChoicePicture);
-            // 移出上一次的模态框
-            $("#modalPeopleChoicePicture").remove();
             // 设置事件
             $peopleChoicePicture
                 .on("click",".editCamera1",function(){
@@ -51,6 +49,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                     page++
                     // editLoadMore(ps_id,ps_type,page)
                 })
+            // 移出上一次的模态框
+            $("#modalPeopleChoicePicture").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             // 渲染数据
             $peopleChoicePicture.appendTo("body").modal();
             $(".replaceName").html(ps_name)

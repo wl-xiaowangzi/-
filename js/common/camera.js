@@ -5,8 +5,6 @@
  */
 define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/undetected"], function ($, art, cameraTpl,API, undetected) {
     return function (ps_type) {
-        // 移除上一次调出的模板
-        $("#modalcamera").remove();
         // 转换为jq对象
         var $camera = $(cameraTpl);
         // 拍照上传
@@ -31,6 +29,10 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     $camera.modal("hide");
                 })
             })
+        // 移除上一次调出的模板
+        $("#modalcamera").remove();
+        // 移除弹出层，防止重复点击造成页面卡顿
+        $(".modal-backdrop").remove();
         $camera.appendTo("body").modal();
         // 设置标题对应的值
         if(ps_type==1){

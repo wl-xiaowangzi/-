@@ -5,8 +5,6 @@
  */
 define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","people/visitantAdd","common/undetected"], function ($, art, cameraTpl, API,addVisitor,undetected) {
     return function () {
-        // 移除上一次点出的模态框
-        $("#modalcamera").remove();
         // 转换为jq对象
         var $camera = $(cameraTpl);
         // 拍照上传
@@ -32,6 +30,10 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","people/v
                     addVisitor(faceimages,facedatas,headfaceimage)
                 })
             })
+        // 移除上一次点出的模态框
+        $("#modalcamera").remove();
+        // 移除弹出层，防止重复点击造成页面卡顿
+        $(".modal-backdrop").remove();
         $camera.appendTo("body").modal();
         $(".psType").html("访客");
     };

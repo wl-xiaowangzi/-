@@ -6,8 +6,6 @@ define(["jquery","artTemplate","common/api","text!tpls/usersEdit.html","common/p
     return function(user_id){
         // 查询数据
         API.queryUser(user_id,function(res){
-            //  移出模板
-            $("#modalEditUsers").remove();
             // 渲染数据
             var usersEdit=art.render(usersEditTpl,res.data[0]);
             var $usersEdit=$(usersEdit);
@@ -26,6 +24,10 @@ define(["jquery","artTemplate","common/api","text!tpls/usersEdit.html","common/p
                 })
                 return false;//阻止表单的自动提交
             });
+            //  移出模板
+            $("#modalEditUsers").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             $usersEdit.appendTo("body").modal();
         });
     }

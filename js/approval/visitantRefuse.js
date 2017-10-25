@@ -4,8 +4,6 @@
  */
 define(["jquery", "artTemplate", "common/api","text!tpls/approvalRefuse.html", "bootstrap"], function ($, art,API, approvalRefuseTpl) {
     return function (ps_id) {
-        // 移除上一次的模态框
-        $("#modalApprovalRefuse").remove();
         // 转转为jq对象
         var $approvalRefuse = $(approvalRefuseTpl);
         var ps_id = ps_id;
@@ -19,6 +17,10 @@ define(["jquery", "artTemplate", "common/api","text!tpls/approvalRefuse.html", "
                 })
                 return false;//阻止表单的自动提交
             })
-             $approvalRefuse.appendTo("body").modal();
+        // 移除上一次的模态框
+        $("#modalApprovalRefuse").remove();
+        // 移除弹出层，防止重复点击造成页面卡顿
+        $(".modal-backdrop").remove();
+        $approvalRefuse.appendTo("body").modal();
     }
 })

@@ -4,8 +4,6 @@
  */
 define(["jquery","artTemplate","text!tpls/undetected.html","bootstrap"],function($,art,undetectedTpl){
     return function(info){
-        // 移除上一次呼出的母台科
-            $("#modalUndetected").remove();
             // 转换为jq对象
             var $undetected=$(undetectedTpl);
             var info = info;
@@ -23,6 +21,10 @@ define(["jquery","artTemplate","text!tpls/undetected.html","bootstrap"],function
                 $undetected.modal("hide");
                 return false;
             })
+            // 移除上一次呼出的母台科
+            $("#modalUndetected").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             $undetected.appendTo("body").modal();
             $(".cameraInfo").html(info)
     }

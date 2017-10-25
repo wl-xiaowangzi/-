@@ -9,8 +9,6 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
         //把渲染好的元素放到页面中
         //根据访客id获取访客基本信息
         API.getVisitorBaseInfo(vs_id,function(res){
-            // 移除上一次模态框
-            $("#modalVisitantEditInfo").remove();
             // 渲染模板
             var peopleVisitantInfo=art.render(peopleVisitantInfoTpl,res.data);
             var $peopleVisitantInfo=$(peopleVisitantInfo);
@@ -69,6 +67,10 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
                 }
                 return false;
             })
+            // 移除上一次模态框
+            $("#modalVisitantEditInfo").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             $peopleVisitantInfo.appendTo("body").modal();
             // 为下拉框替换左侧小三角
             var flag=true;

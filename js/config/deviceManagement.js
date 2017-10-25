@@ -43,6 +43,7 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
                     $("#btnDeviceManagement").trigger("click");//刷新
                 })
             //把渲染好的元素放到页面中
+            $(".module-container").empty();
             $(".module-container").append($configDeviceManagement);
             // 去掉左侧菜单栏激活状态
             $("#sidebar-menu .side-menu li").removeClass("activate");

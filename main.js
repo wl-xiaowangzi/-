@@ -119,8 +119,9 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     })
     $("#btnRecordEdit").on("click", function () {
         //识别记录
-        $(".modal-backdrop").remove();
         $("#modalEditRecord").remove();
+        // 移除弹出层，防止重复点击造成页面卡顿
+        $(".modal-backdrop").remove();
         recordEdit();
     })
     $("#btnPeopleManager").on("click", function () {
@@ -182,8 +183,8 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
 
     // 给侧边栏添加点击效果
     $("#sidebar-menu .side-menu li").on("click", function () {
-        $("#sidebar-menu .side-menu li").removeClass("activate");
-        $(this).addClass("activate")
+        $(this).siblings().removeClass("activate");
+        $(this).addClass("activate");
     })
     // 给下拉菜单变为鼠标移入触发
     $('li.dropdown').mouseover(function () {

@@ -25,8 +25,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html","./ed
             //编译模板
             var recordEdit = art.render(recordEditTpl, res);
             var $recordEdit = $(recordEdit);
-            // 移出上一次的模态框
-            $("#modalEditRecord").remove();
             // page最大值maxPage
             var maxPage = Math.ceil(res.sumsize / 60);
             // 设置事件
@@ -53,6 +51,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html","./ed
                         editLoadMore(ps_id,ps_type,page)
                     }
                 })
+            // 移出上一次的模态框
+            $("#modalEditRecord").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             // 渲染数据
             $recordEdit.appendTo("body").modal();
              if(maxPage=="1"){

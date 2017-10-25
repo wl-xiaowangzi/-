@@ -12,8 +12,6 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
         var firstFaceimages = faceimages;
         var firstFacedatas = facedatas;
         var headfaceimage = headfaceimage;
-        // 移除参数
-        $("#modalPeopleAdd").remove();
         // 调用参数查询接口
         API.getParameterList(start, limit, parameterkey, function (res) {
             // 渲染模板
@@ -71,6 +69,10 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 })
                 return false; //阻止同步提交表单
             });
+            // 移除上一次的模态框
+            $("#modalPeopleAdd").remove();
+            // 移除弹出层，防止重复点击造成页面卡顿
+            $(".modal-backdrop").remove();
             // 弹出模态框
             $peopleAdd.appendTo("body").modal();
             // 为下拉框替换左侧小三角

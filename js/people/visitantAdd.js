@@ -5,8 +5,6 @@
  */
 define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api", "common/camera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleVisitantAddTpl, API, camera) {
     return function (faceimages, facedatas, headfaceimage) {
-        // 移除模态框
-        $("#modalVisitantAdd").remove();
         // 渲染模板
         var $peopleVisitantAdd = $(peopleVisitantAddTpl);
         // 获取参数
@@ -53,6 +51,10 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
 
             return false; //阻止同步提交表单
         });
+        // 移除模态框
+        $("#modalVisitantAdd").remove();
+        // 移除弹出层，防止重复点击造成页面卡顿
+        $(".modal-backdrop").remove();
         $peopleVisitantAdd.appendTo("body").modal();
         // 为下拉框替换左侧小三角
         var flag = true;

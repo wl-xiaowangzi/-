@@ -4,8 +4,6 @@
  */
 define(["jquery", "artTemplate", "common/api", "text!tpls/usersDel.html", "bootstrap"], function ($, art, API, usersDelTpl) {
     return function (user_id) {
-        // 移出上次模板
-        $("#modalDelUsers").remove();
         // 渲染数据
         var $usersDel = $(usersDelTpl);
         var user_id = user_id;
@@ -21,6 +19,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersDel.html", "boots
             })
             return false;
         })
+        // 移出上次模板
+        $("#modalDelUsers").remove();
+        // 移除弹出层，防止重复点击造成页面卡顿
+        $(".modal-backdrop").remove();
         $usersDel.appendTo("body").modal();
     }
 })

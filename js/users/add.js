@@ -5,8 +5,6 @@
  */
 define(["jquery", "artTemplate", "text!tpls/usersAdd.html", "common/api"], function ($, art, usersAddTpl, API) {
     return function () {
-        // 清除上一次的模板
-        $("#modalUsersAdd").remove();
         // 渲染模板
         var usersAdd=art.render(usersAddTpl);
         var $usersAdd=$(usersAdd);
@@ -23,6 +21,10 @@ define(["jquery", "artTemplate", "text!tpls/usersAdd.html", "common/api"], funct
                 })
                 return false; //阻止同步提交表单
             });
+        // 清除上一次的模板
+        $("#modalUsersAdd").remove();
+        // 移除弹出层，防止重复点击造成页面卡顿
+        $(".modal-backdrop").remove();
         $usersAdd.appendTo("body").modal();
     };
 });
