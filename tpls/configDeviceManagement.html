@@ -16,6 +16,7 @@
         <table class="table table-hover text-center deviceTable">
             <thead>
                 <th class="text-center">设备编码</th>
+                <th class="text-center">设备ID</th>
                 <th class="text-center">设备名称</th>
                 <th class="text-center">设备状态</th>
                 <th class="text-center">在线状态</th>
@@ -25,6 +26,7 @@
                 {{each data}}
                 <tr>
                     <td class="">{{$value.deviceno}}</td>
+                    <td class="">{{$value.deviceid}}</td>
                     <td style="color:black;">{{$value.name}}</td>
                     {{if $value.status==1}}
                     <td class="">正常</td>

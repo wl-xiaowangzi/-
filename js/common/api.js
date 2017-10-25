@@ -838,7 +838,11 @@ define(["jquery"],function($){
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
-                    alert(res.message);
+                        if(res.message=="无查询权限修改！"){
+                            alert("无修改权限！")
+                        }else{
+                            alert(res.message);
+                        }
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页

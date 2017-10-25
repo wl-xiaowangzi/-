@@ -21,12 +21,14 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html","./ed
         // 清除参数
         $("#btnPager").removeAttr("page");
         // 调用识别记录接口
-        API.getRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
+        API.queryRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
             //编译模板
             var recordEdit = art.render(recordEditTpl, res);
             var $recordEdit = $(recordEdit);
             // 移出上一次的模态框
             $("#modalEditRecord").remove();
+            // page最大值maxPage
+            var maxPage = Math.ceil(res.sumsize / 60);
             // 设置事件
             $recordEdit
                 .on("scroll", ".modal-body", function (e) {
@@ -44,10 +46,19 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html","./ed
                 })
                 .on("click",".loadMore",function(){
                     page++
-                    editLoadMore(ps_id,ps_type,page)
+                    console.log(page)
+                    if(page==maxPage){
+                        $("#recordEditLoading").html("已加载全部数据")
+                    }else{
+                        editLoadMore(ps_id,ps_type,page)
+                    }
                 })
             // 渲染数据
             $recordEdit.appendTo("body").modal();
+             if(maxPage=="1"){
+                $("#recordEditLoading").html("已加载全部数据")
+            }
+            console.log(maxPage)
         })
     };
 });

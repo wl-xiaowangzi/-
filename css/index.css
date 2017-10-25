@@ -687,6 +687,9 @@ p{
 #modalEditRecord .info-box .info .img-box {
     margin-bottom: 10px;
 }
+#modalEditRecord .info-box .info .img-box img{
+    display: block;
+}
 #modalEditRecord .info-box .info .similarity {
     display: block;
     position: absolute;
@@ -712,6 +715,9 @@ p{
 #modalEditRecord .info-box .info p {
     margin-top: 0px;
     margin-bottom: 18px;
+}
+#modalEditRecord .loadMore{
+    width: 300px;
 }
 /*识别记录样式 end*/
 
@@ -1007,8 +1013,11 @@ p{
     border-top: 0px;
     box-sizing: border-box;
 }
-.table > thead > tr > th{
+.table>thead>tr>th{
     border-bottom: 0;
+}
+.table>tbody>tr>td{
+    padding: 0;
 }
 /*设备管理样式 end*/
 

@@ -2,7 +2,7 @@
  * 用户管理编辑
  * Created by land on 2017/9/1.
  */
-define(["jquery","artTemplate","common/api","text!tpls/usersEdit.html","bootstrap"],function($,art,API,usersEditTpl){
+define(["jquery","artTemplate","common/api","text!tpls/usersEdit.html","common/prompt","bootstrap"],function($,art,API,usersEditTpl,prompt){
     return function(user_id){
         // 查询数据
         API.queryUser(user_id,function(res){
@@ -16,6 +16,10 @@ define(["jquery","artTemplate","common/api","text!tpls/usersEdit.html","bootstra
                 //获取表单信息
                 var formData=$(this).serialize();
                 API.editUser(formData,function(res){
+                    if($("#password-edit").val()!=""){
+                        var iptinfo = "密码重置成功"
+                        prompt(iptinfo)
+                    }
                     //成功的更新了分类信息
                     $usersEdit.modal("hide");//关闭模态框
                     $("#btnUsersManager").trigger("click");//刷新了分类列表模块
