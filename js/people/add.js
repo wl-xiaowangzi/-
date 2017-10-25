@@ -37,10 +37,21 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                     $("#job_select").removeClass("displayB").addClass("displayN");
                 }
             })
+            
+            // 查询设备
+            API.getDeviceList(0,1000,null, function (res) {
+                // 拼接设备号
+                var device = res.data;
+                var deviceids = device[0].deviceid;
+                for (var i = 1; i < res.data.length; i++) {
+                    deviceids += "," + device[i].deviceid
+                    }
+                    $("#btnDeviceids").attr("deviceids", deviceids);
+                })
             //  提交表单
             $peopleAdd.on("submit", "form", function () {
                 // 获取参数
-                var deviceids = $.cookie("deviceids");
+                var deviceids = $("#btnDeviceids").attr("deviceids");
                 var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
                 var secondFacedatas = $("#btnPeopleManager").attr("facedata");
                 var birthday = $("#PA-birthday").val();

@@ -15,9 +15,19 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
         $peopleVisitantAdd.on("click", "#start", function () {
             camera();
         })
+        // 查询设备
+            API.getDeviceList(0,1000,null, function (res) {
+                // 拼接设备号
+                var device = res.data;
+                var deviceids = device[0].deviceid;
+                for (var i = 1; i < res.data.length; i++) {
+                    deviceids += "," + device[i].deviceid
+                    }
+                    $("#btnDeviceids").attr("deviceids", deviceids);
+                })
         // 提交表单
         $peopleVisitantAdd.on("submit", "form", function () {
-            var deviceids = $.cookie("deviceids");
+            var deviceids = $("#btnDeviceids").attr("deviceids");
             var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
             var secondFacedatas = $("#btnPeopleManager").attr("facedata");
             var birthday = $("#VA-birthday").val();
