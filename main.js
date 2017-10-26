@@ -20,6 +20,7 @@ require.config({
         daterangepicker: "../assets/daterangepicker/js/daterangepicker",
         moment: "../assets/daterangepicker/js/moment.min",
         datetimepickerLang: "../assets/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
+        lrz: "../assets/lrz/lrz.bundle",
     },
     // 设置依赖
     shim: {
@@ -39,7 +40,7 @@ require.config({
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement) {
+require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement","common/testAdd", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement,testAdd) {
 
     //处理用户名
     var username = $.cookie("username");
@@ -141,7 +142,11 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
         $(".module-container").empty();
         visitant();
     });
-
+    $("#btnTestAdd").on("click", function () {
+        //测试批量添加
+        $(".module-container").empty();
+        testAdd();
+    });
 
 
     $("#btnApproval").on("click", function () {
