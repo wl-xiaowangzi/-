@@ -507,15 +507,28 @@ nav {
 .module-container {
     position: relative;
 }
-@media screen and (max-width:1280px) {
+@media screen and (max-width:1500px) {
     .datetimepicker.dropdown-menu {
         position: fixed;
         top: 20vw!important;
+    }
+    .modal-content{
+        transform: scale(.8);
+    }
+    .typeahead{
+        transform: scale(.8);
+    }
+    #job_select li a{
+        transform: scale(.8);
     }
 }
 @media screen and (max-width:1050px) {
     .logo-img{
         opacity: 0!important;
+    }
+    .datetimepicker.dropdown-menu {
+        position: fixed;
+        top: 20vw!important;
     }
     .content .content-left {
         width: 80px;
@@ -536,6 +549,15 @@ nav {
     }
     nav {
         padding-right: 80px;
+    }
+    .modal-content{
+        transform: scale(.7);
+    }
+    .typeahead{
+        transform: scale(.7);
+    }
+    #job_select li a{
+        transform: scale(.7);
     }
 }
 @media screen and (max-width:776px) {

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>管理系统</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="assets/daterangepicker/css/daterangepicker.css">
+    <link rel="stylesheet" href="assets/jQueryPage/pager.css">
+    <link rel="stylesheet" href="css/custom.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="content-left">
+            <div class="logo">
+                <div class="img-box logo-box"><img src="imgs/logo.png" alt="" class="logo-img"></div>
+            </div>
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                    <ul class="nav side-menu">
+                        <li class="activate" id="btnRecord"><div class="img-icon"></div>识别记录</li>
+                        <li id="btnApproval"><div class="img-icon"></div>入库审批<span id="messages" class="opacity0">0</span></li>
+                        <li id="btnPeopleManager"><div class="img-icon"></div>人员管理</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /sidebar menu -->
+        </div>
+
+        <div class="content-right">
+            <!-- top navigation -->
+            <!--中转点-->
+            <div id="btnVisitorManager"></div>
+            <div id="btnEmployeeApproval"></div>
+            <div id="btnVisitorApproval"></div>
+            <div class="btnVisitantList"></div>
+            <div id="btnSearchWords"></div>
+            <div id="btnKeepSearchWords"></div>
+            <div id="btnStarttime"></div>
+            <div id="btnEndtime"></div>
+            <div id="btnSimilarity"></div>
+            <div id="btnPersontype"></div>
+            <div id="btnPager"></div>
+            <div id="btnMySource"></div>
+            <div id="btnRecordEdit"></div>
+            <div id="btnDeviceids"></div>
+            <!--/中转点-->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="请输入您要搜索的关键字">
+                                <button class="search-icon" disabled="disabled" type="submit" id="search"></button>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                        <ul class="nav navbar-nav">
+                            <li role="presentation" class="dropdown" id="sysDropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false"><i class="config-icon"></i><span class="badge bg-green"></span></a>
+                                <ul class="dropdown-menu list-unstyled" role="menu">
+                                    <li id="btnUsersManager"><a><span>用户管理</span></a></li>
+                                    <!--<li id="btnCauseManagement"><a><span>事由管理</span></a></li>-->
+                                    <!--<li id="btnLog"><a><span>操作日志</span></a></li>-->
+                                    <li id="btnDeviceManagement"><a><span>设备管理</span></a></li>
+                                    <li id="btnPostManagement"><a><span>职务管理</span></a></li>
+                                    <!--<li id="BtnOrganizationalManagement"><a><span>组织管理</span></a></li>-->
+                                </ul>
+                            </li>
+                            <li class="dropdown" id="psDropdown"><a href="javascript:void(0);" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><img src="imgs/pic.jpg" alt=""><span id="userName"></span><span class="caret"></span></a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li id="btnPersonalCenter"><a href="javascript:;">用户信息</a></li>
+                                    <li id="btnChangePWD"><a href="javascript:;">修改密码</a></li>
+                                    <li><a href="javascript:void(0)" id="btnLogout">退出</a></li>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <div class="module-container" style="padding-top:100px;"></div>
+        </div>
+    </div>
+    <script src="js/lib/require.js" data-main="main"></script>
+</body>
+</html>

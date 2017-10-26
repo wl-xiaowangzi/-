@@ -42,8 +42,12 @@
 <script src="js/lib/jquery.cookie.js"></script>
 <script src="js/lib/md5.js"></script>
 <script>
+    if($.cookie("username")!=undefined){
+        $("#inputEmail3").val($.cookie("username"));
+        $("#inputPassword3").val($.cookie("password"));
+        $("#checkbox1")[0].checked=true;
+    }
     $("form").on("submit",function(){
-       
         var formData=$(this).serialize();
         var api="http://127.0.0.1:80/facerecognition";
         // var api="http://39.108.171.172:80/facerecognition";
@@ -52,15 +56,14 @@
             type:"post",
             data:formData,
             success:function(res){//response
-                console.log(res);
-
                 if(res.code==0){
                     //登录成功
                     //保存用户名,组织名,以及是否选择自动登录
                     // 不设置过期时间，就相当于关闭浏览器即清空
-                    console.log($("#checkbox1")[0].checked)
                     if($("#checkbox1")[0].checked){
                         $.cookie("username",res.data.username,{expires:7});
+                        var password = $("#inputPassword3").val();
+                        $.cookie("password",password,{expires:7})
                     }else{
                         $.cookie("username",res.data.username);
                     }
@@ -68,10 +71,13 @@
                     $.cookie("organizationid",res.data.organizationid,{expires:7});
                     $.cookie("userid",res.data.userid,{expires:7});
                     $.cookie("deviceids",res.data.deviceids,{expires:7})
-                    location.href="index.html";
+                    location.href="main.html";
                 }
                 else{
-                   $(".login_error_wrap").addClass("opacity1");
+                    $(".login_error_wrap").addClass("opacity1");
+                    setTimeout(function(){
+                        $(".login_error_wrap").removeClass("opacity1");
+                    },20000)
                 }
             },
             error:function(res){
