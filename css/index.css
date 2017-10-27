@@ -499,6 +499,7 @@ nav {
 .navbar-nav {
     position: absolute;
     right: 150px;
+    top: 19px;
 }
 .navbar-nav .open .dropdown-menu {
     width: 60px;
@@ -516,9 +517,6 @@ nav {
         transform: scale(.8);
     }
     .typeahead{
-        transform: scale(.8);
-    }
-    #job_select li a{
         transform: scale(.8);
     }
 }
@@ -554,9 +552,6 @@ nav {
         transform: scale(.7);
     }
     .typeahead{
-        transform: scale(.7);
-    }
-    #job_select li a{
         transform: scale(.7);
     }
 }
@@ -629,6 +624,7 @@ nav {
     margin-left: 40px;
     position: absolute;
     left: 0;
+    top: 20px;
 }
 .personal-info ul li {
     float: left;
@@ -642,6 +638,7 @@ nav {
     position: absolute;
     margin-left: 24px;
     max-width: 30px;
+    top: 0px;
 }
 .personal-info ul li:nth-child(1) span.similarity {
     display: block;
@@ -1044,6 +1041,9 @@ p{
 /*设备管理样式 end*/
 
 /*拍照界面样式 begin*/
+#modalcamera .modal-content{
+    width: auto;
+}
 .boxx{
     display: flex;
     justify-content: space-between;

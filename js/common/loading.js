@@ -18,6 +18,7 @@ define(["jquery", "text!tpls/loading.html"], function ($, loadingTpl) {
          */
         complete: function (xhr,status) {
             // 状态不成功
+            console.log(status)
             if (status != 'success') {
                 confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                 location.href="login.html";

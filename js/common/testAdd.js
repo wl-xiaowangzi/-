@@ -65,7 +65,7 @@ define(["jquery", "artTemplate", "text!tpls/testCamera.html", "common/api", "lrz
                     });
             }
             var i = -1;
-            var maxNum = file.length;
+            var maxNum = file.length-1;
             var timer = null;
             timer =  setInterval(function () {
                 if(i<maxNum){

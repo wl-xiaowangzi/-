@@ -1,6 +1,6 @@
 .form-bg{
     height: 100vh;
-    background: url(../imgs/login/bg.png) no-repeat;
+    background: linear-gradient(135deg,#357ade,#5c41fe);
     background-size: cover;
     font-family: "微软雅黑";
 }

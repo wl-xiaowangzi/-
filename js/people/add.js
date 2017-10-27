@@ -22,21 +22,6 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 var ps_type = 1;
                 camera(ps_type);
             });
-            // 使用下拉菜单完成快捷选择职位
-            $peopleAdd.on("click", ".jobSel", function () {
-                if ($("#PA-job").val() == "") {
-                    $("#job_select").removeClass("displayN").addClass("displayB");
-                    $("#job_select>li>a").on("click", function () {
-                        $("#PA-job").val($(this).html());
-                        $("#job_select").removeClass("displayB").addClass("displayN");
-                    })
-                }
-            });
-            $peopleAdd.on("input","#PA-job",function(){
-                if($("#PA-job").val()!=""){
-                    $("#job_select").removeClass("displayB").addClass("displayN");
-                }
-            })
             
             // 查询设备
             API.getDeviceList(0,1000,null, function (res) {
@@ -49,7 +34,8 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                     $("#btnDeviceids").attr("deviceids", deviceids);
                 })
             //  提交表单
-            $peopleAdd.on("submit", "form", function () {
+            $peopleAdd
+            .on("submit", "form", function () {
                 // 获取参数
                 var deviceids = $("#btnDeviceids").attr("deviceids");
                 var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
@@ -79,7 +65,22 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                     $("#btnPeopleManager").trigger("click");
                 })
                 return false; //阻止同步提交表单
-            });
+            })
+            // 使用下拉菜单完成快捷选择职位
+            .on("click", "#PA-jobSel", function () {console.log(1)
+                if ($("#PA-Job").val() == "") {
+                    $("#job_select").removeClass("displayN").addClass("displayB");
+                    $("#job_select>li>a").on("click", function () {
+                        $("#PA-Job").val($(this).html());
+                        $("#job_select").removeClass("displayB").addClass("displayN");
+                    })
+                }
+            })
+            .on("input","#PA-Job",function(){
+                if($("#PA-Job").val()!=""){
+                    $("#job_select").removeClass("displayB").addClass("displayN");
+                }
+            })
             // 移除上一次的模态框
             $("#modalPeopleAdd").remove();
             // 移除弹出层，防止重复点击造成页面卡顿
