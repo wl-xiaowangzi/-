@@ -50,8 +50,13 @@ define(["jquery"],function($){
         },
         // 查看详细信息
         showRecord:function(organizationid,starttime,endtime,start,limit,datanumber,callback){
-            $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,datanumber:datanumber},function(res){
-                if(res.code!=0){
+            $.ajax({
+                url:api+"/system/record/query",
+                type:"get",
+                data:{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,datanumber:datanumber},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
@@ -61,6 +66,7 @@ define(["jquery"],function($){
                     return;
                 }
                 callback && callback(res);
+                }
             })
         },
         // 识别记录人脸替换
@@ -69,6 +75,48 @@ define(["jquery"],function($){
                 url:api+"/system/record/updatefaceimage",
                 type:"post",
                 data:{personid:ps_id,persontype:ps_type,facedata:facedata,faceimage:faceimage},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 识别记录导出
+        exportRecord:function(organizationid,starttime,endtime,persontype,similarity,callback){
+            $.ajax({
+                url:api+"/system/record/export",
+                type:"post",
+                data:{organizationid:organizationid,starttime:starttime,endtime:endtime,persontype:persontype,similarity:similarity},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    alert(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 识别记录导出状态检测
+        exportRecordCheck:function(uid,callback){
+            $.ajax({
+                url:api+"/system/record/exportcheck",
+                type:"get",
+                data:{uid:uid},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){

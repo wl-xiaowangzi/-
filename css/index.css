@@ -736,7 +736,17 @@ p{
     margin-bottom: 18px;
 }
 #modalEditRecord .loadMore{
-    width: 300px;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    margin-top: -5px;
+    margin-bottom: 30px;
+}
+#modalEditRecord .loadMore:hover{
+    background: #edf2f6;
+}
+#record_export{
+    margin-right: -7px;
 }
 /*识别记录样式 end*/
 
@@ -1041,6 +1051,10 @@ p{
 /*设备管理样式 end*/
 
 /*拍照界面样式 begin*/
+video{
+    /*镜像摄像头*/
+    transform: scale(-1,1)
+}
 #modalcamera .modal-content{
     width: auto;
 }

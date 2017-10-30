@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalcamera" tabindex="-1" role="dialog">
+<div class="modal fade" id="modalcamera" tabindex="-1" role="dialog" data-backdrop='static'>
     <div class="modal-dialog" role="document">
         <div class="modal-content pull-left" style='height:657px;background:#1c232d;padding-bottom:24px;'>
             <div class="modal-header">
@@ -38,21 +38,21 @@
                                 })
                             }
                             // 使用旧方法打开摄像头
-                            else if (navigator.getMedia) {
-                                navigator.getMedia({
-                                    video: {width:640,height:480}
-                                }, function (stream) {
-                                    mediaStreamTrack = stream.getTracks()[0];
-                                    video.src = (window.URL || window.webkitURL).createObjectURL(stream);
-                                    video.play();
-                                }, function (err) {
-                                    alert("没有检测到可用摄像头");
-                                    $(".modal").hide()
-                                    // 移除弹出层，防止重复点击造成页面卡顿
-                                    $(".modal-backdrop").remove();
-                                    return
-                                });
-                            }
+                            // else if (navigator.getMedia) {
+                            //     navigator.getMedia({
+                            //         video: {width:640,height:480}
+                            //     }, function (stream) {
+                            //         mediaStreamTrack = stream.getTracks()[0];
+                            //         video.src = (window.URL || window.webkitURL).createObjectURL(stream);
+                            //         video.play();
+                            //     }, function (err) {
+                            //         alert("没有检测到可用摄像头");
+                            //         $(".modal").hide()
+                            //         // 移除弹出层，防止重复点击造成页面卡顿
+                            //         $(".modal-backdrop").remove();
+                            //         return
+                            //     });
+                            // }
                             // 关闭摄像头
                             close.addEventListener('click', function () {
                                 mediaStreamTrack && mediaStreamTrack.stop();

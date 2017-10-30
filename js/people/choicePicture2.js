@@ -38,9 +38,15 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                     var datanumber = $(this).attr("datanumber");
                     API.showRecord(organizationid,starttime,endtime,start,limit,datanumber,function(res){
                     // 保存人脸数据
-                   console.log(res.data[0].facedata)
-                    var facedata2 = JSON.parse(res.data[0].facedata.length);
                     if(res.data[0].facedata==null){alert("该数据已损坏，请重新选择");return}
+                    var data = res.data[0].facedata.replace(/\[|]/g, '')
+                    if(data.substr(data.length-1,1)==","){
+                        alert("该数据已损坏，请重新选择");
+                        return
+                    }
+                    var facedata2 = "["+data+"]";
+                    var facedata2 = JSON.parse(facedata2);
+                    console.log(facedata2.length)
                     if(facedata2.length!=1024){alert("该数据已损坏，请重新选择");return}
                     $(".btn-blue").attr("secondFaceimages",res.data[0].faceimage);
                     $(".btn-blue").attr("secondFacedatas",res.data[0].facedata);

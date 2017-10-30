@@ -3,12 +3,12 @@
  * Author:land
  *   Date:2017/8/30
  */
-define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./show", "./visitorShow", "./edit", "moment", "datetimepicker", "datetimepickerLang", "daterangepicker", "pager"], function ($, art, recordListTpl, API, recordShow, visitorShow, recordEdit, moment) {
+define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./show", "./visitorShow", "./edit", "./export","moment", "datetimepicker", "datetimepickerLang", "daterangepicker", "pager"], function ($, art, recordListTpl, API, recordShow, visitorShow, recordEdit,recordExport, moment) {
     return function () {
         // 获取所需参数
         var organizationid = $.cookie("organizationid");
         var time = new Date();
-        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate();
+        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + (time.getDate() + 1);
         var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + (time.getDate() + 1);
         var starttime = $("#btnStarttime").attr("starttime") || starttime;
         var endtime = $("#btnEndtime").attr("endtime") || endtime;
@@ -79,6 +79,15 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                     // 设置搜索关键字保留
                     $("#btnKeepSearchWords").attr("searchWords",keyword);
                     $("#btnRecord").trigger("click"); //刷新
+                })
+                // 识别记录导出
+                .on("click","#record_export",function(){
+                    var persontype = $("#btnPersontype").attr("persontype")||0;
+                    console.log(organizationid,starttime,endtime,persontype,similarity)
+                    API.exportRecord(organizationid,starttime,endtime,persontype,similarity,function(res){
+                        var uid = res.data;
+                        recordExport(uid)
+                    })
                 })
                 
             // 将模板数据添加的指定位置

@@ -1,0 +1,32 @@
+<div class="modal fade" id="modalRecordExport" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="margin-top:30vh;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal text-center iptinfo_text">
+                    {{if status==4}}
+                    <span class="iptinfo">导出成功</span>
+                    {{else if status==3}}
+                    <span class="iptinfo">导出失败</span>
+                    {{else}}
+                    <span class="iptinfo">导出中，请稍候...</span>
+                    {{/if}}
+                    <div class="form-group" style="margin-top:45px;">
+                        <div class="col-sm-5 col-sm-offset-7">
+                            {{if status==4}}
+                            <button type="submit" class="btn btn-blue" style="margin-left:35px;"><a href="{{filepath[0]}}" download="识别记录.zip">下载</a></button>
+                            {{/if}}
+                            <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">关闭</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

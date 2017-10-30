@@ -29,6 +29,11 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     $camera.modal("hide");
                 })
             })
+            .on("click",".close",function(){
+                // 关闭摄像头
+                mediaStreamTrack && mediaStreamTrack.stop();
+                $camera.modal("hide");
+            })
         // 移除上一次调出的模板
         $("#modalcamera").remove();
         // 移除弹出层，防止重复点击造成页面卡顿

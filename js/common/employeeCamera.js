@@ -30,6 +30,11 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "people/
                     addEmployee(faceimages, facedatas,headfaceimage)
                 })
             })
+            .on("click",".close",function(){
+                // 关闭摄像头
+                mediaStreamTrack && mediaStreamTrack.stop();
+                $camera.modal("hide");
+            })
         // 移除上一次点出的模态框
         $("#modalcamera").remove();
         // 移除弹出层，防止重复点击造成页面卡顿

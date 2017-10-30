@@ -4,6 +4,15 @@
     background-size: cover;
     font-family: "微软雅黑";
 }
+.bg{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../imgs/login/login-bg.png) no-repeat left bottom;
+    background-size: 100vw 20vh;
+}
 .container{
     height: 100vh;
     display: flex;

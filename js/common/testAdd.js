@@ -50,7 +50,7 @@ define(["jquery", "artTemplate", "text!tpls/testCamera.html", "common/api", "lrz
                             var employeenumber = a;
                             var job = "test" + a;
                             var facetypes = 1;
-                            console.log(name);
+                            console.log(facedatas);
                             // finishPhoto(faceimage2, facedata2, headfaceimage2);
                             API.addEmployee(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas, facetypes, function () {
                                 console.log("success");
