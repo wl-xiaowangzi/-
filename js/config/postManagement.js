@@ -12,6 +12,15 @@ define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html
         // 移除参数
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult")
+        // 清空其他模块保留的搜索信息
+        $("#btnSearchWords").removeAttr("visitantkeyword");
+        $("#btnSearchWords").removeAttr("recordkeyword");
+        $("#btnSearchWords").removeAttr("peoplekeyword");
+        $("#btnSearchWords").removeAttr("approvalkeyword");
+        $("#btnKeepSearchWords").removeAttr("visitantSearchWords");
+        $("#btnKeepSearchWords").removeAttr("recordSearchWords");
+        $("#btnKeepSearchWords").removeAttr("peoplesearchwords");
+        $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
         // 获取职位参数列表
         API.getParameterList(start,limit,parameterkey,function(res){
             //编译模板

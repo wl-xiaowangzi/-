@@ -7,13 +7,17 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
         var page = $("#btnPager").attr("page")||1;
         var start = 40*(page-1);
         var limit = 40;
-        var keyword = $("#btnSearchWords").attr("keyword");
-        setTimeout(function(){
-            $("#btnSearchWords").removeAttr("keyword");
-        },30000);
+        var keyword = $("#btnSearchWords").attr("visitantKeyword");
         $("#btnPager").removeAttr("page");
         // 渲染前清空数据
         $(".module-container").empty();
+        // 清空其他模块保留的搜索信息
+        $("#btnSearchWords").removeAttr("peoplekeyword");
+        $("#btnSearchWords").removeAttr("approvalkeyword");
+        $("#btnSearchWords").removeAttr("recordkeyword");
+        $("#btnKeepSearchWords").removeAttr("peoplesearchwords");
+        $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
+        $("#btnKeepSearchWords").removeAttr("recordsearchwords");
         // 调用接口
         API.getVisitorList(start, limit, keyword, function (res) {
             //编译模板
@@ -41,11 +45,11 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
                         visitantDel(vs_id);
                     }
                 })
-                .on("click", ".btn-search", function () {
-                    var keyword = $(".search-word").val();
-                    $("#btnSearchWords").attr("keyword", keyword);
+                .on("click", "#visitant_search_btn", function () {
+                    var keyword = $("#visitant_search_word").val();
+                    $("#btnSearchWords").attr("visitantKeyword", keyword);
                     // 设置搜索关键字保留
-                    $("#btnKeepSearchWords").attr("searchWords",keyword);
+                    $("#btnKeepSearchWords").attr("visitantSearchWords",keyword);
                     $("#btnVisitorManager").trigger("click"); //刷新
                 })
             //把渲染好的元素放到页面中
@@ -55,10 +59,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
             $('div.dropdown').mouseover(function() {   
             $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');});  
             // 设置搜索关键字保留
-            var searchWords=$("#btnKeepSearchWords").attr("searchWords")
-            $(".search-word").val(searchWords)
-            // 清除上一次的关键字
-            $("#btnKeepSearchWords").removeAttr("searchWords")
+            var searchWords=$("#btnKeepSearchWords").attr("visitantSearchWords");
+            $("#visitant_search_word").val(searchWords);
             // 设置分页
             var num = Math.ceil(res.sumsize/40);
             Page({

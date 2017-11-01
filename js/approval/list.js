@@ -9,13 +9,17 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         var page = $("#btnPager").attr("page")||1;
         var start = 30*(page-1);
         var limit = 30;
-        var keyword = $("#btnSearchWords").attr("keyword");
+        var keyword = $("#btnSearchWords").attr("approvalKeyword");
         // 移除参数
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
-        setTimeout(function(){
-            $("#btnSearchWords").removeAttr("keyword");
-        },30000);
+        // 清空其他模块保留的搜索信息
+        $("#btnSearchWords").removeAttr("visitantkeyword");
+        $("#btnSearchWords").removeAttr("peoplekeyword");
+        $("#btnSearchWords").removeAttr("recordkeyword");
+        $("#btnKeepSearchWords").removeAttr("visitantSearchWords");
+        $("#btnKeepSearchWords").removeAttr("peoplesearchwords");
+        $("#btnKeepSearchWords").removeAttr("recordsearchwords");
         // 获取审批列表
         API.getApprovalList(start,limit,keyword,function(res){
             if (res.data.length == 0) {
@@ -83,11 +87,11 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
             .on("click", "#btn-visiter", function () {
                  $("#btnVisitorApproval").trigger("click");
             })
-            .on("click",".btn-search",function(){
-                var keyword = $(".search-word").val();
-                $("#btnSearchWords").attr("keyword",keyword);
+            .on("click","#approval_search_btn",function(){
+                var keyword = $("#approval_search_word").val();
+                $("#btnSearchWords").attr("approvalKeyword",keyword);
                 // 设置搜索关键字保留
-                $("#btnKeepSearchWords").attr("searchWords",keyword);
+                $("#btnKeepSearchWords").attr("approvalSearchWords",keyword);
                 $("#btnApproval").trigger("click");//刷新
             })
 
@@ -98,10 +102,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         $('div.dropdown').mouseover(function() {   
         $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');});  
          // 设置搜索关键字保留
-        var searchWords=$("#btnKeepSearchWords").attr("searchWords")
-        $(".search-word").val(searchWords)
-        // 清除上一次的关键字
-        $("#btnKeepSearchWords").removeAttr("searchWords")
+        var searchWords=$("#btnKeepSearchWords").attr("approvalSearchWords")
+        $("#approval_search_word").val(searchWords)
         // 分页
          var num = Math.ceil(res.sumsize/30);
             Page({

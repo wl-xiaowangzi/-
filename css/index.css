@@ -423,6 +423,9 @@ body {
 #sidebar-menu .side-menu #btnPeopleManager .img-icon {
     background-image: url(../imgs/peopleManager-icon-0.png);
 }
+#sidebar-menu .side-menu #btnAttendanceManager .img-icon {
+    background-image: url(../imgs/userManager-icon-0.png);
+}
 #sidebar-menu .side-menu li.activate {
     text-shadow: rgba(0, 0, 0, .25) 0 -1px 0;
     background: linear-gradient(#334556, #2C4257), #2A3F54;
@@ -439,7 +442,7 @@ body {
 #sidebar-menu .side-menu #btnPeopleManager.activate .img-icon {
     background-image: url(../imgs/peopleManager-icon-1.png);
 }
-#sidebar-menu .side-menu #btnUsersManager.activate .img-icon {
+#sidebar-menu .side-menu #btnAttendanceManager.activate .img-icon {
     background-image: url(../imgs/userManager-icon-1.png);
 }
 .nav>li>.img-icon {

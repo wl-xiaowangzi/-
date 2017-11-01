@@ -3,9 +3,8 @@
  * Author:land
  *   Date:2017/9/6
  */
-define(["jquery", "text!tpls/loading.html"], function ($, loadingTpl) {
+define(["jquery", "text!tpls/loading.html","common/prompt"], function ($, loadingTpl,prompt) {
     var $loadingTpl = $(loadingTpl);
-
     $.ajaxSetup({
         /**
          * ajax请求发送之前执行的回调函数
@@ -20,8 +19,11 @@ define(["jquery", "text!tpls/loading.html"], function ($, loadingTpl) {
             // 状态不成功
             console.log(status)
             if (status != 'success') {
-                confirm('由于您长时间没有操作, session已过期, 请重新登录.');
-                location.href="login.html";
+                prompt('由于您长时间没有操作, session已过期, 请重新登录.')
+                $("button").on("click",function(){
+                    location.href="login.html";
+                })
+                
             }
             $loadingTpl.remove();
         }

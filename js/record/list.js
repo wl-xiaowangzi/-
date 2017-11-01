@@ -15,17 +15,21 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         var similarity = $("#btnSimilarity").attr("similarity") || 0.75;
         var persontype = $("#btnPersontype").attr("persontype");
         var page = $("#btnPager").attr("page") || 1;
-        var keyword = $("#btnSearchWords").attr("keyword");
+        var keyword = $("#btnSearchWords").attr("recordKeyword");
         var start = 30 * (page - 1);
         var limit = 30;
         var personid;
         // 获取参数后清空自定义属性
         // $("#btnPersontype").removeAttr("persontype");
         $("#btnPager").removeAttr("page");
-        setTimeout(function(){
-            $("#btnSearchWords").removeAttr("keyword");
-        },30000);
         $("body").removeClass("noResult");
+        // 清空其他模块保留的搜索信息
+        $("#btnSearchWords").removeAttr("visitantkeyword");
+        $("#btnSearchWords").removeAttr("peoplekeyword");
+        $("#btnSearchWords").removeAttr("approvalkeyword");
+        $("#btnKeepSearchWords").removeAttr("visitantkeyword");
+        $("#btnKeepSearchWords").removeAttr("peoplesearchwords");
+        $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
         // 调用识别记录接口   
         API.getRecordList(organizationid, starttime, endtime, start, limit, persontype, similarity, keyword, personid, function (res) {
             //编译模板
@@ -73,11 +77,11 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                     $("#btnRecord").trigger("click");
                 })
                 // 关键字搜索
-                .on("click", ".btn-search", function () {
-                    var keyword = $(".search-word").val();
-                    $("#btnSearchWords").attr("keyword", keyword);
+                .on("click", "#record_search_btn", function () {
+                    var keyword = $("#record_search_word").val();
+                    $("#btnSearchWords").attr("recordKeyword", keyword);
                     // 设置搜索关键字保留
-                    $("#btnKeepSearchWords").attr("searchWords",keyword);
+                    $("#btnKeepSearchWords").attr("recordSearchWords",keyword);
                     $("#btnRecord").trigger("click"); //刷新
                 })
                 // 识别记录导出
@@ -107,10 +111,8 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
             $('div.dropdown').mouseover(function() {   
             $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');}); 
             // 设置搜索关键字保留
-            var searchWords=$("#btnKeepSearchWords").attr("searchWords")
-            $(".search-word").val(searchWords)
-            // 清除上一次的关键字
-            $("#btnKeepSearchWords").removeAttr("searchWords")
+            var searchWords=$("#btnKeepSearchWords").attr("recordSearchWords")
+            $("#record_search_word").val(searchWords)
             // 设置分页
             var num = Math.ceil(res.sumsize / 30);
             Page({

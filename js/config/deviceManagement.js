@@ -15,6 +15,15 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
         },30000);
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
+        // 清空其他模块保留的搜索信息
+        $("#btnSearchWords").removeAttr("visitantkeyword");
+        $("#btnSearchWords").removeAttr("recordkeyword");
+        $("#btnSearchWords").removeAttr("peoplekeyword");
+        $("#btnSearchWords").removeAttr("approvalkeyword");
+        $("#btnKeepSearchWords").removeAttr("visitantSearchWords");
+        $("#btnKeepSearchWords").removeAttr("recordSearchWords");
+        $("#btnKeepSearchWords").removeAttr("peoplesearchwords");
+        $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
         // 获取设备列表
         API.getDeviceList(start,limit,keyword,function(res){
             //编译模板

@@ -10,13 +10,17 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
         var parameterkey = "key_job";
         var start = 40*(page-1);
         var limit = 40;
-        var keyword = $("#btnSearchWords").attr("keyword");
+        var keyword = $("#btnSearchWords").attr("peopleKeyword");
         // 移除参数
-        setTimeout(function(){
-            $("#btnSearchWords").removeAttr("keyword");
-        },30000);
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
+        // 清空其他模块保留的搜索信息
+        $("#btnSearchWords").removeAttr("visitantkeyword");
+        $("#btnSearchWords").removeAttr("approvalkeyword");
+        $("#btnSearchWords").removeAttr("recordkeyword");
+        $("#btnKeepSearchWords").removeAttr("visitantSearchWords");
+        $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
+        $("#btnKeepSearchWords").removeAttr("recordsearchwords");
         // 调用接口
         API.getPeopleList(start, limit, keyword, function (res) {console.log(res)
             //编译模板
@@ -44,11 +48,11 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
                     //将员工id传入信息模块
                     baseInfo(ep_id)
                 })
-                .on("click", ".btn-search", function () {
-                    var keyword = $(".search-word").val();
-                    $("#btnSearchWords").attr("keyword", keyword);
+                .on("click", "#people_search_btn", function () {
+                    var keyword = $("#people_search_word").val();
+                    $("#btnSearchWords").attr("peopleKeyword", keyword);
                     // 设置搜索关键字保留
-                    $("#btnKeepSearchWords").attr("searchWords",keyword);
+                    $("#btnKeepSearchWords").attr("peopleSearchWords",keyword);
                     $("#btnPeopleManager").trigger("click"); //刷新
                 })
             //把渲染好的元素放到页面中
@@ -58,10 +62,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
             $('div.dropdown').mouseover(function() {   
             $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');});
             // 设置搜索关键字保留
-            var searchWords=$("#btnKeepSearchWords").attr("searchWords")
-            $(".search-word").val(searchWords)
-            // 清除上一次的关键字
-            $("#btnKeepSearchWords").removeAttr("searchWords")
+            var searchWords=$("#btnKeepSearchWords").attr("peopleSearchWords");
+            $("#people_search_word").val(searchWords);
             // 获取员工参数
             API.getParameterList(start, limit, parameterkey, function (res) {
             var list = res.data.list;

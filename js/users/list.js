@@ -14,6 +14,15 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
         setTimeout(function(){
             $("#btnSearchWords").removeAttr("keyword");
         },30000);
+        // 清空其他模块保留的搜索信息
+        $("#btnSearchWords").removeAttr("visitantkeyword");
+        $("#btnSearchWords").removeAttr("recordkeyword");
+        $("#btnSearchWords").removeAttr("peoplekeyword");
+        $("#btnSearchWords").removeAttr("approvalkeyword");
+        $("#btnKeepSearchWords").removeAttr("visitantSearchWords");
+        $("#btnKeepSearchWords").removeAttr("recordSearchWords");
+        $("#btnKeepSearchWords").removeAttr("peoplesearchwords");
+        $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
         // 调用接口

@@ -41,7 +41,7 @@ require.config({
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement","common/testAdd", "common/loading", "common/checkLogin"], function ($, art, usersList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement,testAdd) {
+require(["jquery", "artTemplate", "users/list","attendance/list", "people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement","common/testAdd", "common/loading", "common/checkLogin"], function ($, art, usersList,attendanceList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement,testAdd) {
 
     //处理用户名
     var username = $.cookie("username");
@@ -165,7 +165,12 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
         $(".module-container").empty();
         approvalVisitorList();
     });
-
+    $("#btnAttendanceManager").on("click", function () {
+        //考勤管理
+        $(".module-container").empty();
+        //加载考勤管理模块
+        attendanceList();
+    });
 
     $("#btnUsersManager").on("click", function () {
         //用户管理
