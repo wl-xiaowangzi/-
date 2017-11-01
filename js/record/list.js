@@ -8,8 +8,8 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         // 获取所需参数
         var organizationid = $.cookie("organizationid");
         var time = new Date();
-        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + (time.getDate() + 1);
-        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + (time.getDate() + 1);
+        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
         var starttime = $("#btnStarttime").attr("starttime") || starttime;
         var endtime = $("#btnEndtime").attr("endtime") || endtime;
         var similarity = $("#btnSimilarity").attr("similarity") || 0.75;
@@ -83,10 +83,9 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                 // 识别记录导出
                 .on("click","#record_export",function(){
                     var persontype = $("#btnPersontype").attr("persontype")||0;
-                    console.log(organizationid,starttime,endtime,persontype,similarity)
                     API.exportRecord(organizationid,starttime,endtime,persontype,similarity,function(res){
                         var uid = res.data;
-                        recordExport(uid)
+                        recordExport(uid,starttime,endtime)
                     })
                 })
                 
@@ -150,20 +149,20 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                     "firstDay": 1
                 };
                 //初始化显示当前时间
-                $('#daterange-btn span').html(starttime + ' - ' + endtime);
-                // $('#daterange-btn span').html(moment().subtract(1, 'months').format('YYYY-MM-DD H:mm') + ' - ' + moment().format('YYYY-MM-DD H:mm'));
+                var initStarttime = starttime.substring(0,starttime.indexOf(" "))
+                var initEndtime = endtime.substring(0,endtime.indexOf(" "))
+                $('#daterange-btn span').html(initStarttime + ' - ' + initEndtime);
+                // $('#daterange-btn span').html(moment().subtract(1, 'months').subtract(-1, 'days').format('YYYY-MM-DD') + ' - ' + moment().subtract(-1, 'days').format('YYYY-MM-DD'));
                 //日期控件初始化
                 $('#daterange-btn').daterangepicker({
                         'locale': locale,
-
                         timePicker24Hour: true,
-
                         //汉化按钮部分
                         ranges: {
-                            '今日': [moment().startOf('day'), moment().subtract(-1, 'days')],
-                            '昨日': [moment().subtract(1, 'days').startOf('day'), moment().subtract(0, 'days').endOf('day')],
-                            '最近7日': [moment().subtract(6, 'days').startOf('day'), moment().subtract(-1, 'days')],
-                            '最近30日': [moment().subtract(29, 'days').startOf('day'), moment().subtract(-1, 'days')],
+                            '今日': [moment().startOf('day'), moment().subtract(0, 'days')],
+                            '昨日': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
+                            '最近7日': [moment().subtract(6, 'days').startOf('day'), moment().subtract(0, 'days').endOf('day')],
+                            '最近30日': [moment().subtract(30, 'days').startOf('day'), moment().subtract(0, 'days').endOf('day')],
                             '本月': [moment().startOf('month'), moment().endOf('month')],
                             '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
                         },
@@ -171,9 +170,9 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
                         endDate: moment()
                     },
                     function (start, end) {
-                        $('#daterange-btn span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
-                        var starttime = start.format('YYYY-MM-DD');
-                        var endtime = end.format('YYYY-MM-DD');
+                        $('#daterange-btn span').html(start.format('YYYY-MM-DD HH-mm-ss') + ' - ' + end.format('YYYY-MM-DD HH-mm-ss'));
+                        var starttime = start.format('YYYY-MM-DD HH-mm-ss');
+                        var endtime = end.format('YYYY-MM-DD HH-mm-ss');
                         $("#btnStarttime").attr("starttime", starttime);
                         $("#btnEndtime").attr("endtime", endtime);
                         $("#btnRecord").trigger("click");

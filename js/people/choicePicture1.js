@@ -52,7 +52,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                     $(".btn-blue").parent().attr("firstFacedatas",res.data[0].facedata);
                     $(".btn-blue").parent().attr("facetypes1","2");
                     $(".headfaceimage1").attr("src",res.data[0].faceimage);
-                    $peopleChoicePicture.modal("hide");
+                    // $peopleChoicePicture.modal("hide");
+                    $peopleChoicePicture.css("width",0);
+                    $(".modal-backdrop").remove();
                     })
                 })
                 .on("click",".loadMore",function(){

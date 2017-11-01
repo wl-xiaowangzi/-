@@ -36,7 +36,8 @@ require.config({
         typeahead: {
             deps: ["bootstrap"]
         }
-    }
+    },
+    waitSeconds:0
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
@@ -197,5 +198,4 @@ require(["jquery", "artTemplate", "users/list", "people/list", "people/visitant"
     }).mouseout(function () {
         $(this).removeClass('open');
     });
-    
 })

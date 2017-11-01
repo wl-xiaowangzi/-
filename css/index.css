@@ -747,6 +747,9 @@ p{
 }
 #record_export{
     margin-right: -7px;
+    background-color: #357aed;
+    color: #fff;
+    border: 0;
 }
 /*识别记录样式 end*/
 
@@ -900,6 +903,11 @@ p{
 #job_select li a:hover{
     background-color:#357aed;
     color: #fff;
+}
+#modalPeopleChoicePicture{
+    -webkit-transition:all .3s;
+    -moz-transition:all .3s;
+    transition:all .3s;
 }
 #modalPeopleChoicePicture .info-box{
     display: flex;
@@ -1079,6 +1087,9 @@ video{
 }
 .picture1,.picture2,#start{
     cursor: pointer;
+}
+.picture1 img,.picture2 img{
+    display: block;
 }
 #re-photographed {
     width: 80px;

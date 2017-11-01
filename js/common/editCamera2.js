@@ -27,7 +27,9 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     $(".btn-blue").attr("secondFacedatas",res.data.facedata);
                     $(".btn-blue").parent().attr("facetypes2","1");
                     $(".headfaceimage2").attr("src",res.data.headfaceimage);
-                    $camera.modal("hide");
+                    // $camera.modal("hide");
+                    $camera.css("width",0);
+                    $(".modal-backdrop").remove();
                 })
             })
         // 移除上一次点出的模态框
