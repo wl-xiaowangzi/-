@@ -8,8 +8,23 @@ define(["jquery", "artTemplate", "text!tpls/recordList.html", "common/api", "./s
         // 获取所需参数
         var organizationid = $.cookie("organizationid");
         var time = new Date();
-        var starttime = time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
-        var endtime = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+        // 日期补零
+        var day = time.getDate();
+        var month = time.getMonth();
+        var nextMonth = (month + 1)
+        if(day.toString().length == 1){
+            day = "0"+day
+        }
+        if(month.toString().length == 1){
+            if(month==9){
+                month = "0"+month
+                var nextMonth = 10;
+            }else{
+                month = "0"+month
+            }
+        }
+        var starttime = time.getFullYear() + '-' + month + '-' + day + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+        var endtime = time.getFullYear() + '-' + nextMonth + '-' + day + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
         var starttime = $("#btnStarttime").attr("starttime") || starttime;
         var endtime = $("#btnEndtime").attr("endtime") || endtime;
         var similarity = $("#btnSimilarity").attr("similarity") || 0.75;
