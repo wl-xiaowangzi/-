@@ -18,9 +18,13 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
         $("#btnSearchWords").removeAttr("visitantkeyword");
         $("#btnSearchWords").removeAttr("approvalkeyword");
         $("#btnSearchWords").removeAttr("recordkeyword");
+        $("#btnSearchWords").removeAttr("deviceKeyword");
+        $("#btnSearchWords").removeAttr("usersKeyword");
         $("#btnKeepSearchWords").removeAttr("visitantSearchWords");
         $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
         $("#btnKeepSearchWords").removeAttr("recordsearchwords");
+        $("#btnKeepSearchWords").removeAttr("deviceSearchwords");
+        $("#btnKeepSearchWords").removeAttr("usersSearchWords");
         // 调用接口
         API.getPeopleList(start, limit, keyword, function (res) {console.log(res)
             //编译模板
@@ -50,6 +54,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
                 })
                 .on("click", "#people_search_btn", function () {
                     var keyword = $("#people_search_word").val();
+                    $("#search").val(keyword);
                     $("#btnSearchWords").attr("peopleKeyword", keyword);
                     // 设置搜索关键字保留
                     $("#btnKeepSearchWords").attr("peopleSearchWords",keyword);
@@ -64,6 +69,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
             // 设置搜索关键字保留
             var searchWords=$("#btnKeepSearchWords").attr("peopleSearchWords");
             $("#people_search_word").val(searchWords);
+            $("#search").val(searchWords);
             // 获取员工参数
             API.getParameterList(start, limit, parameterkey, function (res) {
             var list = res.data.list;

@@ -15,9 +15,13 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
         $("#btnSearchWords").removeAttr("peoplekeyword");
         $("#btnSearchWords").removeAttr("approvalkeyword");
         $("#btnSearchWords").removeAttr("recordkeyword");
+        $("#btnSearchWords").removeAttr("deviceKeyword");
+        $("#btnSearchWords").removeAttr("usersKeyword");
         $("#btnKeepSearchWords").removeAttr("peoplesearchwords");
         $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
         $("#btnKeepSearchWords").removeAttr("recordsearchwords");
+        $("#btnKeepSearchWords").removeAttr("deviceSearchwords");
+        $("#btnKeepSearchWords").removeAttr("usersSearchWords");
         // 调用接口
         API.getVisitorList(start, limit, keyword, function (res) {
             //编译模板
@@ -47,6 +51,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
                 })
                 .on("click", "#visitant_search_btn", function () {
                     var keyword = $("#visitant_search_word").val();
+                    $("#search").val(keyword);
                     $("#btnSearchWords").attr("visitantKeyword", keyword);
                     // 设置搜索关键字保留
                     $("#btnKeepSearchWords").attr("visitantSearchWords",keyword);
@@ -61,6 +66,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
             // 设置搜索关键字保留
             var searchWords=$("#btnKeepSearchWords").attr("visitantSearchWords");
             $("#visitant_search_word").val(searchWords);
+            $("#search").val(searchWords);
             // 设置分页
             var num = Math.ceil(res.sumsize/40);
             Page({

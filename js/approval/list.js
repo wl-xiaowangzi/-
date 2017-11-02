@@ -17,9 +17,13 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         $("#btnSearchWords").removeAttr("visitantkeyword");
         $("#btnSearchWords").removeAttr("peoplekeyword");
         $("#btnSearchWords").removeAttr("recordkeyword");
+        $("#btnSearchWords").removeAttr("deviceKeyword");
+        $("#btnSearchWords").removeAttr("usersKeyword");
         $("#btnKeepSearchWords").removeAttr("visitantSearchWords");
         $("#btnKeepSearchWords").removeAttr("peoplesearchwords");
         $("#btnKeepSearchWords").removeAttr("recordsearchwords");
+        $("#btnKeepSearchWords").removeAttr("deviceSearchwords");
+        $("#btnKeepSearchWords").removeAttr("usersSearchWords");
         // 获取审批列表
         API.getApprovalList(start,limit,keyword,function(res){
             if (res.data.length == 0) {
@@ -89,6 +93,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
             })
             .on("click","#approval_search_btn",function(){
                 var keyword = $("#approval_search_word").val();
+                $("#search").val(keyword);
                 $("#btnSearchWords").attr("approvalKeyword",keyword);
                 // 设置搜索关键字保留
                 $("#btnKeepSearchWords").attr("approvalSearchWords",keyword);
@@ -103,7 +108,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');});  
          // 设置搜索关键字保留
         var searchWords=$("#btnKeepSearchWords").attr("approvalSearchWords")
-        $("#approval_search_word").val(searchWords)
+        $("#approval_search_word").val(searchWords);
+        $("#search").val(searchWords);
         // 分页
          var num = Math.ceil(res.sumsize/30);
             Page({

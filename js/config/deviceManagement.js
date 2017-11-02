@@ -8,11 +8,8 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
         var page = $("#btnPager").attr("page")||1;
         var start = 60*(page-1);
         var limit = 60;
-        var keyword = $("#btnSearchWords").attr("keyword");
+        var keyword = $("#btnSearchWords").attr("deviceKeyword");
         // 移除参数
-        setTimeout(function(){
-            $("#btnSearchWords").removeAttr("keyword");
-        },30000);
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
         // 清空其他模块保留的搜索信息
@@ -20,10 +17,12 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
         $("#btnSearchWords").removeAttr("recordkeyword");
         $("#btnSearchWords").removeAttr("peoplekeyword");
         $("#btnSearchWords").removeAttr("approvalkeyword");
+        $("#btnSearchWords").removeAttr("usersKeyword");
         $("#btnKeepSearchWords").removeAttr("visitantSearchWords");
         $("#btnKeepSearchWords").removeAttr("recordSearchWords");
         $("#btnKeepSearchWords").removeAttr("peoplesearchwords");
         $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
+        $("#btnKeepSearchWords").removeAttr("usersSearchWords");
         // 获取设备列表
         API.getDeviceList(start,limit,keyword,function(res){
             //编译模板
@@ -44,11 +43,12 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
                     var dv_id = $(this).parent().attr("dv_id");
                     deviceDel(dv_id);
                 })
-                .on("click",".btn-search",function(){
-                    var keyword = $(".search-word").val();
-                    $("#btnSearchWords").attr("keyword",keyword);
+                .on("click","#device_search_btn",function(){
+                    var keyword = $("#device_search_word").val();
+                    $("#search").val(keyword);
+                    $("#btnSearchWords").attr("deviceKeyword",keyword);
                     // 设置搜索关键字保留
-                    $("#btnKeepSearchWords").attr("searchWords",keyword);
+                    $("#btnKeepSearchWords").attr("deviceSearchWords",keyword);
                     $("#btnDeviceManagement").trigger("click");//刷新
                 })
             //把渲染好的元素放到页面中
@@ -57,10 +57,9 @@ define(["jquery", "artTemplate","common/api", "text!tpls/configDeviceManagement.
             // 去掉左侧菜单栏激活状态
             $("#sidebar-menu .side-menu li").removeClass("activate");
             // 设置搜索关键字保留
-            var searchWords=$("#btnKeepSearchWords").attr("searchWords")
-            $(".search-word").val(searchWords)
-            // 清除上一次的关键字
-            $("#btnKeepSearchWords").removeAttr("searchWords")
+            var searchWords=$("#btnKeepSearchWords").attr("deviceSearchWords")
+            $("#device_search_word").val(searchWords);
+            $("#search").val(searchWords);
             // 分页
             var num = Math.ceil(res.sumsize/60);
             Page({

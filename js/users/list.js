@@ -7,22 +7,21 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
     return function () {
         // 获取参数
         var page = $("#btnPager").attr("page")||1;
-        var keyword = $("#btnSearchWords").attr("keyword");
+        var keyword = $("#btnSearchWords").attr("usersKeyword");
         var start = 30*(page-1);
         var limit = 30;
         // 移除参数
-        setTimeout(function(){
-            $("#btnSearchWords").removeAttr("keyword");
-        },30000);
         // 清空其他模块保留的搜索信息
         $("#btnSearchWords").removeAttr("visitantkeyword");
         $("#btnSearchWords").removeAttr("recordkeyword");
         $("#btnSearchWords").removeAttr("peoplekeyword");
         $("#btnSearchWords").removeAttr("approvalkeyword");
+        $("#btnSearchWords").removeAttr("deviceKeyword");
         $("#btnKeepSearchWords").removeAttr("visitantSearchWords");
         $("#btnKeepSearchWords").removeAttr("recordSearchWords");
         $("#btnKeepSearchWords").removeAttr("peoplesearchwords");
         $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
+        $("#btnKeepSearchWords").removeAttr("deviceSearchwords");
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
         // 调用接口
@@ -50,11 +49,12 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
                     //加载编辑账号的模块
                     editUsers(user_id);
                 })
-                .on("click",".btn-search",function(){
-                    var keyword = $(".search-word").val();
-                    $("#btnSearchWords").attr("keyword",keyword);
+                .on("click","#users_search_btn",function(){
+                    var keyword = $("#users_search_word").val();
+                    $("#search").val(keyword);
+                    $("#btnSearchWords").attr("usersKeyword",keyword);
                     // 设置搜索关键字保留
-                    $("#btnKeepSearchWords").attr("searchWords",keyword);
+                    $("#btnKeepSearchWords").attr("usersSearchWords",keyword);
                     $("#btnUsersManager").trigger("click");//刷新
                 })
             //把渲染好的元素放到页面中
@@ -63,10 +63,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/usersList.html", "./ed
             // 去掉左侧菜单栏激活状态
             $("#sidebar-menu .side-menu li").removeClass("activate");
             // 设置搜索关键字保留
-            var searchWords=$("#btnKeepSearchWords").attr("searchWords")
-            $(".search-word").val(searchWords)
-            // 清除上一次的关键字
-            $("#btnKeepSearchWords").removeAttr("searchWords")
+            var searchWords=$("#btnKeepSearchWords").attr("usersSearchWords")
+            $("#users_search_word").val(searchWords);
+            $("#search").val(searchWords);
             // 设置分页
             var num = Math.ceil(res.sumsize/30);
             Page({
