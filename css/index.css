@@ -429,7 +429,6 @@ body {
     margin-bottom: -6px;
 }
 .btn, .buttons, .modal-footer .btn+.btn, button {
-    margin-bottom: 5px;
     margin-right: 5px;
 }
 .dropdown-menu {
@@ -822,7 +821,7 @@ p{
     height: 40px;
     line-height: 40px;
     margin-top: -5px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 #modalEditRecord .loadMore:hover{
     background: #edf2f6;
