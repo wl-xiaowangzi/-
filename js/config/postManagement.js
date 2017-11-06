@@ -46,6 +46,8 @@ define(["jquery","artTemplate","common/api","text!tpls/configPostManagement.html
             $(".module-container").append($configPostManagement);
             // 去掉左侧菜单栏激活状态
             $("#sidebar-menu .side-menu li").removeClass("activate");
+            // // 职务管理无keyword搜索，去掉搜索栏
+            // $(".search").addClass("displayN")
             // 分页
             var num = Math.ceil(res.sumsize/60);
             Page({

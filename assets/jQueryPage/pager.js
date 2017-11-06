@@ -105,8 +105,9 @@ function Page(opt){
 			newPages:function (type, i) {
 				var html = "",htmlLeft="",htmlRight="",htmlC="";
 				var HL = '<li><a>...</a></li>';
-				html = '<li><a  aria-label="Previous">&laquo;</a></li>\
+				html = '<li><a aria-label="Previous">&laquo;</a></li>\
 					<li><a>上一页</a></li>'
+				var i = i*1;//隐式转换成数字形式，保证i为数字
 				for (var n = 0;n<3;n++){
 					htmlC += '<li '+((n-1)==0?'class="active"':'')+' page="'+(i+n-1)+'"><a>'+(i+n-1)+'</a></li>';
 					htmlLeft += '<li '+((n+2)==i?'class="active"':'')+' page="'+(n+2)+'"><a>'+(n+2)+'</a></li>';
@@ -156,7 +157,7 @@ function Page(opt){
 						}
 				}
 				html += '<li><a>下一页</a></li>\
-					<li><a  aria-label="Next">&raquo;</a></li>';
+					<li><a aria-label="Next">&raquo;</a></li>';
 				if (this.num > 5 || this.num < 3) {
 					set.elem.html(html);
 					clickpages.init({num:set.num,elem:set.elem,callback:set.callback});
@@ -168,7 +169,7 @@ function Page(opt){
 			return;
 		}else if(parseInt(set.num)<=6){
 			n = parseInt(set.num);
-			var html='<li><a  aria-label="Previous">&laquo;</a></li>\
+			var html='<li><a aria-label="Previous">&laquo;</a></li>\
 					<li><a>上一页</a></li>';
 			for(var i=1;i<=n;i++){
 				if(i==set.startnum){
