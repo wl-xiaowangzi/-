@@ -48,8 +48,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                     var facedata2 = JSON.parse(facedata2);
                     console.log(facedata2.length)
                     if(facedata2.length!=1024){alert("该数据已损坏，请重新选择");return}
-                    $(".btn-blue").attr("secondFaceimages",res.data[0].faceimage);
-                    $(".btn-blue").attr("secondFacedatas",res.data[0].facedata);
+                    var secondFacedatas = res.data[0].facedata;
+                    var secondFaceimages = res.data[0].faceimage;
+                    $(".btn-blue").attr("secondFaceimages",secondFaceimages);
+                    $(".btn-blue").attr("secondFacedatas",secondFacedatas);
                     $(".btn-blue").attr("facetypes2","2");
                     $(".headfaceimage2").attr("src",res.data[0].faceimage);
                     // $peopleChoicePicture.modal("hide");
