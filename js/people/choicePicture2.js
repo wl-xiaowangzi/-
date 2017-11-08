@@ -48,7 +48,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                     var facedata2 = JSON.parse(facedata2);
                     console.log(facedata2.length)
                     if(facedata2.length!=1024){alert("该数据已损坏，请重新选择");return}
-                    var secondFacedatas = res.data[0].facedata;
+                    var secondFacedatas = res.data[0].facedata.replace(/\s/g,"");
                     var secondFaceimages = res.data[0].faceimage;
                     $(".btn-blue").attr("secondFaceimages",secondFaceimages);
                     $(".btn-blue").attr("secondFacedatas",secondFacedatas);

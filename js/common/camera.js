@@ -23,8 +23,9 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     }
                     // 关闭摄像头
                     mediaStreamTrack && mediaStreamTrack.stop();
+                    var facedata = res.data.facedata;
                     $("#btnPeopleManager").attr("faceimage",res.data.faceimage);
-                    $("#btnPeopleManager").attr("facedata",res.data.facedata);
+                    $("#btnPeopleManager").attr("facedata",facedata);
                     $(".secPIC").attr("src",res.data.headfaceimage);
                     $camera.modal("hide");
                 })

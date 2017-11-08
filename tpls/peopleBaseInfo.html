@@ -75,15 +75,39 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">职位</label>
                         <div class="col-sm-7">
-                            <input type="text" id="PE-job" autocomplete="off" class="form-control job" name="job" value="{{job}}" placeholder="请输入..."/><span class="asterisk">*</span>
+                            <input type="text" id="PE-job" maxlength="10" autocomplete="off" class="form-control job" name="job" value="{{job}}" placeholder="请输入..."/><span class="asterisk">*</span>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("PE-job").onpropertychange = document.getElementById(
+                                    "PE-job").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 10) {
+                                        alert("字数超限，请保持在10字以内")
+                                    }
+                                }
+                        })
+                    </script>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">工号</label>
                         <div class="col-sm-7">
-                            <input type="text" id="PE-employeenumber" class="form-control employeenumber" name="employeenumber" value="{{employeenumber}}" placeholder="请输入..."/><span class="asterisk">*</span>
+                            <input type="text" id="PE-employeenumber" maxlength="6" class="form-control employeenumber" name="employeenumber" value="{{employeenumber}}" placeholder="请输入..."/><span class="asterisk">*</span>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("PE-employeenumber").onpropertychange = document.getElementById(
+                                    "PE-employeenumber").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 6) {
+                                        alert("字数超限，请保持在6字以内")
+                                    }
+                                }
+                        })
+                    </script>
                     <div class="form-group" deviceids={{deviceids}}>
                         <div class="col-sm-6 col-sm-offset-5" firstFacedatas={{facedatas[0]}} firstFaceimages={{faceimages[0]}}  employeeid={{employeeid}}>
                             <button type="button" id="PE-submit" class="btn btn-blue" style="margin-left:35px;" secondFacedatas={{facedatas[1]}} secondFaceimages={{faceimages[1]}}>保存</button>

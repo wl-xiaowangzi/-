@@ -79,11 +79,22 @@
                     <div class="form-group" id="PA-jobSel">
                         <label class="col-sm-2 col-sm-offset-1 control-label">职务</label>
                         <div class="col-sm-7">
-                            <input type="text" required="required" id="PA-Job" class="form-control job" required="required" name="job" value="" />
+                            <input type="text" required="required" maxlength="10" id="PA-Job" class="form-control job" required="required" name="job" value="" />
                             <span class="asterisk">*</span>
                         </div>
                     </div>
-                    
+                    <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("PA-Job").onpropertychange = document.getElementById(
+                                    "PA-Job").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 10) {
+                                        alert("字数超限，请保持在10字以内")
+                                    }
+                                }
+                        })
+                    </script>
                     <ul id="job_select" class="displayN">
                         {{each list}}
                         <li><a href="#" class="text-center">{{$value.title}}</a></li>
@@ -92,10 +103,22 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">工号</label>
                         <div class="col-sm-7">
-                            <input type="text" id="PA-employeenumber" required="required" class="form-control employeenumber" required="required" name="employeenumber"
+                            <input type="text" id="PA-employeenumber" required="required" maxlength="6" class="form-control employeenumber" required="required" name="employeenumber"
                                 value="" /><span class="asterisk">*</span>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("PA-employeenumber").onpropertychange = document.getElementById(
+                                    "PA-employeenumber").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 6) {
+                                        alert("字数超限，请保持在6字以内")
+                                    }
+                                }
+                        })
+                    </script>
                     <!--<div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">入库日期</label>
                         <div class="col-sm-7">
