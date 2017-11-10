@@ -6,6 +6,15 @@
 define(["jquery"],function($){
     // var api="http://39.108.171.172:80/facerecognition";
     var api="http://127.0.0.1:80/facerecognition";
+    // var ap = window.location.href.substr(23,1);
+    // if(ap=="h"){
+    //     var api="https://guard.heils.cn/heils/facerecognition"
+    // }else if(ap=="f"){
+    //     var api="https://guard.heils.cn/fostone/facerecognition"
+    // }else{
+    //     var api="https://guard.heils.cn:80/facerecognition"
+    // }
+    // console.log(ap)
     return {
         // 识别记录
         getRecordList:function(organizationid,starttime,endtime,start,limit,persontype,similarity,keyword,personid,callback){

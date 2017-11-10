@@ -23,7 +23,7 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     }
                     // 关闭摄像头
                     mediaStreamTrack && mediaStreamTrack.stop();
-                    var firstFacedatas = res.data[0].facedata.replace(/\s/g,"");
+                    var firstFacedatas = JSON.stringify(res.data.facedata).replace(/\s/g,"");
                     $(".btn-blue").parent().attr("firstFaceimages",res.data.faceimage);
                     $(".btn-blue").parent().attr("firstFacedatas",firstFacedatas);
                     $(".btn-blue").parent().attr("facetypes1","1");

@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body class='form-bg'>
     <div class="bg"></div>
     <div class="container">
-        <div class="img-box"><img src="./imgs/login/bg-pic.png" alt=""></div>
+        <div class="img-box"><img src="../imgs/login/bg-pic.png" alt=""></div>
         <div class="rows">
                 <form class="form-horizontal">
                     <span class="heading">守护者管理系统<span class="line">|</span><span class="login">登录</span></span>
@@ -37,8 +37,8 @@
         </div>
     </div>
 </body>
-<script src="js/lib/jquery-2.1.4.js"></script>
-<script src="js/lib/jquery.cookie.js"></script>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/jquery.cookie.js"></script>
 <!--<script src="js/lib/md5.js"></script>-->
 <script>
     if($.cookie("username")!=undefined){
@@ -50,6 +50,7 @@
         var formData=$(this).serialize();
         var api="http://127.0.0.1:80/facerecognition";
         // var api="http://39.108.171.172:80/facerecognition";
+        // var api = "https://guard.heils.cn/fostone/facerecognition";
         $.ajax({
             url:api+"/system/login",
             type:"post",
@@ -70,7 +71,7 @@
                     $.cookie("organizationid",res.data.organizationid,{expires:7});
                     $.cookie("userid",res.data.userid,{expires:7});
                     $.cookie("deviceids",res.data.deviceids,{expires:7})
-                    location.href="main.html";
+                    location.href="./main.html";
                 }
                 else{
                     $(".login_error_wrap").addClass("opacity1");
