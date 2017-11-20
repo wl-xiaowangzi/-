@@ -58,8 +58,10 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 $("#btnPeopleManager").removeAttr("faceimage");
                 $("#btnPeopleManager").removeAttr("facedata");
                 // 调用接口
-                console.log(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes)
                 API.addEmployee(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes, function (res) {
+                    if(res.message=="该机构手机号码已经被使用！"){
+                        alert("该手机号码已被注册")
+                    }
                     $peopleAdd.modal("hide");
                     //成功的添加员工->刷新员工管理页面
                     $("#btnPeopleManager").trigger("click");
@@ -67,7 +69,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 return false; //阻止同步提交表单
             })
             // 使用下拉菜单完成快捷选择职位
-            .on("click", "#PA-jobSel", function () {console.log(1)
+            .on("click", "#PA-jobSel", function () {
                 if ($("#PA-Job").val() == "") {
                     $("#job_select").removeClass("displayN").addClass("displayB");
                     $("#job_select>li>a").on("click", function () {

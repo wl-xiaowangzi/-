@@ -361,6 +361,9 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message=="该机构手机号码已经被使用！"){
+                        alert("该手机号码已被注册")
+                    }
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
@@ -407,6 +410,9 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message=="该机构手机号码已经被使用！"){
+                        alert("该手机号码已被注册")
+                    }
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
@@ -469,6 +475,9 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message=="该机构手机号码已经被使用！"){
+                        alert("该手机号码已被注册")
+                    }
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页
@@ -515,6 +524,9 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message=="该机构手机号码已经被使用！"){
+                        alert("该手机号码已被注册")
+                    }
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页

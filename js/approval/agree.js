@@ -13,6 +13,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalAgree.html", "
         $approvalAgree.appendTo("body").modal({
             backdrop: "static"//模态框不会自动关闭
         });
-        setTimeout(function(){$approvalAgree.modal("hide")},800)
+        setTimeout(function(){$approvalAgree.modal("hide")},1500)
     }
 })
