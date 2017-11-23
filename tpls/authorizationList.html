@@ -1,0 +1,58 @@
+<div class="">
+    <div class="panel-body" style="padding:2px;">
+    </div>
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">授权组管理</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">访问授权设置</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <div class="panel panel-default">
+                    <div class="panel-heading flex-between">
+                        <h3 class="panel-title">授权组列表</h3>
+                        <div>
+                            <span style="margin-right:20px;">已有授权组：10个</span>
+                            <button type="text" id="author-add" class="" style="width:100px;">+新增授权组</button>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading flex-between">
+                                <h3 class="panel-title">行政部授权组</h3>
+                                <div class="btn-device-edit author-edit"></div>
+                            </div>
+                            <div class="panel-body">
+                                <span>1.禾思一号门</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <div class="panel-body" id="choiceRole">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">选择授权角色</h3>
+                        </div>
+                        <div class="panel-body flex-around">
+                            <div class="author-visitor author">
+                                <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
+                                <button type="text" id="author-employee">授权给员工</button>
+                            </div>
+                            <div class="author-employee author">
+                                <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
+                                <button type="text" id="author-visitor">授权给访客</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="authorizationInfoCon"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

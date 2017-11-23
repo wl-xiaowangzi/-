@@ -10,10 +10,9 @@
                     <li><a href="#" id="visitorRecord">访客</a></li>
                 </ul>
             </div>
-            <div class="dropdown pull-left ml ">
+            <!--<div class="dropdown pull-left ml ">
                 <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">相似度<span class="slm"></span><span class="caret"></span></div>
                 <ul class="dropdown-menu similarity" aria-labelledby="dropdownMenu1">
-                    <!--<li><a href="#" similarity="0.00">0%以上</a></li>-->
                     <li><a href="#" similarity="0.65">65%以上</a></li>
                     <li><a href="#" similarity="0.70">70%以上</a></li>
                     <li><a href="#" similarity="0.75">75%以上</a></li>
@@ -22,7 +21,7 @@
                     <li><a href="#" similarity="0.90">90%以上</a></li>
                     <li><a href="#" similarity="0.95">95%以上</a></li>
                 </ul>
-            </div>
+            </div>-->
             <div class="search">
                 <div class="form-group">
                     <input type="text" id="record_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
@@ -32,10 +31,10 @@
             </div>
             <!--/下拉搜索条件-->
             <!--识别记录导出-->
-            <button id="record_export" class="pull-right">导出记录</button>
+            <!--<button id="record_export" class="pull-right">导出记录</button>-->
             <!--/识别记录导出-->
             <!--日期控件 daterangepicker-->
-            <div style="margin-right:80px;">
+            <div style="margin-right:580px;">
                 <div id="daterange-btn" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #e6ebee">
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
                     <span class="time"></span> <b class="caret"></b>
@@ -46,6 +45,15 @@
         </div>
     </div>
     <div class="table">
+        <span>识别总计：88人</span><span>识别员工：44人</span><span>识别访客：44人</span>
+        <div class="record_thead">
+        <span>识别人脸</span>
+        <span>人员名称</span>
+        <span>人员类型</span>
+        <span>识别设备</th>
+        <span>时间</span>
+        <span>操作</span>
+        </div>
         {{each data}}
         <div class="personal-info">
             <div class="img-box">

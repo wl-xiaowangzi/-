@@ -410,7 +410,7 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
-                    if(res.message=="该机构手机号码已经被使用！"){
+                    if(res.message=="手机号已经被其它雇员使用"){
                         alert("该手机号码已被注册")
                     }
                     if(res.message==undefined){
@@ -524,7 +524,7 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
-                    if(res.message=="该机构手机号码已经被使用！"){
+                    if(res.message=="手机号已经被其它访客使用"){
                         alert("该手机号码已被注册")
                     }
                     if(res.message==undefined){

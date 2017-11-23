@@ -22,7 +22,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
                 choicePicture2(ps_id,ps_type,ps_name);
             })
             // 提交表单
-            .on("click", "#PE-submit", function () {
+            $peopleBaseInfo.on("submit", "form", function () {
                 // 获取参数
                 var deviceids = $("#PE-submit").parent().parent().attr("deviceids");
                 if(deviceids!=null){
@@ -53,7 +53,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
                     var facedatas = "[" + firstFacedatas + "]|" + "[" + secondFacedatas + "]";
                     var facetypes = facetypes1+","+facetypes2;
                 }
-                console.log(ep_id, deviceids, name, sex, birthday, phonenumber, job, employeenumber, facedatas, faceimages,facetypes)
+                
                 API.editEmployee(ep_id, deviceids, name, sex, birthday, phonenumber, job, employeenumber, facedatas, faceimages,facetypes, function (res) {
                     // 隐藏模态框
                     $peopleBaseInfo.modal("hide");

@@ -11,6 +11,23 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
         var firstFaceimages = faceimages;
         var firstFacedatas = facedatas;
         var headfaceimage = headfaceimage;
+        var time = new Date();
+        // 日期补零
+        var month = time.getMonth()+1
+        var day = time.getDate();
+        var hour = time.getHours();
+        if(day.toString().length == 1){
+            day = "0"+day
+        }
+        if(hour>=19){
+           var hour5=23;
+        }else{
+           var hour5=hour+5;
+        }
+        var initStarttime = time.getFullYear() + '-' + month + '-' + day + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+        var initEndtime = time.getFullYear() + '-' + month + '-' + day + " " + hour5 + ":" + time.getMinutes() + ":" + time.getSeconds();
+        
+        console.log(initStarttime,initEndtime)
         // 调用摄像头
         $peopleVisitantAdd.on("click", "#start", function () {
             camera();
@@ -66,6 +83,8 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
         // 移除弹出层，防止重复点击造成页面卡顿
         $(".modal-backdrop").remove();
         $peopleVisitantAdd.appendTo("body").modal();
+        $("#VA-starttime").attr("value",initStarttime);
+        $("#VA-endtime").attr("value",initEndtime);
         // 为下拉框替换左侧小三角
         var flag = true;
         $("select").on("click", function () {

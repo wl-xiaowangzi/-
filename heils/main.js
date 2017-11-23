@@ -9,6 +9,7 @@ require.config({
         jquery: "lib/jquery-2.1.4",
         cookie: "lib/jquery.cookie",
         text: "lib/text",
+        qrcode:"lib/jquery.qrcode.min",
         artTemplate: "lib/template-web",
         bootstrap: "../assets/bootstrap/js/bootstrap",
         typeahead: "../assets/bootstrap/js/bootstrap-typeahead",
@@ -35,6 +36,9 @@ require.config({
         },
         typeahead: {
             deps: ["bootstrap"]
+        },
+        qrcode: {
+            deps: ["jquery"]
         }
     },
     waitSeconds:0

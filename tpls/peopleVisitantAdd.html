@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">电话</label>
                         <div class="col-sm-7">
-                            <input type="text" id="VA-phonenumber" class="form-control phonenumber" minlength="11" maxlength="11" pattern="^(0|86|17951)?1[0-9]{10}" required="required" name="phonenumber" value="" placeholder="请输入您常用手机号"/><span class="asterisk">*</span>
+                            <input type="text" id="VA-phonenumber" class="form-control phonenumber" minlength="11" maxlength="11" pattern="^1[3|4|5|7|8][0-9]{9}" required="required" name="phonenumber" value="" placeholder="请输入您常用手机号"/><span class="asterisk">*</span>
                         </div>
                     </div>
                     <script>
@@ -67,7 +67,7 @@
                                 user.setCustomValidity("请输入11位手机号码");
                             };
                             if (user.validity.patternMismatch) {
-                                user.setCustomValidity("手机号码只能是11位数字");
+                                user.setCustomValidity("请输入正确的手机号码");
                             }
                         };
                     </script>

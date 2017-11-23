@@ -9,6 +9,7 @@ require.config({
         jquery: "lib/jquery-2.1.4",
         cookie: "lib/jquery.cookie",
         text: "lib/text",
+        qrcode:"lib/jquery.qrcode.min",
         artTemplate: "lib/template-web",
         bootstrap: "../assets/bootstrap/js/bootstrap",
         typeahead: "../assets/bootstrap/js/bootstrap-typeahead",
@@ -35,13 +36,16 @@ require.config({
         },
         typeahead: {
             deps: ["bootstrap"]
+        },
+        qrcode: {
+            deps: ["jquery"]
         }
     },
     waitSeconds:0
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery", "artTemplate", "users/list","attendance/list", "people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement","common/testAdd", "common/loading", "common/checkLogin"], function ($, art, usersList,attendanceList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement,testAdd) {
+require(["jquery", "artTemplate", "users/list","attendance/list","authorization/list" ,"people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement","common/testAdd", "common/loading", "common/checkLogin"], function ($, art, usersList,attendanceList,authorizationList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement,testAdd) {
 
     //处理用户名
     var username = $.cookie("username");
@@ -171,6 +175,12 @@ require(["jquery", "artTemplate", "users/list","attendance/list", "people/list",
         //加载考勤管理模块
         attendanceList();
     });
+    $("#btnAuthorization").on("click", function () {
+        //访问授权
+        $(".module-container").empty();
+        //加载访问授权模块
+        authorizationList();
+    });
 
     $("#btnUsersManager").on("click", function () {
         //用户管理
@@ -193,10 +203,25 @@ require(["jquery", "artTemplate", "users/list","attendance/list", "people/list",
     $("#btnRecord").trigger("click");
 
     // 给侧边栏添加点击效果
-    $("#sidebar-menu .side-menu li").on("click", function () {
+    $(".nav-item>ul li").on("click", function () {
         $(this).siblings().removeClass("activate");
         $(this).addClass("activate");
-    })
+    });
+    // nav收缩展开
+    $('.nav-item>a').on('click',function(){
+        if (!$('.nav').hasClass('nav-mini')) {
+            if ($(this).next().css('display') == "none") {
+                //展开未展开
+                $('.nav-item').children('ul').slideUp(300);
+                $(this).next('ul').slideDown(300);
+                $(this).parent('li').addClass('nav-show').siblings('li').removeClass('nav-show');
+            }else{
+                //收缩已展开
+                $(this).next('ul').slideUp(300);
+                $('.nav-item.nav-show').removeClass('nav-show');
+            }
+        }
+    });
     // 给下拉菜单变为鼠标移入触发
     $('li.dropdown').mouseover(function () {
         $(this).addClass('open');

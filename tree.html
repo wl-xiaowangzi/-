@@ -1,92 +1,239 @@
-/**
- * 人员列表
- * Created by landon 2017/9/4.
- */
+<!DOCTYPE html>
+<html lang="en">
 
-define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./baseInfo", "./visitant", "./add", "./del", "common/employeeCamera","pager"], function ($, art, API, peopleListTpl, baseInfo, visitant, peopleAdd, peopleDel, employeeCamera) {
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    div,
+    ul,
+    li {
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+    }
 
-    return function () {
-        var page = $("#btnPager").attr("page")||1;
-        var parameterkey = "key_job";
-        var start = 40*(page-1);
-        var limit = 40;
-        var keyword = $("#btnSearchWords").attr("peopleKeyword");
-        // 移除参数
-        $("#btnPager").removeAttr("page");
-        $("body").removeClass("noResult");
-        // 清空其他模块保留的搜索信息
-        $("#btnSearchWords").removeAttr("visitantkeyword");
-        $("#btnSearchWords").removeAttr("approvalkeyword");
-        $("#btnSearchWords").removeAttr("recordkeyword");
-        $("#btnSearchWords").removeAttr("deviceKeyword");
-        $("#btnSearchWords").removeAttr("usersKeyword");
-        $("#btnKeepSearchWords").removeAttr("visitantSearchWords");
-        $("#btnKeepSearchWords").removeAttr("approvalsearchwords");
-        $("#btnKeepSearchWords").removeAttr("recordsearchwords");
-        $("#btnKeepSearchWords").removeAttr("deviceSearchwords");
-        $("#btnKeepSearchWords").removeAttr("usersSearchWords");
-        // 调用接口
-        API.getPeopleList(start, limit, keyword, function (res) {console.log(res)
-            //编译模板
-            var peopleList = art.render(peopleListTpl, res);
-            //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
-            var $peopleList = $(peopleList);
-            //实现人员管理事件
-            $peopleList
-                .on("click", "#peopleAdd", function () {
-                    employeeCamera();
-                })
-                .on("click", ".btn-people-del", function () {
-                    //1、获取员工id
-                    var ep_id = $(this).attr("ep_id");
-                    // 传参
-                    peopleDel(ep_id);
-                })
-                .on("click", "#peopleVisitantList", function () {
-                    visitant();
-                })
-                .on("click", ".btn-edit-course-baseinfo", function () {
-                    //编辑员工基本信息
-                    //1、获取员工id
-                    var ep_id = $(this).parent().attr("ep_id");
-                    //将员工id传入信息模块
-                    baseInfo(ep_id)
-                })
-                .on("click", "#people_search_btn", function () {
-                    var keyword = $("#people_search_word").val();
-                    $("#search").val(keyword);
-                    $("#btnSearchWords").attr("peopleKeyword", keyword);
-                    // 设置搜索关键字保留
-                    $("#btnKeepSearchWords").attr("peopleSearchWords",keyword);
-                    $("#btnPeopleManager").trigger("click"); //刷新
-                })
-            //把渲染好的元素放到页面中
-            $(".module-container").empty();
-            $(".module-container").append($peopleList);
-            // 设置下拉菜单鼠标移入触发
-            $('div.dropdown').mouseover(function() {   
-            $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');});
-            // 设置搜索关键字保留
-            var searchWords=$("#btnKeepSearchWords").attr("peopleSearchWords");
-            $("#people_search_word").val(searchWords);
-            $("#search").val(searchWords);
-            // 获取员工参数
-            API.getParameterList(start, limit, parameterkey, function (res) {
-            var list = res.data.list;
-            var mySource = "["
-            for (var i = 0; i < list.length; i++) {
-                var title = list[i].title;
-                if (title != '') {
-                    mySource += '{"id":' + (i + 1) + ',"name":"' + title + '"},';
-                }
-            }
-            if (mySource != '[') {
-                mySource = mySource.substring(0, mySource.length - 1);
-            }
-            mySource += ']';
-            $("#btnMySource").attr("mySource", mySource)
-        })
-        // 组织架构
+    body {
+        background-color: #FFFFFF;
+        font-size: 12px;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #TreeList {
+        background-color: #FFFFFF;
+        margin-top: 6px;
+        margin-right: 9px;
+        margin-bottom: 6px;
+        margin-left: 9px;
+        border: 1px solid #5d7b96;
+        padding-bottom: 6px;
+        padding-left: 6px;
+    }
+
+    #TreeList .mouseOver {
+        background-color: #FAF3E2;
+    }
+
+    #TreeList .ParentNode {
+        line-height: 21px;
+        height: 21px;
+        margin-top: 2px;
+        clear: both;
+    }
+
+    #TreeList .ChildNode {
+        background-image: url(Sys_ModuleIcos.png);
+        background-position: 15px -58px;
+        padding-left: 39px;
+        line-height: 21px;
+        background-repeat: no-repeat;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-bottom-width: 1px;
+        border-left-width: 0px;
+        border-top-style: dashed;
+        border-right-style: dashed;
+        border-bottom-style: dashed;
+        border-left-style: dashed;
+        border-top-color: #aabdce;
+        border-right-color: #aabdce;
+        border-bottom-color: #aabdce;
+        border-left-color: #aabdce;
+        cursor: default;
+        clear: both;
+        height: 21px;
+        color: #314f6a;
+    }
+
+    #TreeList .title {
+        float: left;
+    }
+
+    #TreeList .input {
+        font-size: 12px;
+        line-height: 18px;
+        color: #FFF;
+        height: 16px;
+        background-color: #3F6B8F;
+        width: 120px;
+        text-align: center;
+        margin-top: 1px;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: #1F3547;
+        border-right-color: #FFF;
+        border-bottom-color: #FFF;
+        border-left-color: #1F3547;
+        float: left;
+    }
+
+    #TreeList .editBT {
+        float: left;
+        overflow: visible;
+    }
+
+    #TreeList .editBT .ok {
+        background-image: url(Sys_ModuleIcos.png);
+        background-repeat: no-repeat;
+        background-position: 0px -89px;
+        height: 13px;
+        width: 12px;
+        float: left;
+        margin-left: 3px;
+        padding: 0px;
+        margin-top: 3px;
+        cursor: pointer;
+    }
+
+    #TreeList .editBT .cannel {
+        background-image: url(Sys_ModuleIcos.png);
+        background-repeat: no-repeat;
+        background-position: 0px -120px;
+        float: left;
+        height: 13px;
+        width: 12px;
+        margin-left: 3px;
+        padding: 0px;
+        margin-top: 3px;
+        cursor: pointer;
+    }
+
+    #TreeList .editArea {
+        float: right;
+        color: #C3C3C3;
+        cursor: pointer;
+        margin-right: 6px;
+    }
+
+    #TreeList .editArea span {
+        margin: 2px;
+    }
+
+    #TreeList .editArea .mouseOver {
+        color: #BD4B00;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: #C9925A;
+        border-right-color: #E6CFBB;
+        border-bottom-color: #E6CFBB;
+        border-left-color: #C9925A;
+        background-color: #FFFFFF;
+        margin: 0px;
+        padding: 1px;
+    }
+
+    #TreeList .ParentNode .title {
+        color: #314f6a;
+        cursor: pointer;
+        background-image: url(Sys_ModuleIcos.png);
+        background-repeat: no-repeat;
+        padding-left: 39px;
+    }
+
+    #TreeList .ParentNode.show .title {
+        font-weight: bold;
+        background-position: 3px -27px;
+    }
+
+    #TreeList .ParentNode.hidden .title {
+        background-position: 3px 4px;
+    }
+
+    #TreeList .ParentNode .editArea {
+        color: #999;
+    }
+
+    #TreeList .ParentNode.show {
+        background-color: #d1dfeb;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: #5d7b96;
+        border-right-color: #5d7b96;
+        border-bottom-color: #5d7b96;
+        border-left-color: #5d7b96;
+    }
+
+    #TreeList .ParentNode.hidden {
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-bottom-width: 1px;
+        border-left-width: 0px;
+        border-top-style: dashed;
+        border-right-style: dashed;
+        border-bottom-style: dashed;
+        border-left-style: dashed;
+        border-top-color: #aabdce;
+        border-right-color: #aabdce;
+        border-bottom-color: #aabdce;
+        border-left-color: #aabdce;
+    }
+
+    #TreeList .Row {
+        clear: both;
+        margin-left: 24px;
+        background-image: url(Sys_ModuleIcos2.png);
+        background-repeat: repeat-y;
+        background-position: 7px 0px;
+    }
+
+    .SearchEngine_AD1 {
+        text-align: center;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        background-color: #FFF;
+    }
+
+    .SearchEngine_AD2 {
+        text-align: right;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        background-color: #FFF;
+    }
+</style>
+<script type="text/javascript" src="js/lib/jquery-2.1.4.js"></script>
+<script type="text/javascript">
     $(document).ready(function (e) {
         var TreeName = 'TreeList'; //树状ID 
         var PrentNodeClass = 'ParentNode'; //父节点的标识 
@@ -417,17 +564,117 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "./b
         //========================================================================================= 
 
     });
-            // 设置分页
-            var num = Math.ceil(res.sumsize/40);
-            Page({
-                num: num, //页码数
-                startnum: page||1, //指定页码
-                elem: $('#page1'), //指定的元素
-                callback: function (n) { //回调函数
-                    $("#btnPager").attr("page",n);
-                    $("#btnPeopleManager").trigger("click"); //刷新
-                }
-            });
-        })
-    }
-})
+</script>
+
+</head>
+
+<body>
+    <div id="GoogleAD"></div>
+    <div id="TreeList">
+        <div class="ParentNode show">
+            <div class="title">酷站欣赏</div>
+            <div class="editBT"></div>
+            <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+        </div>
+        <div class="Row">
+            <div class="ChildNode">
+                <div class="title">欧美酷站</div>
+                <div class="editBT"></div>
+                <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+            </div>
+            <div class="ChildNode">
+                <div class="title">日韩酷站</div>
+                <div class="editBT"></div>
+                <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+            </div>
+            <div class="ChildNode">
+                <div class="title">国内酷站</div>
+                <div class="editBT"></div>
+                <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+            </div>
+            <div class="ChildNode">
+                <div class="title">婚庆摄影</div>
+                <div class="editBT"></div>
+                <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+            </div>
+            <div class="ChildNode">
+                <div class="title">餐饮食品</div>
+                <div class="editBT"></div>
+                <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+            </div>
+        </div>
+        <div class="ParentNode hidden">
+            <div class="title">设计网址</div>
+            <div class="editBT"></div>
+            <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+        </div>
+        <div class="Row">
+            <div class="ParentNode">
+                <div class="title">综合设计</div>
+                <div class="editBT"></div>
+                <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+            </div>
+            <div class="Row">
+                <div class="ChildNode">
+                    <div class="title">Arting365</div>
+                    <div class="editBT"></div>
+                    <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+                </div>
+                <div class="ChildNode">
+                    <div class="title">视觉中国</div>
+                    <div class="editBT"></div>
+                    <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+                </div>
+                <div class="ChildNode">
+                    <div class="title">蓝色理想</div>
+                    <div class="editBT"></div>
+                    <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+                </div>
+                <div class="ChildNode">
+                    <div class="title">网页设计师联盟</div>
+                    <div class="editBT"></div>
+                    <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+                </div>
+                <div class="ChildNode">
+                    <div class="title">创意在线</div>
+                    <div class="editBT"></div>
+                    <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+                </div>
+                <div class="ChildNode">
+                    <div class="title">视觉同盟</div>
+                    <div class="editBT"></div>
+                    <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+                </div>
+            </div>
+            <div class="ParentNode hidden">
+                <div class="title">平面设计</div>
+                <div class="editBT"></div>
+                <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+            </div>
+            <div class="Row">
+                <div class="ChildNode">
+                    <div class="title">优艾网</div>
+                    <div class="editBT"></div>
+                    <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+                </div>
+                <div class="ChildNode">
+                    <div class="title">中国设计网</div>
+                    <div class="editBT"></div>
+                    <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+                </div>
+                <div class="ChildNode">
+                    <div class="title">设计酷</div>
+                    <div class="editBT"></div>
+                    <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+                </div>
+                <div class="ChildNode">
+                    <div class="title">平面设计在线</div>
+                    <div class="editBT"></div>
+                    <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

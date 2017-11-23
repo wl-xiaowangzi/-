@@ -23,7 +23,7 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantInfo.html",
                 choicePicture2(ps_id,ps_type,ps_name);
             });
             // 提交表单
-            $peopleVisitantInfo.on("click","#VE-submit",function(){
+            $peopleVisitantInfo.on("submit","form",function(){
                 var deviceids = $("#VE-submit").parent().parent().attr("deviceids");
                 if(deviceids!=null){
                     var deviceids = $("#VE-submit").parent().parent().attr("deviceids").replace(/\[|]/g, '').replace(/\"|"/g, '');

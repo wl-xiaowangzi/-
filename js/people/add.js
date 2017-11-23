@@ -59,9 +59,6 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 $("#btnPeopleManager").removeAttr("facedata");
                 // 调用接口
                 API.addEmployee(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes, function (res) {
-                    if(res.message=="该机构手机号码已经被使用！"){
-                        alert("该手机号码已被注册")
-                    }
                     $peopleAdd.modal("hide");
                     //成功的添加员工->刷新员工管理页面
                     $("#btnPeopleManager").trigger("click");
