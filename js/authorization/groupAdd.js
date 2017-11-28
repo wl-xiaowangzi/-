@@ -11,20 +11,25 @@ define(["jquery", "artTemplate", "text!tpls/authorGroupAdd.html", "common/api"],
         var limit = 60;
         var keyword = $("#btnSearchWords").attr("deviceKeyword");
         // 渲染模板
-        API.getDeviceList(start, limit, keyword, function (res) {
+        API.queryDeviceList(start, limit, keyword, function (res) {
             var authorGroupAdd = art.render(authorGroupAddTpl, res);
             var $authorGroupAdd = $(authorGroupAdd);
             // 提交表单
             $authorGroupAdd
-                .on("submit", "form", function () {
+                .on("click", ".btn-blue", function () {
                     // 获取表单参数 
-                    var formData = $(this).serialize();
+                    var list = $("#box1").find(".back-gray");
+                    var deviceids = $(list[0]).attr("deviceid");
+                    for(var i = 1;i < list.length; i++){
+                        deviceids += "," + $(list[i]).attr("deviceid");
+                    }
+                    console.log(deviceids)
                     // 接口
-                    API.addUser(formData, function (res) {
-                        $authorGroupAdd.modal("hide");
-                        //成功的添加用户->刷新用户管理页面
-                        $("#btnUsersManager").trigger("click");
-                    })
+                    // API.addUser(formData, function (res) {
+                    //     $authorGroupAdd.modal("hide");
+                    //     //成功的添加用户->刷新用户管理页面
+                    //     $("#btnUsersManager").trigger("click");
+                    // })
                     return false; //阻止同步提交表单
                 });
             // 清除上一次的模板

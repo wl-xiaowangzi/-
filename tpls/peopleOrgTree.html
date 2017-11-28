@@ -1,0 +1,93 @@
+<div id="menu" class="menu">
+    <div class="menu-header flex-between" style="border:none;margin-bottom:16px;position:relative;">
+        <div class="left" style="font-weight:800;color:#000;font-size:15px;">{{name}}</div>
+        <div style="width:122px;" class="flex-around" organizationid={{organizationid}} parentorganizationid={{parentorganizationid}}
+            principal={{principal}} name={{name}}>
+            <div class="btn-add"><span>添加下级部门</span></div>
+            <div class="btn-post-edit"><span>编辑部门</span></div>
+            {{if children.length==0}}
+            <div class="btn-post-del"><span>删除部门</span></div>
+            {{/if}}
+        </div>
+    </div>
+    <ul style="border-bottom:1px solid #eee;">
+        {{each children}}
+        <li style="background:#fafbfa;font-weight:800;color:#000;">
+            <div class="flex-between myline">
+                <div class="left" style="margin-left:20px;">{{$value.name}}</div>
+                <div class="right flex-around displayN" organizationid={{$value.organizationid}} parentorganizationid={{$value.parentorganizationid}}
+                    principal={{$value.principal}} name={{$value.name}}>
+                    <div class="total-menu"><span>...</span></div>
+                    <div class="sub-menu displayN">
+                        <div class="btn-add"><span>创建子级</span></div>
+                        <div class="btn-post-edit"><span>编辑部门</span></div>
+                        {{if $value.children.length==0}}
+                        <div class="btn-post-del"><span>删除部门</span></div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <ul class="submenu">
+                {{each $value.children}}
+                <li style="background:#fff;font-weight:300;font-size:14px">
+                    <div class="flex-between myline">
+                        <div class="left" style="margin-left:40px;">{{$value.name}}</div>
+                        <div class="right flex-around displayN" organizationid={{$value.organizationid}} parentorganizationid={{$value.parentorganizationid}}
+                            principal={{$value.principal}} name={{$value.name}}>
+                            <div class="total-menu"><span>...</span></div>
+                            <div class="sub-menu displayN">
+                                <div class="btn-add"><span>添加下级部门</span></div>
+                                <div class="btn-post-edit"><span>编辑部门</span></div>
+                                {{if $value.children.length==0}}
+                                <div class="btn-post-del"><span>删除部门</span></div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="submenu">
+                        {{each $value.children}}
+                        <li style="background:#edf2f6;">
+                            <div class="flex-between myline">
+                                <div class="left" style="margin-left:60px;">{{$value.name}}</div>
+                                <div class="right flex-around displayN" organizationid={{$value.organizationid}} parentorganizationid={{$value.parentorganizationid}}
+                                    principal={{$value.principal}} name={{$value.name}}>
+                                    <div class="total-menu"><span>...</span></div>
+                                    <div class="sub-menu displayN">
+                                        <div class="btn-add"><span>添加下级部门</span></div>
+                                        <div class="btn-post-edit"><span>编辑部门</span></div>
+                                        {{if $value.children.length==0}}
+                                        <div class="btn-post-del"><span>删除部门</span></div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="submenu">
+                                {{each $value.children}}
+                                <li style="background:#fff;">
+                                    <div class="flex-between myline">
+                                        <div class="left" style="margin-left:80px;">{{$value.name}}</div>
+                                        <div class="right flex-around displayN" organizationid={{$value.organizationid}} parentorganizationid={{$value.parentorganizationid}}
+                                            principal={{$value.principal}} name={{$value.name}}>
+                                            <div class="total-menu"><span>...</span></div>
+                                            <div class="sub-menu displayN">
+                                                <div class="btn-add"><span>添加下级部门</span></div>
+                                                <div class="btn-post-edit"><span>编辑部门</span></div>
+                                                {{if $value.children.length==0}}
+                                                <div class="btn-post-del"><span>删除部门</span></div>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </li>
+                {{/each}}
+            </ul>
+        </li>
+        {{/each}}
+    </ul>
+</div>

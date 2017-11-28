@@ -81,11 +81,13 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 }
             })
             // 移除上一次的模态框
-            $("#modalPeopleAdd").remove();
+            // $("#modalPeopleAdd").remove();
             // 移除弹出层，防止重复点击造成页面卡顿
             $(".modal-backdrop").remove();
             // 弹出模态框
-            $peopleAdd.appendTo("body").modal();
+            // $peopleAdd.appendTo("body").modal();
+            $(".module-container").empty();
+            $(".module-container").append($peopleAdd);
             // 为下拉框替换左侧小三角
             var flag=true;
             $("select").on("click",function(){

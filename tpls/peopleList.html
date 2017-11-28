@@ -20,45 +20,41 @@
             </div>
         </div>
     </div>
-    <div class="flex-between">
-        <div class="people-left" style="width:350px;margin-left:30px;margin-top:20px;">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">组织架构</h3>
-            </div>
-            <div class="panel-body">
-                <h4>禾思科技</h3>
-                <div id="TreeList">
-        <div class="ParentNode show">
-            <div class="title">酷站欣赏</div>
-            <div class="editBT"></div>
-            <div class="editArea"><span>[编辑]</span><span>[添加同级目录]</span><span>[添加下级目录]</span><span>[删除]</span></div>
-        </div>
-    </div>
-            </div>
-        </div>
-    </div>
-    <div class="people-right">
-        <div class="info-content">
-            {{each data}} {{if $value.status==3}}
-            <div class="info col-sm-2">
-                <div class="btn-people-del" ep_id={{$value.employeeid}}>×</div>
-                <div class="info-box">
-                    <div class="img-box">
-                        {{if $value.headfaceimages[0]!=undefined}}
-                        <img src="{{$value.headfaceimages[0]}}" alt=""> {{else}} {{/if}}
+    <div class="">
+        <div class="people-left" style="margin-left:30px;margin-top:20px;">
+            <div class="panel panel-default" style="width:230px;position:fixed;top:100px;z-index:999;">
+                <div class="panel-heading">
+                    <h3 class="panel-title">组织架构</h3>
+                </div>
+                <div class="panel-body">
+                    <!--组织架构树-->
+                    <div id="TreeList">
+
                     </div>
-                    <p>{{$value.name}}</p>
-                    <p>{{$value.job}}</p>
-                    <h3 ep_id={{$value.employeeid}}><button class="btn btn-default btn-edit-course-baseinfo">编辑</button></h3>
                 </div>
             </div>
-            {{else}} {{/if}} {{/each}}
+        </div>
+        <div class="people-right" style="margin-left:220px;">
+            <div class="info-content">
+                {{each data}} {{if $value.status==3}}
+                <div class="info col-sm-2">
+                    <div class="btn-people-del" ep_id={{$value.employeeid}}>×</div>
+                    <div class="info-box">
+                        <div class="img-box">
+                            {{if $value.headfaceimages[0]!=undefined}}
+                            <img src="{{$value.headfaceimages[0]}}" alt=""> {{else}} {{/if}}
+                        </div>
+                        <p>{{$value.name}}</p>
+                        <p>{{$value.job}}</p>
+                        <h3 ep_id={{$value.employeeid}}><button class="btn btn-default btn-edit-course-baseinfo">编辑</button></h3>
+                    </div>
+                </div>
+                {{else}} {{/if}} {{/each}}
 
+            </div>
         </div>
     </div>
-    </div>
-    
+
     <div class="pages">
         <ul class="pagination" id="page1">
         </ul>

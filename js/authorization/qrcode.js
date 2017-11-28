@@ -8,7 +8,7 @@ define(["jquery", "artTemplate", "common/api","text!tpls/authorizationQrcode.htm
             //编译模板
             // var attendanceList = art.render(usersListTpl, res);
             var $qrcode = $(qrcodeTpl);
-            
+            $qrcode
             
             //把渲染好的元素放到页面中
            // 清除上一次的模板

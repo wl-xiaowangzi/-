@@ -11,7 +11,7 @@ define(["jquery", "artTemplate", "text!tpls/authorGroupEdit.html", "common/api"]
         var limit = 60;
         var keyword = $("#btnSearchWords").attr("deviceKeyword");
         // 渲染模板
-        API.getDeviceList(start, limit, keyword, function (res) {
+        API.queryDeviceList(start, limit, keyword, function (res) {
             var authorGroupEdit = art.render(authorGroupEditTpl, res);
             var $authorGroupEdit = $(authorGroupEdit);
             // 提交表单

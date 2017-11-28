@@ -36,6 +36,7 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
+        
         //查询识别记录（无加载动画）
         queryRecordList:function(organizationid,starttime,endtime,start,limit,persontype,similarity,keyword,personid,callback){
             $.ajax({
@@ -753,6 +754,27 @@ define(["jquery"],function($){
                 callback && callback(res);
             })
         },
+        // 查询设备列表（不带加载动画）
+        queryDeviceList:function(start,limit,keyword,callback){
+             $.ajax({
+                url:api+"/system/device/query",
+                type:"get",
+                data:{start:start,limit:limit,keyword:keyword},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
         // 添加设备
         addDevice:function(formData,callback){
             $.ajax({
@@ -826,6 +848,153 @@ define(["jquery"],function($){
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+         // 机构管理
+        // 中广信息机构查询机构树
+        queryTree:function(organizationid,callback){
+            $.get(api+"/system/organization/queryTree",{organizationid:organizationid},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
+                }
+                callback && callback(res);
+            })
+        },
+        // 中广信息机构查询机构树
+        getTree:function(organizationid,callback){
+            $.ajax({
+                url:api+"/system/organization/queryTree",
+                type:"get",
+                data:{organizationid:organizationid},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 获取机构id
+         getOrganizationId:function(parentorganizationid,callback){
+            $.ajax({
+                url:api+"/system/organization/getOrganizationId",
+                type:"get",
+                data:{parentorganizationid:parentorganizationid},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 增加机构
+        addOrganization:function(organizationid,name,parentorganizationid,principal,qcode,callback){
+            $.ajax({
+                url:api+"/system/organization/add",
+                type:"post",
+                data:{organizationid:organizationid,name:name,parentorganizationid:parentorganizationid,principal:principal,qcode:qcode},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    alert(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+           // 修改机构
+        editOrganization:function(organizationid,name,parentorganizationid,principal,qcode,callback){
+            $.ajax({
+                url:api+"/system/organization/update",
+                type:"post",
+                data:{organizationid:organizationid,name:name,parentorganizationid:parentorganizationid,principal:principal,qcode:qcode},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    alert(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+           // 删除机构
+        delOrganization:function(organizationids,callback){
+            $.ajax({
+                url:api+"/system/organization/delete",
+                type:"post",
+                data:{organizationids:organizationids},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    alert(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+             // 查询机构
+        queryOrganization:function(keyword,limit,start,callback){
+            $.ajax({
+                url:api+"/system/organization/query",
+                type:"get",
+                data:{keyword:keyword,limit:limit,start:start},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    alert(res.message);
                     if(res.message==undefined){
                         // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
                         //跳转到登录页

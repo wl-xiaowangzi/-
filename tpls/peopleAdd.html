@@ -1,138 +1,141 @@
-<div class="modal fade" id="modalPeopleAdd" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">添加人员信息</h4>
+<div class="" id="modalPeopleAdd">
+    <div class="">
+        <div class="panel-body">
+            <div class="panel-body">
+                <h4 class="panel-title">添加人员信息</h4>
             </div>
-            <div class="modal-body">
-                <form class="form form-horizontal">
-                    <div class="form-group mb32" style="display:flex;justify-content:center;">
-                        <div class="img-box img_info_box mr32">
-                            <img class="mainPIC ml10" alt="" width="100" height="100">
-                            <p class="recording reminder_text pic1record mt16 text-center">(识别头像)</p>
-                            <p class="getHeadPic ipt_text mt8 text-center mainHeadPIC">照片获取中···</p>
-                        </div>
-                        <div class="img-box img_info_box condition" id="start">
-                            <img class="secPIC text-center ml10" alt="" width="100" height="100">
-                            <p class="recording reminder_text pic2record mt16 text-center">(可选项)</p>
-                            <p class="getHeadPic ipt_text mt8 text-center secHeadPIC">请摘掉眼镜获取正脸</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="visitorName" required="required" maxlength="20" class="form-control name" required="required" name="name"
-                                value="" />
-                            <span class="asterisk">*</span>
+            <div class="panel-body">
+                <form class="form form-horizontal flex-between" style="background:#fff;margin-left:34px;margin-right:34px;">
+                    <div class="form-left" style="width:200px;">
+                        <div class="form-group mb32">
+                            <h4>添加人脸照片</h4>
+                            <div class="img-box img_info_box mr32" style="margin-left:50px;">
+                                <img class="mainPIC ml10" alt="" width="100" height="100">
+                                <p class="recording reminder_text pic1record mt16">(识别头像)</p>
+                                <p class="getHeadPic ipt_text mt8 text-center mainHeadPIC">照片获取中···</p>
+                            </div>
+                            <div class="img-box img_info_box condition" id="start" style="margin-left:50px;">
+                                <img class="secPIC text-center ml10" alt="" width="100" height="100">
+                                <p class="recording reminder_text pic2record mt16 text-center">(可选项)</p>
+                                <p class="getHeadPic ipt_text mt8 text-center secHeadPIC">请摘掉眼镜获取正脸</p>
+                            </div>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            document.getElementById("visitorName").onpropertychange = document.getElementById(
-                                    "visitorName").onkeyup =
-                                function () {
-                                    var lenE = this.value.length;
-                                    if (lenE == 20) {
-                                        alert("字数超限，请保持在20字以内")
+                    <div class="form-right flex-between" style="flex:1;">
+                        <div class="right-l" style="flex:1;">
+                            <h4>员工信息</h4>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">姓名</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="visitorName" required="required" maxlength="20" class="form-control name" required="required" name="name"
+                                        value="" />
+                                    <span class="asterisk">*</span>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    document.getElementById("visitorName").onpropertychange = document.getElementById(
+                                            "visitorName").onkeyup =
+                                        function () {
+                                            var lenE = this.value.length;
+                                            if (lenE == 20) {
+                                                alert("字数超限，请保持在20字以内")
+                                            }
+                                        }
+                                })
+                            </script>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">电话</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control phonenumber" minlength="11" maxlength="11" pattern="^1[3|4|5|7|8][0-9]{9}" required="required"
+                                        name="phonenumber" id="PA-phonenumber" value="" placeholder="请输入11位手机号码" />
+                                    <span class="asterisk">*</span>
+                                </div>
+                            </div>
+                            <script>
+                                var user = document.getElementById("PA-phonenumber");
+                                user.onblur = function () {
+                                    if (user.value) {
+                                        user.setCustomValidity(""); //现将有输入时的提示设置为空
+                                    } else if (user.validity.valueMissing) {
+                                        user.setCustomValidity("请输入11位手机号码");
+                                    };
+                                    if (user.validity.patternMismatch) {
+                                        user.setCustomValidity("请输入正确的手机号码");
                                     }
-                                }
-                        })
-                    </script>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">性别</label>
-                        <div class="col-sm-7">
-                            <select id="PA-sex" name="sex" class="form-control sex">
+                                };
+                            </script>
+                            <div class="form-group" id="PA-jobSel">
+                                <label class="col-sm-2 control-label">职务</label>
+                                <div class="col-sm-7">
+                                    <input type="text" required="required" maxlength="10" id="PA-Job" class="form-control job" required="required" name="job"
+                                        value="" />
+                                    <span class="asterisk">*</span>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    document.getElementById("PA-Job").onpropertychange = document.getElementById(
+                                            "PA-Job").onkeyup =
+                                        function () {
+                                            var lenE = this.value.length;
+                                            if (lenE == 10) {
+                                                alert("字数超限，请保持在10字以内")
+                                            }
+                                        }
+                                })
+                            </script>
+                            <ul id="job_select" class="displayN">
+                                {{each list}}
+                                <li><a href="#" class="text-center">{{$value.title}}</a></li>
+                                {{/each}}
+                            </ul>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">工号</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="PA-employeenumber" required="required" maxlength="6" class="form-control employeenumber" required="required"
+                                        name="employeenumber" value="" /><span class="asterisk">*</span>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    document.getElementById("PA-employeenumber").onpropertychange = document.getElementById(
+                                            "PA-employeenumber").onkeyup =
+                                        function () {
+                                            var lenE = this.value.length;
+                                            if (lenE == 6) {
+                                                alert("字数超限，请保持在6字以内")
+                                            }
+                                        }
+                                })
+                            </script>
+                            <div class="form-group">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <button type="submit" class="btn btn-blue" style="margin-left:35px;">确认</button>
+                                    <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-r" style="flex:1;">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">性别</label>
+                                <div class="col-sm-7">
+                                    <select id="PA-sex" name="sex" class="form-control sex">
                                     <option value="1">男</option>
                                     <option value="2">女</option>
                             </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">生日</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="PA-birthday" class="form-control birthday-join" name="birthtime" value="" placeholder="请选择">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">生日</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="PA-birthday" class="form-control birthday-join" name="birthtime" value="" placeholder="请选择">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">电话</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control phonenumber" minlength="11" maxlength="11" pattern="^1[3|4|5|7|8][0-9]{9}" required="required"
-                                name="phonenumber" id="PA-phonenumber" value="" placeholder="请输入11位手机号码" />
-                            <span class="asterisk">*</span>
-                        </div>
-                    </div>
-                    <script>
-                        var user = document.getElementById("PA-phonenumber");
-                        user.onblur = function () {
-                            if (user.value) {
-                                user.setCustomValidity(""); //现将有输入时的提示设置为空
-                            } else if (user.validity.valueMissing) {
-                                user.setCustomValidity("请输入11位手机号码");
-                            };
-                            if (user.validity.patternMismatch) {
-                                user.setCustomValidity("请输入正确的手机号码");
-                            }
-                        };
-                    </script>
-                    <div class="form-group" id="PA-jobSel">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">职务</label>
-                        <div class="col-sm-7">
-                            <input type="text" required="required" maxlength="10" id="PA-Job" class="form-control job" required="required" name="job" value="" />
-                            <span class="asterisk">*</span>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            document.getElementById("PA-Job").onpropertychange = document.getElementById(
-                                    "PA-Job").onkeyup =
-                                function () {
-                                    var lenE = this.value.length;
-                                    if (lenE == 10) {
-                                        alert("字数超限，请保持在10字以内")
-                                    }
-                                }
-                        })
-                    </script>
-                    <ul id="job_select" class="displayN">
-                        {{each list}}
-                        <li><a href="#" class="text-center">{{$value.title}}</a></li>
-                        {{/each}}
-                    </ul>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">工号</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="PA-employeenumber" required="required" maxlength="6" class="form-control employeenumber" required="required" name="employeenumber"
-                                value="" /><span class="asterisk">*</span>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            document.getElementById("PA-employeenumber").onpropertychange = document.getElementById(
-                                    "PA-employeenumber").onkeyup =
-                                function () {
-                                    var lenE = this.value.length;
-                                    if (lenE == 6) {
-                                        alert("字数超限，请保持在6字以内")
-                                    }
-                                }
-                        })
-                    </script>
-                    <!--<div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">入库日期</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control date-join" data-date-format="yyyy-mm-dd" name="tc_join_date" value="">
-                        </div>
-                    </div>-->
-
-                    <div class="form-group">
-                        <div class="col-sm-6 col-sm-offset-5">
-                            <button type="submit" class="btn btn-blue" style="margin-left:35px;">确认</button>
-                            <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
-                        </div>
                 </form>
-                </div>
             </div>
             <!-- /.modal-content -->
         </div>
