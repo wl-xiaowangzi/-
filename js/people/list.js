@@ -3,7 +3,7 @@
  * Created by landon 2017/9/4.
  */
 
-define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "text!tpls/peopleOrgTree.html", "./baseInfo", "./visitant", "./add", "./del", "./orgAdd", "./orgDel", "./orgEdit", "common/employeeCamera", "pager"], function ($, art, API, peopleListTpl, peopleOrgTpl, baseInfo, visitant, peopleAdd, peopleDel, orgAdd, orgDel, orgEdit, employeeCamera) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "text!tpls/peopleOrgTree.html", "./baseInfo", "./visitant", "./add", "./del","./orgList", "./orgAdd", "./orgDel", "./orgEdit", "common/employeeCamera", "pager"], function ($, art, API, peopleListTpl, peopleOrgTpl, baseInfo, visitant, peopleAdd, peopleDel,orgList, orgAdd, orgDel, orgEdit, employeeCamera) {
 
     return function () {
         var page = $("#btnPager").attr("page") || 1;
@@ -25,6 +25,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
         $("#btnKeepSearchWords").removeAttr("recordsearchwords");
         $("#btnKeepSearchWords").removeAttr("deviceSearchwords");
         $("#btnKeepSearchWords").removeAttr("usersSearchWords");
+       
         // 调用接口
         var organizationid = $.cookie("organizationid");
           
@@ -34,46 +35,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
             var peopleList = art.render(peopleListTpl, res);
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
             var $peopleList = $(peopleList);
-            // 查询组织树
-            API.queryTree(organizationid, function (res) {
-                console.log(res)
-                var configOrganizationalManagement = art.render(peopleOrgTpl, res.data[0]);
-                var $configOrganizationalManagement = $(configOrganizationalManagement);
-                $configOrganizationalManagement
-                    .on("click", ".btn-add", function () {
-                        var parentorganizationid = $(this).parent().parent().attr("organizationid");
-                        var principal = $(this).parent().parent().attr("principal");
-                        orgAdd(parentorganizationid, principal);
-                    })
-                    .on("click", ".btn-post-edit", function () {
-                        var parentorganizationid = $(this).parent().parent().attr("parentorganizationid");
-                        var organizationid = $(this).parent().parent().attr("organizationid");
-                        var principal = $(this).parent().parent().attr("principal");
-                        var name = $(this).parent().parent().attr("name");
-                        orgEdit(parentorganizationid, organizationid, principal, name);
-                    })
-                    .on("click", ".btn-post-del", function () {
-                        var organizationids = $(this).parent().parent().attr("organizationid");
-                        orgDel(organizationids);
-                    })
-                $("#TreeList").append($configOrganizationalManagement);
-                $(".myline").on("mouseenter", function () {
-                    $(".right").addClass("displayN")
-                    $(this).find(".right").removeClass("displayN")
-                });
-                $(".total-menu").on("mouseenter",function(){
-                    $(".sub-menu").addClass("displayN")
-                    $(this).siblings(".sub-menu").removeClass("displayN")
-                });
-                $(".myline").on("click",function(){
-
-                    if(!$(this).siblings("ul").hasClass("displayN")){
-                        $(this).siblings("ul").addClass("displayN");
-                    }else{
-                        $(this).siblings("ul").removeClass("displayN");
-                    }
-                })
-            });
 
             //实现人员管理事件
             $peopleList
@@ -108,7 +69,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
             //把渲染好的元素放到页面中
             $(".module-container").empty();
             $(".module-container").append($peopleList);
-            
+            // 查询组织树
+            orgList()
             // 设置下拉菜单鼠标移入触发
             $('div.dropdown').mouseover(function () {
                 $(this).addClass('open');

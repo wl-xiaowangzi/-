@@ -1,15 +1,10 @@
 <div class="people-management">
-    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:50px;padding:9px 0 0 0;">
+    <div class="panel-body align-center" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:77px;padding:0;">
         <div class="top-nav">
-            <!--下拉搜索条件-->
-            <div class="dropdown pull-left" style="margin-left:-20px;">
-                <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">员工<span class="caret"></span></div>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li class="btn-peopleList"><a href="#">员工</a></li>
-                    <li id="peopleVisitantList"><a href="#">访客</a></li>
-                </ul>
-            </div>
-            <!--/下拉搜索条件-->
+            <!--title-->
+            <span class="iptinfo_text">组织架构</span>
+            <span class="iptinfo_text">员工列表</span>
+            <!--/title-->
             <div id="peopleAdd" class="btnAdd"></div>
             <div class="search">
                 <div class="form-group">
@@ -21,12 +16,9 @@
         </div>
     </div>
     <div class="">
-        <div class="people-left" style="margin-left:30px;margin-top:20px;">
-            <div class="panel panel-default" style="width:230px;position:fixed;top:100px;z-index:999;">
-                <div class="panel-heading">
-                    <h3 class="panel-title">组织架构</h3>
-                </div>
-                <div class="panel-body">
+        <div class="people-left">
+            <div class="panel panel-default" style="width:214px;position:fixed;top:117px;z-index:999;margin-left:16px;border:0px;">
+                <div class="panel-body" style="padding:0;">
                     <!--组织架构树-->
                     <div id="TreeList">
 
@@ -46,7 +38,7 @@
                         </div>
                         <p>{{$value.name}}</p>
                         <p>{{$value.job}}</p>
-                        <h3 ep_id={{$value.employeeid}}><button class="btn btn-default btn-edit-course-baseinfo">编辑</button></h3>
+                        <h3 ep_id={{$value.employeeid}}><button class="btn-edit-course-baseinfo my-btn-edit">编辑</button></h3>
                     </div>
                 </div>
                 {{else}} {{/if}} {{/each}}

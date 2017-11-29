@@ -65,6 +65,9 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 })
                 return false; //阻止同步提交表单
             })
+            .on("click",".my-btn-cancel",function(){
+                $("#btnPeopleManager").trigger("click");
+            })
             // 使用下拉菜单完成快捷选择职位
             .on("click", "#PA-jobSel", function () {
                 if ($("#PA-Job").val() == "") {
