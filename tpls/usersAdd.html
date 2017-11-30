@@ -4,34 +4,14 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">添加用户信息</h4>
+                <h4 class="modal-title">添加账号</h4>
             </div>
             <div class="modal-body">
                 <form class="form form-horizontal">
-                    <div class="form-group" style="display:flex;justify-content:center;">
-                        <div class="img-box" id="start"><img src="imgs/pic.jpg" alt="" width="100" height="100"></div>
-                    </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
+                        <label class="col-sm-2 col-sm-offset-1 control-label">用户名</label>
                         <div class="col-sm-7">
-                            <input type="text" maxlength="20" id="userName-add" required="required" class="form-control" name="name" value="" /><span class="asterisk">*</span>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            document.getElementById("userName-add").onpropertychange = document.getElementById("userName-add").onkeyup =
-                                function () {
-                                    var lenE = this.value.length;
-                                    if (lenE == 20) {
-                                        alert("字数超限，请保持在20字以内")
-                                    }
-                                }
-                        })
-                    </script>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">账号</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="admin-add" maxlength="20" required="required" class="form-control" name="username" value="" /><span class="asterisk">*</span>
+                            <input type="text" id="admin-add" maxlength="20" required="required" class="form-control" name="username" value="" />
                         </div>
                     </div>
                     <script type="text/javascript">
@@ -46,9 +26,9 @@
                         })
                     </script>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">设置密码</label>
+                        <label class="col-sm-2 col-sm-offset-1 control-label">密码</label>
                         <div class="col-sm-7">
-                            <input type="text" id="password-add" required="required" minlength="6" maxlength="20" class="form-control" name="password" value="" /><span class="asterisk">*</span>
+                            <input type="text" id="password-add" required="required" minlength="6" maxlength="20" class="form-control" name="password" value="" />
                         </div>
                     </div>
                     <script type="text/javascript">
@@ -62,16 +42,28 @@
                                 }
                         })
                     </script>
-                    <!--<div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">邮箱</label>
-                        <div class="col-sm-7">
-                            <input type="email" class="form-control" name="email" value="" />
-                        </div>
-                    </div>-->
+                    <p style="margin-left:165px;margin-bottom:12px;"><span></span><a href="javascript:;" id="relevance-employee" style="color:#357aed;">关联员工信息</a><span class="reminder_text">(可通过关联员工信息自动完成以下表单)</span></p>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">手机号码</label>
+                        <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" id="phonenumber" name="phonenumber" value="" minlength="11" maxlength="11" pattern="^1[3|4|5|7|8][0-9]{9}" required="required" placeholder="请输入11位手机号码"/><span class="asterisk">*</span>
+                            <input type="text" maxlength="20" id="userName-add" required="required" class="form-control" name="name" value="" />
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            document.getElementById("userName-add").onpropertychange = document.getElementById("userName-add").onkeyup =
+                                function () {
+                                    var lenE = this.value.length;
+                                    if (lenE == 20) {
+                                        alert("字数超限，请保持在20字以内")
+                                    }
+                                }
+                        })
+                    </script>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">手机</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="phonenumber" name="phonenumber" value="" minlength="11" maxlength="11" pattern="^1[3|4|5|7|8][0-9]{9}" required="required" placeholder="请输入11位手机号码"/>
                         </div>
                     </div>
                     <script>
@@ -88,8 +80,12 @@
                         };
                     </script>
                     <div class="form-group">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">头像</label>
+                        <div class="img-box" id="user-pic"><img src="imgs/pic.jpg" style="margin-left:15px;" alt="" width="100" height="100"></div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-sm-6 col-sm-offset-5">
-                            <button type="submit" class="btn btn-blue" style="margin-left:35px;">确认</button>
+                            <button type="submit" class="btn btn-blue" style="margin-left:35px;">下一步</button>
                             <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
                         </div>
                     </div>

@@ -1,0 +1,59 @@
+<div class="modal fade" id="modalusersRelevance" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="height:527px;">
+            <div class="modal-header" style="padding-bottom:0px;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">关联员工信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="search" style="top:0;right:25px;">
+                                <div class="form-group">
+                                    <input type="text" id="relevance_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
+                                    <button id="relevance_search_btn" class="search-icon btn-search" type="submit"></button>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+                <div style="margin-top:60px;padding-left:10px;padding-right:10px;">
+                    <div id="relevance-content" style="height:325px;">
+                        <table class="table table-hover text-center my-table">
+                            <thead>
+                                <th></th>
+                                <th class="text-center">头像</th>
+                                <th class="text-center">姓名</th>
+                                <th class="text-center">手机号</th>
+                            </thead>
+                            <tbody>
+                                {{each data}}
+                                <tr vs_id={{$value.visitorid}}>
+                                    <td>
+                                        <div class="main-checkbox">
+                                        <input type="checkbox" value="true" id="checkbox1" name="isRemember" />
+                                        <label for="checkbox1"></label>
+                                        </div>
+                                    </td>
+                                    <td><img src="{{$value.headfaceimages[0]}}" alt="" width="50" height="50" class="text-center"></td>
+                                    <td style="color:black;">{{$value.name}}</td>
+                                    <td style="color:black;">{{$value.phonenumber}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                        
+                        <!--<div class="pages">
+                            <ul class="pagination" id="page1">
+                            </ul>
+                        </div>-->
+                        <div class="text-center">
+                        <button type="text" class="btn btn-blue" style="margin-right:12px;">关联此人</button>
+                        <button type="text" class="btn btn-default">上一步</button>
+                    </div>
+                    </div>
+                    
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

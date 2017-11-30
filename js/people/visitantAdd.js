@@ -16,16 +16,23 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
         var month = time.getMonth()+1
         var day = time.getDate();
         var hour = time.getHours();
+        var minutes = time.getMinutes();
         if(day.toString().length == 1){
             day = "0"+day
+        }
+        if(hour.toString().length == 1){
+            hour = "0"+hour
+        }
+        if(minutes.toString().length == 1){
+            minutes = "0"+minutes
         }
         if(hour>=19){
            var hour5=23;
         }else{
            var hour5=hour+5;
         }
-        var initStarttime = time.getFullYear() + '-' + month + '-' + day + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
-        var initEndtime = time.getFullYear() + '-' + month + '-' + day + " " + hour5 + ":" + time.getMinutes() + ":" + time.getSeconds();
+        var initStarttime = time.getFullYear() + '-' + month + '-' + day + " " + time.getHours() + ":" + minutes + ":" + 00;
+        var initEndtime = time.getFullYear() + '-' + month + '-' + day + " " + hour5 + ":" + minutes + ":" + 00;
         
         console.log(initStarttime,initEndtime)
         // 调用摄像头

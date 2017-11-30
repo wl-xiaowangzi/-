@@ -839,7 +839,7 @@ nav {
     width: 20vw;
     position: absolute;
     min-width: 250px;
-    top: 36px;
+    top: 22px;
     right: 70px;
 }
 
@@ -947,7 +947,11 @@ nav {
     }
 }
 
-
+@media (min-width: 768px){
+    .col-sm-7 {
+        width: 62.33333333%;
+    }
+}
 /*识别记录样式 begin*/
 
 .record {
@@ -1021,7 +1025,17 @@ nav {
 }
 
 .personal-info ul li:nth-child(1) {
-    min-width: 200px;
+    /*min-width: 200px;*/
+}
+.my-table thead tr{
+    background-color: #edf2f6;
+}
+.my-table tbody>tr>td{
+    border:0;
+}
+.my-table td{
+    height: 80px;
+    line-height: 80px!important;
 }
 
 .personal-info ul li:nth-child(1) span {
@@ -1668,34 +1682,36 @@ video {
     font-weight: 800;
     font-size: 18px;
     border:0;
-    background-color: none;
+    background-color: transparent;
     border-bottom: 5px solid #357aed;
 }
 .nav-tabs{
     border:0;
 }
 .nav-tabs>li>a {
-     margin-right: 2px; 
+    margin-right: 2px; 
     line-height: 1.42857143;
-     border: 1px solid transparent; 
-     border-radius: 4px 4px 0 0; 
+    border: 1px solid transparent; 
+    border-radius: 4px 4px 0 0; 
+    font-size: 16px;
+    color: #576780;
 }
 .nav>li>a {
     position: relative;
     display: block;
-    padding: 16px 15px;
+    padding: 16px 0px;
 }
 
 .nav-tabs>li>a:hover {
-     border-color:none; 
+     border-color:transparent; 
 }
 
 .nav>li>a:focus, .nav>li>a:hover {
     text-decoration: none;
-    background-color: none;
+    background-color: transparent;
 }
 .nav-tabs>li>a:hover {
-    border-color: none;
+    border-color: transparent;
 }
 .device-box{
     width:400px;

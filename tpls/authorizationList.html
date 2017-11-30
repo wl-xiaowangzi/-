@@ -3,56 +3,57 @@
     </div>
     <div>
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist" style="height:62px;background:#f8fafb;">
+        <ul class="nav nav-tabs" role="tablist" style="height:62px;background:#f8fafb;padding-left:64px;">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">授权组管理</a></li>
-            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">访问授权设置</a></li>
+            <li role="presentation" style="margin-left:50px;"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="">访问授权设置</a></li>
         </ul>
-
         <!-- Tab panes -->
         <div class="tab-content" style="padding-left:64px;padding-right:64px;">
             <div role="tabpanel" class="tab-pane active" id="home">
-                <div class="panel panel-default">
-                    <div class="panel-heading flex-between">
-                        <h3 class="panel-title">授权组列表</h3>
-                        <div>
+                <div class="">
+                    <div class="flex-between" style="height:64px;">
+                        <h3 class="panel-title" style="height:64px;line-height:64px;">授权组列表</h3>
+                        <div class="align-center">
                             <span style="margin-right:20px;">已有授权组：10个</span>
-                            <button type="text" id="author-add" class="" style="width:100px;">+新增授权组</button>
+                            <button type="text" id="author-add" class="" style="width:100px;height:40px;background:#357aed;color:#fff;border-radius:5px;border:0;">+新增授权组</button>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="">
                         <div class="panel panel-default" style="border-radius:0;">
-                            <div class="panel-heading flex-between" style="background:#f8fafb;border-radius:0;padding:0;height:40px;font-weight:700;line-height:40px;">
-                                <h3 class="panel-title" style="height:40px;line-height:40px;font-weight:700;">行政部授权组(8)</h3>
-                                <div class="btn-device-edit author-edit"></div>
+                            <div class="panel-heading flex-between" style="background:#f8fafb;border-radius:0;padding:0;height:40px;font-weight:700;line-height:40px;align-items:center;">
+                                <h3 class="panel-title" style="height:40px;line-height:40px;font-weight:700;margin-left:30px;">行政部授权组(8)</h3>
+                                <div class="btn-device-edit author-edit" style="margin-right:18px;"></div>
                             </div>
                             <div class="panel-body" style="height:50px;">
-                                <span>禾思一号门</span>
+                                <span style="margin-right:24px;">禾思一号门</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="profile">
-                <div class="panel-body" id="choiceRole">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">选择授权角色</h3>
+                <div class="panel-body" id="choiceRole" style="padding-top:50px;">
+                    <div class="" style="padding-left:78px;padding-right:78px;">
+                        <div class="" style="margin-bottom:12px;">
+                            <h3 class="panel-title" style="color:#000;">选择授权角色</h3>
                         </div>
-                        <div class="panel-body flex-around">
+                        <div class="flex-around" style="background-color:#fff;height:420px;align-items:center;">
                             <div class="author-visitor author">
-                                <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
-                                <button type="text" id="author-employee">授权给员工</button>
+                                <div class="img-box"><img src="imgs/pic.jpg" alt="" width="145" height="145" style="border-radius:50%;"></div>
+                                <button type="text" id="author-employee" style="height:40px;width:145px;background-color:#357aed;border-radius:5px;border:0;color:#fff;margin-top:64px;">授权给员工</button>
                             </div>
+                            <div style="border-right:1px dashed #ccc;height:250px;"></div>
                             <div class="author-employee author">
-                                <div class="img-box"><img src="imgs/pic.jpg" alt=""></div>
-                                <button type="text" id="author-visitor">授权给访客</button>
+                                <div class="img-box"><img src="imgs/pic.jpg" alt="" width="145" height="145" style="border-radius:50%;"></div>
+                                <button type="text" id="author-visitor" style="height:40px;width:145px;background-color:#ffae45;border-radius:5px;border:0;color:#fff;margin-top:64px;">授权给访客</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="authorizationInfoCon"></div>
+                <div id="authorizationInfoCon">
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>

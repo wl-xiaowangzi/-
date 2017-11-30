@@ -13,7 +13,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
         var firstFacedatas = facedatas;
         var headfaceimage = headfaceimage;
         // 调用参数查询接口
-        API.getParameterList(start, limit, parameterkey, function (res) {
+        API.queryDeviceList(start, limit, parameterkey, function (res) {
             // 渲染模板
             var peopleAdd = art.render(peopleAddTpl, res.data)
             var $peopleAdd = $(peopleAdd);

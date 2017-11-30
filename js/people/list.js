@@ -26,8 +26,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
         $("#btnKeepSearchWords").removeAttr("deviceSearchwords");
         $("#btnKeepSearchWords").removeAttr("usersSearchWords");
        
-        // 调用接口
-        var organizationid = $.cookie("organizationid");
           
         API.getPeopleList(start, limit, keyword, function (res) {
             console.log(res)

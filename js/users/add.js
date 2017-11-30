@@ -3,13 +3,16 @@
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/usersAdd.html", "common/api"], function ($, art, usersAddTpl, API) {
+define(["jquery", "artTemplate", "text!tpls/usersAdd.html", "common/api","./relevance"], function ($, art, usersAddTpl, API,relevance) {
     return function () {
         // 渲染模板
         var usersAdd=art.render(usersAddTpl);
         var $usersAdd=$(usersAdd);
         // 提交表单
         $usersAdd
+            .on("click","#relevance-employee",function(){
+                relevance()
+            })
             .on("submit", "form", function () {
                 // 获取表单参数 
                 var formData = $(this).serialize();

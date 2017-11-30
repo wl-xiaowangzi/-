@@ -1,106 +1,134 @@
 <div class="approval">
-    <div class="handle" style="height:60px;padding-left:64px;line-height:60px;">
-        <span class="untreated">未处理</span>
-        <span class="treate">已处理</span>
-    </div>
-    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:50px;padding:9px 0 0 0;">
-        <div class="top-nav">
-            <!--下拉搜索条件-->
-            <div class="dropdown pull-left" style="margin-left:-20px;">
-                <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="peopleType">所有人员</span><span class="caret"></span></div>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li class="btn-all"><a href="#">所有人员</a></li>
-                    <li id="btn-employee"><a href="#">员工</a></li>
-                    <li id="btn-visiter"><a href="#">访客</a></li>
-                </ul>
-            </div>
-            <!--/下拉搜索条件-->
-             <div class="search">
-                <div class="form-group">
-                    <input type="text" id="approval_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
-                    <button id="approval_search_btn" class="search-icon btn-search" type="submit"></button>
-                </div>
-                <!-- /input-group -->
-            </div>
+    <div class="">
+        <div class="panel-body" style="padding:0px;">
         </div>
-    </div>
-    <div class="table">
-        {{each data}}
-        {{if $value.status!=4}}
-        <div class="personal-info">
-            <div class="img-box">
-                {{if $value.persontype==1}}
-                <img src="imgs/employee-tip.png" alt="">
-                {{else if $value.persontype==2}}
-                <img src="imgs/visitor-tip.png" alt="">
-                {{else if $value.visitorid!=undefind}}
-                <img src="imgs/visitor-tip.png" alt="">
-                {{else}}
-                <img src="imgs/employee-tip.png" alt="">
-                {{/if}}
-                </div>
-            <ul vs_id={{$value.visitorid}}>
-                <li><img src="{{$value.headfaceimages[0]}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
-                <li class="bdcolor">|</li>
-                {{if $value.persontype==1}}
-                <li>{{$value.job}}</li>
-                {{else if $value.persontype==2}}
-                <li>{{$value.remark}}</li>
-                {{else if $value.visitorid!=undefind}}
-                <li>{{$value.remark}}</li>
-                {{else}}
-                <li>{{$value.job}}</li>
-                {{/if}}
-                <li class="bdcolor">|</li>
-                <li ps_id={{$value.personid}} ps_type={{$value.persontype}}>
-                    <button class="btn btn-default btn-show-approval show{{$value.persontype}}" ep_id={{$value.employeeid}}>查看</button>
-                    <button class="btn btn-default btn-pass ml24 pass{{$value.persontype}}" ep_id={{$value.employeeid}}>通过</button>
-                    <button class="btn btn-default btn-refuse ml24 refuse{{$value.persontype}}" ep_id={{$value.employeeid}}>驳回</button>
-                </li>
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" style="height:62px;background:#f8fafb;padding-left:64px;">
+                <li role="presentation" class="active"><a href="#undeal" aria-controls="undeal" role="tab" data-toggle="tab">未处理</a></li>
+                <li role="presentation" style="margin-left:50px;"><a href="#deal" aria-controls="deal" role="tab" data-toggle="tab" class="">已处理</a></li>
             </ul>
-        </div>
-        {{else}}
-        <div class="personal-info approvaled">
-            <div class="img-box">
-                {{if $value.persontype==1}}
-                <img src="imgs/employeeed-tip.png" alt="">
-                {{else if $value.persontype==2}}
-                <img src="imgs/visitored-tip.png" alt="">
-                {{else if $value.visitorid!=undefind}}
-                <img src="imgs/visitored-tip.png" alt="">
-                {{else}}
-                <img src="imgs/employeeed-tip.png" alt="">
-                {{/if}}
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="undeal">
+                    <div class="panel-body" style="">
+                        <div class="top-nav">
+                            <!--下拉搜索条件-->
+                            <div class="dropdown pull-left" style="margin-left:-20px;">
+                                <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="peopleType">所有人员</span><span class="caret"></span></div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li class="btn-all"><a href="#">所有人员</a></li>
+                                    <li id="btn-employee"><a href="#">员工</a></li>
+                                    <li id="btn-visiter"><a href="#">访客</a></li>
+                                </ul>
+                            </div>
+                            <!--/下拉搜索条件-->
+                            <div class="search">
+                                <div class="form-group">
+                                    <input type="text" id="approval_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
+                                    <button id="approval_search_btn" class="search-icon btn-search" type="submit"></button>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table">
+                        <table class="table table-hover text-center my-table">
+                            <thead>
+                                <th class="text-center">人脸照片</th>
+                                <th class="text-center">申请人</th>
+                                <th class="text-center">人员类型</th>
+                                <th class="text-center">申请设备</th>
+                                <th class="text-center">操作</th>
+                            </thead>
+                            <tbody>
+                                {{each data}} {{if $value.status!=4}}
+                                <tr vs_id={{$value.visitorid}}>
+                                    <td><img src="{{$value.headfaceimages[0]}}" alt="" width="50" height="50" class="text-center"></td>
+                                    <td style="color:black;">{{$value.name}}</td>
+                                    {{if $value.persontype==1}}
+                                    <td style="color:black;">员工</td>
+                                    {{else if $value.persontype==2}}
+                                    <td style="color:black;">访客</td>
+                                    {{else}}
+                                    <td style="color:black;">陌生人</td>
+                                    {{/if}}
+                                    <td style="color:black;"></td>
+                                    <td ps_id={{$value.personid}} ps_type={{$value.persontype}}>
+                                        <button class="btn btn-default btn-show-approval show{{$value.persontype}}" ep_id={{$value.employeeid}}>查看</button>
+                                        <button class="btn btn-default btn-pass ml24 pass{{$value.persontype}}" ep_id={{$value.employeeid}}>通过</button>
+                                        <button class="btn btn-default btn-refuse ml24 refuse{{$value.persontype}}" ep_id={{$value.employeeid}}>驳回</button>
+                                    </td>
+                                </tr>
+                                {{else}} {{/if}} {{/each}}
+                            </tbody>
+                        </table>
+                        <div class="pages">
+                            <ul class="pagination" id="page1">
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            <ul vs_id={{$value.visitorid}}>
-                <li><img src="{{$value.headfaceimages[0]}}" alt="" width="50" height="50"><span>{{$value.name}}</span></li>
-                <li class="bdcolor">|</li>
-                {{if $value.persontype==1}}
-                <li>{{$value.job}}</li>
-                {{else if $value.persontype==2}}
-                <li>{{$value.remark}}</li>
-                {{else if $value.visitorid!=undefind}}
-                <li>{{$value.remark}}</li>
-                {{else}}
-                <li>{{$value.job}}</li>
-                {{/if}}
-                <li class="bdcolor">|</li>
-                <li ps_id={{$value.personid}} ps_type={{$value.persontype}}>
-                    {{$value.starttime}}-{{$value.endtime}}
-                </li>
-            </ul>
+                <div role="tabpanel" class="tab-pane" id="deal">
+                    <div class="panel-body" style="">
+                        <div class="top-nav">
+                            <!--下拉搜索条件-->
+                            <div class="dropdown pull-left" style="margin-left:-20px;">
+                                <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="peopleType">所有人员</span><span class="caret"></span></div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li class="btn-all"><a href="#">所有人员</a></li>
+                                    <li id="btn-employee"><a href="#">员工</a></li>
+                                    <li id="btn-visiter"><a href="#">访客</a></li>
+                                </ul>
+                            </div>
+                            <!--/下拉搜索条件-->
+                            <div class="search">
+                                <div class="form-group">
+                                    <input type="text" id="approval_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
+                                    <button id="approval_search_btn" class="search-icon btn-search" type="submit"></button>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table">
+                        <table class="table table-hover text-center my-table">
+                            <thead>
+                                <th class="text-center">人脸照片</th>
+                                <th class="text-center">申请人</th>
+                                <th class="text-center">人员类型</th>
+                                <th class="text-center">申请设备</th>
+                                <th class="text-center">审批结果</th>
+                                <th class="text-center">操作</th>
+                            </thead>
+                            <tbody>
+                                {{each data}} {{if $value.status!=4}}
+                                <tr vs_id={{$value.visitorid}}>
+                                    <td><img src="{{$value.headfaceimages[0]}}" alt="" width="50" height="50" class="text-center"></td>
+                                    <td style="color:black;">{{$value.name}}</td>
+                                    {{if $value.persontype==1}}
+                                    <td style="color:black;">员工</td>
+                                    {{else if $value.persontype==2}}
+                                    <td style="color:black;">访客</td>
+                                    {{else}}
+                                    <td style="color:black;">陌生人</td>
+                                    {{/if}}
+                                    <td style="color:black;"></td>
+                                    <td style="color:black;"></td>
+                                    <td ps_id={{$value.personid}} ps_type={{$value.persontype}}>
+                                        <button class="btn btn-default btn-show-approval show{{$value.persontype}}" ep_id={{$value.employeeid}}>查看</button>
+                                    </td>
+                                </tr>
+                                {{else}} {{/if}} {{/each}}
+                            </tbody>
+                        </table>
+                        <div class="pages">
+                            <ul class="pagination" id="page1">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        {{/if}}
-        {{/each}}
-        <div class="pages">
-        <ul class="pagination" id="page1">
-        </ul>
-        <!--<div class="pageJump">
-            <span>跳转到</span>
-            <input type="text" />
-            <span>页</span>
-            <button type="button" class="button">确定</button>
-        </div>-->
-    </div>
     </div>
 </div>

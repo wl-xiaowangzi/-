@@ -1,0 +1,16 @@
+<table class="table table-hover text-center my-table">
+                            <thead>
+                                <th class="text-center">头像</th>
+                                <th class="text-center">姓名</th>
+                                <th class="text-center">手机号</th>
+                            </thead>
+                            <tbody>
+                                {{each data}}
+                                <tr vs_id={{$value.visitorid}}>
+                                    <td><img src="{{$value.headfaceimages[0]}}" alt="" width="50" height="50" class="text-center"></td>
+                                    <td style="color:black;">{{$value.name}}</td>
+                                    <td style="color:black;">{{$value.phonenumber}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>

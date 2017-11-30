@@ -80,6 +80,24 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <ul class="submenu">
+                                        {{each $value.children}}
+                                        <li style="">
+                                            <div class="flex-between myline">
+                                                <div class="left" style="margin-left:100px;"><span class="org-tips"></span>{{$value.name}}</div>
+                                                <div class="right flex-around displayN" organizationid={{$value.organizationid}} parentorganizationid={{$value.parentorganizationid}}
+                                                    principal={{$value.principal}} name={{$value.name}}>
+                                                    <div class="total-menu"><span>...</span></div>
+                                                    <div class="sub-menu displayN">
+                                                        <div class="btn-org-edit">编辑</div>
+                                                        <div class="btn-org-del">删除</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </li>
+                                        {{/each}}
+                                    </ul>
                                 </li>
                                 {{/each}}
                             </ul>

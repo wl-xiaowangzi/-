@@ -31,6 +31,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
             } else {
                 $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
             }
+            console.log(res)
         //编译模板
         var approvalList=art.render(approvalListTpl,res);
         var $approvalList = $(approvalList);
