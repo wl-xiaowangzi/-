@@ -360,8 +360,8 @@ button {
 }
 
 .user-profile img {
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -1492,7 +1492,7 @@ p {
 /*设备管理样式 begin*/
 
 .device {
-    margin: 13px 64px 0 64px;
+    margin: 15px 60px 0 60px;
     background-color: #fff;
     padding: 0 10px;
 }
@@ -1593,6 +1593,9 @@ p {
     padding: 0;
 }
 
+.table-hover>tbody>tr:hover {
+    background-color: #fff;
+}
 
 /*设备管理样式 end*/
 
@@ -1653,11 +1656,16 @@ video {
 
 
 /*个人中心样式 begin*/
+#personCenter .pc-title{
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 32px;
+    color: #000;
+    font-size: 14px;
+}
 
 .ewm_box {
-    margin-left: 156px;
-    display: flex;
-    justify-content: space-between;
+    width: 344px;
 }
 
 .ewm_box .right_cont {
@@ -1893,3 +1901,46 @@ video {
 
     
 /*组织架构 end*/
+/*账号管理样式 begin*/
+.users{
+    margin-top:15px; 
+    margin-left:60px;
+    margin-right:60px;
+    background-color:#fff;
+}
+.users .title {
+    font-size: 18px;
+    color: #000;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+.users table td{
+    height: 90px;
+    line-height: 90px!important;
+}
+.users thead {
+    background-color: #f8fafb;
+    color: #576780;
+    font-size: 14px;
+}
+.users table{
+    border: 1px solid #ddd;
+}
+/*账号管理样式 end*/
+/*拍照要求 begin*/
+#modalPhotoRequire .correctSample img{
+    display: block;
+    margin-right:38px;
+    margin-bottom: 12px;
+    height: 180px;
+    width: 180px;
+    border: 1px solid #ccc;
+}
+#modalPhotoRequire .wrongSample img{
+    display: block;
+    margin-bottom: 12px;
+    height: 90px;
+    width: 90px;
+    border: 1px solid #ccc;
+}
+/*拍照要求 end*/

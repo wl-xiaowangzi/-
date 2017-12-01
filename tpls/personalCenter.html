@@ -1,31 +1,86 @@
-<div class="modal fade" id="modalPersonalCenter" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" style="padding-bottom:50px;">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">我的个人信息</h4>
-            </div>
-            <div class="modal-body">
-                <div class="img-box text-center"><img src="imgs/pic.jpg" alt="" width="100" height="100" style="margin-bottom:40px;"></div>
-                <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">姓名</span><span class="ml24 black">{{name}}</span></p>
-                <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">账号</span><span class="ml24 black">{{username}}</span></p>
-                <p class="mt24"><span class="col-sm-2 col-sm-offset-1 text-right">自助申请二维码</span></p>
-                <div class="ewm_box">
-                    <div class="left_cont"><img src="imgs/erweima.png" alt="" width="112" height="112"></div>
-                    <div class="right_cont">
-                        <span class="ml20 reminder_text">*员工及访客可通过扫描此二维码，在手机端进行自助入库申请</span>
-                        <a href="imgs/erweima.png" download="人脸门禁识别码.png" id="pic1" style="cursor:hand" class="ml20">下载二维码</a>
+<div class="" id="modalPersonalCenter" tabindex="-1" role="dialog">
+    <div class="">
+        <div class="panel-body" style="padding:0px;">
+        </div>
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" style="height:62px;background:#f8fafb;padding-left:64px;">
+                <li role="presentation" class="active"><a href="#personCenter" aria-controls="personCenter" role="tab" data-toggle="tab">个人信息</a></li>
+                <li role="presentation" style="margin-left:50px;"><a href="#changePWD" aria-controls="changePWD" role="tab" data-toggle="tab" class="">修改密码</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="personCenter">
+                    <div class="">
+                        <div class="flex-around" style="height:77vh;align-items:center;background-color:#fff;margin:60px;">
+                            <div class="flex-between" style="width:840px;height:450px;background-color:#fff;">
+                                <div class="ewm_box">
+                                    <p class="pc-title">授权二维码</p>
+                                    <div class="text-center"><img src="imgs/erweima.png" alt="" width="112" height="112"></div>
+                                    <div class="reminder_text" style="width:200px;margin-left:72px;margin-top:24px;margin-bottom:30px;"><span style="color:#357aed;">*</span>员工及访客可通过扫描此二维码， &nbsp;&nbsp;在手机端进行自助入库申请</div>
+                                    <div class="my-btn" style="width:200px;border-radius:5px;background-color:#357aed;color:#fff;margin-bottom:17px;margin-left:72px;"><a href="imgs/erweima.png" download="人脸门禁识别码.png" id="pic1" style="cursor:hand;color:#fff;"
+                                            class="ml20">下载二维码</a></div>
+                                    <div class="my-btn" style="width:200px;border-radius:5px;background-color:#fff;color:#000;margin-left:72px;">复制链接</div>
+                                </div>
+                                <div class="person-info" style="flex:1;">
+                                    <p class="pc-title" style="margin-bottom:60px;">基本信息</p>
+                                    <div class="img-box text-center"><img src="imgs/pic.jpg" alt="" width="100" height="100" style="margin-bottom:12px;"></div>
+                                    <p style="margin-bottom:52px;margin-left:230px;"><span></span><a href="JavaScript:;" class="info_text" id="photo-require">拍照要求</a></p>
+                                    <p class=""><span class="col-sm-2 col-sm-offset-3 text-right">姓名</span><span class="ml24 black">{{name}}</span></p>
+                                    <p style="margin-top:18px;"><span class="col-sm-2 col-sm-offset-3 text-right">用户名</span><span class="ml24 black">{{username}}</span></p>
+                                    <p style="margin-top:18px;"><span class="col-sm-2 col-sm-offset-3 text-right">手机号</span><span class="ml24 black">{{phonenumber}}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
                     </div>
                 </div>
-                <div class="form-group" style="margin-top:50px;">
-                    <div class="col-sm-4 col-sm-offset-8">
-                        <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">关闭</button>
+                <div role="tabpanel" class="tab-pane" id="changePWD" style="height:77vh;margin:60px;background-color:#fff;">
+                    <div class="flex-around align-center" style="height:77vh;">
+                        <div class="" style="border:0;height:420px;width:840px;">
+                            <div class="modal-header">
+                                <h4 class="modal-title">修改密码</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form form-horizontal">
+                                    <div class="cfmPWD col-sm-7 col-sm-offset-3 text-center opacity0"><span>两次输入密码不一致</span></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-offset-1 control-label">原密码</label>
+                                        <div class="col-sm-7">
+                                            <input type="password" required="required" class="form-control oldPassword" name="originalpwd" value="" />
+                                            <span
+                                                class="eyes oldPWD eye-close"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-offset-1 control-label">新密码</label>
+                                        <div class="col-sm-7">
+                                            <input type="password" required="required" class="form-control newPassword" minlength="6" name="newpwd" value="" />
+                                            <span
+                                                class="eyes newPWD eye-close"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-offset-1 control-label">确认密码</label>
+                                        <div class="col-sm-7">
+                                            <input type="password" required="required" class="form-control confirmPassword" name="secondpwd" value="" />
+                                            <span
+                                                class="eyes confirmPWD eye-close"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 col-sm-offset-5">
+                                            <button type="submit" class="btn btn-blue btn-sure mt10" style="margin-left:35px;">保存</button>
+                                            <button type="text" class="btn btn-default btn-cancel mt10" data-dismiss="modal" aria-label="Close">取消</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>

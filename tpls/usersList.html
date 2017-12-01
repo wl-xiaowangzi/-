@@ -1,40 +1,50 @@
 <div class="users">
-    <div class="panel-body" style="padding:2px;">
-        <div>
-            <div id="btnUserAdd" class="btnAdd"></div>
-            <div class="search">
+    <div class="panel-heading">
+        <div class="title flex-between">
+            <span>账号列表</span><span class="info_text" style="margin-right:10px;">目前管理账号: <span style="color:#000;">{{data.length}}</span>个</span>
+            <div class="btnAdd" id="btnUserAdd"></div>
+            <!--<div class="search">
                 <div class="form-group">
-                    <input type="text" id="users_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
-                    <button id="users_search_btn" class="search-icon btn-search" type="submit"></button>
+                    <input type="text" id="device_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
+                    <button id="device_search_btn" class="search-icon btn-search" type="submit"></button>
                 </div>
-                <!-- /input-group -->
-            </div>
+            </div>-->
         </div>
     </div>
-    <div class="table">
-        {{each data}}
-        <div class="personal-info">
-            <ul>
-                <li><img src="imgs/pic.jpg" alt="" width="50"><span>{{$value.name}}</span></li>
-                <li class="bdcolor">|</li>
-                <li>{{$value.username}}</li>
-                <li class="bdcolor">|</li>
-                <li user_id={{$value.userid}}>
-                    <button class="btn btn-default btn-edit">编辑</button>
-                    <button class="btn btn-refuse btn-default btn-del ml24">删除</button>
-                </li>
-            </ul>
+    <div class="panel-body" style="padding-top:6px;">
+        <div style="margin-left:10px;margin-right:10px;">
+            <table class="table table-hover text-center">
+                <thead>
+                    <th class="text-center">头像</th>
+                    <th class="text-center">姓名</th>
+                    <th class="text-center">用户名</th>
+                    <th></th>
+                    <th class="text-center">操作</th>
+                </thead>
+                <tbody>
+                    {{each data}}
+                    <tr>
+                        <td><img src="imgs/pic.jpg" alt="" width="50" height="50" class="text-center"></td>
+                        <td style="color:black;">{{$value.name}}</td>
+                        <td style="color:black;">{{$value.username}}</td>
+                        <td style="color:#f3f3f3;">|</td>
+                        <td class="flex-around align-center">
+                            <div class="align-center" user_id={{$value.userid}}>
+                                <div class="btn-edit btn-device-edit"></div>
+                                <div class="btn-default btn-del ml24 btn-device-del"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <p class="text-center info_text">已加载全部</p>
+           
         </div>
-        {{/each}}
-        <div class="pages">
-        <ul class="pagination" id="page1">
-        </ul>
-        <!--<div class="pageJump">
-            <span>跳转到</span>
-            <input type="text" />
-            <span>页</span>
-            <button type="button" class="button">确定</button>
-        </div>-->
+         <!--<div class="pages">
+                <ul class="pagination" id="page1">
+                </ul>
+            </div>-->
     </div>
-    </div>
+
 </div>

@@ -1,61 +1,55 @@
 <div class="device">
     <div class="panel-heading">
-        <div class="title">
-            系统设置/设备管理
+        <div class="title flex-between">
+            <span>设备列表</span><span class="info_text">目前管理设备: <span style="color:#000;">{{data.length}}</span>台</span>
             <div class="btn-device-add btnAdd"></div>
-            <div class="search">
+            <!--<div class="search">
                 <div class="form-group">
                     <input type="text" id="device_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
                     <button id="device_search_btn" class="search-icon btn-search" type="submit"></button>
                 </div>
-                <!-- /input-group -->
-            </div>
+            </div>-->
         </div>
     </div>
     <div class="panel-body">
         <table class="table table-hover text-center deviceTable">
             <thead>
-                <th class="text-center">设备编码</th>
-                <th class="text-center">设备ID</th>
                 <th class="text-center">设备名称</th>
+                <th class="text-center">设备编码</th>
                 <th class="text-center">设备状态</th>
-                <th class="text-center">在线状态</th>
+                <th class="text-center">是否在线</th>
+                <th></th>
                 <th class="text-center">操作</th>
             </thead>
             <tbody>
                 {{each data}}
                 <tr>
-                    <td class="">{{$value.deviceno}}</td>
-                    <td class="">{{$value.deviceid}}</td>
                     <td style="color:black;">{{$value.name}}</td>
+                    <td class="">{{$value.deviceid}}</td>
                     {{if $value.status==1}}
                     <td class="">正常</td>
                     {{else}}
                     <td style="color:red;">故障</td>
-                    {{/if}}
-                    {{if $value.online==1}}
+                    {{/if}} {{if $value.online==1}}
                     <td class="">在线</td>
                     {{else}}
                     <td style="color:red;">下线</td>
                     {{/if}}
+                    <td style="color:#f3f3f3;">|</td>
                     <td class="disCenter" dv_id={{$value.deviceid}}>
                         <div class="btn-device-edit"></div>
                         <div class="btn-device-del"></div>
                     </td>
                 </tr>
                 {{/each}}
+
             </tbody>
-            <div class="pages">
+
+        </table>
+        <p class="text-center info_text">已加载全部</p>
+    </div>
+    <!--<div class="pages">
         <ul class="pagination" id="page1">
         </ul>
-        <!--<div class="pageJump">
-            <span>跳转到</span>
-            <input type="text" />
-            <span>页</span>
-            <button type="button" class="button">确定</button>
-        </div>-->
-    </div>
-        </table>
-    </div>
-
+    </div>-->
 </div>

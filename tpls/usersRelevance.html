@@ -8,49 +8,42 @@
             </div>
             <div class="modal-body">
                 <div class="search" style="top:0;right:25px;">
-                                <div class="form-group">
-                                    <input type="text" id="relevance_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
-                                    <button id="relevance_search_btn" class="search-icon btn-search" type="submit"></button>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
+                    <div class="form-group">
+                        <input type="text" id="relevance_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
+                        <button id="relevance_search_btn" class="search-icon btn-search" type="submit"></button>
+                    </div>
+                    <!-- /input-group -->
+                </div>
                 <div style="margin-top:60px;padding-left:10px;padding-right:10px;">
                     <div id="relevance-content" style="height:325px;">
                         <table class="table table-hover text-center my-table">
                             <thead>
-                                <th></th>
+
                                 <th class="text-center">头像</th>
                                 <th class="text-center">姓名</th>
                                 <th class="text-center">手机号</th>
+                                <th class="text-center">操作</th>
                             </thead>
-                            <tbody>
+                            <tbody style="background-color:#f8fafb;">
                                 {{each data}}
-                                <tr vs_id={{$value.visitorid}}>
-                                    <td>
-                                        <div class="main-checkbox">
-                                        <input type="checkbox" value="true" id="checkbox1" name="isRemember" />
-                                        <label for="checkbox1"></label>
-                                        </div>
-                                    </td>
+                                <tr ps_id={{$value.employeeid}}>
                                     <td><img src="{{$value.headfaceimages[0]}}" alt="" width="50" height="50" class="text-center"></td>
                                     <td style="color:black;">{{$value.name}}</td>
                                     <td style="color:black;">{{$value.phonenumber}}</td>
+                                    <td style="color:black;"><button type="text" class="btn btn-default rele" style="margin-top:0;">关联此人</button></td>
                                 </tr>
                                 {{/each}}
                             </tbody>
+
                         </table>
+
                     </div>
-                        
-                        <!--<div class="pages">
-                            <ul class="pagination" id="page1">
-                            </ul>
-                        </div>-->
-                        <div class="text-center">
-                        <button type="text" class="btn btn-blue" style="margin-right:12px;">关联此人</button>
-                        <button type="text" class="btn btn-default">上一步</button>
+                    <div class="pages">
+                        <ul class="pagination" id="page1">
+                        </ul>
                     </div>
-                    </div>
-                    
+                </div>
+
             </div>
         </div>
         <!-- /.modal-content -->
