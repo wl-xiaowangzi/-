@@ -1,0 +1,32 @@
+<div class="modal fade" id="modalUsersAuthority" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="margin-top:120px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">添加账号/权限配置</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-offset-1 control-label">系统角色</label>
+                        <div class="col-sm-7">
+                            <select id="users-authority" name="authority" class="form-control">
+                                <option value="1" selected="selected">超级管理员</option>
+                                <option value="2">操作员</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-5">
+                            <button type="submit" class="btn btn-blue users-add" style="margin-left:35px;">确定</button>
+                            <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

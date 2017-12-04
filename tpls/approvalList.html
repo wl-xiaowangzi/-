@@ -23,13 +23,12 @@
                                 </ul>
                             </div>
                             <!--/下拉搜索条件-->
-                            <div class="search">
+                            <!--<div class="search">
                                 <div class="form-group">
                                     <input type="text" id="approval_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
                                     <button id="approval_search_btn" class="search-icon btn-search" type="submit"></button>
                                 </div>
-                                <!-- /input-group -->
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     <div class="table">
@@ -39,6 +38,7 @@
                                 <th class="text-center">申请人</th>
                                 <th class="text-center">人员类型</th>
                                 <th class="text-center">申请设备</th>
+                                <th></th>
                                 <th class="text-center">操作</th>
                             </thead>
                             <tbody>
@@ -53,7 +53,8 @@
                                     {{else}}
                                     <td style="color:black;">陌生人</td>
                                     {{/if}}
-                                    <td style="color:black;"></td>
+                                    <td style="color:black;">设备组</td>
+                                    <td style="color:#f3f3f3;">|</td>
                                     <td ps_id={{$value.personid}} ps_type={{$value.persontype}}>
                                         <button class="btn btn-default btn-show-approval show{{$value.persontype}}" ep_id={{$value.employeeid}}>查看</button>
                                         <button class="btn btn-default btn-pass ml24 pass{{$value.persontype}}" ep_id={{$value.employeeid}}>通过</button>

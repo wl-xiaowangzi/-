@@ -29,7 +29,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
             if (res.data.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0")
             } else {
-                $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
+                $("#messages").removeClass("opacity0").addClass("opacity1");
             }
             console.log(res)
         //编译模板

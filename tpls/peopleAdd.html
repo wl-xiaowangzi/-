@@ -1,20 +1,20 @@
 <div class="" id="modalPeopleAdd">
     <div class="">
-        <div class="panel-body">
+        <div class="panel-body" style="padding:0;">
             <div class="panel-body">
                 <h4 class="panel-title">添加人员信息</h4>
             </div>
-            <div class="panel-body">
-                <form class="form form-horizontal flex-between" style="background:#fff;margin-left:30px;margin-right:30px;">
+            <div class="panel-body align-center" style="margin:60px;background-color:#fff;height:77vh;min-height:550px;padding:0;justify-content:center;margin-top:0;">
+                <form class="form form-horizontal flex-between" style="background:#fff;height:550px;width:1012px;">
                     <div class="form-left" style="width:200px;">
-                        <div class="form-group mb32">
-                            <h4>添加人脸照片</h4>
-                            <div class="img-box img_info_box mr32" style="margin-left:50px;">
+                        <div class="form-group">
+                            <h4 class="ipt_text" style="margin-left:56px;margin-top:30px;margin-bottom:30px;">添加人脸照片</h4>
+                            <div class="img-box img_info_box mr32" id="firstdata" style="margin-left:50px;margin-bottom:24px;">
                                 <img class="mainPIC ml10" alt="" width="100" height="100">
-                                <p class="recording reminder_text pic1record mt16">(识别头像)</p>
-                                <p class="getHeadPic ipt_text mt8 text-center mainHeadPIC">照片获取中···</p>
+                                <p class="recording reminder_text pic1record mt16 text-center">(必选项)</p>
+                                <p class="getHeadPic ipt_text mt8 text-center mainHeadPIC">请拍摄正脸获取正脸</p>
                             </div>
-                            <div class="img-box img_info_box condition" id="start" style="margin-left:50px;">
+                            <div class="img-box img_info_box condition" id="seconddata" style="margin-left:50px;">
                                 <img class="secPIC text-center ml10" alt="" width="100" height="100">
                                 <p class="recording reminder_text pic2record mt16 text-center">(可选项)</p>
                                 <p class="getHeadPic ipt_text mt8 text-center secHeadPIC">请摘掉眼镜获取正脸</p>
@@ -23,9 +23,9 @@
                     </div>
                     <div class="form-right flex-between" style="flex:1;">
                         <div class="right-l" style="flex:1;">
-                            <h4>员工信息</h4>
+                            <h4 class="ipt_text" style="margin-left:56px;margin-top:30px;margin-bottom:30px;">员工基本信息</h4>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">姓名</label>
+                                <label class="col-sm-3 control-label">姓名</label>
                                 <div class="col-sm-7">
                                     <input type="text" id="visitorName" required="required" maxlength="20" class="form-control name" required="required" name="name"
                                         value="" />
@@ -46,7 +46,7 @@
                             </script>
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">电话</label>
+                                <label class="col-sm-3 control-label">手机</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control phonenumber" minlength="11" maxlength="11" pattern="^1[3|4|5|7|8][0-9]{9}" required="required"
                                         name="phonenumber" id="PA-phonenumber" value="" placeholder="请输入11位手机号码" />
@@ -66,8 +66,36 @@
                                     }
                                 };
                             </script>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">工号</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="PA-employeenumber" required="required" maxlength="6" class="form-control employeenumber" required="required"
+                                        name="employeenumber" value="" /><span class="asterisk">*</span>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    document.getElementById("PA-employeenumber").onpropertychange = document.getElementById(
+                                            "PA-employeenumber").onkeyup =
+                                        function () {
+                                            var lenE = this.value.length;
+                                            if (lenE == 6) {
+                                                alert("字数超限，请保持在6字以内")
+                                            }
+                                        }
+                                })
+                            </script>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">部门</label>
+                                <div class="col-sm-7">
+                                    <select id="PA-department" name="department" class="form-control department">
+                                    <option value="001">开发部</option>
+                                    <option value="001002">市场部</option>
+                                    </select><span class="asterisk">*</span>
+                                </div>
+                            </div>
                             <div class="form-group" id="PA-jobSel">
-                                <label class="col-sm-2 control-label">职务</label>
+                                <label class="col-sm-3 control-label">职位</label>
                                 <div class="col-sm-7">
                                     <input type="text" required="required" maxlength="10" id="PA-Job" class="form-control job" required="required" name="job"
                                         value="" />
@@ -92,32 +120,31 @@
                                 {{/each}}
                             </ul>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">工号</label>
+                                <label class="col-sm-3 control-label">授权组</label>
                                 <div class="col-sm-7">
-                                    <input type="text" id="PA-employeenumber" required="required" maxlength="6" class="form-control employeenumber" required="required"
-                                        name="employeenumber" value="" /><span class="asterisk">*</span>
+                                    <select id="PA-authorization" name="authorization" class="form-control authorization">
+                                    <option value="001">授权组1</option>
+                                    <option value="001002">授权组2</option>
+                                    </select><span class="asterisk">*</span>
                                 </div>
                             </div>
-                            <script type="text/javascript">
-                                $(function () {
-                                    document.getElementById("PA-employeenumber").onpropertychange = document.getElementById(
-                                            "PA-employeenumber").onkeyup =
-                                        function () {
-                                            var lenE = this.value.length;
-                                            if (lenE == 6) {
-                                                alert("字数超限，请保持在6字以内")
-                                            }
-                                        }
-                                })
-                            </script>
-                            <div class="form-group">
-                                <div class="col-sm-8 col-sm-offset-2">
-                                    <button type="submit" class="btn btn-blue" style="margin-left:35px;">确认</button>
-                                    <button type="text" class="btn btn-default my-btn-cancel">取消</button>
+                            <!--<div class="form-group">
+                                <label class="col-sm-3 control-label">考勤</label>
+                                <div class="col-sm-7">
+                                    <select id="PA-checking-in" name="checking-in" class="form-control checking-in">
+                                    <option value="001">9-6-5</option>
+                                    <option value="001002">9-9-6</option>
+                                    </select><span class="asterisk">*</span>
+                                </div>
+                            </div>-->
+                            <div class="form-group" style="margin-top:30px;">
+                                <div class="text-center" style="margin-left:100px;">
+                                    <button type="submit" class="btn btn-blue text-center">确认</button>
+                                    <button type="text" class="btn btn-default my-btn-cancel text-center">取消</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="right-r" style="flex:1;">
+                        <div class="right-r" style="flex:1;margin-top:72px;">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-7">

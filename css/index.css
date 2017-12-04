@@ -160,7 +160,7 @@ a {
 .dropdown {
     margin-top: 7px;
     margin-left: -6px!important;
-    margin-right: 45px;
+    margin-right: 24px;
     cursor: pointer;
     color: #000;
     /*height: 25px;*/
@@ -193,7 +193,9 @@ button {
     transform: rotate(180deg);
 }
 
-#psDropdown,
+#psDropdown{
+    margin: 2px 0 0 0 !important;
+}
 #sysDropdown {
     margin: 0!important;
 }
@@ -358,33 +360,26 @@ button {
 .dropdown-menu>li>a:hover {
     color: #357aed;
 }
-
 .user-profile img {
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-left: 15px;
+    margin-right: 8px;
 }
 
 #messages {
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 5px;
+    height: 5px;
     text-align: center;
     color: white;
     line-height: 20px;
     border-radius: 50%;
-    background-color: #357aed;
+    background-color: red;
     position: absolute;
-    top: 20px;
-    left: 90px;
-}
-
-.config-icon {
-    display: block;
-    width: 22px;
-    height: 36px;
-    background: url(../imgs/config-icon.png) no-repeat center 9px;
+    top: 13px;
+    left: 42px;
 }
 
 .dropdown-menu>li>a {
@@ -420,7 +415,7 @@ button {
     right: -24px;
 }
 
-.form-horizontal .cfmPWD {
+.cfmPWD {
     white-space: nowrap;
     background-color: #fff8f4;
     border: 1px solid #e3abb9;
@@ -629,61 +624,109 @@ a:focus,
 a:visited {
     outline: 0;
 }
-
-#sidebar-menu .side-menu li {
-    border-right: 5px solid transparent;
-    height: 114px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;
-    min-height: 80px;
-    cursor: pointer;
+#nav>ul>li>a>i{
+    display: block;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 30px;
 }
-
-#sidebar-menu .side-menu li .img-icon {
-    height: 30px;
-    width: 30px;
-}
-
-#sidebar-menu .side-menu #btnRecord .img-icon {
+.guard-icon {
     background-image: url(../imgs/recrd-icon-0.png);
+    background-size:18px 18px; 
 }
 
-#sidebar-menu .side-menu #btnApproval .img-icon {
+.config-icon {
     background-image: url(../imgs/approval-icon-0.png);
+    background-size:18px 18px; 
 }
 
-#sidebar-menu .side-menu #btnPeopleManager .img-icon {
+.people-icon {
     background-image: url(../imgs/peopleManager-icon-0.png);
+    background-size:18px 18px; 
 }
-
-#sidebar-menu .side-menu #btnAttendanceManager .img-icon {
+.people-icon::after{
+    content: "";
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    top: -2px;
+    left: -5px;
+}
+.personal-icon {
     background-image: url(../imgs/userManager-icon-0.png);
+    background-size:18px 18px; 
 }
 
-#nav .nav-item>ul li.activate {
-    /*text-shadow: rgba(0, 0, 0, .25) 0 -1px 0;*/
-    /*background: linear-gradient(#334556, #2C4257), #2A3F54;*/
-    border-right: 5px solid #357aed;
-}
-#nav .nav-item>ul li.activate a{
-    color: #357aed;
-}
-#sidebar-menu .side-menu #btnRecord.activate .img-icon {
+#nav .nav-show .guard-icon {
     background-image: url(../imgs/recrd-icon-1.png);
 }
 
-#sidebar-menu .side-menu #btnApproval.activate .img-icon {
+#nav .nav-show .config-icon {
     background-image: url(../imgs/approval-icon-1.png);
 }
 
-#sidebar-menu .side-menu #btnPeopleManager.activate .img-icon {
+#nav .nav-show .people-icon {
     background-image: url(../imgs/peopleManager-icon-1.png);
 }
 
-#sidebar-menu .side-menu #btnAttendanceManager.activate .img-icon {
+#nav .nav-show .personal-icon {
     background-image: url(../imgs/userManager-icon-1.png);
+}
+
+#nav .nav-item>ul li{
+    position: relative;
+}
+#nav .personal{
+    position: fixed;
+    bottom:0;
+    width: 150px;;
+}
+#nav .personal:hover{
+    background-color: #357aed;
+}
+#nav .personal:hover a span{
+    color: #fff;
+}
+#nav .personal:hover a i{
+    background-image: url(../imgs/userManager-icon-1.png);
+}
+#nav .personal.activate{
+    background-color: #357aed;
+}
+#nav .personal.activate a span{
+    color: #fff;
+}
+#nav .personal.activate a i{
+    background-image: url(../imgs/userManager-icon-1.png);
+}
+#nav>ul>.personal>a{
+    height: 40px;
+    line-height: 40px;
+}
+#nav>ul>.personal>a>i{
+    top: 11px;
+}
+#nav .nav-item>ul li::after{
+    content: "";
+    display: block;
+    height: 10px;
+    width: 10px;
+    background-color: transparent;
+    position: absolute;
+    top: 10px;
+    right: -7px;
+    transform: rotate(45deg);
+    opacity: 1;
+}
+#nav .nav-item>ul li.activate::after {
+    background-color:#edf2f6; 
+}
+#nav .nav-item>ul li.activate a span{
+    color: #357aed;
 }
 
 .nav>li>.img-icon {
@@ -721,34 +764,66 @@ nav {
 #nav {
     width: 150px;
     height: 100%;
-    background: #151a22;
+    background: #1c232d;
     transition: all .3s;
     position: absolute;
     top: 100px;
     left: 0;
 }
 
-#nav a {
+#nav>ul>li>a {
     display: block;
     overflow: hidden;
     padding-left: 20px;
-    line-height: 46px;
-    max-height: 46px;
+    line-height: 80px;
+    height: 80px;
     color: #edf2f6;
     transition: all .3s;
     text-decoration: none;
 }
-
+#nav>ul>.nav-show>a {
+    display: block;
+    overflow: hidden;
+    padding-left: 20px;
+    line-height: 80px;
+    height: 50px;
+    color: #edf2f6;
+    transition: all .3s;
+    text-decoration: none;
+}
+#nav .submenu{
+    padding-top: 8px;
+    padding-bottom: 24px;
+    background-color: #101825;
+}
+#nav .submenu li a{
+    display: block;
+    overflow: hidden;
+    padding-left: 20px;
+    line-height: 32px;
+    height: 32px;
+    color: #edf2f6;
+    transition: all .3s;
+    text-decoration: none;
+}
 #nav a span {
     margin-left: 30px;
+    color: #576780;
+    font-size: 16px;
 }
-
+#nav>ul>.nav-show>a>span{
+    color: #fff;
+}
+#nav .submenu a span{
+    font-size: 14px;
+}
 .nav-item {
     position: relative;
 }
 
 .nav-item.nav-show {
     border-bottom: none;
+    background: #101825;
 }
 
 .nav-item ul {
@@ -760,7 +835,7 @@ nav {
     display: block;
 }
 
-.nav-item>a:before {
+/*.nav-item>a:before {
     content: "";
     position: absolute;
     left: 0px;
@@ -769,7 +844,7 @@ nav {
     background: #357aed;
     opacity: 0;
     transition: all .3s;
-}
+}*/
 
 #nav .nav-icon {
     font-size: 20px;
@@ -819,8 +894,6 @@ nav {
 .nav-show,
 .nav-item>a:hover {
     color: #FFF;
-    background: linear-gradient(#334556, #2C4257), #2A3F54;
-    opacity: .8;
 }
 
 .nav-show>a:before,
@@ -828,40 +901,34 @@ nav {
     opacity: 1;
 }
 
-.nav-item li:hover a {
-    color: #FFF;
-    background: linear-gradient(#334556, #2C4257), #2A3F54;
-    opacity: .8;
+.nav-item li:hover a span{
+    color: #357aed!important;
 }
 
 .search {
     margin-top: 22px;
-    width: 20vw;
     position: absolute;
-    min-width: 250px;
-    top: 22px;
+    width: 320px;
+    top: 28px;
     right: 70px;
 }
 
 .search input {
-    width: 20vw;
     background: #f8fafb;
     color: #000;
     border-radius: 20px;
     box-shadow: none;
     height: 40px;
-    min-width: 250px;
+    width: 240px;
+    border:0px;
 }
 
 .search button {
     position: absolute;
     right: 0;
-    top: 1px;
-    background: none;
+    top: 4px;
     border: none;
     box-shadow: none;
-    height: 38px;
-    width: 40px;
     cursor: pointer;
     z-index: 999;
 }
@@ -1317,7 +1384,16 @@ p {
     background-image: url(../imgs/headimages_icon.png);
     background-size: 20px 20px;
 }
+.mainPIC {
+    background-image: url(../imgs/uploadIMG.png);
+    background-size: 100px 100px;
+    border: 1px solid #dedeed;
+    display: block;
+}
 
+.mainPIC:hover {
+    background-image: url(../imgs/uploadIMG_hover.png);
+}
 .secPIC {
     background-image: url(../imgs/uploadIMG.png);
     background-size: 100px 100px;

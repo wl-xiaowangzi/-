@@ -3,22 +3,23 @@
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "common/camera", "datetimepicker", "datetimepickerLang", "typeahead"], function ($, art, peopleAddTpl, API, camera) {
-    return function (faceimages, facedatas, headfaceimage) {
+define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","common/employeeCamera", "common/camera", "datetimepicker", "datetimepickerLang", "typeahead"], function ($, art, peopleAddTpl, API, employeeCamrea,camera) {
+    return function () {
         // 职位查询所需参数
         var parameterkey = "key_job";
         var start = 0;
         var limit = 30;
-        var firstFaceimages = faceimages;
-        var firstFacedatas = facedatas;
-        var headfaceimage = headfaceimage;
         // 调用参数查询接口
         API.queryDeviceList(start, limit, parameterkey, function (res) {
             // 渲染模板
             var peopleAdd = art.render(peopleAddTpl, res.data)
             var $peopleAdd = $(peopleAdd);
             // 如果点击start则表示提交两张图片
-            $peopleAdd.on("click", "#start", function () {
+            $peopleAdd.on("click", "#firstdata", function () {
+                var ps_type = 1;
+                employeeCamrea(ps_type);
+            });
+            $peopleAdd.on("click", "#seconddata", function () {
                 var ps_type = 1;
                 camera(ps_type);
             });
@@ -37,6 +38,9 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
             $peopleAdd
             .on("submit", "form", function () {
                 // 获取参数
+                var firstFaceimages =  $("#btnFirstFacedata").attr("firstFaceimages");
+                var firstFacedatas = $("#btnFirstFacedata").attr("firstFacedatas");
+                var headfaceimage = $("#btnFirstFacedata").attr("headfaceimage");
                 var deviceids = $("#btnDeviceids").attr("deviceids");
                 var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
                 var secondFacedatas = $("#btnPeopleManager").attr("facedata");
@@ -58,6 +62,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                 $("#btnPeopleManager").removeAttr("faceimage");
                 $("#btnPeopleManager").removeAttr("facedata");
                 // 调用接口
+                console.log(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes)
                 API.addEmployee(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes, function (res) {
                     $peopleAdd.modal("hide");
                     //成功的添加员工->刷新员工管理页面
@@ -102,7 +107,6 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api", "comm
                     flag=true;
                 }
             })
-            $(".mainPIC").attr("src", headfaceimage);
             // 判断图片是否加载完成
             $(".mainPIC").load(function () {
                 $(".pic1record").html("").addClass("success_record")

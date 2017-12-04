@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/1
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", "common/editCamera1", "common/editCamera2", "./choicePicture1", "./choicePicture2","typeahead"], function ($, art, API, peopleBaseInfoTpl, editCamera1, editCamera2,choicePicture1,choicePicture2) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", "common/editCamera1", "common/editCamera2", "./choicePicture1", "./choicePicture2", "./del","typeahead"], function ($, art, API, peopleBaseInfoTpl, editCamera1, editCamera2,choicePicture1,choicePicture2,peopleDel) {
     return function (ep_id) {
         //根据员工id获取员工基本信息
         API.getEmployeeBaseInfo(ep_id, function (res) {console.log(res)
@@ -22,7 +22,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
                 choicePicture2(ps_id,ps_type,ps_name);
             })
             // 提交表单
-            $peopleBaseInfo.on("submit", "form", function () {
+            $peopleBaseInfo
+            .on("submit", "form", function () {
                 // 获取参数
                 var deviceids = $("#PE-submit").parent().parent().attr("deviceids");
                 if(deviceids!=null){
@@ -60,6 +61,13 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleBaseInfo.html", 
                     //数据更新成功-->跳转到员工列表
                     $("#btnPeopleManager").trigger("click");
                 })
+                // 阻止表单自动提交
+                return false;
+            })
+            .on("click",".btn-people-del",function(){
+                var ep_id = $(this).attr("ep_id");
+                // 传参
+                peopleDel(ep_id);
                 // 阻止表单自动提交
                 return false;
             })

@@ -1,5 +1,5 @@
 <div class="record">
-    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:50px;padding:9px 0 0 0;">
+    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:60px;padding:14px 0 0 0;">
         <div class="top-nav">
             <!--下拉搜索条件-->
             <div class="dropdown pull-left" style="margin-left:-20px;">
@@ -25,7 +25,7 @@
             <div class="search">
                 <div class="form-group">
                     <input type="text" id="record_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
-                    <button class="search-icon btn-search" id="record_search_btn" type="submit"></button>
+                    <button class="btn btn-blue btn-search" id="record_search_btn" type="submit">搜索</button>
                 </div>
                 <!-- /input-group -->
             </div>
@@ -34,8 +34,9 @@
             <!--<button id="record_export" class="pull-right">导出记录</button>-->
             <!--/识别记录导出-->
             <!--日期控件 daterangepicker-->
-            <div style="margin-right:580px;">
-                <div id="daterange-btn" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #e6ebee">
+            <div>
+                <span class="pull-left" style="margin-top:6px;margin-right:12px;color:black;">时间</span>
+                <div id="daterange-btn" class="pull-left" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #e6ebee">
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
                     <span class="time"></span> <b class="caret"></b>
                 </div>
@@ -45,49 +46,50 @@
         </div>
     </div>
     <div class="table">
-        <ul class="flex-around pull-right" style="width:416px;margin-top:20px;margin-bottom:20px;">
-            <li>识别总计：88人</li>
-            <li>识别员工：44人</li>
-            <li>识别访客：44人</li>
-            <li>识别记录：444条</li>
-        </ul>
-        <ul class="record_thead flex-around" style="width:100%;">
-            <li>人脸信息</li>
-            <li class="bdcolor">|</li>
-            <li>人员名称</li>
-            <li class="bdcolor">|</li>
-            <li>人员类型</li>
-            <li class="bdcolor">|</li>
-            <li>识别设备</li>
-            <li class="bdcolor">|</li>
-            <li>时间</li>
-            <li class="bdcolor">|</li>
-            <li>操作</li>
-        </ul>
-        {{each data}}
-        <div class="personal-info">
-            <div class="img-box">
-                {{if $value.persontype==1}}
-                <img src="imgs/employee-tip.png" alt=""> {{else}}
-                <img src="imgs/visitor-tip.png" alt=""> {{/if}}
-            </div>
-            <ul>
-                <li><img src="{{$value.faceimage}}" alt="" width="50" height="50"><span>{{$value.name}}</span>
-                    <span class="similarity"></span>
-                    <span class="sim-text">{{$value.similarity*100}}%</span>
-                </li>
-                <li class="bdcolor">|</li>
-                <li>{{$value.devicename}}</li>
-                <li class="bdcolor">|</li>
-                <li class="identificationtime">{{$value.identificationtime}}</li>
-                <li class="bdcolor">|</li>
-                <li ps_id={{$value.personid}} ps_type={{$value.persontype}}>
-                    <button class="btn btn-default btn-show show{{$value.persontype}}" personid={{$value.personid}}>信息</button>
-                    <button class="btn btn-default btn-edit ml24">记录</button>
-                </li>
+        <div class="flex-between" style="margin-top:20px;margin-bottom:20px;">
+            <ul class="info_text">
+                <li>识别记录：444条</li>
+            </ul>
+            <ul class="flex-around info_text" style="width:300px;">
+                <li>识别总计：<span style="color:#000;">88</span>人</li>
+                <li>识别员工：<span style="color:#357aed;">44</span>人</li>
+                <li>识别访客：<span style="color:#ffae45;">44</span>人</li>
             </ul>
         </div>
-        {{/each}}
+
+        <table class="table table-hover text-center my-table">
+            <thead>
+                <th class="text-center">人脸照片</th>
+                <th class="text-center">人员名称</th>
+                <th class="text-center">人员类型</th>
+                <th class="text-center">识别设备</th>
+                <th class="text-center">时间</th>
+                <th></th>
+                <th class="text-center">操作</th>
+            </thead>
+            <tbody>
+                {{each data}}
+                <tr vs_id={{$value.visitorid}}>
+                    <td><img src="{{$value.faceimage}}" alt="" width="50" height="50" class="text-center"></td>
+                    <td style="color:black;">{{$value.name}}</td>
+                    {{if $value.persontype==1}}
+                    <td style="color:black;">员工</td>
+                    {{else if $value.persontype==2}}
+                    <td style="color:#ffae45;">访客</td>
+                    {{else}}
+                    <td style="color:black;">陌生人</td>
+                    {{/if}}
+                    <td style="color:black;">{{$value.devicename}}</td>
+                    <td style="color:black;">{{$value.identificationtime}}</td>
+                    <td style="color:#f3f3f3;">|</td>
+                    <td ps_id={{$value.personid}} ps_type={{$value.persontype}}>
+                        <button class="btn btn-default btn-show show{{$value.persontype}}" personid={{$value.personid}}>信息</button>
+                        <button class="btn btn-default btn-edit ml24">记录</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
         <div class="pages">
             <ul class="pagination" id="page1">
             </ul>

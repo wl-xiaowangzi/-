@@ -9,7 +9,7 @@
             <div class="search">
                 <div class="form-group">
                     <input type="text" id="people_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
-                    <button id="people_search_btn" class="search-icon btn-search" type="submit"></button>
+                    <button id="people_search_btn" class="btn btn-blue btn-search" type="submit">搜索</button>
                 </div>
                 <!-- /input-group -->
             </div>
@@ -30,7 +30,7 @@
             <div class="info-content">
                 {{each data}} {{if $value.status==3}}
                 <div class="info col-sm-2">
-                    <div class="btn-people-del" ep_id={{$value.employeeid}}>×</div>
+                    <!--<div class="btn-people-del" ep_id={{$value.employeeid}}>×</div>-->
                     <div class="info-box">
                         <div class="img-box">
                             {{if $value.headfaceimages[0]!=undefined}}

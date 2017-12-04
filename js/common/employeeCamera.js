@@ -25,10 +25,11 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api", "people/
                     mediaStreamTrack && mediaStreamTrack.stop();
                     var faceimages = res.data.faceimage;
                     var facedatas = res.data.facedata;
-                    var facedatas = res.data.facedata;
                     var headfaceimage=res.data.headfaceimage;
+                    $("#btnFirstFacedata").attr("firstFaceimages",faceimages);
+                    $("#btnFirstFacedata").attr("firstFacedatas",facedatas);
+                    $(".mainPIC").attr("src",headfaceimage);
                     $camera.modal("hide")
-                    addEmployee(faceimages, facedatas,headfaceimage)
                 })
             })
             .on("click",".close",function(){

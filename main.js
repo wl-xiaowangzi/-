@@ -68,9 +68,10 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
     setTimeout(function () {
         API.queryApprovalList(0, 100, keyword, function (res) {
             if (res.data.length == 0) {
-                $("#messages").removeClass("opacity1").addClass("opacity0")
+                $("#messages").removeClass("opacity1").addClass("opacity0");
             } else {
-                $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
+                $("#messages").removeClass("opacity0").addClass("opacity1");
+                $(".people-icon::after").css("background-color","red");
             }
         })
     }, 0)
@@ -80,11 +81,46 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
             if (res.data.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0")
             } else {
-                $("#messages").removeClass("opacity0").addClass("opacity1").html(res.data.length);
+                $("#messages").removeClass("opacity0").addClass("opacity1")
             }
         })
-    }, 30000)
-
+    }, 30000);
+    // 定时抓取当前时间
+    setTimeout(function () {
+        var time = new Date();
+        var hour = time.getHours();
+            if(hour < 5){
+                $(".welcome").html("早点睡！")
+            }else if (hour < 9) {
+                $(".welcome").html("早上好！")
+            }else if(hour < 12){
+                $(".welcome").html("上午好！")
+            }else if(hour < 13){
+                $(".welcome").html("中午好！")
+            }else if(hour < 19){
+                $(".welcome").html("下午好！")
+            }else{
+                $(".welcome").html("晚上好！")
+            }
+    }, 0)
+    setInterval(function () {
+        var time = new Date();
+        var hour = time.getHours();
+        console.log(hour)
+            if(hour < 5){
+                $(".welcome").html("早点睡！")
+            }else if (hour < 9) {
+                $(".welcome").html("早上好！")
+            }else if(hour < 12){
+                $(".welcome").html("上午好！")
+            }else if(hour < 13){
+                $(".welcome").html("中午好！")
+            }else if(hour < 19){
+                $(".welcome").html("下午好！")
+            }else{
+                $(".welcome").html("晚上好！")
+            }
+    }, 60000)
     //系统设置
     $("#btnPostManagement").on("click", function () {
         $(".module-container").empty();
@@ -108,7 +144,7 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
     })
 
     //个人中心
-    $("#btnPersonalCenter").on("click", function () {
+    $(".btnPersonalCenter").on("click", function () {
         personalCenter();
     })
     // 修改密码
@@ -204,9 +240,12 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
 
     // 给侧边栏添加点击效果
     $(".nav-item>ul li").on("click", function () {
-        $(this).siblings().removeClass("activate");
+        $(".nav-item>ul li").removeClass("activate");
         $(this).addClass("activate");
     });
+    $(".personal").on("click",function(){
+        $(this).addClass("activate");
+    })
     // nav收缩展开
     $('.nav-item>a').on('click',function(){
         if (!$('.nav').hasClass('nav-mini')) {
@@ -215,6 +254,7 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
                 $('.nav-item').children('ul').slideUp(300);
                 $(this).next('ul').slideDown(300);
                 $(this).parent('li').addClass('nav-show').siblings('li').removeClass('nav-show');
+                $(".personal").removeClass("activate");
             }else{
                 //收缩已展开
                 $(this).next('ul').slideUp(300);
