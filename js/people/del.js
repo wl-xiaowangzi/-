@@ -18,7 +18,7 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleDel.html","bootstra
         // 移除模态框
         $("#modalDelPeople").remove();
         // 移除弹出层，防止重复点击造成页面卡顿
-        $(".modal-backdrop").remove();
+        // $(".modal-backdrop").remove();
         $peopleDel.appendTo("body").modal();
     }
 })

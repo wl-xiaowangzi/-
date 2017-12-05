@@ -8,7 +8,7 @@
             <li role="presentation" style="margin-left:50px;"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="">访问授权设置</a></li>
         </ul>
         <!-- Tab panes -->
-        <div class="tab-content" style="padding-left:60px;padding-right:60px;">
+        <div class="tab-content" style="padding-left:60px;padding-right:60px;padding-bottom:60px;">
             <div role="tabpanel" class="tab-pane active" id="home">
                 <div class="">
                     <div class="flex-between" style="height:64px;">
@@ -19,26 +19,34 @@
                         </div>
                     </div>
                     <div class="">
+                        {{each data}}
                         <div class="panel panel-default" style="border-radius:0;">
-                            <div class="panel-heading flex-between" style="background:#f8fafb;border-radius:0;padding:0;height:40px;font-weight:700;line-height:40px;align-items:center;">
-                                <h3 class="panel-title" style="height:40px;line-height:40px;font-weight:700;margin-left:30px;">行政部授权组(8)</h3>
-                                <div class="btn-device-edit author-edit" style="margin-right:18px;"></div>
+                            <div class="panel-heading flex-between operate" style="background:#f8fafb;border-radius:0;padding:0;height:40px;font-weight:700;line-height:40px;align-items:center;">
+                                <h3 class="panel-title" style="height:40px;line-height:40px;font-weight:700;margin-left:16px;font-size:14px;">{{$index+1}}.{{$value.name}}({{$value.deiviceList.length}})</h3>
+                                <div class="flex-around operate_text" style="width:210px;margin-right:24px;" datanumber={{$value.datanumber}}>
+                                    <div class="author-default">设置为默认访客授权组</div>
+                                    <div class="author-edit">编辑</div>
+                                    <div class="author-del">删除</div>
+                                </div>
                             </div>
-                            <div class="panel-body" style="height:50px;">
-                                <span style="margin-right:24px;">禾思一号门</span>
+                            <div class="panel-body" style="padding-top:0px;padding-right:0px;">
+                                {{each $value.deiviceList}}
+                                <span style="display:inline-block;margin-right:24px;margin-top:16px;">{{$value.devicename}}</span>
+                                {{/each}}
                             </div>
                         </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="profile">
-                <div class="panel-body" id="choiceRole" style="padding-top:50px;">
-                    <div class="" style="height:77vh;">
+                <div class="" id="choiceRole" style="padding-top:50px;">
+                    <div class="" style="height:77vh;min-height:440px;">
                         <div class="" style="margin-bottom:12px;">
                             <h3 class="panel-title" style="color:#000;">选择授权角色</h3>
                         </div>
-                        <div class="flex-around" style="background-color:#fff;height:76vh;align-items:center;">
-                            <div class="flex-around" style="background-color:#fff;height:420px;width:840px;align-items:center;">
+                        <div class="flex-around" style="background-color:#fff;height:76vh;align-items:center;min-height:420px;">
+                            <div class="flex-around" style="background-color:#fff;height:420px;width:80%;align-items:center;">
                             <div class="author-visitor author">
                                 <div class="img-box"><img src="imgs/pic.jpg" alt="" width="145" height="145" style="border-radius:50%;"></div>
                                 <button type="text" id="author-employee" style="height:40px;width:145px;background-color:#357aed;border-radius:5px;border:0;color:#fff;margin-top:64px;">授权给员工</button>

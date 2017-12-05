@@ -27,9 +27,11 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         // 获取审批列表
         API.getApprovalList(start,limit,keyword,function(res){
             if (res.data.length == 0) {
-                $("#messages").removeClass("opacity1").addClass("opacity0")
+                $("#messages").removeClass("opacity1").addClass("opacity0");
+                $(".people-icon").append("<style>.people-icon::after{background-color: transparent;}</style>");
             } else {
                 $("#messages").removeClass("opacity0").addClass("opacity1");
+                $(".people-icon").append("<style>.people-icon::after{background-color: red;}</style>");
             }
             console.log(res)
         //编译模板

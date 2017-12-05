@@ -69,9 +69,10 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
         API.queryApprovalList(0, 100, keyword, function (res) {
             if (res.data.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0");
+                $(".people-icon").append("<style>.people-icon::after{background-color: transparent;}</style>");
             } else {
                 $("#messages").removeClass("opacity0").addClass("opacity1");
-                $(".people-icon::after").css("background-color","red");
+                $(".people-icon").append("<style>.people-icon::after{background-color: red;}</style>");
             }
         })
     }, 0)
@@ -79,9 +80,11 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
     setInterval(function () {
         API.queryApprovalList(0, 100, keyword, function (res) {
             if (res.data.length == 0) {
-                $("#messages").removeClass("opacity1").addClass("opacity0")
+                $("#messages").removeClass("opacity1").addClass("opacity0");
+                $(".people-icon").append("<style>.people-icon::after{background-color: transparent;}</style>");
             } else {
-                $("#messages").removeClass("opacity0").addClass("opacity1")
+                $("#messages").removeClass("opacity0").addClass("opacity1");
+                $(".people-icon").append("<style>.people-icon::after{background-color: red;}</style>");
             }
         })
     }, 30000);

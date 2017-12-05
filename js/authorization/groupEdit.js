@@ -4,12 +4,13 @@
  *   Date:2017/11/23
  */
 define(["jquery", "artTemplate", "text!tpls/authorGroupEdit.html", "common/api"], function ($, art, authorGroupEditTpl, API) {
-    return function () {
+    return function (datanumber) {
         // 获取参数
         var page = $("#btnPager").attr("page") || 1;
         var start = 60 * (page - 1);
         var limit = 60;
         var keyword = $("#btnSearchWords").attr("deviceKeyword");
+        var datanumber = datanumber;
         // 渲染模板
         API.queryDeviceList(start, limit, keyword, function (res) {
             var authorGroupEdit = art.render(authorGroupEditTpl, res);
@@ -17,9 +18,9 @@ define(["jquery", "artTemplate", "text!tpls/authorGroupEdit.html", "common/api"]
             // 提交表单
             $authorGroupEdit
                 .on("click", ".btn-blue", function () {
-                    if($("#group-name").val()==""){
+                    if($("#group-edit-name").val()==""){
                         $(".cfmPWD").removeClass("opacity0");
-                        $("#group-name").focus();
+                        $("#group-edit-name").focus();
                         setTimeout(function(){
                             $(".cfmPWD").addClass("opacity0");
                         },2000)
@@ -27,16 +28,18 @@ define(["jquery", "artTemplate", "text!tpls/authorGroupEdit.html", "common/api"]
                     // 获取表单参数 
                     var list = $("#box3").find(".back-gray");
                     var deviceids = $(list[0]).attr("deviceid");
+                    var name = $("#group-edit-name").val();
+                    var status = 1;
                     for(var i = 1;i < list.length; i++){
                         deviceids += "," + $(list[i]).attr("deviceid");
                     }
-                    console.log(deviceids)
+                    console.log(datanumber,name,status,deviceids)
                     // 接口
-                    // API.addUser(formData, function (res) {
-                    //     $authorGroupAdd.modal("hide");
-                    //     //成功的添加用户->刷新用户管理页面
-                    //     $("#btnUsersManager").trigger("click");
-                    // })
+                    API.editAuthorizationgroup(datanumber,name,status,deviceids, function (res) {
+                        $authorGroupEdit.modal("hide");
+                        //成功的添加授权组->刷新授权组页面
+                        $("#btnAuthorization").trigger("click");
+                    })
                     return false; //阻止同步提交表单
                 })
                 .on("click", ".btn-default", function () {
@@ -50,6 +53,19 @@ define(["jquery", "artTemplate", "text!tpls/authorGroupEdit.html", "common/api"]
             // 移除弹出层，防止重复点击造成页面卡顿
             $(".modal-backdrop").remove();
             $authorGroupEdit.appendTo("body").modal();
+            // 设置默认值
+            API.queryAuthorizationgroup(datanumber,function(res){
+                    console.log(res)
+                    var name = res.data[0].name;
+                    $("#group-edit-name").val(name);
+                for(var i = 0;i<res.data[0].deiviceList.length;i++){
+                    var deviceno = res.data[0].deiviceList[i].deviceno;
+                    var box3device = "box3"+deviceno;
+                    var box4device = "box4"+deviceno;
+                    $("#"+box3device).addClass("back-gray");
+                    $("#"+box4device).removeClass("displayN");
+                }
+            })
             $("#box3>.device-name").on("click", function () {
                 $(this).addClass("back-gray");
                 var deviceid = $(this).attr("deviceid");

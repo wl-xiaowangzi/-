@@ -353,11 +353,11 @@ define(["jquery"],function($){
             })
         },
         // 员工添加
-        addEmployee:function(deviceids,name,sex,brithday,phonenumber,employeenumber,job,faceimages,facedatas,facetypes,callback){
+        addEmployee:function(authorizationgroupid,organizationid,name,sex,brithday,phonenumber,employeenumber,job,faceimages,facedatas,facetypes,callback){
             $.ajax({
                 url:api+"/system/employee/add",
                 type:"post",
-                data:{deviceids:deviceids,name:name,sex:sex,birthtime:brithday,phonenumber:phonenumber,employeenumber:employeenumber,job:job,faceimages:faceimages,facedatas:facedatas,facetypes:facetypes},
+                data:{authorizationgroupid:authorizationgroupid,organizationid:organizationid,name:name,sex:sex,birthtime:brithday,phonenumber:phonenumber,employeenumber:employeenumber,job:job,faceimages:faceimages,facedatas:facedatas,facetypes:facetypes},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
@@ -1002,6 +1002,124 @@ define(["jquery"],function($){
                     }
                     return;
                 }
+                callback && callback(res);
+                }
+            })
+        },
+        // 授权组管理
+        // 获取授权组列表
+        getAuthorizationgroupList:function(start,limit,keyword,callback){
+            $.get(api+"/system/authorizationgroup/query",{start:start,limit:limit,keyword:keyword},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
+                }
+                callback && callback(res);
+            })
+        },
+        // 获取授权组列表(无加载动画)
+        queryAuthorizationgroupList:function(start,limit,keyword,callback){
+             $.ajax({
+                url:api+"/system/authorizationgroup/query",
+                type:"post",
+                data:{start:start,limit:limit,keyword:keyword},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    alert(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 增加授权组
+        addAuthorizationgroup:function(name,deviceids,callback){
+            $.ajax({
+                url:api+"/system/authorizationgroup/add",
+                type:"post",
+                data:{name:name,deviceids:deviceids},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 查看授权组信息
+        queryAuthorizationgroup:function(datanumber,callback){
+            $.ajax({
+                url:api+"/system/authorizationgroup/query",
+                type:"post",
+                data:{datanumber:datanumber},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    alert(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 授权组编辑
+        editAuthorizationgroup:function(datanumber,name,status,deviceids,callback){
+            $.ajax({
+                url:api+"/system/authorizationgroup/update",
+                type:"post",
+                data:{datanumber:datanumber,name:name,status:status,deviceids:deviceids},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                        console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 授权组删除
+        delAuthorizationgroup:function(datanumbers,callback){
+            $.ajax({
+                url:api+"/system/authorizationgroup/delete",
+                type:"post",
+                data:{datanumbers:datanumbers},
+                beforeSend:function(res){},
+                success:function(res){
+                    
                 callback && callback(res);
                 }
             })

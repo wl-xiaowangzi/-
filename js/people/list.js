@@ -49,7 +49,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
                 .on("click", "#peopleVisitantList", function () {
                     visitant();
                 })
-                .on("click", ".btn-edit-course-baseinfo", function () {
+                .on("click", ".btn-show-baseinfo", function () {
                     //编辑员工基本信息
                     //1、获取员工id
                     var ep_id = $(this).parent().attr("ep_id");

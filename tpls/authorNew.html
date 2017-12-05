@@ -1,6 +1,6 @@
-<div class="modal fade" id="modalauthorGroupEdit" tabindex="-1" role="dialog">
+<div class="modal fade" id="modalauthorNew" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document" style="width:964px;">
-        <div class="modal-content" style="width:964px;height:526;">
+        <div class="modal-content" style="width:964px;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
@@ -12,10 +12,9 @@
                         <div class="panel-heading" style="background-color:#fff;border:0;padding-left:0;padding-top:0px;">
                             <h3 class="panel-title" style="color:#576780;">所有设备</h3>
                         </div>
-                        <div class="panel-body device-box" id="box3">
+                        <div class="panel-body device-box" id="box5">
                             {{each data}}
-                            <span num={{$index}} class="device-name" id="box3{{$value.deviceno}}" deviceid={{$value.deviceid}}>{{$value.name}}</span>
-                            {{/each}}
+                            <span num={{$index}} class="device-name" deviceid={{$value.deviceid}}>{{$value.name}}</span>                            {{/each}}
                         </div>
                     </div>
                 </div>
@@ -24,21 +23,31 @@
                         <div class="panel-heading" style="background-color:#fff;border:0;padding-left:0;padding-top:0px;">
                             <h3 class="panel-title" style="color:#576780;">创建授权组</h3>
                         </div>
-                        <div class="panel-body device-box" id="box4">
+                        <div class="panel-body device-box" id="box6">
                             {{each data}}
-                            <span num={{$index}} class="device-name displayN" id="box4{{$value.deviceno}}" deviceid={{$value.deviceid}}>{{$value.name}}</span>
-                            {{/each}}
+                            <span num={{$index}} class="device-name displayN" deviceid={{$value.deviceid}}>{{$value.name}}</span>                            {{/each}}
                         </div>
                     </div>
-                    <div class="author-name flex-between"><div style="width:72px;line-height:40px;">授权组名称</div><input type="text" id="group-edit-name" style="width:314px;" class="form-control"></div>
+                    <div class="author-name flex-between">
+                        <div style="width:72px;line-height:40px;">授权组名称</div><input type="text" required="required" id="temp-group-name" style="width:314px;" class="form-control"></div>
                     <div style="margin-left:85px;margin-top:2px;" class="cfmPWD opacity0 text-center">授权组名称不能为空</div>
                 </div>
-                
+
             </div>
-            <div class="text-center" style="padding:30px 0;">
+            <div class="flex-between">
+                <div class="save" style="padding-left:30px;">
+                    <div class="main-checkbox">
+                        <input type="checkbox" value="true" id="checkbox2" name="isRemember" />
+                        <label for="checkbox2"></label>
+                    </div>
+                    <span class="text">保存到授权组列表<span class="reminder_text">(如不勾选则为一次性授权组，不予保存)</span></span>
+                </div>
+                <div class="text-right" style="padding-bottom:30px;padding-right:30px;">
                     <button type="submit" class="btn btn-blue" style="margin-right:12px;">保存</button>
                     <button type="text" class="btn btn-default">重置</button>
                 </div>
+            </div>
+
         </div>
         <!-- /.modal-content -->
     </div>

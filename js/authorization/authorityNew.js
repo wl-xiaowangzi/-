@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/11/23
  */
-define(["jquery", "artTemplate", "text!tpls/authorGroupAdd.html", "common/api","common/prompt"], function ($, art, authorGroupAddTpl, API,prompt) {
+define(["jquery", "artTemplate", "text!tpls/authorNew.html", "common/api"], function ($, art, authorNewTpl, API) {
     return function () {
         // 获取参数
         var page = $("#btnPager").attr("page") || 1;
@@ -12,60 +12,55 @@ define(["jquery", "artTemplate", "text!tpls/authorGroupAdd.html", "common/api","
         var keyword = $("#btnSearchWords").attr("deviceKeyword");
         // 渲染模板
         API.queryDeviceList(start, limit, keyword, function (res) {
-            var authorGroupAdd = art.render(authorGroupAddTpl, res);
-            var $authorGroupAdd = $(authorGroupAdd);
+            var authorNew = art.render(authorNewTpl, res);
+            var $authorNew = $(authorNew);
             // 提交表单
-            $authorGroupAdd
+            $authorNew
                 .on("click", ".btn-blue", function () {
-                    if($("#group-name").val()==""){
+                    if($("#temp-group-name").val()==""){
                         $(".cfmPWD").removeClass("opacity0");
-                        $("#group-name").focus();
+                        $("#temp-group-name").focus();
                         setTimeout(function(){
                             $(".cfmPWD").addClass("opacity0");
                         },2000)
                     }
                     // 获取表单参数 
-                    var list = $("#box1").find(".back-gray");
+                    var list = $("#box5").find(".back-gray");
                     var deviceids = $(list[0]).attr("deviceid");
-                    var name = $("#group-name").val();
                     for(var i = 1;i < list.length; i++){
                         deviceids += "," + $(list[i]).attr("deviceid");
                     }
-                    if(deviceids==undefined){
-                        // prompt("设备不能为空！")
-                        alert("请选择设备")
-                    }
-                    console.log(deviceids,name)
+                    console.log(deviceids)
                     // 接口
-                    API.addAuthorizationgroup(name,deviceids, function (res) {
-                        $authorGroupAdd.modal("hide");
-                        //成功的添加授权组->刷新授权组页面
-                        $("#btnAuthorization").trigger("click");
-                    })
+                    // API.addUser(formData, function (res) {
+                    //     $authorGroupAdd.modal("hide");
+                    //     //成功的添加用户->刷新用户管理页面
+                    //     $("#btnUsersManager").trigger("click");
+                    // })
                     return false; //阻止同步提交表单
                 })
                 .on("click", ".btn-default", function () {
                     // 获取表单参数 
-                   $("#box1>span").removeClass("back-gray");
-                   $("#box2>span").addClass("displayN");
+                   $("#box5>span").removeClass("back-gray");
+                   $("#box6>span").addClass("displayN");
                     return false; //阻止同步提交表单
                 });
             // 清除上一次的模板
-            $("#modalauthorGroupAdd").remove();
+            $("#modalauthorNew").remove();
             // 移除弹出层，防止重复点击造成页面卡顿
             $(".modal-backdrop").remove();
-            $authorGroupAdd.appendTo("body").modal();
-            $("#box1>.device-name").on("click", function () {
+            $authorNew.appendTo("body").modal();
+            $("#box5>.device-name").on("click", function () {
                 $(this).addClass("back-gray");
                 var deviceid = $(this).attr("deviceid");
                 var i = $(this).attr("num");
-                $($("#box2>.device-name").find("deviceid:" + deviceid).prevObject[i]).removeClass("displayN");
+                $($("#box6>.device-name").find("deviceid:" + deviceid).prevObject[i]).removeClass("displayN");
             })
-            $("#box2>.device-name").on("click", function () {
+            $("#box6>.device-name").on("click", function () {
                 $(this).addClass("displayN");
                 var deviceid = $(this).attr("deviceid");
                 var i = $(this).attr("num");
-                $($("#box1>.device-name").find("deviceid:" + deviceid).prevObject[i]).removeClass("back-gray");
+                $($("#box5>.device-name").find("deviceid:" + deviceid).prevObject[i]).removeClass("back-gray");
             })
         })
     };

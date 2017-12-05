@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/authorizationInfo.html", "common/api","./qrcode"], function ($, art,authorizationInfoTpl, API,qrcode ) {
+define(["jquery", "artTemplate", "text!tpls/authorizationInfo.html", "common/api","./authorityNew","./qrcode"], function ($, art,authorizationInfoTpl, API,authorityNew,qrcode ) {
     return function () {
         // 渲染模板
         var authorizationInfo=art.render(authorizationInfoTpl);
@@ -16,7 +16,10 @@ define(["jquery", "artTemplate", "text!tpls/authorizationInfo.html", "common/api
         .on("click","#lastStep",function(){
             $("#choiceRole").removeClass("displayN");
             $("#authorizationInfo").empty();
-        })   
+        }) 
+        .on("click","#new-group",function(){
+            authorityNew()
+        })  
         // 清除上一次的模板
         $("#choiceRole").addClass("displayN");
         $("#authorizationInfoCon").empty();

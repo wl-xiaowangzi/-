@@ -29,7 +29,45 @@ h5 {
 a {
     text-decoration: none;
 }
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    border-top: 1px solid #f3f3f3;
+}
+/*单选框样式 begin*/
+.main-checkbox{
+    float: left;
+    width: 16px;
+    height: 16px;
+    background-image: url(../imgs/login/check-box.png);
+    position: relative;
+    margin: 21px 0 0 5px;
+    border: 1px solid #f5f5f5;
+}
+.main-checkbox label{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    background-image: url(../imgs/login/check.png);
+    opacity: 0;
+}
 
+.main-checkbox input[type=checkbox]{
+    visibility: hidden;
+}
+.main-checkbox input[type=checkbox]:checked+label{
+    opacity: 1;
+}
+.text{
+    float: left;
+    margin-left: 7px;
+    line-height: 20px;
+    padding-top: 5px;
+    margin-top: 14px;
+    text-transform: capitalize;
+}
+/*单选框样式 end*/
 
 /*文字样式 begin*/
 
@@ -38,6 +76,10 @@ a {
     color: #a6b5c1;
 }
 
+.operate_text{
+    font-size: 13px;
+    color: #9fafbc;
+}
 .info_text {
     font-size: 13px;
     color: #576780;
@@ -223,7 +265,7 @@ select.form-control {
     -webkit-appearance: none;
     /* Safari 和 Chrome */
     background-image: url(../imgs/triangle_down.png);
-    background-position: 270px center;
+    background-position: 95% center;
     background-repeat: no-repeat;
 }
 
@@ -248,7 +290,7 @@ select.triangle_down {
 }
 
 .bdcolor {
-    color: #e6ebee;
+    color: #f3f3f3;
 }
 
 
@@ -583,7 +625,7 @@ button {
 }
 
 .daterangepicker .input-mini.active {
-    border: 1px solid #ccc;
+    border: 1px solid #f3f3f3;
 }
 
 .ranges li {
@@ -755,7 +797,7 @@ nav {
     height: 40px;
     padding-left: 64px;
     padding-right: 160px;
-    border-bottom: 1px solid #e6ebee;
+    border-bottom: 1px solid #f3f3f3;
 }
 
 
@@ -1101,8 +1143,8 @@ nav {
     border:0;
 }
 .my-table td{
-    height: 80px;
-    line-height: 80px!important;
+    height: 90px;
+    line-height: 90px!important;
 }
 
 .personal-info ul li:nth-child(1) span {
@@ -1269,7 +1311,7 @@ p {
     background-size: 46px 21px;
     background-position-x: 2px;
     background-position-y: 2px;
-    border: 1px solid #e6ebee;
+    border: 1px solid #f3f3f3;
     margin-top: 18px;
     padding: 0px;
     margin-right: 1.2vw;
@@ -1467,7 +1509,17 @@ p {
     right: 2px;
     top: 8px;
 }
-
+.panel{
+    -webkit-box-shadow:none; 
+     box-shadow:none;
+     border-color: #f3f3f3;
+}
+.panel-default>.panel-heading{
+    border-color: #f3f3f3;
+}
+.panel-default{
+    border-color: #f3f3f3;
+}
 .dropdown-menu>li>a {
     color: #5A738E;
 }
@@ -1538,7 +1590,22 @@ p {
     line-height: 16px;
     text-align: center;
 }
-
+.people-info{
+    width: 400px;
+    margin-left: 84px;
+}
+.people-info p{
+    margin-bottom: 22px;
+}
+.people-info p span.info-head{
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+}
+.people-info p span.info-con{
+    color: #000;
+    margin-left:26px; 
+}
 
 /*人员管理样式 end*/
 
@@ -1637,7 +1704,7 @@ p {
 
 .deviceTable {
     background-color: white;
-    border: 1px solid #e6ebee;
+    border: 1px solid #f3f3f3;
     color: #576780;
 }
 
@@ -1648,7 +1715,7 @@ p {
 }
 
 .deviceTable tr {
-    border-top: 1px solid #e6ebee;
+    border-top: 1px solid #f3f3f3;
 }
 
 .deviceTable tbody tr td {
@@ -1767,7 +1834,7 @@ video {
     font-size: 18px;
     border:0;
     background-color: transparent;
-    border-bottom: 5px solid #357aed;
+    border-bottom: 4px solid #357aed;
 }
 .nav-tabs{
     border:0;
@@ -1815,7 +1882,7 @@ video {
     height: 30px;
     color: #357aed;
     background: #fff;
-    border: 1px solid #e6ebee;
+    border: 1px solid #f3f3f3;
     border-radius: 5px;
     margin-left: 5px;
     margin-bottom: 15px;
@@ -1837,7 +1904,7 @@ video {
     line-height: 40px;
     text-align: center;
     width: 100px;
-    border: 1px solid #e6ebee;
+    border: 1px solid #f3f3f3;
     cursor: pointer;
 }
 /*访问授权 end*/
@@ -1874,9 +1941,9 @@ video {
     top: -16px;
     right: 50px;
     color:#000;
-    border:1px solid #eee;
+    border:1px solid #f3f3f3;
     background:#fff;
-    box-shadow:0px 0px 1px #ccc;
+    box-shadow:0px 0px 1px #f3f3f3;
     height:20px;
     padding:4px;
     line-height:12px;
@@ -1889,10 +1956,10 @@ video {
     top: -16px;
     color:#000;
     right: 20px;
-    border:1px solid #eee;
+    border:1px solid #f3f3f3;
     background:#fff;
     font-size:12px;
-    box-shadow:0px 0px 1px #ccc;
+    box-shadow:0px 0px 1px #f3f3f3;
     height:20px;
     padding:4px;
     line-height:12px;
@@ -1906,9 +1973,9 @@ video {
     top: -16px;
     right: 0px;
     font-size:12px;
-    border:1px solid #eee;
+    border:1px solid #f3f3f3;
     background:#fff;
-    box-shadow:0px 0px 1px #ccc;
+    box-shadow:0px 0px 1px #f3f3f3;
     height:20px;
     padding:4px;
     line-height:12px;
@@ -1966,7 +2033,7 @@ video {
     height: 40px;
     line-height: 40px;
     position: relative;
-    /*border: 1px solid #e6ebee;*/
+    /*border: 1px solid #f3f3f3;*/
     border-bottom: 0px;
     cursor: pointer;
 }
@@ -2000,7 +2067,7 @@ video {
     font-size: 14px;
 }
 .users table{
-    border: 1px solid #ddd;
+    border: 1px solid #f3f3f3;
 }
 /*账号管理样式 end*/
 /*拍照要求 begin*/
@@ -2010,13 +2077,35 @@ video {
     margin-bottom: 12px;
     height: 180px;
     width: 180px;
-    border: 1px solid #ccc;
+    border: 1px solid #f3f3f3;
 }
 #modalPhotoRequire .wrongSample img{
     display: block;
     margin-bottom: 12px;
     height: 90px;
     width: 90px;
-    border: 1px solid #ccc;
+    border: 1px solid #f3f3f3;
 }
 /*拍照要求 end*/
+
+/*授权组 begin*/
+.operate .author-default,
+.operate .author-edit,
+.operate .author-del{
+    display: none;
+    font-weight: 300;
+    cursor: pointer;
+}
+.operate:hover .author-default,
+.operate:hover .author-edit,
+.operate:hover .author-del{
+    display: block;
+} 
+.authorAct{
+    background-color: #e1ebfc!important;
+    border: 0!important;
+}
+.authorAct .operate_text{
+    color: #357aed!important;
+}
+/*授权组 end*/

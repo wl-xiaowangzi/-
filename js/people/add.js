@@ -3,16 +3,18 @@
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","common/employeeCamera", "common/camera", "datetimepicker", "datetimepickerLang", "typeahead"], function ($, art, peopleAddTpl, API, employeeCamrea,camera) {
+define(["jquery", "artTemplate", "text!tpls/peopleAdd.html","text!tpls/peopleSubOrg.html", "common/api","common/employeeCamera", "common/camera", "datetimepicker", "datetimepickerLang", "typeahead"], function ($, art, peopleAddTpl,peopleSubOrgTpl, API, employeeCamrea,camera) {
     return function () {
         // 职位查询所需参数
-        var parameterkey = "key_job";
+        var keyword;
         var start = 0;
         var limit = 30;
+        var organizationid=$.cookie("organizationid");
         // 调用参数查询接口
-        API.queryDeviceList(start, limit, parameterkey, function (res) {
+        API.queryAuthorizationgroupList(start, limit, keyword, function (res) {
+            console.log(res)
             // 渲染模板
-            var peopleAdd = art.render(peopleAddTpl, res.data)
+            var peopleAdd = art.render(peopleAddTpl, res)
             var $peopleAdd = $(peopleAdd);
             // 如果点击start则表示提交两张图片
             $peopleAdd.on("click", "#firstdata", function () {
@@ -23,17 +25,11 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","commo
                 var ps_type = 1;
                 camera(ps_type);
             });
-            
-            // 查询设备
-            API.getDeviceList(0,1000,null, function (res) {
-                // 拼接设备号
-                var device = res.data;
-                var deviceids = device[0].deviceid;
-                for (var i = 1; i < res.data.length; i++) {
-                    deviceids += "," + device[i].deviceid
-                    }
-                    $("#btnDeviceids").attr("deviceids", deviceids);
-                })
+            API.getTree(organizationid, function (res) {
+                 var peopleSubOrg = art.render(peopleSubOrgTpl,res.data[0]);
+                 var $peopleSubOrg = $(peopleSubOrg);
+                 $("#PA-department").append($peopleSubOrg);
+             })
             //  提交表单
             $peopleAdd
             .on("submit", "form", function () {
@@ -41,9 +37,10 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","commo
                 var firstFaceimages =  $("#btnFirstFacedata").attr("firstFaceimages");
                 var firstFacedatas = $("#btnFirstFacedata").attr("firstFacedatas");
                 var headfaceimage = $("#btnFirstFacedata").attr("headfaceimage");
-                var deviceids = $("#btnDeviceids").attr("deviceids");
                 var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
                 var secondFacedatas = $("#btnPeopleManager").attr("facedata");
+                var authorizationgroupid = $("#PA-authorization").val();
+                var organizationid = $("#PA-department").val();
                 var birthday = $("#PA-birthday").val();
                 var phonenumber = $("#PA-phonenumber").val();
                 var name = $("#visitorName").val();
@@ -62,8 +59,8 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","commo
                 $("#btnPeopleManager").removeAttr("faceimage");
                 $("#btnPeopleManager").removeAttr("facedata");
                 // 调用接口
-                console.log(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes)
-                API.addEmployee(deviceids, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes, function (res) {
+                console.log(authorizationgroupid,organizationid, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes)
+                API.addEmployee(authorizationgroupid, organizationid,name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes, function (res) {
                     $peopleAdd.modal("hide");
                     //成功的添加员工->刷新员工管理页面
                     $("#btnPeopleManager").trigger("click");
@@ -88,8 +85,6 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html", "common/api","commo
                     $("#job_select").removeClass("displayB").addClass("displayN");
                 }
             })
-            // 移除上一次的模态框
-            // $("#modalPeopleAdd").remove();
             // 移除弹出层，防止重复点击造成页面卡顿
             $(".modal-backdrop").remove();
             // 弹出模态框
