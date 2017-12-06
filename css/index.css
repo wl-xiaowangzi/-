@@ -1924,6 +1924,16 @@ video {
 #menu .right .total-menu{
     cursor: pointer;
     width: 50px;
+    margin-right: 24px;
+}
+#menu .right .total-menu span{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background: url(../imgs/org-more-default.png);
+}
+#menu .right .total-menu:hover span{
+    background: url(../imgs/org-more-hover.png);
 }
 #menu .right .sub-menu{
     width: 106px;
@@ -1936,9 +1946,7 @@ video {
 #menu .right .sub-menu div:hover{
     color: #357aed;
 }
-#menu li{
-    
-}
+
 #menu .btn-org-add span{
     opacity: 0;
     display: block;
