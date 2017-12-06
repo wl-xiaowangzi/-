@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/11/23
  */
-define(["jquery", "artTemplate", "text!tpls/authorNew.html", "common/api"], function ($, art, authorNewTpl, API) {
+define(["jquery", "artTemplate", "text!tpls/authorNew.html", "text!tpls/peopleSubAuthority.html", "common/api"], function ($, art, authorNewTpl, peopleSubAuthorityTpl, API) {
     return function () {
         // 获取参数
         var page = $("#btnPager").attr("page") || 1;
@@ -17,32 +17,59 @@ define(["jquery", "artTemplate", "text!tpls/authorNew.html", "common/api"], func
             // 提交表单
             $authorNew
                 .on("click", ".btn-blue", function () {
-                    if($("#temp-group-name").val()==""){
+                    if ($("#temp-group-name").val() == "") {
                         $(".cfmPWD").removeClass("opacity0");
                         $("#temp-group-name").focus();
-                        setTimeout(function(){
+                        setTimeout(function () {
                             $(".cfmPWD").addClass("opacity0");
-                        },2000)
+                        }, 2000)
                     }
                     // 获取表单参数 
                     var list = $("#box5").find(".back-gray");
                     var deviceids = $(list[0]).attr("deviceid");
-                    for(var i = 1;i < list.length; i++){
+                    var name = $("#temp-group-name").val();
+                    if ($("#checkbox2")[0].checked) {
+                        var status = 1;
+                        API.addAuthorizationgroup(name, deviceids, status, function (res) {
+                            API.queryAuthorizationgroupList(0, 100, keyword, 1, function (res) {
+                                console.log(res)
+                                var newID = res.data[0].datanumber;
+                                newID = "au" + newID;
+                                var peopleSubAuthority = art.render(peopleSubAuthorityTpl, res);
+                                var $peopleSubAuthority = $(peopleSubAuthority);
+                                $("#group").empty();
+                                $("#group").append($peopleSubAuthority);
+                                $("#" + newID).prop("selected", "selected");
+                            })
+                            $authorNew.modal("hide");
+                        })
+                    } else {
+                        var status = 3;
+                        // 接口
+                        API.addAuthorizationgroup(name, deviceids, status, function (res) {
+                            API.queryAuthorizationgroupList(0, 100, keyword, 3, function (res) {
+                                console.log(res)
+                                var newID = res.data[0].datanumber;
+                                newID = "au" + newID;
+                                var peopleSubAuthority = art.render(peopleSubAuthorityTpl, res);
+                                var $peopleSubAuthority = $(peopleSubAuthority);
+                                $("#group").append($peopleSubAuthority);
+                                $("#" + newID).prop("selected", "selected");
+                            })
+                            $authorNew.modal("hide");
+                        })
+                    }
+                    for (var i = 1; i < list.length; i++) {
                         deviceids += "," + $(list[i]).attr("deviceid");
                     }
-                    console.log(deviceids)
-                    // 接口
-                    // API.addUser(formData, function (res) {
-                    //     $authorGroupAdd.modal("hide");
-                    //     //成功的添加用户->刷新用户管理页面
-                    //     $("#btnUsersManager").trigger("click");
-                    // })
+                    console.log(deviceids);
+
                     return false; //阻止同步提交表单
                 })
                 .on("click", ".btn-default", function () {
                     // 获取表单参数 
-                   $("#box5>span").removeClass("back-gray");
-                   $("#box6>span").addClass("displayN");
+                    $("#box5>span").removeClass("back-gray");
+                    $("#box6>span").addClass("displayN");
                     return false; //阻止同步提交表单
                 });
             // 清除上一次的模板

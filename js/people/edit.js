@@ -42,7 +42,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleEdit.html", "tex
                  $("#"+auID).prop("selected","selected");
              })
             //  授权组选项
-            API.queryAuthorizationgroupList(0, 100, keyword, function (res) {
+            API.queryAuthorizationgroupList(0, 100, keyword,1, function (res) {
                 var peopleSubAuthority = art.render(peopleSubAuthorityTpl,res);
                  var $peopleSubAuthority = $(peopleSubAuthority);
                  $("#PE-authorization").append($peopleSubAuthority);

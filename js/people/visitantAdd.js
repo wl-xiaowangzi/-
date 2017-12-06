@@ -34,7 +34,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html","text!tpls/p
         
         console.log(initStarttime,initEndtime)
         //  授权组选项
-            API.queryAuthorizationgroupList(0, 100, keyword, function (res) {
+            API.queryAuthorizationgroupList(0, 100, keyword,1, function (res) {
                 var peopleSubAuthority = art.render(peopleSubAuthorityTpl,res);
                  var $peopleSubAuthority = $(peopleSubAuthority);
                  $("#VA-authorization").append($peopleSubAuthority);

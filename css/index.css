@@ -1611,6 +1611,9 @@ p {
 .menu-header{
     cursor: pointer;
 }
+.nav-show a i::after{
+    display: none!important;
+}
 /*人员管理样式 end*/
 
 .hidden {
@@ -2025,13 +2028,13 @@ video {
 }
 #menu .org-tips{
     display: inline-block;
-    height: 10px;
-    width: 10px;
-    background-color: #8b96a8;
+    height: 12px;
+    width: 12px;
+    background: url(../imgs/org-hide.png);
     margin-right: 5px;
 }
 #menu .org-tips-show{
-    background-color: #357aed;
+    background: url(../imgs/org-show.png);
 }
 .myline{
     height: 40px;

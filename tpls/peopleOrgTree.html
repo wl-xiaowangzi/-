@@ -1,14 +1,12 @@
 <div id="menu" class="menu">
-    <div class="menu-header flex-between" style="background:#357aed;height:40px;line-height:40px;border:none;position:relative;">
-        <div class="left" style="font-weight:800;color:#fff;font-size:15px;">{{name}}</div>
-        <div style="width:122px;" class="flex-around" organizationid={{organizationid}} parentorganizationid={{parentorganizationid}}
+    <div class="menu-header flex-between myline" style="background:#357aed;height:40px;line-height:40px;border:none;position:relative;">
+        <div class="left" style="font-weight:300;color:#fff;font-size:15px;margin-left:20px;">{{name}}(全部)</div>
+        <div style="" class="right flex-around" organizationid={{organizationid}} parentorganizationid={{parentorganizationid}}
             principal={{principal}} name={{name}}>
-            <div class="flex-around">
-                <div class="btn-org-add" style="width:20px;height:20px;"><span>添加下级部门</span></div>
-                <div class="btn-org-edit" style="width:20px;height:20px;"><span>编辑部门</span></div>
-                {{if children.length==0}}
-                <div class="btn-org-del" style="width:20px;height:20px;"><span>删除部门</span></div>
-                {{/if}}
+            <div class="total-menu"><span>...</span></div>
+            <div class="sub-menu displayN">
+                <div class="btn-org-add">创建子级</div>
+                <div class="btn-org-edit">编辑</div>
             </div>
         </div>
     </div>

@@ -21,7 +21,7 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantEdit.html",
             var auID=res.data.authorizationgroupid;
             auID="au"+auID;
             //  授权组选项
-            API.queryAuthorizationgroupList(0, 100, keyword, function (res) {
+            API.queryAuthorizationgroupList(0, 100, keyword,1, function (res) {
                 var peopleSubAuthority = art.render(peopleSubAuthorityTpl,res);
                  var $peopleSubAuthority = $(peopleSubAuthority);
                  $("#VE-authorization").append($peopleSubAuthority);

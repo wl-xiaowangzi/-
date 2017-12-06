@@ -28,6 +28,7 @@ define(["jquery", "artTemplate", "text!tpls/authorGroupAdd.html", "common/api","
                     var list = $("#box1").find(".back-gray");
                     var deviceids = $(list[0]).attr("deviceid");
                     var name = $("#group-name").val();
+                    var status=1;
                     for(var i = 1;i < list.length; i++){
                         deviceids += "," + $(list[i]).attr("deviceid");
                     }
@@ -37,7 +38,7 @@ define(["jquery", "artTemplate", "text!tpls/authorGroupAdd.html", "common/api","
                     }
                     console.log(deviceids,name)
                     // 接口
-                    API.addAuthorizationgroup(name,deviceids, function (res) {
+                    API.addAuthorizationgroup(name,deviceids,status, function (res) {
                         $authorGroupAdd.modal("hide");
                         //成功的添加授权组->刷新授权组页面
                         $("#btnAuthorization").trigger("click");

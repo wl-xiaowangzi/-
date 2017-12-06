@@ -10,8 +10,9 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html","text!tpls/peopleSub
         var start = 0;
         var limit = 30;
         var organizationid=$.cookie("organizationid");
+        var status = 1;
         // 调用参数查询接口
-        API.queryAuthorizationgroupList(start, limit, keyword, function (res) {
+        API.queryAuthorizationgroupList(start, limit, keyword,status, function (res) {
             console.log(res)
             // 渲染模板
             var peopleAdd = art.render(peopleAddTpl, res)

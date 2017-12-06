@@ -21,10 +21,10 @@
                     <div class="">
                         {{each data}}
                         <div class="panel panel-default" style="border-radius:0;">
-                            <div class="panel-heading flex-between operate" style="background:#f8fafb;border-radius:0;padding:0;height:40px;font-weight:700;line-height:40px;align-items:center;">
+                            <div class="panel-heading flex-between operate {{if $value.isdefault==1}}authorAct{{/if}}" style="background:#f8fafb;border-radius:0;padding:0;height:40px;font-weight:700;line-height:40px;align-items:center;">
                                 <h3 class="panel-title" style="height:40px;line-height:40px;font-weight:700;margin-left:16px;font-size:14px;">{{$index+1}}.{{$value.name}}({{$value.deiviceList.length}})</h3>
                                 <div class="flex-around operate_text" style="width:210px;margin-right:24px;" datanumber={{$value.datanumber}}>
-                                    <div class="author-default">设置为默认访客授权组</div>
+                                    <div class="author-default">{{if $value.isdefault==1}}已设置为访客授权组{{else}}设置为默认访客授权组{{/if}}</div>
                                     <div class="author-edit">编辑</div>
                                     <div class="author-del">删除</div>
                                 </div>
