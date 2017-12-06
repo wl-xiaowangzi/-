@@ -10,7 +10,6 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
         var organizationid = $.cookie("organizationid");
         // 查询组织树
         API.queryTree(organizationid, function (res) {
-            console.log(res)
             var configOrganizationalManagement = art.render(peopleOrgTpl, res.data[0]);
             var $configOrganizationalManagement = $(configOrganizationalManagement);
             $configOrganizationalManagement
@@ -29,6 +28,16 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
                 .on("click", ".btn-org-del", function () {
                     var organizationids = $(this).parent().parent().attr("organizationid");
                     orgDel(organizationids);
+                })
+                .on("click",".myline",function(){
+                    var organizationid=$(this).children(".right").attr("organizationid");
+                    $("#btnOrganizationid").attr("organizationid",organizationid);
+                    $("#btnPeopleManager").trigger("click"); //刷新
+                })
+                .on("click",".menu-header",function(){
+                    var organizationid=$.cookie("organizationid");
+                    $("#btnOrganizationid").attr("organizationid",organizationid);
+                    $("#btnPeopleManager").trigger("click"); //刷新
                 })
             $("#TreeList").empty();
             $("#TreeList").append($configOrganizationalManagement);

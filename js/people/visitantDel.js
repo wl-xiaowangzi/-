@@ -12,6 +12,8 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantDel.html","
             $visitantDel.on("submit", "form", function () {
             API.delVisitor(vs_id, function (res) {
                 $visitantDel.modal("hide");
+                $(".modal-backdrop").remove();
+                $("#modalVisitantEditInfo").remove();
                 $(".btnVisitantList").trigger("click");
             })
             return false;
@@ -19,7 +21,7 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleVisitantDel.html","
         //移除上一次模板 
         $("#modalDelVisitant").remove();
         // 移除弹出层，防止重复点击造成页面卡顿
-        $(".modal-backdrop").remove();
+        // $(".modal-backdrop").remove();
         $visitantDel.appendTo("body").modal();
         $(".vsDelInfo").html("删除");
     }

@@ -11,6 +11,8 @@ define(["jquery","artTemplate","common/api","text!tpls/peopleDel.html","bootstra
             $peopleDel.on("submit", "form", function () {
             API.delEmployee(ep_id, function (res) {
                 $peopleDel.modal("hide");
+                $("#modalEditInfo").remove();
+                $(".modal-backdrop").remove();
                 $("#btnPeopleManager").trigger("click");
             })
             return false;

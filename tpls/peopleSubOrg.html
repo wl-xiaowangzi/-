@@ -1,10 +1,10 @@
-<option value={{organizationid}}>{{name}}</option>
+<option value={{organizationid}} id="org{{organizationid}}">{{name}}</option>
 {{each children}}
-<option value={{$value.organizationid}}>{{$value.name}}</option>
+<option value={{$value.organizationid}} id="org{{$value.organizationid}}">{{$value.name}}</option>
 {{each $value.children}}
-<option value={{$value.organizationid}}>{{$value.name}}</option>
+<option value={{$value.organizationid}} id="org{{$value.organizationid}}">{{$value.name}}</option>
 {{each $value.children}}
-<option value={{$value.organizationid}}>{{$value.name}}</option>
+<option value={{$value.organizationid}} id="org{{$value.organizationid}}">{{$value.name}}</option>
 {{each $value.children}}
-<option value={{$value.organizationid}}>{{$value.name}}</option>
+<option value={{$value.organizationid}} id="org{{$value.organizationid}}">{{$value.name}}</option>
 {{/each}} {{/each}} {{/each}} {{/each}}

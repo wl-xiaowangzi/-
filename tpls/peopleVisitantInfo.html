@@ -4,112 +4,36 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">编辑访客信息</h4>
+                <h4 class="modal-title"><span style="color:#000;">{{name}}</span>的信息</h4>
             </div>
             <div class="modal-body">
                 <form class="form form-horizontal">
                     <div class="form-group" style="display:flex;justify-content:center;">
-                        <div class="img-box mb11 picture1"><img src="{{headfaceimages[0]}}" class="headfaceimage1" alt="" width="100" height="100"><span class="camera_icon"></span></div>
+                        <div class="img-box mb11"><img src="{{headfaceimages[0]}}" class="headfaceimage1" alt="" width="100" height="100"></div>
                         {{if headfaceimages[1]!=undefind}}
-                        <div class="img-box mb11 picture2"><img src="{{headfaceimages[1]}}" class="ml66 headfaceimage2" alt="" width="100" height="100"><span class="camera_icon"></span></div>
+                        <div class="img-box mb11"><img src="{{headfaceimages[1]}}" class="ml66 headfaceimage2" alt="" width="100" height="100"></div>
                         {{else}}
-                        <div class="img-box mb11 picture2"><img class="secPIC ml66 headfaceimage2" alt="" width="100" height="100"></div>
+                        
                         {{/if}}
                     </div>
-                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="visitantInfoName" maxlength="20" class="form-control name" name="name" value="{{name}}"/><span class="asterisk">*</span>
+                    <div class="people-info flex-between">
+                        <div class="info-left" style="width:200px;">
+                            <p><span class="info-head">姓名</span><span class="info-con">{{name}}</span></p>
+                            <p><span class="info-head">手机</span><span class="info-con">{{phonenumber}}</span></p>
+                            <p><span class="info-head">事由</span><span class="info-con">{{remark}}</span></p>
+                            <p><span class="info-head">授权组</span><span class="info-con">{{authorizationgroupname}}</span></p>
+                            <p style="width:400px;"><span class="info-head">访问时间</span><span class="info-con">{{starttime}}</span></p>
+                            <p style="width:400px;"><span class="info-head">至</span><span class="info-con">{{endtime}}</span></p>
                         </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            document.getElementById("visitantInfoName").onpropertychange = document.getElementById("visitantInfoName").onkeyup =
-                                function () {
-                                    var lenE = this.value.length;
-                                    if (lenE == 20) {
-                                        alert("字数超限，请保持在20字以内")
-                                    }
-                                }
-                        })
-                    </script>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">性别</label>
-                        <div class="col-sm-7">
-                            <select id="VE-sex" name="sex" class="form-control sex">
-                                {{if(sex==1)}}
-                                    <option value="1" selected="selected">男</option>
-                                    <option value="2">女</option>
-                                {{else}}
-                                    <option value="1">男</option>
-                                    <option value="2" selected="selected">女</option>
-                                {{/if}}
-                            </select>
+                        <div class="info-right" style="width:200px;">
+                            <p><span class="info-head">性别</span><span class="info-con">{{if(sex==1)}}男{{else}}女{{/if}}</span></p>
+                            <p><span class="info-head">生日</span><span class="info-con">{{birthtime}}</span></p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">生日</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="VE-birthday" class="form-control birthday-join" name="birthtime" value="{{birthtime}}" placeholder="请选择">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">电话</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="VE-phonenumber" class="form-control phonenumber" name="phonenumber" value="{{phonenumber}}" minlength="11" maxlength="11" pattern="^1[3|4|5|7|8][0-9]{9}" required="required" placeholder="请输入11位手机号码"/><span class="asterisk">*</span>
-                        </div>
-                    </div>
-                    <script>
-                        var user = document.getElementById("VE-phonenumber");
-                        user.onblur = function () {
-                            if (user.value) {
-                                user.setCustomValidity(""); //现将有输入时的提示设置为空
-                            } else if (user.validity.valueMissing) {
-                                user.setCustomValidity("请输入11位手机号码");
-                            };
-                            if (user.validity.patternMismatch) {
-                                user.setCustomValidity("请输入正确的手机号码");
-                            }
-                        };
-                    </script>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">拜访事由</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="VE-remark" maxlength="10" class="form-control remark" name="remark" value="{{remark}}" placeholder="请输入拜访事由"/>
-                            <span class="asterisk">*</span>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            document.getElementById("VE-remark").onpropertychange = document.getElementById("VE-remark").onkeyup =
-                                function () {
-                                    var lenE = this.value.length;
-                                    if (lenE == 10) {
-                                        alert("字数超限，请保持在10字以内")
-                                    }
-                                }
-                        })
-                    </script>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">时间</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="VE-starttime" class="form-control date-join starttime" data-date-format="yyyy-mm-dd" name="starttime" value="{{starttime}}">
-                            <span
-                                class="asterisk">*</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-sm-offset-1 control-label">至</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="VE-endtime" class="form-control date-join endtime" data-date-format="yyyy-mm-dd" name="endtime" value="{{endtime}}">
-                            <span
-                                class="asterisk">*</span>
-                        </div>
-                    </div>
-                    <div class="form-group" deviceids={{deviceids}}>
-                        <div class="col-sm-6 col-sm-offset-5" firstFacedatas={{facedatas[0]}} firstFaceimages={{faceimages[0]}}  visitorid={{visitorid}}>
-                            <button type="submit" id="VE-submit" class="btn btn-blue" style="margin-left:35px;" secondFacedatas={{facedatas[1]}} secondFaceimages={{faceimages[1]}} {{if status==4}}disabled="disabled"{{/if}}>保存</button>
-                            <button type="text" class="btn btn-default" data-dismiss="modal" aria-label="Close">取消</button>
+                        <div class="text-center">
+                            <button type="text" id="PE-submit" class="btn btn-blue" style="margin-left:35px;">编辑</button>
+                            <button type="text"  class="btn btn-default btn-visitant-del" vs_id={{visitorid}}>删除</button>
                         </div>
                     </div>
                 </form>

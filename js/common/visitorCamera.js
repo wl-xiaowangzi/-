@@ -3,7 +3,7 @@
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","people/visitantAdd","common/undetected"], function ($, art, cameraTpl, API,addVisitor,undetected) {
+define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/undetected"], function ($, art, cameraTpl, API,undetected) {
     return function () {
         // 转换为jq对象
         var $camera = $(cameraTpl);
@@ -26,8 +26,10 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","people/v
                     var faceimages=res.data.faceimage;
                     var facedatas=res.data.facedata;
                     var headfaceimage=res.data.headfaceimage;
+                    $("#btnFirstFacedata").attr("firstFaceimages",faceimages);
+                    $("#btnFirstFacedata").attr("firstFacedatas",facedatas);
+                    $(".visitPIC").attr("src",headfaceimage);
                     $camera.modal("hide")
-                    addVisitor(faceimages,facedatas,headfaceimage)
                 })
             })
         // 移除上一次点出的模态框

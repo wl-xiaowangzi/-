@@ -9,6 +9,7 @@ define(["jquery", "artTemplate", "text!tpls/usersRelevance.html", "common/api", 
         var start = 40 * (page - 1);
         var limit = 40;
         var keyword = $("#btnSearchWords").attr("peopleKeyword");
+        var organizationid;
         // 移除参数
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
@@ -24,7 +25,7 @@ define(["jquery", "artTemplate", "text!tpls/usersRelevance.html", "common/api", 
         $("#btnKeepSearchWords").removeAttr("deviceSearchwords");
         $("#btnKeepSearchWords").removeAttr("usersSearchWords");
 
-        API.getPeopleList(start, limit, keyword, function (res) {
+        API.getPeopleList(start, limit, keyword,organizationid, function (res) {
             // 渲染模板
             var usersRelevance = art.render(usersRelevanceTpl, res);
             var $usersRelevance = $(usersRelevance);

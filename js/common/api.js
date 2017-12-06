@@ -333,8 +333,8 @@ define(["jquery"],function($){
         },
 
         // 员工列表
-        getPeopleList:function(start,limit,keyword,callback){
-            $.get(api+"/system/employee/query",{start:start,limit:limit,keyword:keyword},function(res){
+        getPeopleList:function(start,limit,keyword,organizationid,callback){
+            $.get(api+"/system/employee/query",{start:start,limit:limit,keyword:keyword,organizationid:organizationid},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
@@ -402,11 +402,11 @@ define(["jquery"],function($){
             })
         },
         // 员工编辑
-        editEmployee:function(ep_id,deviceids,name,sex,birthday,phonenumber,job,employeenumber,facedatas,faceimages,facetypes,callback){
+        editEmployee:function(ep_id,authorizationgroupid,organizationid,name,sex,birthday,phonenumber,job,employeenumber,facedatas,faceimages,facetypes,callback){
             $.ajax({
                 url:api+"/system/employee/update",
                 type:"post",
-                data:{employeeid:ep_id,deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,job:job,employeenumber:employeenumber,facedatas:facedatas,faceimages:faceimages,facetypes:facetypes},
+                data:{employeeid:ep_id,authorizationgroupid:authorizationgroupid,organizationid:organizationid,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,job:job,employeenumber:employeenumber,facedatas:facedatas,faceimages:faceimages,facetypes:facetypes},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
@@ -467,11 +467,11 @@ define(["jquery"],function($){
             })
         },
         // 访客添加
-        addVisitor:function(deviceids,name, sex, birthday, phonenumber,starttime,endtime, remark, faceimages, facedatas,facetypes,callback){
+        addVisitor:function(authorizationgroupid,name, sex, birthday, phonenumber,starttime,endtime, remark, faceimages, facedatas,facetypes,callback){
             $.ajax({
                 url:api+"/system/visitor/add",
                 type:"post",
-                data:{deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,faceimages:faceimages,facedatas:facedatas,facetypes:facetypes},
+                data:{authorizationgroupid:authorizationgroupid,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,faceimages:faceimages,facedatas:facedatas,facetypes:facetypes},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
@@ -516,11 +516,11 @@ define(["jquery"],function($){
             })
         },
         // 访客编辑
-        editVisitor:function(vs_id,deviceids,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,facetypes,callback){
+        editVisitor:function(vs_id,authorizationgroupid,name,sex,birthday,phonenumber,starttime,endtime, remark,facedatas,faceimages,facetypes,callback){
             $.ajax({
                 url:api+"/system/visitor/update",
                 type:"post",
-                data:{visitorid:vs_id,deviceids:deviceids,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,facedatas:facedatas,faceimages:faceimages,facetypes:facetypes},
+                data:{visitorid:vs_id,authorizationgroupid:authorizationgroupid,name:name,sex:sex,birthtime:birthday,phonenumber:phonenumber,starttime:starttime,endtime:endtime,remark:remark,facedatas:facedatas,faceimages:faceimages,facetypes:facetypes},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
@@ -871,11 +871,6 @@ define(["jquery"],function($){
                         location.href = "login.html";
                     }
                     return;
-                }
-                if(res.data.length==0){
-                    $("body").addClass("noResult")
-                }else{
-                    $("body").removeClass("noResult")
                 }
                 callback && callback(res);
             })

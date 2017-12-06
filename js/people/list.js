@@ -11,6 +11,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
         var start = 40 * (page - 1);
         var limit = 40;
         var keyword = $("#btnSearchWords").attr("peopleKeyword");
+        var organizationid = $("#btnOrganizationid").attr("organizationid");
         // 移除参数
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
@@ -27,7 +28,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
         $("#btnKeepSearchWords").removeAttr("usersSearchWords");
        
           
-        API.getPeopleList(start, limit, keyword, function (res) {
+        API.getPeopleList(start, limit, keyword,organizationid, function (res) {
             console.log(res)
             //编译模板
             var peopleList = art.render(peopleListTpl, res);
@@ -50,7 +51,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
                     visitant();
                 })
                 .on("click", ".btn-show-baseinfo", function () {
-                    //编辑员工基本信息
+                    //查看员工基本信息
                     //1、获取员工id
                     var ep_id = $(this).parent().attr("ep_id");
                     //将员工id传入信息模块

@@ -1605,8 +1605,12 @@ p {
 .people-info p span.info-con{
     color: #000;
     margin-left:26px; 
-}
+    white-space: nowrap;
 
+}
+.menu-header{
+    cursor: pointer;
+}
 /*人员管理样式 end*/
 
 .hidden {

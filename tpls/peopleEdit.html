@@ -1,8 +1,8 @@
-<div class="" id="modalVisitantAdd">
+<div class="" id="modalPeopleEdit">
     <div class="">
         <div class="panel-body" style="padding:0;">
             <div class="panel-body">
-                <h4 class="panel-title">添加访客信息</h4>
+                <h4 class="panel-title">编辑人员信息</h4>
             </div>
             <div class="panel-body align-center" style="margin:60px;background-color:#fff;height:77vh;min-height:550px;padding:0;justify-content:center;margin-top:0;">
                 <form class="form form-horizontal flex-between" style="background:#fff;height:550px;width:1012px;">
@@ -10,12 +10,16 @@
                         <div class="form-group">
                             <h4 class="ipt_text" style="margin-left:56px;margin-top:30px;margin-bottom:30px;">添加人脸照片</h4>
                             <div class="img-box img_info_box mr32" id="firstdata" style="margin-left:50px;margin-bottom:24px;">
-                                <img class="mainPIC ml10 visitPIC" alt="" width="100" height="100">
+                                <img src="{{headfaceimages[0]}}" class="mainPIC ml10 picture1" alt="" width="100" height="100">
                                 <p class="recording reminder_text pic1record mt16 text-center">(必选项)</p>
                                 <p class="getHeadPic ipt_text mt8 text-center mainHeadPIC">请拍摄正脸获取正脸</p>
                             </div>
                             <div class="img-box img_info_box condition" id="seconddata" style="margin-left:50px;">
-                                <img class="secPIC text-center ml10" alt="" width="100" height="100">
+                                {{if headfaceimages[1]!=undefined}}
+                                <img src="{{headfaceimages[1]}}" class="secPIC text-center ml10 picture2" alt="" width="100" height="100">
+                                {{else}}
+                                <img class="secPIC text-center ml10 picture2" alt="" width="100" height="100">
+                                {{/if}}
                                 <p class="recording reminder_text pic2record mt16 text-center">(可选项)</p>
                                 <p class="getHeadPic ipt_text mt8 text-center secHeadPIC">请摘掉眼镜获取正脸</p>
                             </div>
@@ -27,15 +31,15 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">姓名</label>
                                 <div class="col-sm-7">
-                                    <input type="text" id="visitantName" required="required" maxlength="20" class="form-control name" required="required" name="name"
-                                        value="" />
+                                    <input type="text" id="PE-visitorName" required="required" maxlength="20" class="form-control name" required="required" name="name"
+                                        value="{{name}}" />
                                     <span class="asterisk">*</span>
                                 </div>
                             </div>
                             <script type="text/javascript">
                                 $(function () {
-                                    document.getElementById("visitantName").onpropertychange = document.getElementById(
-                                            "visitantName").onkeyup =
+                                    document.getElementById("PE-visitorName").onpropertychange = document.getElementById(
+                                            "PE-visitorName").onkeyup =
                                         function () {
                                             var lenE = this.value.length;
                                             if (lenE == 20) {
@@ -49,12 +53,12 @@
                                 <label class="col-sm-3 control-label">手机</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control phonenumber" minlength="11" maxlength="11" pattern="^1[3|4|5|7|8][0-9]{9}" required="required"
-                                        name="phonenumber" id="VA-phonenumber" value="" placeholder="请输入11位手机号码" />
+                                        name="phonenumber" id="PE-phonenumber" value="{{phonenumber}}" placeholder="请输入11位手机号码" />
                                     <span class="asterisk">*</span>
                                 </div>
                             </div>
                             <script>
-                                var user = document.getElementById("VA-phonenumber");
+                                var user = document.getElementById("PE-phonenumber");
                                 user.onblur = function () {
                                     if (user.value) {
                                         user.setCustomValidity(""); //现将有输入时的提示设置为空
@@ -66,48 +70,61 @@
                                     }
                                 };
                             </script>
-                             <div class="form-group">
-                        <label class="col-sm-3 control-label">拜访事由</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="VA-remark" maxlength="10" class="form-control remark" name="remark" value="" placeholder="请输入拜访事由" />
-                            <span class="asterisk">*</span>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            document.getElementById("VA-remark").onpropertychange = document.getElementById("VA-remark").onkeyup =
-                                function () {
-                                    var lenE = this.value.length;
-                                    if (lenE == 10) {
-                                        alert("字数超限，请保持在10字以内")
-                                    }
-                                }
-                        })
-                    </script>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">授权组</label>
+                                <label class="col-sm-3 control-label">工号</label>
                                 <div class="col-sm-7">
-                                    <select id="VA-authorization" name="authorization" class="form-control authorization">
+                                    <input type="text" id="PE-employeenumber" required="required" maxlength="6" class="form-control employeenumber" required="required"
+                                        name="employeenumber" value="{{employeenumber}}" /><span class="asterisk">*</span>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    document.getElementById("PE-employeenumber").onpropertychange = document.getElementById(
+                                            "PE-employeenumber").onkeyup =
+                                        function () {
+                                            var lenE = this.value.length;
+                                            if (lenE == 6) {
+                                                alert("字数超限，请保持在6字以内")
+                                            }
+                                        }
+                                })
+                            </script>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">部门</label>
+                                <div class="col-sm-7">
+                                    <select id="PE-department" name="department" class="form-control department">
                                     
                                     </select><span class="asterisk">*</span>
                                 </div>
                             </div>
+                            <div class="form-group" id="PE-jobSel">
+                                <label class="col-sm-3 control-label">职位</label>
+                                <div class="col-sm-7">
+                                    <input type="text" required="required" maxlength="10" id="PE-Job" class="form-control job" required="required" name="job"
+                                        value="{{job}}" />
+                                    <span class="asterisk">*</span>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    document.getElementById("PE-Job").onpropertychange = document.getElementById(
+                                            "PE-Job").onkeyup =
+                                        function () {
+                                            var lenE = this.value.length;
+                                            if (lenE == 10) {
+                                                alert("字数超限，请保持在10字以内")
+                                            }
+                                        }
+                                })
+                            </script>
                             <div class="form-group">
-                        <label  class="col-sm-3 control-label">时间</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="VA-starttime" class="form-control date-join starttime" data-date-format="yyyy-mm-dd" name="starttime" value="">
-                            <span
-                                class="asterisk">*</span>
-                        </div>
-                    </div>
-                    <div class="form-group endtime-box">
-                        <label for="endtime" id="endtimeLabel" class="col-sm-3 control-label">至</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="VA-endtime" class="form-control date-join endtime" data-date-format="yyyy-mm-dd" name="endtime" value="">
-                            <span
-                                class="asterisk">*</span>
-                        </div>
-                    </div>
+                                <label class="col-sm-3 control-label">授权组</label>
+                                <div class="col-sm-7">
+                                    <select id="PE-authorization" name="authorization" class="form-control authorization">
+                                    
+                                    </select><span class="asterisk">*</span>
+                                </div>
+                            </div>
                             <!--<div class="form-group">
                                 <label class="col-sm-3 control-label">考勤</label>
                                 <div class="col-sm-7">
@@ -118,26 +135,31 @@
                                 </div>
                             </div>-->
                             <div class="form-group" style="margin-top:30px;">
-                                <div class="text-center" style="margin-left:100px;">
-                                    <button type="submit" class="btn btn-blue text-center">确认</button>
+                                <div class="text-center" style="margin-left:100px;" firstFacedatas={{facedatas[0]}} firstFaceimages={{faceimages[0]}}  employeeid={{employeeid}}>
+                                    <button type="submit" id="PE-submit" class="btn btn-blue text-center" secondFacedatas={{facedatas[1]}} secondFaceimages={{faceimages[1]}}>确认</button>
                                     <button type="text" class="btn btn-default my-btn-cancel text-center">取消</button>
                                 </div>
                             </div>
                         </div>
                         <div class="right-r" style="flex:1;margin-top:72px;">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">性别</label>
+                                <label class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-7">
-                                    <select id="VA-sex" name="sex" class="form-control sex">
-                                    <option value="1">男</option>
+                                    <select id="PE-sex" name="sex" class="form-control sex">
+                                    {{if sex==1}}
+                                    <option value="1" selected="selected">男</option>
                                     <option value="2">女</option>
+                                    {{else}}
+                                    <option value="1">男</option>
+                                    <option value="2" selected="selected">女</option>
+                                    {{/if}}
                             </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">生日</label>
+                                <label class="col-sm-2 control-label">生日</label>
                                 <div class="col-sm-7">
-                                    <input type="text" id="VA-birthday" class="form-control birthday-join" name="birthtime" value="" placeholder="请选择">
+                                    <input type="text" id="PE-birthday" class="form-control birthday-join" name="birthtime" value="{{birthtime}}" placeholder="请选择">
                                 </div>
                             </div>
                         </div>

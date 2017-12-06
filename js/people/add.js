@@ -29,7 +29,12 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html","text!tpls/peopleSub
                  var peopleSubOrg = art.render(peopleSubOrgTpl,res.data[0]);
                  var $peopleSubOrg = $(peopleSubOrg);
                  $("#PA-department").append($peopleSubOrg);
-             })
+                 var orgID = $("#btnOrganizationid").attr("organizationid");
+                    orgID = "org"+orgID;
+                 $("#"+orgID).prop("selected","selected");
+            });
+            var orgID = $("#btnOrganizationid").attr("organizationid");
+            orgID = "org"+orgID;
             //  提交表单
             $peopleAdd
             .on("submit", "form", function () {
@@ -71,26 +76,28 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html","text!tpls/peopleSub
                 $("#btnPeopleManager").trigger("click");
             })
             // 使用下拉菜单完成快捷选择职位
-            .on("click", "#PA-jobSel", function () {
-                if ($("#PA-Job").val() == "") {
-                    $("#job_select").removeClass("displayN").addClass("displayB");
-                    $("#job_select>li>a").on("click", function () {
-                        $("#PA-Job").val($(this).html());
-                        $("#job_select").removeClass("displayB").addClass("displayN");
-                    })
-                }
-            })
-            .on("input","#PA-Job",function(){
-                if($("#PA-Job").val()!=""){
-                    $("#job_select").removeClass("displayB").addClass("displayN");
-                }
-            })
+            // .on("click", "#PA-jobSel", function () {
+            //     if ($("#PA-Job").val() == "") {
+            //         $("#job_select").removeClass("displayN").addClass("displayB");
+            //         $("#job_select>li>a").on("click", function () {
+            //             $("#PA-Job").val($(this).html());
+            //             $("#job_select").removeClass("displayB").addClass("displayN");
+            //         })
+            //     }
+            // })
+            // .on("input","#PA-Job",function(){
+            //     if($("#PA-Job").val()!=""){
+            //         $("#job_select").removeClass("displayB").addClass("displayN");
+            //     }
+            // })
             // 移除弹出层，防止重复点击造成页面卡顿
             $(".modal-backdrop").remove();
             // 弹出模态框
             // $peopleAdd.appendTo("body").modal();
             $(".module-container").empty();
             $(".module-container").append($peopleAdd);
+            console.log(orgID)
+            $("#"+orgID).prop("selected","selected");
             // 为下拉框替换左侧小三角
             var flag=true;
             $("select").on("click",function(){

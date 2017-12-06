@@ -3,14 +3,12 @@
  * Author:land
  *   Date:2017/9/5
  */
-define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api", "common/camera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleVisitantAddTpl, API, camera) {
-    return function (faceimages, facedatas, headfaceimage) {
+define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html","text!tpls/peopleSubAuthority.html", "common/api", "common/camera","common/visitorCamera", "datetimepicker", "datetimepickerLang"], function ($, art, peopleVisitantAddTpl,peopleSubAuthorityTpl, API, camera,visitorCamera) {
+    return function () {
         // 渲染模板
         var $peopleVisitantAdd = $(peopleVisitantAddTpl);
         // 获取参数
-        var firstFaceimages = faceimages;
-        var firstFacedatas = facedatas;
-        var headfaceimage = headfaceimage;
+        var keyword;
         var time = new Date();
         // 日期补零
         var month = time.getMonth()+1
@@ -31,12 +29,22 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
         }else{
            var hour5=hour+5;
         }
-        var initStarttime = time.getFullYear() + '-' + month + '-' + day + " " + time.getHours() + ":" + minutes + ":" + 00;
-        var initEndtime = time.getFullYear() + '-' + month + '-' + day + " " + hour5 + ":" + minutes + ":" + 00;
+        var initStarttime = time.getFullYear() + '-' + month + '-' + day + " " + time.getHours() + ":" + minutes + ":" + "00";
+        var initEndtime = time.getFullYear() + '-' + month + '-' + day + " " + hour5 + ":" + minutes + ":" + "00";
         
         console.log(initStarttime,initEndtime)
+        //  授权组选项
+            API.queryAuthorizationgroupList(0, 100, keyword, function (res) {
+                var peopleSubAuthority = art.render(peopleSubAuthorityTpl,res);
+                 var $peopleSubAuthority = $(peopleSubAuthority);
+                 $("#VA-authorization").append($peopleSubAuthority);
+            })
         // 调用摄像头
-        $peopleVisitantAdd.on("click", "#start", function () {
+        $peopleVisitantAdd.on("click", "#firstdata", function () {
+            var ps_type = 2;
+            visitorCamera(ps_type);
+        });
+        $peopleVisitantAdd.on("click", "#seconddata", function () {
             camera();
         })
         // 查询设备
@@ -51,10 +59,13 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
                 })
         // 提交表单
         $peopleVisitantAdd.on("submit", "form", function () {
-            var deviceids = $("#btnDeviceids").attr("deviceids");
+            var firstFaceimages =  $("#btnFirstFacedata").attr("firstFaceimages");
+            var firstFacedatas = $("#btnFirstFacedata").attr("firstFacedatas");
+            var headfaceimage = $("#btnFirstFacedata").attr("headfaceimage");
             var secondFaceimages = $("#btnPeopleManager").attr("faceimage");
             var secondFacedatas = $("#btnPeopleManager").attr("facedata");
             var birthday = $("#VA-birthday").val();
+            var authorizationgroupid = $("#VA-authorization").val();
             var phonenumber = $("#VA-phonenumber").val();
             var name = $("#visitantName").val();
             var remark = $("#VA-remark").val();
@@ -76,7 +87,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
                 alert("结束时间不能小于开始时间");
             } else {
                 // 添加员工
-                API.addVisitor(deviceids, name, sex, birthday, phonenumber, starttime, endtime, remark, faceimages, facedatas, facetypes, function (res) {
+                API.addVisitor(authorizationgroupid, name, sex, birthday, phonenumber, starttime, endtime, remark, faceimages, facedatas, facetypes, function (res) {
                     $peopleVisitantAdd.modal("hide");
                     //成功的添加员工->刷新员工管理页面
                     $("#btnVisitorManager").trigger("click");
@@ -84,12 +95,14 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
             }
 
             return false; //阻止同步提交表单
-        });
-        // 移除模态框
-        $("#modalVisitantAdd").remove();
+        })
+        .on("click",".my-btn-cancel",function(){
+                $("#btnVisitorManager").trigger("click");
+            })
         // 移除弹出层，防止重复点击造成页面卡顿
+        $(".module-container").empty();
+        $(".module-container").append($peopleVisitantAdd);
         $(".modal-backdrop").remove();
-        $peopleVisitantAdd.appendTo("body").modal();
         $("#VA-starttime").attr("value",initStarttime);
         $("#VA-endtime").attr("value",initEndtime);
         // 为下拉框替换左侧小三角
@@ -103,7 +116,6 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html", "common/api
                 flag = true;
             }
         })
-        $(".mainPIC").attr("src", headfaceimage);
         // 判断图片是否加载完成
         $(".mainPIC").load(function () {
             $(".pic1record").html("").addClass("success_record")

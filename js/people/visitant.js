@@ -2,7 +2,7 @@
  * 访客列表
  * Created by land on 2017/9/2.
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.html", "./visitantinfo", "./visitantAdd", "./visitantDel", "./visitantExpired","common/visitorCamera","pager"], function ($, art, API, peopleVisitantListTpl, visitantinfo, visitantAdd, visitantDel, visitantExpired,visitorCamera) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.html", "./visitantinfo", "./visitantAdd", "./visitantDel", "./visitantExpired","pager"], function ($, art, API, peopleVisitantListTpl, visitantinfo, visitantAdd, visitantDel, visitantExpired) {
     return function () {
         var page = $("#btnPager").attr("page")||1;
         var start = 40*(page-1);
@@ -24,6 +24,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
         $("#btnKeepSearchWords").removeAttr("usersSearchWords");
         // 调用接口
         API.getVisitorList(start, limit, keyword, function (res) {
+            console.log(res)
             //编译模板
             var peopleVisitantList = art.render(peopleVisitantListTpl, res);
             //将编译成功的内容转换为jquery对象(--->方便后续的事件绑定)
@@ -33,12 +34,13 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
                 .on("click", ".btn-peopleList", function () {
                     $("#btnPeopleManager").trigger("click");
                 })
-                .on("click", ".btn-edit-visitant-baseinfo", function () {
+                .on("click", ".btn-show-visitant-baseinfo", function () {
                     var vs_id = $(this).parent().attr("vs_id");
                     visitantinfo(vs_id);
                 })
                 .on("click", "#visitantAdd", function () {
-                    visitorCamera();
+                    // visitorCamera();
+                    visitantAdd();
                 })
                 .on("click", ".btn-visitant-del", function () {
                     var vs_id = $(this).attr("vs_id");
