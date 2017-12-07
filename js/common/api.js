@@ -447,8 +447,8 @@ define(["jquery"],function($){
             })
         },
         // 访客列表
-        getVisitorList:function(start,limit,keyword,callback){
-            $.get(api+"/system/visitor/query",{start:start,limit:limit,keyword:keyword},function(res){
+        getVisitorList:function(start,limit,keyword,status,starttime,endtime,callback){
+            $.get(api+"/system/visitor/query",{start:start,limit:limit,keyword:keyword,status:status,starttime:starttime,endtime:endtime},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){

@@ -2,9 +2,40 @@
  * 访客列表
  * Created by land on 2017/9/2.
  */
-define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.html", "./visitantinfo", "./visitantAdd", "./visitantDel", "./visitantExpired","pager"], function ($, art, API, peopleVisitantListTpl, visitantinfo, visitantAdd, visitantDel, visitantExpired) {
+define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.html", "./visitantinfo", "./visitantAdd", "./visitantDel", "./visitantExpired","moment","daterangepicker","pager"], function ($, art, API, peopleVisitantListTpl, visitantinfo, visitantAdd, visitantDel, visitantExpired,moment) {
     return function () {
+        // 获取所需参数
+        var organizationid = $.cookie("organizationid");
+        var time = new Date();
+        // 日期补零
+        var day = time.getDate();
+        var month = time.getMonth();
+        var nextMonth = (month + 1);
+        var hour = time.getHours();
+        var minutes = time.getMinutes();
+        if(day.toString().length == 1){
+            day = "0"+day
+        }
+        if(month.toString().length == 1){
+            if(month==9){
+                month = "0"+month
+                var nextMonth = 10;
+            }else{
+                month = "0"+month
+            }
+        }
+        if(hour.toString().length == 1){
+                hour = "0"+hour
+        }
+        if(minutes.toString().length == 1){
+                minutes = "0"+minutes
+        }
+        var starttime = time.getFullYear() + '-' + month + '-' + day + " " + hour + ":" + minutes + ":" + "00";
+        var endtime = time.getFullYear() + '-' + nextMonth + '-' + day + " " + hour + ":" + minutes + ":" + "00";
+        var starttime = $("#btnVsStarttime").attr("starttime") || starttime;
+        var endtime = $("#btnVsEndtime").attr("endtime") || endtime;
         var page = $("#btnPager").attr("page")||1;
+        var status=$("#btnVsStatus").attr("status");
         var start = 40*(page-1);
         var limit = 40;
         var keyword = $("#btnSearchWords").attr("visitantKeyword");
@@ -22,8 +53,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
         $("#btnKeepSearchWords").removeAttr("recordsearchwords");
         $("#btnKeepSearchWords").removeAttr("deviceSearchwords");
         $("#btnKeepSearchWords").removeAttr("usersSearchWords");
+        console.log(start, limit, keyword,status,starttime,endtime)
         // 调用接口
-        API.getVisitorList(start, limit, keyword, function (res) {
+        API.getVisitorList(start, limit, keyword,status,starttime,endtime,function (res) {
             console.log(res)
             //编译模板
             var peopleVisitantList = art.render(peopleVisitantListTpl, res);
@@ -51,6 +83,17 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
                         visitantDel(vs_id);
                     }
                 })
+                .on("click","#all",function(){
+                    $("#btnVisitorManager").trigger("click"); //刷新
+                })
+                .on("click","#overdue",function(){
+                    $("#btnVsStatus").attr("status",3);
+                    $("#btnVisitorManager").trigger("click"); //刷新
+                })
+                .on("click","#unoverdue",function(){
+                    $("#btnVsStatus").attr("status",4);
+                    $("#btnVisitorManager").trigger("click"); //刷新
+                })
                 .on("click", "#visitant_search_btn", function () {
                     var keyword = $("#visitant_search_word").val();
                     $("#search").val(keyword);
@@ -62,6 +105,17 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
             //把渲染好的元素放到页面中
             $(".module-container").empty();
             $(".module-container").append($peopleVisitantList);
+            // 为日期选择增加箭头上下指示，为下拉框替换左侧小三角
+            var flag=true;
+            $("#vs-daterange-btn").on("click",function(){
+                if(flag){
+                    $("#daterange-btn .caret").addClass("caret_down");
+                    flag=false;
+                }else{
+                    $("#daterange-btn .caret").removeClass("caret_down");
+                    flag=true;
+                }
+            })
             // 设置下拉菜单鼠标移入触发
             $('div.dropdown').mouseover(function() {   
             $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');});  
@@ -79,6 +133,57 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleVisitantList.htm
                     $("#btnPager").attr("page",n);
                     $("#btnVisitorManager").trigger("click"); //刷新
                 }
+            });
+            // 设置日期控件
+            function init() {
+                //定义locale汉化插件
+                var locale = {
+                    "format": 'YYYY-MM-DD',
+                    "separator": " -222 ",
+                    "applyLabel": "确定",
+                    "cancelLabel": "取消",
+                    "fromLabel": "起始时间",
+                    "toLabel": "结束时间'",
+                    "customRangeLabel": "自定义",
+                    "weekLabel": "W",
+                    "daysOfWeek": ["日", "一", "二", "三", "四", "五", "六"],
+                    "monthNames": ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                    "firstDay": 1
+                };
+                //初始化显示当前时间
+                var initStarttime = starttime.substring(0,starttime.indexOf(" "))
+                var initEndtime = endtime.substring(0,endtime.indexOf(" "))
+                $('#vs-daterange-btn span').html(initStarttime + ' - ' + initEndtime);
+                // $('#daterange-btn span').html(moment().subtract(1, 'months').subtract(-1, 'days').format('YYYY-MM-DD') + ' - ' + moment().subtract(-1, 'days').format('YYYY-MM-DD'));
+                //日期控件初始化
+                $('#vs-daterange-btn').daterangepicker({
+                        'locale': locale,
+                        timePicker24Hour: true,
+                        //汉化按钮部分
+                        ranges: {
+                            '今日': [moment().startOf('day'), moment().subtract(0, 'days')],
+                            '昨日': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
+                            '最近7日': [moment().subtract(6, 'days').startOf('day'), moment().subtract(0, 'days').endOf('day')],
+                            '最近30日': [moment().subtract(30, 'days').startOf('day'), moment().subtract(0, 'days').endOf('day')],
+                            '本月': [moment().startOf('month'), moment().endOf('month')],
+                            '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                        },
+                        startDate: moment().subtract(29, 'days'),
+                        endDate: moment()
+                    },
+                    function (start, end) {
+                        $('#vs-daterange-btn span').html(start.format('YYYY-MM-DD HH-mm-ss') + ' - ' + end.format('YYYY-MM-DD HH-mm-ss'));
+                        var starttime = start.format('YYYY-MM-DD HH-mm-ss');
+                        var endtime = end.format('YYYY-MM-DD HH-mm-ss');
+                        $("#btnVsStarttime").attr("starttime", starttime);
+                        $("#btnVsEndtime").attr("endtime", endtime);
+                        $("#btnVisitorManager").trigger("click");
+                    }
+                );
+            };
+            // 默认加载
+            $(document).ready(function () {
+                init();
             });
         })
     }

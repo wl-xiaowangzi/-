@@ -1,39 +1,51 @@
 <div class="people-management">
-    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:60px;padding:14px 0 0 0;">
+    <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:60px;padding:0;">
         <div class="top-nav">
-            <div class="title_text">访客列表</div>
-            <!--下拉搜索条件-->
-                            <div class="dropdown pull-left" style="margin-left:-20px;">
-                                <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="peopleType">所有人员</span><span class="caret"></span></div>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li class="btn-all"><a href="#">所有人员</a></li>
-                                    <li id="btn-employee"><a href="#">员工</a></li>
-                                    <li id="btn-visiter"><a href="#">访客</a></li>
-                                </ul>
-                            </div>
-                            <!--/下拉搜索条件-->
-                           
-            <div id="visitantAdd" class="btnAdd"></div>
-            <div class="search">
-                <div class="form-group">
-                    <input type="text" id="visitant_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
-                    <button id="visitant_search_btn" class="btn btn-blue btn-search" type="submit">搜索</button>
+            <div class="flex-between align-center">
+                <div class="flex-between align-center">
+                    <div class="title_text" style="font-size:14px;">访客列表</div>
+                    <!--下拉搜索条件-->
+                    <div class="dropdown pull-left" style="margin-left:-20px;">
+                        <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="peopleType">全部</span><span class="caret"></span></div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li id="all"><a href="#">全部</a></li>
+                            <li id="overdue"><a href="#">未过期</a></li>
+                            <li id="unoverdue"><a href="#">已过期</a></li>
+                        </ul>
+                    </div>
+                    <!--/下拉搜索条件-->
+                    <!--日期控件 daterangepicker-->
+                    <div>
+                        <span class="pull-left" style="margin-top:6px;margin-right:12px;color:black;">时间</span>
+                        <div id="vs-daterange-btn" class="pull-left" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #e6ebee">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                            <span class="time"></span> <b class="caret"></b>
+                        </div>
+                    </div>
+                    <!--/日期控件-->
+                </div>
+                <div class="flex-between align-center">
+                    <div class="search">
+                        <div class="form-group">
+                            <input type="text" id="visitant_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
+                            <button id="visitant_search_btn" class="btn btn-blue btn-search" type="submit">搜索</button>
+                        </div>
+                    </div>
+                    <div style="margin-left:20px;">已入库访客<span style="color:#000;">{{sumsize}}</span>人</div>
                 </div>
             </div>
+            <div id="visitantAdd" class="btnAdd"></div>
         </div>
     </div>
     <div class="info-content">
-        {{each data}}
-        {{if $value.status==3}}
+        {{each data}} {{if $value.status==3}}
         <div class="info col-sm-2" style="background-image:url(imgs/visiting-tip.png)">
             <div class="btn-people-del btn-visitant-del" vs_id="{{$value.visitorid}}" vs_status="{{$value.status}}">×</div>
             <div class="info-box">
                 <div class="img-box">
                     {{if $value.headfaceimages[0]!=undefined}}
-                    <img src="{{$value.headfaceimages[0]}}" alt="" width="148" height="148">
-                    {{else}}
-                    {{/if}}
-                    </div>
+                    <img src="{{$value.headfaceimages[0]}}" alt="" width="148" height="148"> {{else}} {{/if}}
+                </div>
                 <p>{{$value.name}}</p>
                 <p>{{$value.remark}}</p>
                 <h3 vs_id="{{$value.visitorid}}"><button class="my-btn-edit btn-show-visitant-baseinfo">信息</button></h3>
@@ -45,10 +57,8 @@
             <div class="info-box">
                 <div class="img-box">
                     {{if $value.headfaceimages[0]!=undefined}}
-                    <img src="{{$value.headfaceimages[0]}}" alt="" width="148" height="148">
-                    {{else}}
-                    {{/if}}
-                    </div>
+                    <img src="{{$value.headfaceimages[0]}}" alt="" width="148" height="148"> {{else}} {{/if}}
+                </div>
                 <p>{{$value.name}}</p>
                 <p>{{$value.remark}}</p>
                 <h3 vs_id="{{$value.visitorid}}"><button class="my-btn-edit btn-show-visitant-baseinfo">信息</button></h3>
@@ -64,9 +74,8 @@
                 <h3 vs_id="{{$value.visitorid}}"><button class="btn btn-default btn-edit-visitant-baseinfo">信息</button></h3>
             </div>
         </div>-->
-        {{/if}} 
-        {{/each}}
-        
+        {{/if}} {{/each}}
+
     </div>
     <div class="pages">
         <ul class="pagination" id="page1">
