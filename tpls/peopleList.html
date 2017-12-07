@@ -1,17 +1,25 @@
 <div class="people-management">
     <div class="panel-body align-center" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:77px;padding:0;">
-        <div class="top-nav">
-            <!--title-->
-            <span class="iptinfo_text">组织架构</span>
-            <span class="iptinfo_text">员工列表</span>
-            <!--/title-->
+        <div class="top-nav" style="padding-left:24px;padding-right:60px;width:100%;">
             <div id="peopleAdd" class="btnAdd"></div>
-            <div class="search">
+            <div class="flex-between align-center">
+                <div class="flex-between align-center">
+ <!--title-->
+            <div class="title_text">组织架构</div>
+            <div class="title_text" style="margin-left:160px;">员工列表</div>
+            </div>
+            <div class="flex-between align-center">
+                <!--/title-->
+                
+                <div class="search">
                 <div class="form-group">
                     <input type="text" id="people_search_word" class="form-control search-word" placeholder="请输入您要搜索的关键字">
                     <button id="people_search_btn" class="btn btn-blue btn-search" type="submit">搜索</button>
                 </div>
                 <!-- /input-group -->
+            </div>
+            <div style="margin-left:20px;">已入库员工<span style="color:#000;">{{sumsize}}</span>人</div>
+            </div>
             </div>
         </div>
     </div>
@@ -20,13 +28,13 @@
             <div class="panel panel-default" style="width:214px;position:fixed;top:117px;z-index:999;margin-left:16px;border:0px;">
                 <div class="panel-body" style="padding:0;">
                     <!--组织架构树-->
-                    <div id="TreeList">
+                    <!--<div id="TreeList">
 
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
-        <div class="people-right" style="margin-left:220px;">
+        <div class="people-right" style="margin-left:184px;">
             <div class="info-content">
                 {{each data}} {{if $value.status==3}}
                 <div class="info col-sm-2">
@@ -34,7 +42,7 @@
                     <div class="info-box">
                         <div class="img-box">
                             {{if $value.headfaceimages[0]!=undefined}}
-                            <img src="{{$value.headfaceimages[0]}}" alt=""> {{else}} {{/if}}
+                            <img src="{{$value.headfaceimages[0]}}" alt="" width="148" height="148"> {{else}} {{/if}}
                         </div>
                         <p>{{$value.name}}</p>
                         <p>{{$value.job}}</p>

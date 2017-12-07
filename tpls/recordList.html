@@ -48,12 +48,12 @@
     <div class="table">
         <div class="flex-between" style="margin-top:20px;margin-bottom:20px;">
             <ul class="info_text">
-                <li>识别记录：444条</li>
+                <li>识别记录：{{sumsize}}条</li>
             </ul>
             <ul class="flex-around info_text" style="width:300px;">
-                <li>识别总计：<span style="color:#000;">88</span>人</li>
-                <li>识别员工：<span style="color:#357aed;">44</span>人</li>
-                <li>识别访客：<span style="color:#ffae45;">44</span>人</li>
+                <li>识别总计：<span style="color:#000;">{{data.count.total}}</span>人</li>
+                <li>识别员工：<span style="color:#357aed;">{{data.count.employeecount}}</span>人</li>
+                <li>识别访客：<span style="color:#ffae45;">{{data.count.visitorcount}}</span>人</li>
             </ul>
         </div>
 
@@ -68,7 +68,7 @@
                 <th class="text-center">操作</th>
             </thead>
             <tbody>
-                {{each data}}
+                {{each data.list}}
                 <tr vs_id={{$value.visitorid}}>
                     <td><img src="{{$value.faceimage}}" alt="" width="50" height="50" class="text-center"></td>
                     <td style="color:black;">{{$value.name}}</td>

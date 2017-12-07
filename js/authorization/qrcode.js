@@ -6,7 +6,8 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/authorizationQrcode.ht
 
     return function (content, size, logoword) {
         //编译模板
-        console.log(content)
+        var type=content.substr(5,1);
+        console.log(type)
         API.createDimensioncode(content, size, logoword, function (res) {
             console.log(res);
             var demension = res.data.demension+"&v="+Math.random();
@@ -22,6 +23,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/authorizationQrcode.ht
             $(".modal-backdrop").remove();
             $qrcode.appendTo("body").modal();
             $("#demension").attr("src",demension)
+            if(type=="e"){
+                $("#auName").html("员工授权组")
+            }
         })
 
     };

@@ -24,7 +24,11 @@
                 <tbody>
                     {{each data}}
                     <tr>
+                        {{if $value.headfaceimage!=undefined}}
+                        <td><img src="{{$value.headfaceimage}}" alt="" width="50" height="50" class="text-center"></td>
+                        {{else}}
                         <td><img src="imgs/pic.jpg" alt="" width="50" height="50" class="text-center"></td>
+                        {{/if}}
                         <td style="color:black;">{{$value.name}}</td>
                         <td style="color:black;">{{$value.username}}</td>
                         <td style="color:#f3f3f3;">|</td>

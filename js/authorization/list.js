@@ -46,6 +46,10 @@ define(["jquery", "artTemplate", "common/api","./groupAdd", "./groupEdit","./gro
                 var content="type=visitor";
                 authorization(content)
             })
+            .on("click","#btn-authority",function(){
+                console.log(0)
+                $("#btnAuthorization").trigger("click");
+            })
             //把渲染好的元素放到页面中
             $(".module-container").empty();
             $(".module-container").append($authorizationList);

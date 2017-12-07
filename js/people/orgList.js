@@ -6,10 +6,9 @@
 define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "text!tpls/peopleOrgTree.html", "./baseInfo", "./visitant", "./add", "./del", "./orgAdd", "./orgDel", "./orgEdit", "common/employeeCamera", "pager"], function ($, art, API, peopleListTpl, peopleOrgTpl, baseInfo, visitant, peopleAdd, peopleDel, orgAdd, orgDel, orgEdit, employeeCamera) {
 
     return function () {
-        // 调用接口
-        var organizationid = $.cookie("organizationid");
         // 查询组织树
-        API.queryTree(organizationid, function (res) {
+        API.queryTree( function (res) {
+            console.log(res)
             var configOrganizationalManagement = art.render(peopleOrgTpl, res.data[0]);
             var $configOrganizationalManagement = $(configOrganizationalManagement);
             $configOrganizationalManagement

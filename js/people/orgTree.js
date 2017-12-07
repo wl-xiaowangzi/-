@@ -5,8 +5,7 @@
 define(["jquery", "artTemplate", "common/api", "./orgAdd","./orgEdit","./orgDel","text!tpls/configOrganizationalManagement.html", "mtree"], function ($, art, API,orgAdd ,orgEdit ,orgDel,configOrganizationalManagementTpl) {
 
     return function () {
-        var organizationid = $.cookie("organizationid");
-        API.queryTree(organizationid, function (res) {
+        API.queryTree(function (res) {
             console.log(res)
             var configOrganizationalManagement = art.render(configOrganizationalManagementTpl,res.data[0]);
             var $configOrganizationalManagement = $(configOrganizationalManagement);

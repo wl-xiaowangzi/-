@@ -24,8 +24,8 @@ define(["jquery", "artTemplate", "text!tpls/configOrgAdd.html", "common/api"], f
                 console.log(organizationid,name,parentorganizationid,principal,qcode)
                 API.addOrganization(organizationid,name,parentorganizationid,principal,qcode, function (res) {
                     $orgAdd.modal("hide");
-                    //成功的添加用户->刷新用户管理页面
-                    $("#btnPeopleManager").trigger("click");
+                    //成功的添加组织机构->刷新组织机构管理页面
+                    $("#btnOrgTree").trigger("click");
                 })
                 return false; //阻止同步提交表单
             });

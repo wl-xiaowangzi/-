@@ -38,6 +38,14 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html","text!tpls/p
                 var peopleSubAuthority = art.render(peopleSubAuthorityTpl,res);
                  var $peopleSubAuthority = $(peopleSubAuthority);
                  $("#VA-authorization").append($peopleSubAuthority);
+                 for(var i=0;i<res.data.length;i++){
+                    if(res.data[i].isdefault==1){
+                        console.log(res.data[i].datanumber)
+                        var auID=res.data[i].datanumber;
+                        auID="au"+auID;
+                        $("#"+auID).prop("selected","selected");
+                    }
+                }
             })
         // 调用摄像头
         $peopleVisitantAdd.on("click", "#firstdata", function () {
@@ -85,7 +93,10 @@ define(["jquery", "artTemplate", "text!tpls/peopleVisitantAdd.html","text!tpls/p
             }
             if (Date.parse(starttime) > Date.parse(endtime)) {
                 alert("结束时间不能小于开始时间");
-            } else {
+            } else if(faceimages==undefined){
+                alert("请拍摄人脸照片")
+            }
+            else{
                 // 添加员工
                 API.addVisitor(authorizationgroupid, name, sex, birthday, phonenumber, starttime, endtime, remark, faceimages, facedatas, facetypes, function (res) {
                     $peopleVisitantAdd.modal("hide");

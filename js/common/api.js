@@ -17,8 +17,8 @@ define(["jquery"],function($){
     // console.log(ap)
     return {
         // 识别记录
-        getRecordList:function(organizationid,starttime,endtime,start,limit,persontype,similarity,keyword,personid,callback){
-            $.get(api+"/system/record/query",{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,persontype:persontype,similarity:similarity,keyword:keyword,personid:personid},function(res){
+        getRecordList:function(starttime,endtime,start,limit,persontype,similarity,keyword,personid,callback){
+            $.get(api+"/system/record/query",{starttime:starttime,endtime:endtime,start:start,limit:limit,persontype:persontype,similarity:similarity,keyword:keyword,personid:personid},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
@@ -38,11 +38,11 @@ define(["jquery"],function($){
         },
         
         //查询识别记录（无加载动画）
-        queryRecordList:function(organizationid,starttime,endtime,start,limit,persontype,similarity,keyword,personid,callback){
+        queryRecordList:function(starttime,endtime,start,limit,persontype,similarity,keyword,personid,callback){
             $.ajax({
                 url:api+"/system/record/query",
                 type:"get",
-                data:{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,persontype:persontype,similarity:similarity,keyword:keyword,personid:personid},
+                data:{starttime:starttime,endtime:endtime,start:start,limit:limit,persontype:persontype,similarity:similarity,keyword:keyword,personid:personid},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
@@ -59,11 +59,11 @@ define(["jquery"],function($){
             })
         },
         // 查看详细信息
-        showRecord:function(organizationid,starttime,endtime,start,limit,datanumber,callback){
+        showRecord:function(starttime,endtime,start,limit,datanumber,callback){
             $.ajax({
                 url:api+"/system/record/query",
                 type:"get",
-                data:{organizationid:organizationid,starttime:starttime,endtime:endtime,start:start,limit:limit,datanumber:datanumber},
+                data:{starttime:starttime,endtime:endtime,start:start,limit:limit,datanumber:datanumber},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
@@ -861,8 +861,8 @@ define(["jquery"],function($){
         },
          // 机构管理
         // 中广信息机构查询机构树
-        queryTree:function(organizationid,callback){
-            $.get(api+"/system/organization/queryTree",{organizationid:organizationid},function(res){
+        queryTree:function(callback){
+            $.get(api+"/system/organization/queryTree",{},function(res){
                 if(res.code!=0){
                     console.log(res.message);
                     if(res.message==undefined){
@@ -876,11 +876,11 @@ define(["jquery"],function($){
             })
         },
         // 中广信息机构查询机构树
-        getTree:function(organizationid,callback){
+        getTree:function(callback){
             $.ajax({
                 url:api+"/system/organization/queryTree",
                 type:"get",
-                data:{organizationid:organizationid},
+                data:{},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
@@ -939,11 +939,11 @@ define(["jquery"],function($){
             })
         },
            // 修改机构
-        editOrganization:function(organizationid,name,parentorganizationid,principal,qcode,callback){
+        editOrganization:function(organizationid,name,parentorganizationid,principal,qcode,authorizationgroupid,callback){
             $.ajax({
                 url:api+"/system/organization/update",
                 type:"post",
-                data:{organizationid:organizationid,name:name,parentorganizationid:parentorganizationid,principal:principal,qcode:qcode},
+                data:{organizationid:organizationid,name:name,parentorganizationid:parentorganizationid,principal:principal,qcode:qcode,authorizationgroupid:authorizationgroupid},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
@@ -1161,6 +1161,107 @@ define(["jquery"],function($){
                 }
             })
         },
+        // 角色管理
+        // 角色列表
+        getRoleList:function(start,limit,keyword,callback){
+            $.get(api+"/system/role/query",{start:start,limit:limit,keyword:keyword},function(res){
+                if(res.code!=0){
+                    console.log(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                if(res.data.length==0){
+                    $("body").addClass("noResult")
+                }else{
+                    $("body").removeClass("noResult")
+                }
+                callback && callback(res);
+            })
+        },
+        // 增加用户
+        addRole:function(name,callback){
+            $.ajax({
+                url:api+"/system/role/add",
+                type:"post",
+                data:{name:name},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    alert(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 查看用户信息
+        queryRole:function(start,limit,keyword,callback){
+            $.ajax({
+                url:api+"/system/role/query",
+                type:"post",
+                data:{start:start,limit:limit,keyword:keyword},
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                    alert(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 用户编辑
+        editRole:function(formData,callback){
+            $.ajax({
+                url:api+"/system/role/update",
+                type:"post",
+                data:formData,
+                beforeSend:function(res){},
+                success:function(res){
+                    if(res.code!=0){
+                        if(res.message=="无查询权限修改！"){
+                            alert("无修改权限！")
+                        }else{
+                            alert(res.message);
+                        }
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
+                callback && callback(res);
+                }
+            })
+        },
+        // 用户删除
+        delRole:function(user_id,callback){
+            $.ajax({
+                url:api+"/system/role/delete",
+                type:"post",
+                data:{userids:user_id},
+                beforeSend:function(res){},
+                success:function(res){
+                    
+                callback && callback(res);
+                }
+            })
+        },
         // 用户信息
         // 用户列表
         getUsersList:function(start,limit,keyword,callback){
@@ -1183,11 +1284,11 @@ define(["jquery"],function($){
             })
         },
         // 增加用户
-        addUser:function(formData,callback){
+        addUser:function(name,username,password,phonenumber,faceimage,facedata,roleid,callback){
             $.ajax({
                 url:api+"/system/user/add",
                 type:"post",
-                data:formData,
+                data:{name:name,username:username,password:password,phonenumber:phonenumber,faceimage:faceimage,facedata:facedata,roleid:roleid},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
@@ -1225,11 +1326,11 @@ define(["jquery"],function($){
             })
         },
         // 用户编辑
-        editUser:function(formData,callback){
+        editUser:function(user_id,name,username,password,phonenumber,faceimage,facedata,roleid,callback){
             $.ajax({
                 url:api+"/system/user/update",
                 type:"post",
-                data:formData,
+                data:{userid:user_id,name:name,username:username,password:password,phonenumber:phonenumber,faceimage:faceimage,facedata:facedata,roleid:roleid},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){

@@ -27,7 +27,7 @@ define(["jquery", "artTemplate", "text!tpls/camera.html", "common/api","common/u
                     $(".btn-blue").attr("secondFaceimages",res.data.faceimage);
                     $(".btn-blue").attr("secondFacedatas",secondFacedatas);
                     $(".btn-blue").parent().attr("facetypes2","1");
-                    $(".headfaceimage2").attr("src",res.data.headfaceimage);
+                    $(".secPIC").attr("src",res.data.headfaceimage);
                     // $camera.modal("hide");
                     $camera.css("width",0);
                     $(".modal-backdrop").remove();

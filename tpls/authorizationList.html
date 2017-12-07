@@ -4,7 +4,7 @@
     <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" style="height:62px;background:#f8fafb;padding-left:64px;">
-            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">授权组管理</a></li>
+            <li role="presentation" class="active" id="btn-authority"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">授权组管理</a></li>
             <li role="presentation" style="margin-left:50px;"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="">访问授权设置</a></li>
         </ul>
         <!-- Tab panes -->
@@ -14,7 +14,7 @@
                     <div class="flex-between" style="height:64px;">
                         <h3 class="panel-title" style="height:64px;line-height:64px;">授权组列表</h3>
                         <div class="align-center">
-                            <span style="margin-right:20px;">已有授权组：10个</span>
+                            <span style="margin-right:20px;">已有授权组：{{sumsize}}个</span>
                             <button type="text" id="author-add" class="" style="width:100px;height:40px;background:#357aed;color:#fff;border-radius:5px;border:0;">+新增授权组</button>
                         </div>
                     </div>
@@ -48,12 +48,12 @@
                         <div class="flex-around" style="background-color:#fff;height:76vh;align-items:center;min-height:420px;">
                             <div class="flex-around" style="background-color:#fff;height:420px;width:80%;align-items:center;">
                             <div class="author-visitor author">
-                                <div class="img-box"><img src="imgs/pic.jpg" alt="" width="145" height="145" style="border-radius:50%;"></div>
+                                <div class="img-box"><img src="imgs/authority-employee.png" alt="" width="145" height="145" style="border-radius:50%;"></div>
                                 <button type="text" id="author-employee" style="height:40px;width:145px;background-color:#357aed;border-radius:5px;border:0;color:#fff;margin-top:64px;">授权给员工</button>
                             </div>
                             <div style="border-right:1px dashed #ccc;height:250px;"></div>
                             <div class="author-employee author">
-                                <div class="img-box"><img src="imgs/pic.jpg" alt="" width="145" height="145" style="border-radius:50%;"></div>
+                                <div class="img-box"><img src="imgs/authority-visitor.png" alt="" width="145" height="145" style="border-radius:50%;"></div>
                                 <button type="text" id="author-visitor" style="height:40px;width:145px;background-color:#ffae45;border-radius:5px;border:0;color:#fff;margin-top:64px;">授权给访客</button>
                             </div>
                             </div>

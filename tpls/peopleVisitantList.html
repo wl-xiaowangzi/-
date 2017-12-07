@@ -1,11 +1,18 @@
 <div class="people-management">
     <div class="panel-body" style="background-color:#f8fafb;border-top:1px solid #e6ebee;border-bottom:1px solid #e6ebee;height:60px;padding:14px 0 0 0;">
         <div class="top-nav">
+            <div class="title_text">访客列表</div>
             <!--下拉搜索条件-->
-            <div class="dropdown pull-left" style="margin-left:-20px;">
-                <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">访客</div>
-            </div>
-            <!--/下拉搜索条件-->
+                            <div class="dropdown pull-left" style="margin-left:-20px;">
+                                <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="peopleType">所有人员</span><span class="caret"></span></div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li class="btn-all"><a href="#">所有人员</a></li>
+                                    <li id="btn-employee"><a href="#">员工</a></li>
+                                    <li id="btn-visiter"><a href="#">访客</a></li>
+                                </ul>
+                            </div>
+                            <!--/下拉搜索条件-->
+                           
             <div id="visitantAdd" class="btnAdd"></div>
             <div class="search">
                 <div class="form-group">
@@ -23,7 +30,7 @@
             <div class="info-box">
                 <div class="img-box">
                     {{if $value.headfaceimages[0]!=undefined}}
-                    <img src="{{$value.headfaceimages[0]}}" alt="">
+                    <img src="{{$value.headfaceimages[0]}}" alt="" width="148" height="148">
                     {{else}}
                     {{/if}}
                     </div>
@@ -38,7 +45,7 @@
             <div class="info-box">
                 <div class="img-box">
                     {{if $value.headfaceimages[0]!=undefined}}
-                    <img src="{{$value.headfaceimages[0]}}" alt="">
+                    <img src="{{$value.headfaceimages[0]}}" alt="" width="148" height="148">
                     {{else}}
                     {{/if}}
                     </div>

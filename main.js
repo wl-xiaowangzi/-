@@ -45,7 +45,7 @@ require.config({
 })
 
 //因为checkLogin依赖了cookie，所以cookie已经被加载
-require(["jquery", "artTemplate", "users/list","attendance/list","authorization/list" ,"people/list", "people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement","common/testAdd", "common/loading", "common/checkLogin"], function ($, art, usersList,attendanceList,authorizationList, peopleList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement,testAdd) {
+require(["jquery", "artTemplate", "users/list","attendance/list","authorization/list" ,"people/list", "people/orgList","people/visitant", "approval/list", "approval/employeeList", "approval/visitorList", "people/baseInfo", "record/list", "record/edit", "common/personalCenter", "common/changePWD", "common/api", "config/postManagement", "config/causeManagement", "config/viewLog", "config/deviceManagement", "config/organizationalManagement","common/testAdd", "common/loading", "common/checkLogin"], function ($, art, usersList,attendanceList,authorizationList, peopleList,orgList, visitant, approvalList, approvalEmployeeList, approvalVisitorList, peopleBaseInfo, recordList, recordEdit, personalCenter, changePWD, API, configPostManagement, configCauseManagement, configViewLog, configDeviceManagement, configOrganizationalManagement,testAdd) {
 
     //处理用户名
     var username = $.cookie("username");
@@ -174,7 +174,10 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
         $(".module-container").empty();
         peopleList();
     });
-
+    $("#btnOrgTree").on("click",function(){
+        // 查询组织树
+        orgList()
+    })
     $("#btnVisitorManager").on("click", function () {
         //访客管理
         $(".module-container").empty();
@@ -220,7 +223,6 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
         //加载访问授权模块
         authorizationList();
     });
-
     $("#btnUsersManager").on("click", function () {
         //用户管理
         $(".module-container").empty();
@@ -236,15 +238,23 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
             }
         };
     });
-
+    if($.cookie("username")!="admin"){
+        $("#btnUsersManager").addClass("displayN");
+    }
     //希望一开始就渲染出识别记录
     //  -->触发识别记录的点击事件
+    $("#btnOrgTree").trigger("click");
     $("#btnRecord").trigger("click");
-
+    
     // 给侧边栏添加点击效果
     $(".nav-item>ul li").on("click", function () {
         $(".nav-item>ul li").removeClass("activate");
         $(this).addClass("activate");
+        if($("#btnPeopleManager").hasClass("activate")){
+            $("#my-tree").removeClass("displayN");
+        }else{
+            $("#my-tree").addClass("displayN");
+        }
     });
     $(".personal").on("click",function(){
         $(this).addClass("activate");

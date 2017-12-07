@@ -16,8 +16,8 @@ define(["jquery", "artTemplate", "text!tpls/configOrgDel.html", "common/api"], f
                 // 获取表单参数 
                 API.delOrganization(organizationids, function (res) {
                     $orgDel.modal("hide");
-                    //成功的添加用户->刷新用户管理页面
-                    $("#btnPeopleManager").trigger("click");
+                    //成功的删除组织机构->刷新组织机构管理页面
+                    $("#btnOrgTree").trigger("click");
                 })
                 return false; //阻止同步提交表单
             });

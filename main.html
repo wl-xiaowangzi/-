@@ -78,6 +78,7 @@
             <div id="testData"></div>
             <div id="btnFirstFacedata"></div>
             <div id="btnOrganizationid"></div>
+            <div id="btnOrgTree"></div>
             <!--/中转点-->
             <div class="top_nav">
                 <div class="nav_menu">
@@ -91,8 +92,16 @@
                 </div>
             </div>
             <!-- /top navigation -->
-            
+            <div class="panel panel-default displayN" id="my-tree" style="width:214px;position:fixed;top:117px;z-index:999;margin-left:16px;border:0px;">
+                    <div class="panel-body" style="padding:0;">
+                        <!--组织架构树-->
+                        <div id="TreeList">
+
+                        </div>
+                    </div>
+                </div>
             <div class="module-container" style="padding-top:40px;">
+                
                 <!--第一次加载预动画-->
                 <div id="modalLoading" style="margin-top:30vh;">
                     <div style="background-color:transparent;display:flex;justify-content:center;align-items:center;flex-direction:column;">

@@ -6,6 +6,7 @@
 define(["jquery", "artTemplate", "common/api", "text!tpls/personalCenter.html","./photoRequire"], function ($, art, API, personalCenterTpl,photoRequire) {
 
     return function () {
+        $("#my-tree").addClass("displayN");
         // 获取员工id
         var userid = $.cookie("userid");
         // 查询员工信息

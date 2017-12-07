@@ -6,6 +6,7 @@
 define(["jquery", "artTemplate", "common/api", "text!tpls/peopleEdit.html", "text!tpls/peopleSubOrg.html","text!tpls/peopleSubAuthority.html","common/editCamera1", "common/editCamera2", "./choicePicture1", "./choicePicture2","typeahead"], function ($, art, API, peopleEditTpl,peopleSubOrgTpl,peopleSubAuthorityTpl, editCamera1, editCamera2,choicePicture1,choicePicture2) {
     return function (ep_id) {
         // 移除弹出层，防止重复点击造成页面卡顿
+        $("#my-tree").addClass("displayN");
         $(".modal-backdrop").remove();
         $("#modalEditInfo").remove();
         var organizationid=$.cookie("organizationid");

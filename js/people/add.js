@@ -11,6 +11,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html","text!tpls/peopleSub
         var limit = 30;
         var organizationid=$.cookie("organizationid");
         var status = 1;
+        $("#my-tree").addClass("displayN");
         // 调用参数查询接口
         API.queryAuthorizationgroupList(start, limit, keyword,status, function (res) {
             console.log(res)
@@ -26,7 +27,7 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html","text!tpls/peopleSub
                 var ps_type = 1;
                 camera(ps_type);
             });
-            API.getTree(organizationid, function (res) {
+            API.getTree(function (res) {
                  var peopleSubOrg = art.render(peopleSubOrgTpl,res.data[0]);
                  var $peopleSubOrg = $(peopleSubOrg);
                  $("#PA-department").append($peopleSubOrg);
@@ -65,12 +66,18 @@ define(["jquery", "artTemplate", "text!tpls/peopleAdd.html","text!tpls/peopleSub
                 $("#btnPeopleManager").removeAttr("faceimage");
                 $("#btnPeopleManager").removeAttr("facedata");
                 // 调用接口
-                console.log(authorizationgroupid,organizationid, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes)
-                API.addEmployee(authorizationgroupid, organizationid,name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes, function (res) {
+                console.log(authorizationgroupid,organizationid, name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes);
+                if(faceimages==undefined){
+                    alert("请拍摄人脸照片")
+                }else{
+                 API.addEmployee(authorizationgroupid, organizationid,name, sex, birthday, phonenumber, employeenumber, job, faceimages, facedatas,facetypes, function (res) {
                     $peopleAdd.modal("hide");
                     //成功的添加员工->刷新员工管理页面
                     $("#btnPeopleManager").trigger("click");
-                })
+                    })
+                }
+               
+                
                 return false; //阻止同步提交表单
             })
             .on("click",".my-btn-cancel",function(){

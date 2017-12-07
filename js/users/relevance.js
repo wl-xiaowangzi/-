@@ -46,7 +46,10 @@ define(["jquery", "artTemplate", "text!tpls/usersRelevance.html", "common/api", 
                     API.getEmployeeBaseInfo(ps_id,function(res){
                         console.log(res)
                         $("#userName-add").val(res.data.name);
-                        $("#phonenumber").val(res.data.phonenumber);
+                        $("#ua-phonenumber").val(res.data.phonenumber);
+                        $("#user-pic").attr("src",res.data.headfaceimages[0]);
+                        $("#user-pic").attr("faceimage",res.data.faceimages[0]);
+                        $("#user-pic").attr("facedata",res.data.facedatas[0]);
                         $usersRelevance.modal("hide")
                     })
                 })

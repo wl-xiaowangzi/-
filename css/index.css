@@ -89,7 +89,10 @@ a {
     font-size: 16px;
     color: #000;
 }
-
+.title_text {
+    font-size: 16px;
+    color: #576780;
+}
 .ipt_text {
     font-size: 13px;
     color: #000;
@@ -948,11 +951,9 @@ nav {
 }
 
 .search {
-    margin-top: 22px;
-    position: absolute;
-    width: 320px;
-    top: 28px;
-    right: 70px;
+    margin-top: 15px;
+    position: relative;
+    width: 300px;
 }
 
 .search input {
@@ -1302,7 +1303,7 @@ p {
 
 .people-management .info-content {
     padding-left: 64px;
-    padding-right: 64px;
+    /*padding-right: 64px;*/
 }
 
 .people-management .info-content .info {
@@ -1372,10 +1373,6 @@ p {
     height: 100%;
 }
 
-.people-management .info-content .info .img-box img {
-    width: 100%;
-    height: 100%;
-}
 .my-btn-edit{
     width: 148px;
     height: 148px;
@@ -2094,12 +2091,24 @@ video {
     width: 180px;
     border: 1px solid #f3f3f3;
 }
+#modalPhotoRequire .correctSample p span{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: url(../imgs/right-sample-icon.png);
+}
 #modalPhotoRequire .wrongSample img{
     display: block;
     margin-bottom: 12px;
     height: 90px;
     width: 90px;
     border: 1px solid #f3f3f3;
+}
+#modalPhotoRequire .wrongSample p span{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: url(../imgs/wrong-sample-icon.png);
 }
 /*拍照要求 end*/
 

@@ -21,7 +21,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html","./ed
         // 清除参数
         $("#btnPager").removeAttr("page");
         // 调用识别记录接口
-        API.queryRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
+        API.queryRecordList(starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
             //编译模板
             var recordEdit = art.render(recordEditTpl, res);
             var $recordEdit = $(recordEdit);
@@ -34,11 +34,12 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/recordEdit.html","./ed
                 })
                 .on("click",".replaceIMG",function(res){
                     var datanumber = $(this).parent().attr("datanumber");
-                    API.showRecord(organizationid,starttime,endtime,start,limit,datanumber,function(res){
-                        var ps_id = res.data[0].personid;
-                        var ps_type = res.data[0].persontype;
-                        var facedata = res.data[0].facedata;
-                        var faceimage = res.data[0].faceimage;
+                    API.showRecord(starttime,endtime,start,limit,datanumber,function(res){
+                        console.log(res)
+                        var ps_id = res.data.list[0].personid;
+                        var ps_type = res.data.list[0].persontype;
+                        var facedata = res.data.list[0].facedata;
+                        var faceimage = res.data.list[0].faceimage;
                         replaceIMG(ps_id,ps_type,facedata,faceimage);
                     })
                 })

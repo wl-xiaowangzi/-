@@ -9,12 +9,16 @@
             <div class="modal-body">
                 <form class="form form-horizontal">
                     <div class="form-group" style="display:flex;justify-content:center;">
-                        <div class="img-box"><img src="imgs/pic.jpg" alt="" width="100" height="100"></div>
+                        {{if headfaceimage!=undefined}}
+                        <div class="img-box"><img src="{{headfaceimage}}" id="ue-pic" alt="" uefaceimage={{faceimage}} uefacedata={{facedata}} width="100" height="100"></div>
+                        {{else}}
+                        <div class="img-box"><img src="imgs/pic.jpg" id="ue-pic" alt="" uefaceimage={{faceimage}} uefacedata={{facedata}} width="100" height="100"></div>
+                        {{/if}}
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">姓名</label>
                         <div class="col-sm-7">
-                            <input type="text" maxlength="20" id="userEditName" required="required" class="form-control" name="name" value="{{name}}" /><span class="asterisk">*</span>
+                            <input type="text" maxlength="20" id="userEditName" required="required" class="form-control" name="name" value="{{name}}" roleid={{roleid}} /><span class="asterisk">*</span>
                         </div>
                     </div>
                    <script type="text/javascript">
@@ -32,7 +36,7 @@
                         <label class="col-sm-2 col-sm-offset-1 control-label">账号</label>
                         <div class="col-sm-7">
                             <input type="text" maxlength="20" id="admin" required="required" class="form-control" name="username" value="{{username}}" /><span class="asterisk">*</span>
-                            <input type="hidden" name="userid" value="{{userid}}">
+                            <input type="hidden" id="user_id" name="userid" value="{{userid}}">
                         </div>
                     </div>
                     <script type="text/javascript">
@@ -66,11 +70,11 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-offset-1 control-label">手机号码</label>
                         <div class="col-sm-7">
-                            <input type="text" minlength="11" maxlength="11" pattern="^1[3|4|5|7|8][0-9]{9}" required="required" placeholder="请输入11位手机号码" id="phonenumber" class="form-control" name="phonenumber" value="{{phonenumber}}" /><span class="asterisk">*</span>
+                            <input type="text" minlength="11" maxlength="11" pattern="^1[3|4|5|7|8][0-9]{9}" required="required" placeholder="请输入11位手机号码" id="ue-phonenumber" class="form-control" name="phonenumber" value="{{phonenumber}}" /><span class="asterisk">*</span>
                         </div>
                     </div>
                    <script>
-                        var user = document.getElementById("phonenumber");
+                        var user = document.getElementById("ue-phonenumber");
                         user.onblur = function () {
                             if (user.value) {
                                 user.setCustomValidity(""); //现将有输入时的提示设置为空

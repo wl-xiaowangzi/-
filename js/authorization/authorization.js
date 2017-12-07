@@ -13,7 +13,7 @@ define(["jquery", "artTemplate", "text!tpls/authorizationInfo.html", "text!tpls/
         $("#btnPersontype").attr("content",content)
         var keyword;
          // 组织加购选项
-            API.getTree(organizationid, function (res) {
+            API.getTree(function (res) {
                  var peopleSubOrg = art.render(peopleSubOrgTpl,res.data[0]);
                  var $peopleSubOrg = $(peopleSubOrg);
                  $("#department").append($peopleSubOrg);

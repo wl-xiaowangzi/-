@@ -68,8 +68,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleList.html", "tex
             //把渲染好的元素放到页面中
             $(".module-container").empty();
             $(".module-container").append($peopleList);
-            // 查询组织树
-            orgList()
+            
             // 设置下拉菜单鼠标移入触发
             $('div.dropdown').mouseover(function () {
                 $(this).addClass('open');
