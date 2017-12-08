@@ -143,11 +143,11 @@ define(["jquery"],function($){
             })
         },
         // 入库审批列表
-        getApprovalList:function(start,limit,keyword,callback){
+        getApprovalList:function(start,limit,keyword,qtype,checkresult,persontype,callback){
             $.ajax({
                 url:api+"/system/person/query",
                 type:"get",
-                data:{start:start,limit:limit,keyword:keyword},
+                data:{start:start,limit:limit,keyword:keyword,qtype:qtype,checkresult:checkresult,persontype:persontype},
                 success:function(res){
                     if(res.code!=0){
                     console.log(res.message);
@@ -168,11 +168,11 @@ define(["jquery"],function($){
             })
         },
         // 定时请求不用调loading
-        queryApprovalList:function(start,limit,keyword,callback){
+        queryApprovalList:function(start,limit,keyword,qtype,checkresult,callback){
             $.ajax({
                 url:api+"/system/person/query",
                 type:"get",
-                data:{start:start,limit:limit,keyword:keyword},
+                data:{start:start,limit:limit,keyword:keyword,qtype:qtype,checkresult:checkresult},
                 beforeSend:function(res){},
                 success:function(res){
                     if(res.code!=0){
@@ -1156,7 +1156,15 @@ define(["jquery"],function($){
                 data:{datanumbers:datanumbers},
                 beforeSend:function(res){},
                 success:function(res){
-                    
+                if(res.code!=0){
+                    alert(res.message);
+                    if(res.message==undefined){
+                        // confirm('由于您长时间没有操作, session已过期, 请重新登录.');
+                        //跳转到登录页
+                        location.href = "login.html";
+                    }
+                    return;
+                }
                 callback && callback(res);
                 }
             })

@@ -203,8 +203,6 @@ a {
 }
 
 .dropdown {
-    margin-top: 7px;
-    margin-left: -6px!important;
     margin-right: 24px;
     cursor: pointer;
     color: #000;
@@ -2083,19 +2081,21 @@ video {
 }
 /*账号管理样式 end*/
 /*拍照要求 begin*/
+#modalPhotoRequire .correctSample .img-box{
+    margin-right:38px;
+}
 #modalPhotoRequire .correctSample img{
     display: block;
-    margin-right:38px;
+    
     margin-bottom: 12px;
     height: 180px;
     width: 180px;
     border: 1px solid #f3f3f3;
 }
-#modalPhotoRequire .correctSample p span{
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    background: url(../imgs/right-sample-icon.png);
+#modalPhotoRequire .correctSample p.icon{
+    background: url(../imgs/right-sample-icon.png) no-repeat left center;
+    margin-top: 26px;
+    margin-bottom: 16px;
 }
 #modalPhotoRequire .wrongSample img{
     display: block;
@@ -2104,11 +2104,10 @@ video {
     width: 90px;
     border: 1px solid #f3f3f3;
 }
-#modalPhotoRequire .wrongSample p span{
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    background: url(../imgs/wrong-sample-icon.png);
+#modalPhotoRequire .wrongSample p.icon{
+    margin-top: 26px;
+    margin-bottom: 16px;
+    background: url(../imgs/wrong-sample-icon.png) no-repeat left center;
 }
 /*拍照要求 end*/
 

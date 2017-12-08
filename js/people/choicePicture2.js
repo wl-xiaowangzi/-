@@ -20,7 +20,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
         // 清除参数
         $("#btnPager").removeAttr("page");
         // 调用识别记录接口
-        API.queryRecordList(organizationid, starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
+        API.queryRecordList(starttime, endtime, start, limit,persontype,similarity,keyword,personid, function (res) {
             //编译模板
             var peopleChoicePicture = art.render(peopleChoicePictureTpl, res);
             var $peopleChoicePicture = $(peopleChoicePicture);
@@ -36,10 +36,10 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                     $(this).addClass("opacity05");
                      // 调用接口
                     var datanumber = $(this).attr("datanumber");
-                    API.showRecord(organizationid,starttime,endtime,start,limit,datanumber,function(res){
+                    API.showRecord(starttime,endtime,start,limit,datanumber,function(res){
                     // 保存人脸数据
-                    if(res.data[0].facedata==null){alert("该数据已损坏，请重新选择");return}
-                    var data = res.data[0].facedata.replace(/\[|]/g, '')
+                    if(res.data.list[0].facedata==null){alert("该数据已损坏，请重新选择");return}
+                    var data = res.data.list[0].facedata.replace(/\[|]/g, '')
                     if(data.substr(data.length-1,1)==","){
                         alert("该数据已损坏，请重新选择");
                         return
@@ -48,12 +48,12 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleChoicePicture.ht
                     var facedata2 = JSON.parse(facedata2);
                     console.log(facedata2.length)
                     if(facedata2.length!=1024){alert("该数据已损坏，请重新选择");return}
-                    var secondFacedatas = res.data[0].facedata.replace(/\s/g,"");
-                    var secondFaceimages = res.data[0].faceimage;
+                    var secondFacedatas = res.data.list[0].facedata.replace(/\s/g,"");
+                    var secondFaceimages = res.data.list[0].faceimage;
                     $(".btn-blue").attr("secondFaceimages",secondFaceimages);
                     $(".btn-blue").attr("secondFacedatas",secondFacedatas);
                     $(".btn-blue").attr("facetypes2","2");
-                    $(".headfaceimage2").attr("src",res.data[0].faceimage);
+                    $(".picture2").attr("src",res.data.list[0].faceimage);
                     // $peopleChoicePicture.modal("hide");
                     $peopleChoicePicture.css("width",0);
                     $(".modal-backdrop").remove();

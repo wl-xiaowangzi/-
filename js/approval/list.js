@@ -10,6 +10,9 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         var start = 30*(page-1);
         var limit = 30;
         var keyword = $("#btnSearchWords").attr("approvalKeyword");
+        var qtype=$("#btnApQtype").attr("qtype")*1||1;
+        var persontype=$("#btnAptype").attr("persontype");
+        var checkresult=$("#btnCheckresult").attr("checkresult")||0;
         // 移除参数
         $("#btnPager").removeAttr("page");
         $("body").removeClass("noResult");
@@ -25,15 +28,17 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         $("#btnKeepSearchWords").removeAttr("deviceSearchwords");
         $("#btnKeepSearchWords").removeAttr("usersSearchWords");
         // 获取审批列表
-        API.getApprovalList(start,limit,keyword,function(res){
-            if (res.data.length == 0) {
+        console.log(start,limit,keyword,qtype,checkresult,persontype)
+        API.getApprovalList(start,limit,keyword,qtype,checkresult,persontype,function(res){
+            console.log(res)
+            if (res.data.list.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0");
                 $(".people-icon").append("<style>.people-icon::after{background-color: transparent;}</style>");
             } else {
                 $("#messages").removeClass("opacity0").addClass("opacity1");
                 $(".people-icon").append("<style>.people-icon::after{background-color: red;}</style>");
             }
-            console.log(res)
+            
         //编译模板
         var approvalList=art.render(approvalListTpl,res);
         var $approvalList = $(approvalList);
@@ -86,17 +91,46 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
                 visitantRefuse(ps_id);
             })
             .on("click", ".btn-all", function () {
+                $("#btnAptype").removeAttr("persontype");
                 $("#btnApproval").trigger("click");
             })
-            .on("click", "#btn-employee", function () {
-                $("#btnEmployeeApproval").trigger("click");
+            .on("click", ".btn-employee", function () {
+                $("#btnAptype").attr("persontype",1);
+                $("#btnApproval").trigger("click");
             })
-            .on("click", "#btn-visiter", function () {
-                 $("#btnVisitorApproval").trigger("click");
+            .on("click", ".btn-visiter", function () {
+                $("#btnAptype").attr("persontype",2);
+                 $("#btnApproval").trigger("click");
+            })
+            .on("click","#deal-n",function(res){
+                $("#btnApQtype").attr("qtype",1);
+                $("#btnApproval").trigger("click");
+            })
+            .on("click","#deal-y",function(res){
+                $("#btnApQtype").attr("qtype",2);
+                $("#btnApproval").trigger("click");
+            })
+            .on("click","#btn-agree",function(res){
+                $("#btnCheckresult").attr("checkresult",1);
+                $("#btnApproval").trigger("click");
+            })
+            .on("click","#btn-refuse",function(res){
+                $("#btnCheckresult").attr("checkresult",2);
+                $("#btnApproval").trigger("click");
+            })
+            .on("click","#btn-overtimer",function(res){
+                $("#btnCheckresult").attr("checkresult",3);
+                $("#btnApproval").trigger("click");
             })
             .on("click","#approval_search_btn",function(){
                 var keyword = $("#approval_search_word").val();
-                $("#search").val(keyword);
+                $("#btnSearchWords").attr("approvalKeyword",keyword);
+                // 设置搜索关键字保留
+                $("#btnKeepSearchWords").attr("approvalSearchWords",keyword);
+                $("#btnApproval").trigger("click");//刷新
+            })
+            .on("click","#approval_search_btn_n",function(){
+                var keyword = $("#approval_search_word_n").val();
                 $("#btnSearchWords").attr("approvalKeyword",keyword);
                 // 设置搜索关键字保留
                 $("#btnKeepSearchWords").attr("approvalSearchWords",keyword);
@@ -106,13 +140,38 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/approvalList.html", ".
         //把渲染好的元素放到页面中
         $(".module-container").empty();
         $(".module-container").append($approvalList);
+        if(qtype==2){
+            $("#deal").addClass("active");
+            $("#deal-y").parent().addClass("active");
+            $("#undeal").removeClass("active");
+            $("#deal-n").parent().removeClass("active");
+        }
+        if(persontype==1){
+            $(".peopleType").html("员工");
+            $("#btn-overtimer").addClass("displayN");
+        }else if(persontype==2){
+            $(".peopleType").html("访客");
+            $("#btn-overtimer").removeClass("displayN");
+        }else{
+            $(".peopleType").html("所有人员");
+            $("#btn-overtimer").removeClass("displayN");
+        }
+        if(checkresult==1){
+            $(".checkresult").html("已通过");
+        }else if(checkresult==2){
+            $(".checkresult").html("已驳回");
+        }else if(checkresult==3){
+            $(".checkresult").html("已失效");
+        }else{
+            $(".checkresult").html("审批结果");
+        }
         // 下拉选项变为鼠标移入触发
         $('div.dropdown').mouseover(function() {   
         $(this).addClass('open');}).mouseout(function(){$(this).removeClass('open');});  
          // 设置搜索关键字保留
         var searchWords=$("#btnKeepSearchWords").attr("approvalSearchWords")
         $("#approval_search_word").val(searchWords);
-        $("#search").val(searchWords);
+        $("#approval_search_word_n").val(searchWords);
         // 分页
          var num = Math.ceil(res.sumsize/30);
             Page({

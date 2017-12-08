@@ -35,7 +35,7 @@ define(["jquery", "artTemplate", "common/api", "text!tpls/peopleEdit.html", "tex
                 choicePicture2(ps_id,ps_type,ps_name);
             })
             // 组织加购选项
-            API.getTree(organizationid, function (res) {
+            API.getTree(function (res) {
                  var peopleSubOrg = art.render(peopleSubOrgTpl,res.data[0]);
                  var $peopleSubOrg = $(peopleSubOrg);
                  $("#PE-department").append($peopleSubOrg);

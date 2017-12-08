@@ -11,7 +11,7 @@
                     <div class="info editCamera1 choiceCamera">
                         <img src="imgs/uploadIMG_hover.png" alt="" width="94" height="94">
                     </div>
-                    {{each data}}
+                    {{each data.list}}
                     <div class="info replaceIMG" datanumber={{$value.datanumber}}>
                         <div class="img-box"><img src="{{$value.faceimage}}" alt="" width="94" height="94"><span class="similarity"></span><span class="sim-text">{{$value.similarity*100}}%</span></div>
                     </div>

@@ -64,10 +64,12 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
     });
     // 获取审批信息
     var keyword;
+    var qtype=1;
+    var checkresult=0;
     // 登录获取未审批人员人数
     setTimeout(function () {
-        API.queryApprovalList(0, 100, keyword, function (res) {
-            if (res.data.length == 0) {
+        API.queryApprovalList(0, 100, keyword,qtype,checkresult, function (res) {
+            if (res.data.list.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0");
                 $(".people-icon").append("<style>.people-icon::after{background-color: transparent;}</style>");
             } else {
@@ -78,8 +80,8 @@ require(["jquery", "artTemplate", "users/list","attendance/list","authorization/
     }, 0)
     // 定时抓取未审批人数
     setInterval(function () {
-        API.queryApprovalList(0, 100, keyword, function (res) {
-            if (res.data.length == 0) {
+        API.queryApprovalList(0, 100, keyword,qtype,checkresult, function (res) {
+            if (res.data.list.length == 0) {
                 $("#messages").removeClass("opacity1").addClass("opacity0");
                 $(".people-icon").append("<style>.people-icon::after{background-color: transparent;}</style>");
             } else {
